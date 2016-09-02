@@ -1,0 +1,211 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+html {
+	-webkit-font-smoothing: antialiased;
+	-webkit-text-size-adjust: 100%;
+	text-rendering: optimizeLegibility;
+	-webkit-tap-highlight-color: rgba(240, 210, 60, 0.5);
+}
+
+/**
+ * Eric Meyer's Reset CSS v2.0 (http://meyerweb.com/eric/tools/css/reset/)
+ * http://cssreset.com
+ */
+
+
+body {
+	box-sizing: border-box;
+	font-family: "Helvetica Neue",'Helvetica', 'Arial', 'sans-serif';
+	font-weight: bold;
+	background: #ffffff;
+    color: #a0a0a0;
+}
+
+/*
+.top {
+	position: absolute;
+	height: 4px;
+	width: 100%;
+    animation: wheelHueColor 30s infinite;
+	background-color: currentColor;
+}
+*/
+
+#container {
+	height: 100%;
+	width: 100%;
+	position: absolute;
+}
+
+header {
+	margin: 0;
+	padding: 4em 0em 0em;
+}
+
+section#intro {
+	padding: 1em 0em 1em;
+}
+
+.content {
+	margin: 0 auto;
+	max-width: 700px;
+	padding-left: 30px;
+	padding-right: 30px;
+	line-height: 140%;
+	font-size: 2.4em;
+
+}
+
+section#sm {
+	padding: 0;
+}
+
+
+h1 {
+}
+
+h1 bdi {
+}
+
+a {
+	color: #a0a0a0;
+	text-decoration: none;
+	position: relative;
+	transition: color 400ms ease;
+	-webkit-transision: color 400ms ease;
+	-moz-transision: color 400ms ease;
+	-o-transision: color 400ms ease;
+	-ms-transision: color 400ms ease;
+	}
+
+a:hover {
+	color: #2e383f;
+}
+
+.numerals {
+	font-size: 1em;
+	color: #2e383f;
+	padding-right: 0.25em;
+}
+
+.mail {
+	font-size: 0.65em;
+	padding: 0.4em;
+	background-color: #2e383f;
+	color: #ffffff;
+}
+
+.mail:hover {
+	color: #ffffff;
+}
+
+img {
+	display: block;
+	margin: 0;
+	padding: 0;
+}
+
+ul.links {
+	margin-top: 0.5em;
+}
+
+ul.links li {
+	margin-bottom: 0.65em;
+	height: 1em;
+}
+
+footer {
+	padding-top: 2em;
+	font-size: 0.65em;
+}
+
+@keyframes wheelHueColor {
+  from, to { color: hsl(324, 70%, 45%); }
+  10%      { color: hsl(360, 65%, 45%); }
+  20%      { color: hsl( 36, 80%, 45%); }
+  30%      { color: hsl( 72, 75%, 35%); }
+  40%      { color: hsl(108, 65%, 35%); }
+  50%      { color: hsl(144, 75%, 35%); }
+  60%      { color: hsl(180, 75%, 35%); }
+  70%      { color: hsl(216, 60%, 45%); }
+  80%      { color: hsl(252, 65%, 50%); }
+  90%      { color: hsl(288, 60%, 40%); }
+}
+
+/*iPhone 6 Portrait*/
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2) {
+
+	header {
+	padding: 6em 0em 0em;
+	}
+	
+    .content {
+	line-height: 140%;
+	font-size: 3.8em;
+	max-width: 800px;
+	}
+	
+	ul.links li {
+	margin-bottom: 0.8em;
+	}
+}
+
+/*iPhone 6 Landscape*/
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 2) {
+
+	header {
+	padding: 4em 0em 0em;
+	}
+	
+    .content {
+	line-height: 140%;
+	font-size: 2.8em;
+	max-width: 800px;
+	}
+	
+	ul.links li {
+	margin-bottom: 0.8em;
+	}
+}
