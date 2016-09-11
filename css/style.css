@@ -58,10 +58,12 @@ html {
     font-family: 'SoleilBold';
     src: url('fonts/SoleilBold.eot');
     src: url('fonts/SoleilBold.eot') format('embedded-opentype'),
-         url('fonts/SoleilBold.woff2') format('woff2'),
+    	 url('fonts/SoleilBold.woff2') format('woff2'),
          url('fonts/SoleilBold.woff') format('woff'),
          url('fonts/SoleilBold.ttf') format('truetype'),
          url('fonts/SoleilBold.svg#SoleilBold') format('svg');
+    font-weight: bold;
+
 }
 
 body {
