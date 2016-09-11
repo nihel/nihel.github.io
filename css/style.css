@@ -121,19 +121,19 @@ a {
 	}
 
 a:hover {
-	color: #2e383f;
+	color: #101618;
 }
 
 .numerals {
 	font-size: 1em;
-	color: #2e383f;
+	color: #101618;
 	padding-right: 0.25em;
 }
 
 .mail {
 	font-size: 0.65em;
 	padding: 0.4em;
-	background-color: #2e383f;
+	background-color: #101618;
 	color: #ffffff;
 }
 
