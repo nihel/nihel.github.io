@@ -65,8 +65,7 @@ html {
 }
 
 body {
-	box-sizing: border-box;
-	font-family: "Soleil-Bold", "Helvetica Neue",'Helvetica', 'Arial', 'sans-serif';
+	font-family: "Soleil-Bold", "Helvetica Neue", 'Helvetica', 'Arial', 'sans-serif';
 	background: #ffffff;
     color: #a0a0a0;
 }
