@@ -62,8 +62,8 @@ html {
          url('fonts/SoleilBold.woff') format('woff'),
          url('fonts/SoleilBold.ttf') format('truetype'),
          url('fonts/SoleilBold.svg#SoleilBold') format('svg');
-    font-weight: bold;
-
+    font-weight: normal;
+    font-style: normal;
 }
 
 body {
