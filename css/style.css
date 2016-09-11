@@ -55,21 +55,18 @@ html {
  */
 
 @font-face {
-    font-family: 'SoleilBold';
-    src: url('fonts/SoleilBold.eot');
-    src: url('fonts/SoleilBold.eot') format('embedded-opentype'),
-    	 url('fonts/SoleilBold.woff2') format('woff2'),
-         url('fonts/SoleilBold.woff') format('woff'),
-         url('fonts/SoleilBold.ttf') format('truetype'),
-         url('fonts/SoleilBold.svg#SoleilBold') format('svg');
-    font-weight: normal;
-    font-style: normal;
+	font-family: 'Soleil-Bold';
+	src: url('fonts/Soleil-Bold.eot');
+	src: url('Soleil-Bold.eot?#iefix') format('embedded-opentype'),
+		url('fonts/Soleil-Bold.woff') format('woff'),
+		url('fonts/Soleil-Bold.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
 }
 
 body {
 	box-sizing: border-box;
-	font-family: "SoleilBold", "Helvetica Neue",'Helvetica', 'Arial', 'sans-serif';
-	font-weight: bold;
+	font-family: "Soleil-Bold", "Helvetica Neue",'Helvetica', 'Arial', 'sans-serif';
 	background: #ffffff;
     color: #a0a0a0;
 }
