@@ -56,10 +56,10 @@ html {
 
 @font-face {
 	font-family: 'Soleil-Bold';
-	src: url('fonts/Soleil-Bold.eot');
-	src: url('Soleil-Bold.eot?#iefix') format('embedded-opentype'),
-		url('fonts/Soleil-Bold.woff') format('woff'),
-		url('fonts/Soleil-Bold.ttf') format('truetype');
+	src: url('../fonts/Soleil-Bold.eot');
+	src: url('../Soleil-Bold.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/Soleil-Bold.woff') format('woff'),
+		url('../fonts/Soleil-Bold.ttf') format('truetype');
 	font-weight: normal;
 	font-style: normal;
 }
