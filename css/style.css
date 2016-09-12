@@ -55,18 +55,18 @@ html {
  */
 
 @font-face {
- 	font-family: 'GT-Walsheim-Medium-Web';
-	src: url('../fonts/gt-walsheim-medium-web.eot');
-	src: url('../fonts/gt-walsheim-medium-web?#iefix') format('embedded-opentype'),
-		url('../fonts/gt-walsheim-medium-web.woff') format('woff'),
-		url('../fonts/gt-walsheim-medium-web.ttf') format('truetype');
+ 	font-family: 'Apercu';
+	src: url('../fonts/ApercuPro.eot');
+	src: url('../fonts/ApercuPro?#iefix') format('embedded-opentype'),
+		url('../fonts/ApercuPro.woff') format('woff'),
+		url('../fonts/ApercuPro.ttf') format('truetype');
 	font-weight: normal;
 	font-style: normal;
 }
 
 
 body {
-	font-family: "GT-Walsheim-Medium-Web", "Helvetica Neue", 'Helvetica', 'Arial', 'sans-serif';
+	font-family: "Apercu", "Helvetica Neue", 'Helvetica', 'Arial', 'sans-serif';
 	background: #ffffff;
     color: #b0b0b0;
 }
