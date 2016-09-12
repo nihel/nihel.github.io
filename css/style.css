@@ -54,10 +54,19 @@ html {
  * http://cssreset.com
  */
 
+@font-face {
+ 	font-family: 'GT-Haptik-Medium';
+	src: url('fonts/gt-haptik-medium-webfont.eot');
+	src: url('fonts/gt-haptik-medium-webfont.eot?#iefix') format('embedded-opentype'),
+		url('fonts/gt-haptik-medium-webfont.woff') format('woff'),
+		url('fonts/gt-haptik-medium-webfont.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
 
 body {
-	font-family: "Helvetica Neue", 'Helvetica', 'Arial', 'sans-serif';
-	font-weight: bold;
+	font-family: "GT-Haptik-Medium", "Helvetica Neue", 'Helvetica', 'Arial', 'sans-serif';
 	background: #ffffff;
     color: #a0a0a0;
 }
