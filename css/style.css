@@ -55,18 +55,18 @@ html {
  */
 
 @font-face {
- 	font-family: 'Apercu';
-	src: url('../fonts/ApercuPro-Medium.eot');
-	src: url('../fonts/ApercuPro-Medium?#iefix') format('embedded-opentype'),
-		url('../fonts/ApercuPro-Medium.woff') format('woff'),
-		url('../fonts/ApercuPro-Medium.ttf') format('truetype');
+ 	font-family: 'CircularStd-Medium';
+	src: url('../fonts/CircularStd-Medium.eot');
+	src: url('../fonts/CircularStd-Medium?#iefix') format('embedded-opentype'),
+		url('../fonts/CircularStd-Medium.woff') format('woff'),
+		url('../fonts/CircularStd-Medium.ttf') format('truetype');
 	font-weight: normal;
 	font-style: normal;
 }
 
 
 body {
-	font-family: "Apercu", "Helvetica Neue", 'Helvetica', 'Arial', 'sans-serif';
+	font-family: "CircularStd-Medium", "Helvetica Neue", 'Helvetica', 'Arial', 'sans-serif';
 	background: #ffffff;
     color: #b0b0b0;
 }
