@@ -71,14 +71,15 @@ body {
     color: #b0b0b0;
 }
 
-
+/*
 .top {
 	position: absolute;
 	height: 4px;
 	width: 100%;
-    animation: wheelHueColor 60s infinite;
+    animation: wheelHueColor 30s infinite;
 	background-color: currentColor;
 }
+*/
 
 #container {
 	height: 100%;
