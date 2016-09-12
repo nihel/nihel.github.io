@@ -56,10 +56,10 @@ html {
 
 @font-face {
  	font-family: 'Apercu';
-	src: url('../fonts/ApercuPro.eot');
-	src: url('../fonts/ApercuPro?#iefix') format('embedded-opentype'),
-		url('../fonts/ApercuPro.woff') format('woff'),
-		url('../fonts/ApercuPro.ttf') format('truetype');
+	src: url('../fonts/ApercuPro-Medium.eot');
+	src: url('../fonts/ApercuPro-Medium?#iefix') format('embedded-opentype'),
+		url('../fonts/ApercuPro-Medium.woff') format('woff'),
+		url('../fonts/ApercuPro-Medium.ttf') format('truetype');
 	font-weight: normal;
 	font-style: normal;
 }
