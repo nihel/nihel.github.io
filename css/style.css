@@ -55,18 +55,18 @@ html {
  */
 
 @font-face {
- 	font-family: 'GT-Haptik-Medium';
-	src: url('../fonts/gt-haptik-medium-webfont.eot');
-	src: url('../fonts/gt-haptik-medium-webfont.eot?#iefix') format('embedded-opentype'),
-		url('../fonts/gt-haptik-medium-webfont.woff') format('woff'),
-		url('../fonts/gt-haptik-medium-webfont.ttf') format('truetype');
+ 	font-family: 'GT-Walsheim-Web';
+	src: url('../fonts/gt-walsheim-web.eot');
+	src: url('../fonts/gt-walsheim-web.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/gt-walsheim-web.woff') format('woff'),
+		url('../fonts/gt-walsheim-web.ttf') format('truetype');
 	font-weight: normal;
 	font-style: normal;
 }
 
 
 body {
-	font-family: "GT-Haptik-Medium", "Helvetica Neue", 'Helvetica', 'Arial', 'sans-serif';
+	font-family: "GT-Walsheim-Web", "Helvetica Neue", 'Helvetica', 'Arial', 'sans-serif';
 	background: #ffffff;
     color: #b0b0b0;
 }
