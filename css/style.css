@@ -64,7 +64,6 @@ html {
 	font-style: normal;
 }
 
-
 body {
 	font-family: "CircularStd-Medium", "Helvetica Neue", 'Helvetica', 'Arial', 'sans-serif';
 	background: #ffffff;
@@ -121,11 +120,6 @@ a {
 a:hover {
 	color: #101618;
 }
-
-.content::-moz-selection { background:#FFFF7D; color:#032764; }
-.content::-webkit-selection { background:#FFFF7D; color:#032764; }
-.content::selection { background:#FFFF7D; color:#032764; }
-
 
 .numerals {
 	font-size: 1em;
