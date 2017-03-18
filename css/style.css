@@ -122,9 +122,9 @@ a:hover {
 	color: #101618;
 }
 
-p::-moz-selection { background:#FFFF7D; color:#032764; }
-p::-webkit-selection { background:#FFFF7D; color:#032764; }
-p::selection { background:#FFFF7D; color:#032764; }
+::-moz-selection { background:#FFFF7D; color:#032764; }
+::-webkit-selection { background:#FFFF7D; color:#032764; }
+::selection { background:#FFFF7D; color:#032764; }
 
 
 .numerals {
@@ -162,15 +162,6 @@ ul.links li {
 footer {
 	padding-top: 2em;
 	font-size: 0.65em;
-}
-
-@keyframes wheelHueColor {
-  from, to 	{ color: rgb(221, 29, 133); }
-  	20%     { color: rgb(247, 74, 86); }
-  	40%     { color: rgb(236, 222, 87); }
-  	60%     { color: rgb(28, 203, 108); }
-  	80%     { color: rgb(26, 129, 205); }
-	90%		{ color: rgb(75, 63, 147); }
 }
 
 /*iPhone 6 Portrait*/
