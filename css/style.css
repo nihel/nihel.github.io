@@ -164,10 +164,6 @@ footer {
   and (max-device-width: 667px)
   and (-webkit-min-device-pixel-ratio: 2) { 
 
-  	body {
-  		background-color: red;
-  	}
-
 	header {
 	padding: 6em 0em 0em;
 	}
