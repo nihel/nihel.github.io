@@ -159,9 +159,9 @@ footer {
 }
 
 /* Portrait and Landscape */
-@media screen
+@media only screen
   and (min-device-width: 320px)
-  and (max-device-width: 667px) { 
+  and (max-device-width: 667px) {
 
 	header {
 	padding: 6em 0em 0em;
