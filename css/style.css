@@ -159,9 +159,14 @@ footer {
 }
 
 /* Portrait and Landscape */
-@media only screen
+@media screen
   and (min-device-width: 320px)
-  and (max-device-width: 667px) {
+  and (max-device-width: 667px)
+  and (-webkit-min-device-pixel-ratio: 2) { 
+
+  	body {
+  		background-color: red;
+  	}
 
 	header {
 	padding: 6em 0em 0em;
@@ -169,7 +174,7 @@ footer {
 	
     .content {
 	line-height: 140%;
-	font-size: 3.8em;
+	font-size: 1.8em;
 	max-width: 800px;
 	}
 	
