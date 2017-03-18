@@ -122,9 +122,9 @@ a:hover {
 	color: #101618;
 }
 
-::-moz-selection { background:#FFFF7D; color:#032764; }
-::-webkit-selection { background:#FFFF7D; color:#032764; }
-::selection { background:#FFFF7D; color:#032764; }
+.content::-moz-selection { background:#FFFF7D; color:#032764; }
+.content::-webkit-selection { background:#FFFF7D; color:#032764; }
+.content::selection { background:#FFFF7D; color:#032764; }
 
 
 .numerals {
