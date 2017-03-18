@@ -122,9 +122,9 @@ a:hover {
 	color: #101618;
 }
 
-p::-moz-selection { color: yellow; }
+::-moz-selection { color: yellow; }
 
-p::selection { color: yellow; }
+::selection { color: yellow; }
 
 .numerals {
 	font-size: 1em;
