@@ -49,6 +49,27 @@ html {
 	-webkit-tap-highlight-color: rgba(240, 210, 60, 0.5);
 }
 
+/* Portrait and Landscape */
+@media screen
+  and (min-device-width: 320px)
+  and (max-device-width: 667px)
+  and (-webkit-min-device-pixel-ratio: 2) { 
+
+	header {
+	padding: 6em 0em 0em;
+	}
+	
+    .content {
+	line-height: 140%;
+	font-size: 3.8em;
+	max-width: 800px;
+	}
+	
+	ul.links li {
+	margin-bottom: 0.8em;
+	}
+}
+
 /**
  * Eric Meyer's Reset CSS v2.0 (http://meyerweb.com/eric/tools/css/reset/)
  * http://cssreset.com
@@ -156,25 +177,4 @@ ul.links li {
 footer {
 	padding-top: 2em;
 	font-size: 0.65em;
-}
-
-/* Portrait and Landscape */
-@media screen 
-  and (min-device-width: 375px) 
-  and (max-device-width: 667px) 
-  and (-webkit-min-device-pixel-ratio: 2) { 
-
-	header {
-	padding: 6em 0em 0em;
-	}
-	
-    .content {
-	line-height: 140%;
-	font-size: 3.8em;
-	max-width: 800px;
-	}
-	
-	ul.links li {
-	margin-bottom: 0.8em;
-	}
 }
