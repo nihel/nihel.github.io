@@ -71,16 +71,6 @@ body {
     color: #b0b0b0;
 }
 
-/*
-.top {
-	position: absolute;
-	height: 4px;
-	width: 100%;
-    animation: wheelHueColor 30s infinite;
-	background-color: currentColor;
-}
-*/
-
 #container {
 	height: 100%;
 	width: 100%;
@@ -131,6 +121,10 @@ a {
 a:hover {
 	color: #101618;
 }
+
+p::-moz-selection { color: rgba(240, 210, 60, 0.5) }
+
+p::selection { color: rgba(240, 210, 60, 0.5) }
 
 .numerals {
 	font-size: 1em;
