@@ -118,7 +118,7 @@ a {
 	}
 
 a:hover {
-	color: #0096DC;
+	color: #008CEC;
 }
 
 .numerals {
@@ -130,7 +130,7 @@ a:hover {
 .mail {
 	font-size: 0.65em;
 	padding: 0.4em;
-	background-color: #0096DC;
+	background-color: #008CEC;
 	color: #ffffff;
 }
 
