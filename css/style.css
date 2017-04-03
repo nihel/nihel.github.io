@@ -132,8 +132,9 @@ a:hover {
 	background-color: #008CEC;
 	color: #ffffff;
 	border-radius: 6px;
+}
 
-		&:before {
+.mail:before {
 		content:"";
 		position:absolute;
 		z-index:-1;
@@ -144,7 +145,6 @@ a:hover {
 		border-bottom-left-radius: 16px 14px;
 		-webkit-transform:translate(0, -2px);
 	}
-}
 
 .mail:hover {
 	color: #ffffff;
