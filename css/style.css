@@ -129,6 +129,8 @@ a:hover {
 .chatbubble {
 	font-size: 0.65em;
 	padding: 0.4em;
+	padding-left: 0.65em;
+	padding-right: 0.6em;
 	background-color: #008CEC;
 	color: #ffffff;
 	border-radius: 20px;
