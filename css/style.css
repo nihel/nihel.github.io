@@ -131,7 +131,7 @@ a:hover {
 	padding: 0.4em;
 	background-color: #008CEC;
 	color: #ffffff;
-	border-radius: 10px;
+	border-radius: 12px;
 }
 
 .mail:before {
@@ -141,7 +141,7 @@ a:hover {
 		bottom:-2px;
 		right:-7px;
 		height:20px;
-		border-right:20px solid #0B93F6;
+		border-right:20px solid #008CEC;
 		border-bottom-left-radius: 16px 14px;
 		-webkit-transform:translate(0, -2px);
 	}
