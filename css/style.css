@@ -131,7 +131,7 @@ a:hover {
 	padding: 0.4em;
 	background-color: #008CEC;
 	color: #ffffff;
-	border-radius: 12px;
+	border-radius: 20px;
 }
 
 .chatbubble:before {
@@ -203,5 +203,9 @@ footer {
 	
 	ul.links li {
 	margin-bottom: 0.8em;
+	}
+
+	.chatbubble {
+	border-radius: 12px;
 	}
 }
