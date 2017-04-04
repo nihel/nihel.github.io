@@ -126,7 +126,7 @@ a:hover {
 	padding-right: 0.25em;
 }
 
-.mail {
+.chatbubble {
 	font-size: 0.65em;
 	padding: 0.4em;
 	background-color: #008CEC;
@@ -134,7 +134,7 @@ a:hover {
 	border-radius: 12px;
 }
 
-.mail:before {
+.chatbubble:before {
 		content:"";
 		position:absolute;
 		z-index:-1;
@@ -146,7 +146,7 @@ a:hover {
 		-webkit-transform:translate(0, -2px);
 	}
 
-.mail:after {
+.chatbubble:after {
 		content:"";
 		position:absolute;
 		z-index:1;
@@ -160,7 +160,7 @@ a:hover {
 	}
 
 
-.mail:hover {
+.chatbubble:hover {
 	color: #ffffff;
 }
 
