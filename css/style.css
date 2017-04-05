@@ -106,18 +106,18 @@ h1 bdi {
 }
 
 a {
-	color: #101618;
-	text-decoration: underline;
+	color: #b0b0b0;
+	text-decoration: none;
 	position: relative;
-	transition: all 400ms ease;
-	-webkit-transision: all 400ms ease;
-	-moz-transision: all 400ms ease;
-	-o-transision: all 400ms ease;
-	-ms-transision: all 400ms ease;
+	transition: color 400ms ease;
+	-webkit-transision: color 400ms ease;
+	-moz-transision: color 400ms ease;
+	-o-transision: color 400ms ease;
+	-ms-transision: color 400ms ease;
 	}
 
 a:hover {
-	text-decoration: none;
+	color: #101618;
 }
 
 .numerals {
