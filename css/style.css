@@ -137,27 +137,27 @@ a:hover {
 
 .chatbubble:before {
 		content:"";
-		position:absolute;
-		z-index:-1;
-		bottom:-2px;
-		right:-7px;
-		height:20px;
-		border-right:20px solid #008CEC;
+		position: absolute;
+		z-index: -1;
+		bottom: -2px;
+		right: -7px;
+		height: 20px;
+		border-right: 20px solid #008CEC;
 		border-bottom-left-radius: 16px 14px;
-		-webkit-transform:translate(0, -2px);
+		-webkit-transform: translate(0, -2px);
 	}
 
 .chatbubble:after {
 		content:"";
-		position:absolute;
-		z-index:1;
-		bottom:-2px;
-		right:-56px;
-		width:26px;
-		height:20px;
-		background:white;
+		position: absolute;
+		z-index: 1;
+		bottom: -2px;
+		right: -56px;
+		width: 26px;
+		height: 20px;
+		background: white;
 		border-bottom-left-radius: 10px;
-		-webkit-transform:translate(-30px, -2px);
+		-webkit-transform: translate(-30px, -2px);
 	}
 
 
