@@ -209,8 +209,4 @@ footer {
 	.chatbubble {
 	border-radius: 12px;
 	}
-
-	.chatbubble:after {
-	width: 24px;
-	}
 }
