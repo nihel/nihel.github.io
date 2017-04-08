@@ -108,20 +108,15 @@ a {
 	color: #b0b0b0;
 	text-decoration: none;
 	position: relative;
-	transition: color 400ms ease;
-	-webkit-transision: color 400ms ease;
-	-moz-transision: color 400ms ease;
-	-o-transision: color 400ms ease;
-	-ms-transision: color 400ms ease;
 	}
 
 a:hover {
-	color: #101618;
+	text-decoration:underline
 }
 
 .numerals {
 	font-size: 1em;
-	color: #101618;
+	color: #008CEC;
 	padding-right: 0.25em;
 }
 
@@ -137,35 +132,6 @@ a:hover {
 
 .chatbubble:hover {
 	background-color: #23A5FF;
-}
-
-.chatbubble:before {
-		content:"";
-		position: absolute;
-		z-index: -1;
-		bottom: -2px;
-		right: -7px;
-		height: 20px;
-		border-right: 20px solid #008CEC;
-		border-bottom-left-radius: 16px 14px;
-		-webkit-transform: translate(0, -2px);
-	}
-
-.chatbubble:after {
-		content:"";
-		position: absolute;
-		z-index: 1;
-		bottom: -2px;
-		right: -56px;
-		width: 26px;
-		height: 20px;
-		background: white;
-		border-bottom-left-radius: 10px;
-		-webkit-transform: translate(-30px, -2px);
-	}
-
-
-.chatbubble:hover {
 	color: #ffffff;
 }
 
