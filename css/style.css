@@ -135,6 +135,10 @@ a:hover {
 	border-radius: 20px;
 }
 
+.chatbubble:hover {
+	background-color: #23A5FF;
+}
+
 .chatbubble:before {
 		content:"";
 		position: absolute;
