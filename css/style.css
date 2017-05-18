@@ -66,7 +66,7 @@ html {
 body {
 	font-family: "CircularStd-Medium", "Helvetica Neue", 'Helvetica', 'Arial', 'sans-serif';
 	background: #ffffff;
-    color: #303030;
+    color: #4A4A4A;
 }
 
 #container {
@@ -105,7 +105,7 @@ h1 bdi {
 }
 
 a {
-	color: #303030;
+	color: #4A4A4A;
 	text-decoration: none;
 	position: relative;
 	}
