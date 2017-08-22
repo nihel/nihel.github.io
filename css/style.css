@@ -53,18 +53,8 @@ html {
  * http://cssreset.com
  */
 
-@font-face {
- 	font-family: 'CircularStd-Medium';
-	src: url('../fonts/CircularStd-Medium.eot');
-	src: url('../fonts/CircularStd-Medium?#iefix') format('embedded-opentype'),
-		url('../fonts/CircularStd-Medium.woff') format('woff'),
-		url('../fonts/CircularStd-Medium.ttf') format('truetype');
-	font-weight: normal;
-	font-style: normal;
-}
-
 body {
-	font-family: "CircularStd-Medium", "Helvetica Neue", 'Helvetica', 'Arial', 'sans-serif';
+	font-family: Interface, sans-serif;
 	background: #ffffff;
     color: #404040;
 }
