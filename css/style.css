@@ -55,9 +55,8 @@ html {
  */
 
 body {
-	font-family: Interface, sans-serif;
-	font-weight: 500;
-	letter-spacing: -0.1px;
+	font-family: Lora, serif;
+	font-weight: normal;
 	background: #ffffff;
     color: #404040;
 }
