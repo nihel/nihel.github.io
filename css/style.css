@@ -103,7 +103,7 @@ a {
 	}
 
 a:hover {
-	color: #008CEC;
+	opacity: 0.6;
 }
 
 .numerals {
