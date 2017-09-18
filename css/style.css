@@ -57,8 +57,8 @@ html {
 body {
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 600;
-	background: #ffffff;
-    color: #404040;
+	background: #1A1A1A;
+    color: #FFFFFF;
 }
 
 #container {
@@ -97,13 +97,13 @@ h1 bdi {
 }
 
 a {
-	color: #404040;
+	color: #FFFFFF;
 	text-decoration: none;
 	position: relative;
 	}
 
 a:hover {
-	opacity: 0.6;
+	opacity: 0.5;
 }
 
 .numerals {
