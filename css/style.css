@@ -103,7 +103,7 @@ a {
 	}
 
 a:hover {
-	opacity: 0.5;
+	color: #666666;
 }
 
 .numerals {
@@ -146,6 +146,7 @@ footer {
 	padding-top: 2em;
 	padding-bottom: 2em;
 	font-size: 0.65em;
+	color: #666666;
 }
 
 /* Portrait and Landscape */
