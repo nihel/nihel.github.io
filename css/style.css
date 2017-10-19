@@ -97,13 +97,13 @@ h1 bdi {
 }
 
 a {
-	color: #1CDF7B;
+	color: #008CEC;
 	text-decoration: none;
 	position: relative;
 	}
 
 a:hover {
-	color: #1CDF7B;
+	color: #008CEC;
 	text-decoration-skip: ink;
 	text-decoration: underline;
 }
