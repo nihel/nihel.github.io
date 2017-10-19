@@ -71,6 +71,14 @@ body {
     margin: 1.25rem auto;
 }
 
+main {
+	padding: 0 1.25rem;
+}
+
+aside {
+	min-width: 10rem;
+}
+
 header {
 	margin: 0;
 	padding: 2em 0em 0em;
