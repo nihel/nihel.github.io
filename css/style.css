@@ -104,6 +104,8 @@ a {
 
 a:hover {
 	color: #666666;
+	text-decoration-skip: ink;
+	text-decoration: underline;
 }
 
 .numerals {
