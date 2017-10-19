@@ -80,12 +80,10 @@ aside {
 }
 
 header {
-	margin: 0;
-	padding: 2em 0em 0em;
 }
 
 section#intro {
-	padding: 1em 0em 2em;
+	padding: 1em 0em 1em;
 }
 
 section#sm {
@@ -134,8 +132,7 @@ img {
 
 
 footer {
-	padding-top: 2em;
-	padding-bottom: 2em;
+	padding-bottom: 1em;
 	font-size: 0.65em;
 	color: #666666;
 }
