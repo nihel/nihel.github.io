@@ -59,6 +59,8 @@ body {
 	font-weight: 600;
 	background: #F5F7F9;
     color: #1E1E1E;
+    line-height: 120%;
+	font-size: 2em;
 }
 
 #container {
@@ -76,14 +78,6 @@ header {
 
 section#intro {
 	padding: 1em 0em 2em;
-}
-
-.content {
-	margin: 0 auto;
-	padding-left: 30px;
-	padding-right: 30px;
-	line-height: 120%;
-	font-size: 2em;
 }
 
 section#sm {
