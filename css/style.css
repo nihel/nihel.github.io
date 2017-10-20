@@ -71,7 +71,7 @@ body {
 
 main {
 	padding: 0 1.25rem;
-	line-height: 120%;
+	line-height: 125%;
 	font-size: 2em;
 }
 
@@ -80,10 +80,11 @@ aside {
 }
 
 header {
+	padding-top: 1rem;
 }
 
 section#intro {
-	padding: 0.5em 0em 1em;
+	padding: 0.5rem 0rem 1rem;
 }
 
 section#sm {
@@ -104,8 +105,8 @@ h1 {
 }
 
 h2 {
-	padding-top: 4.5em;
-	padding-bottom: 1em
+	padding-top: 4.5rem;
+	padding-bottom: 1rem;
 
 }
 
@@ -122,13 +123,13 @@ a:hover {
 }
 
 .chatbubble {
-	font-size: 0.65em;
-	padding: 0.4em;
-	padding-left: 0.65em;
-	padding-right: 0.6em;
+	font-size: 0.8rem;
+	padding: 0.4rem;
+	padding-left: 0.8rem;
+	padding-right: 0.8rem;
 	background-color: #008CEC;
 	color: #ffffff;
-	border-radius: 10px;
+	border-radius: 8px;
 }
 
 .chatbubble:hover {
@@ -144,8 +145,8 @@ img {
 
 
 footer {
-	padding-bottom: 1em;
-	font-size: 0.65em;
+	padding-bottom: 1rem;
+	font-size: 0.65rem;
 	color: #666666;
 	line-height: 140%;
 }
