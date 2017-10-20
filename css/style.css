@@ -81,14 +81,11 @@ aside {
 
 header {
 	padding-top: 1rem;
+	padding-bottom: 2rem;
 }
 
 section#intro {
-	padding: 0.5rem 0rem 1rem;
-}
-
-section#sm {
-	padding: 0;
+	padding-bottom: 2rem;
 }
 
 .work-class {
