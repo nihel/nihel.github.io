@@ -49,6 +49,12 @@ html {
 	text-rendering: optimizeLegibility;
 }
 
+img {
+	display: block;
+	margin: 0;
+	padding: 0;
+}
+
 /**
  * Eric Meyer's Reset CSS v2.0 (http://meyerweb.com/eric/tools/css/reset/)
  * http://cssreset.com
@@ -84,7 +90,7 @@ header {
 	padding-bottom: 2rem;
 }
 
-section#intro {
+section.intro {
 	padding-bottom: 2rem;
 }
 
@@ -134,12 +140,6 @@ a:hover {
 	color: #ffffff;
 }
 
-img {
-	display: block;
-	margin: 0;
-	padding: 0;
-}
-
 
 footer {
 	padding-bottom: 1rem;
@@ -158,16 +158,6 @@ footer {
 	padding: 2em 0em 0em;
 	}
 	
-    .content {
-	line-height: 140%;
-	font-size: 1.4em;
-	max-width: 800px;
-	}
-	
-	ul.links li {
-	margin-bottom: 0.8em;
-	}
-
 	.chatbubble {
 	border-radius: 6px;
 	}
