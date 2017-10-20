@@ -100,7 +100,7 @@ section.intro {
 	padding: 0;
 }
 
-.work-class li {
+.work-class li a {
 	text-decoration: line-through;
 }
 
