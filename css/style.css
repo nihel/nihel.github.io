@@ -118,6 +118,7 @@ h2 {
 
 aside.side p {
 	text-decoration: line-through;
+	margin-bottom: 0.5rem;
 }
 
 a {
