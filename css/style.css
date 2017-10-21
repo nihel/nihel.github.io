@@ -116,7 +116,7 @@ h2 {
 	padding-bottom: 1rem;
 }
 
-aside p {
+aside.side p {
 	text-decoration: line-through;
 }
 
