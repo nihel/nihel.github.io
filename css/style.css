@@ -94,6 +94,10 @@ section.intro {
 	padding-bottom: 2rem;
 }
 
+section.intro p {
+	margin-bottom: 1.25rem;
+}
+
 .work-class {
 	list-style-type: none;
 	margin-top: 0;
@@ -142,7 +146,7 @@ a:hover {
 
 
 footer {
-	padding-bottom: 1rem;
+	padding-bottom: 1.25rem;
 	font-size: 0.65em;
 	color: #666666;
 	line-height: 140%;
