@@ -81,12 +81,9 @@ main {
 	font-size: 2em;
 }
 
-aside {
-	min-width: 10rem;
-}
 
 header {
-	padding-bottom: 2rem;
+	padding-bottom: 1.25rem;
 }
 
 section.intro {
@@ -110,10 +107,17 @@ section.intro p {
 h1 {
 }
 
+aside {
+	min-width: 10rem;
+}
+
 h2 {
 	padding-top: 4.5rem;
 	padding-bottom: 1rem;
+}
 
+aside p {
+	text-decoration: line-through;
 }
 
 a {
