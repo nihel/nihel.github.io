@@ -16,7 +16,7 @@
 	<link rel="shortcut icon" type="images/x-icon" href="favicon.png">
 	<link rel="apple-touch-icon-precomposed" href="favicon-152.png">
 	
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	
 	<script type="text/javascript">
 	$(document).ready(function () {
@@ -40,7 +40,7 @@
 
 		<aside class="side">
 			<h2>WORK</h2>
-			<p>Viaplay</p>
+			<a href="./about.html">Viaplay</a>
 			<p>Web Clipper</p>
 		</aside>
 
@@ -82,6 +82,13 @@
 
   ga('create', 'UA-17989296-3', 'auto');
   ga('send', 'pageview');
+
+    $(document).ready(function() {
+      $('.side a').click(function(e) {
+        e.preventDefault();
+        $("#js-content").load(e.target.href);
+      })
+    });
 
 </script>
 </body>
