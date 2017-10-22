@@ -63,7 +63,7 @@ img {
 @font-face {
     font-family: StudioPro;
     font-weight: bold;
-    src: url("./fonts/StudioProNero.otf") format("opentype");
+    src: url("../fonts/StudioProNero.otf") format("opentype");
 }
 
 body {
