@@ -169,6 +169,9 @@ footer {
 		line-height: 125%;
 		font-size: 1.2rem;
 	}
+	footer {
+		font-size: 1.25rem;
+	}
 }
 
 @media screen and (max-width: 750px) and (min-width: 480px) {
