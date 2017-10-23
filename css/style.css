@@ -115,10 +115,10 @@ h1 {
 
 aside {
 	min-width: 10rem;
+	padding-top: 5rem;
 }
 
 h2 {
-	padding-top: 4.5rem;
 	padding-bottom: 1rem;
 }
 
@@ -152,6 +152,7 @@ a:hover {
 .chatbubble:hover {
 	background-color: #23A5FF;
 	color: #ffffff;
+	text-decoration: none;
 }
 
 
