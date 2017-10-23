@@ -165,19 +165,9 @@ footer {
 
 /* Portrait and Landscape */
 @media screen and (max-width: 480px) {
-
 	main {
 		padding: 0 1.25rem;
 		line-height: 125%;
 		font-size: 1.2rem;
-	}
-
-	#container {
-		display: inline;
-	}
-
-	aside {
-		padding: 0 1.25rem;
-		padding-top: 2rem;
 	}
 }
