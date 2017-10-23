@@ -84,7 +84,7 @@ body {
 main {
 	padding: 0 1.25rem;
 	line-height: 125%;
-	font-size: 2em;
+	font-size: 1.8rem;
 }
 
 
@@ -164,6 +164,14 @@ footer {
 }
 
 /* Portrait and Landscape */
+@media screen and (min-width: 480px) {
+	main {
+		padding: 0 1.25rem;
+		line-height: 125%;
+		font-size: 1.2rem;
+	}
+}
+
 @media screen
   and (min-device-width: 320px)
   and (max-device-width: 667px)
