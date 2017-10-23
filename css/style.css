@@ -164,16 +164,15 @@ footer {
 }
 
 /* Portrait and Landscape */
-@media screen
-  and (min-device-width: 320px)
-  and (max-device-width: 667px)
-  and (-webkit-min-device-pixel-ratio: 2) { 
-
+@media screen and (max-width: 480px) {
+	
 	main {
 		padding: 0 1.25rem;
 		line-height: 125%;
 		font-size: 1.2rem;
 	}
-	
-}
+
+	aside {
+		visibility: hidden;
+	}
 }
