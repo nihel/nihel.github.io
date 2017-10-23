@@ -87,7 +87,6 @@ main {
 	font-size: 1.8rem;
 }
 
-
 header {
 	padding-bottom: 1.25rem;
 }
@@ -166,8 +165,14 @@ footer {
 /* Portrait and Landscape */
 @media screen and (max-width: 480px) {
 	main {
-		padding: 0 1.25rem;
+		padding: 0 2rem;
 		line-height: 125%;
 		font-size: 1.2rem;
+	}
+}
+
+@media screen and (max-width: 760px) {
+	main {
+		padding: 0 4rem;
 	}
 }
