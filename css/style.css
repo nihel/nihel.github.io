@@ -157,7 +157,7 @@ a:hover {
 
 footer {
 	padding-bottom: 1.25rem;
-	font-size: 0.65em;
+	font-size: 1.25em;
 	color: #666666;
 	line-height: 140%;
 }
@@ -170,7 +170,7 @@ footer {
 		font-size: 1.2rem;
 	}
 	footer {
-		font-size: 1.25rem;
+		font-size: 1rem;
 	}
 }
 
