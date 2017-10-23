@@ -77,7 +77,7 @@ body {
     display: flex;
     align-content: flex-start;
     align-items: flex-start;
-    max-width: 60rem;
+    max-width: 48rem;
     margin: 1.25rem auto;
 }
 
