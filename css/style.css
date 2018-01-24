@@ -47,7 +47,7 @@ html {
 	-webkit-text-size-adjust: 100%;
 	-moz-osx-font-smoothing: grayscale;
 	text-rendering: optimizeLegibility;
-	cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" style="font-size:14px"><text y="16">🦄</text></svg>'), auto;
+	cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" style="font-size:18px"><text y="16">🦄</text></svg>'), auto;
 }
 
 img {
@@ -137,6 +137,7 @@ a:hover {
 	color: #008CEC;
 	text-decoration-skip: ink;
 	text-decoration: underline;
+	cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" style="font-size:18px"><text y="16">🦄</text></svg>'), auto;
 }
 
 .chatbubble {
