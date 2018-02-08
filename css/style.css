@@ -131,6 +131,7 @@ a {
 	color: #008CEC;
 	text-decoration: none;
 	position: relative;
+	display: inline-block;
 	}
 
 a:hover {
