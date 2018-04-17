@@ -47,7 +47,7 @@ html {
 	-webkit-text-size-adjust: 100%;
 	-moz-osx-font-smoothing: grayscale;
 	text-rendering: optimizeLegibility;
-	-webkit-tap-highlight-color: rgba(255,193,7,0.5);
+	-webkit-tap-highlight-color: rgba(255,193,7,0.25);
 	cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" style="font-size:14px"><text y="16">🦄</text></svg>'), auto;
 }
 
