@@ -141,6 +141,14 @@ a:hover {
 	cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" style="font-size:14px"><text y="16">🦄</text></svg>'), auto;
 }
 
+::selection {
+    color: #FFC107; 
+}
+
+::-moz-selection {
+    color: #FFC107; 
+}
+
 .chatbubble {
 	font-size: 0.8em;
 	padding: 0.4rem;
