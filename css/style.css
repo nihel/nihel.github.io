@@ -149,6 +149,8 @@ a:hover {
     color: #FFC107; 
 }
 
+-webkit-tap-highlight-color: #FFC107;
+
 .chatbubble {
 	font-size: 0.8em;
 	padding: 0.4rem;
