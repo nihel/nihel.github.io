@@ -70,8 +70,8 @@ img {
 body {
 	font-family: 'StudioPro', sans-serif;
 	font-weight: 600;
-	background: #FAFAFA;
-    color: #1E1E1E;
+	background: #485A6E;
+    color: #96A9B7;
 }
 
 #container {
@@ -128,14 +128,14 @@ aside.side p {
 }
 
 a {
-	color: #008CEC;
+	color: #E8F1F7;
 	text-decoration: none;
 	position: relative;
 	display: inline-block;
 	}
 
 a:hover {
-	color: #008CEC;
+	color: #96A9B7;
 	text-decoration-skip: ink;
 	text-decoration: underline;
 	cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" style="font-size:14px"><text y="16">🦄</text></svg>'), auto;
@@ -146,21 +146,21 @@ a:hover {
 	padding: 0.4rem;
 	padding-left: 0.8rem;
 	padding-right: 0.8rem;
-	background-color: #008CEC;
-	color: #ffffff;
+	background-color: #E8F1F7;
+	color: #485A6E;
 	border-radius: 8px;
 }
 
 .chatbubble:hover {
-	background-color: #23A5FF;
-	color: #ffffff;
+	background-color: #96A9B7;
+	color: #E8F1F7;
 	text-decoration: none;
 }
 
 footer {
 	padding-bottom: 1.25rem;
 	font-size: 1.25rem;
-	color: #666666;
+	color: #96A9B7;
 	line-height: 140%;
 }
 
