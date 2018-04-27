@@ -68,9 +68,16 @@ img {
     src: url("../fonts/StudioProNero.otf") format("opentype");
 }
 
+@font-face {
+	font-family: OperatorMono;
+	font-weight: normal;
+	font-style: italic;
+    src: url("../fonts/OperatorMono-BookItalic.otf") format("opentype");
+}
+
 body {
 	font-family: 'StudioPro', sans-serif;
-	font-weight: 600;
+	font-weight: bold;
 	background: #485A6E;
     color: #96A9B7;
 }
