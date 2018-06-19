@@ -170,15 +170,12 @@ a:visited {
 	background-color: #485A6E;
 	color: #FFFEFB;
 	border-radius: 8px;
+	text-decoration: none;
 }
 
 .chatbubble:hover {
 	background-color: #FFFEFB;
 	color: #485A6E;
-	text-decoration: none;
-}
-
-.chatbubble a {
 	text-decoration: none;
 }
 
