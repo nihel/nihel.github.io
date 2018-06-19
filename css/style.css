@@ -178,6 +178,10 @@ a:visited {
 	text-decoration: none;
 }
 
+.chatbubble a {
+	text-decoration: none;
+}
+
 footer {
 	padding-bottom: 1.25rem;
 	font-size: 1.25rem;
