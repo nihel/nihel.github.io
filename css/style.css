@@ -78,8 +78,8 @@ img {
 body {
 	font-family: 'StudioPro', sans-serif;
 	font-weight: bold;
-	background: #485A6E;
-    color: #96A9B7;
+	background: #FFFEFB;
+    color: #485A6E;
 }
 
 #container {
@@ -136,21 +136,21 @@ aside.side p {
 }
 
 a {
-	color: #E8F1F7;
+	color: #485A6E;
 	text-decoration: none;
 	position: relative;
 	display: inline-block;
 	}
 
 a:hover {
-	color: #E8F1F7;
+	color: #485A6E;
 	text-decoration-skip: ink;
 	text-decoration: underline;
 	cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" style="font-size:14px"><text y="16">🦄</text></svg>'), auto;
 }
 
 a:visited {
-	color: #E8F1F7;
+	color: #485A6E;
 	text-decoration: none;
 }
 
@@ -167,14 +167,14 @@ a:visited {
 	padding: 0.4rem;
 	padding-left: 0.8rem;
 	padding-right: 0.8rem;
-	background-color: #E8F1F7;
-	color: #485A6E;
+	background-color: #485A6E;
+	color: #FFFEFB;
 	border-radius: 8px;
 }
 
 .chatbubble:hover {
-	background-color: #E8F1F7;
-	color: #96A9B7;
+	background-color: #FFFEFB;
+	color: #485A6E;
 	text-decoration: none;
 }
 
