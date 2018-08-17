@@ -167,6 +167,10 @@ a:hover {
 
 a:visited {
 	color: #485A6E;
+	transition: 1s cubic-bezier(.2,1,.2,1);
+	-webkit-transition: 1s cubic-bezier(.2,1,.2,1);
+	-o-transition: 1s cubic-bezier(.2,1,.2,1);
+	-ms-transition: 1s cubic-bezier(.2,1,.2,1);
 	text-decoration: none;
 }
 
