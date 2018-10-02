@@ -63,14 +63,14 @@ img {
  */
 
 @font-face {
-    font-family: Reader-Regular;
-    font-weight: normal;
-    src: url("../fonts/Reader-Regular.otf") format("opentype");
+    font-family: Reader-Bold;
+    font-weight: bold;
+    src: url("../fonts/Reader-Bold.otf") format("opentype");
 }
 
 body {
-	font-family: 'Reader-Regular', sans-serif;
-	font-weight: normal;
+	font-family: 'Reader-Bold', sans-serif;
+	font-weight: bold;
 	background: #FEFEFE;
     color: #485A6E;
 }
