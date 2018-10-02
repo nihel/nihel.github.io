@@ -63,13 +63,13 @@ img {
  */
 
 @font-face {
-    font-family: Reader-Bold;
+    font-family: StudioProNero;
     font-weight: bold;
-    src: url("../fonts/Reader-Bold.otf") format("opentype");
+    src: url("../fonts/StudioProNero.otf") format("opentype");
 }
 
 body {
-	font-family: 'Reader-Bold', sans-serif;
+	font-family: 'StudioProNero', sans-serif;
 	font-weight: bold;
 	background: #FEFEFE;
     color: #485A6E;
