@@ -63,21 +63,14 @@ img {
  */
 
 @font-face {
-    font-family: StudioPro;
-    font-weight: bold;
-    src: url("../fonts/StudioProNero.otf") format("opentype");
-}
-
-@font-face {
-	font-family: OperatorMono;
-	font-weight: normal;
-	font-style: italic;
-    src: url("../fonts/OperatorMono-BookItalic.otf") format("opentype");
+    font-family: Reader-Regular;
+    font-weight: normal;
+    src: url("../fonts/Reader-Regular.otf") format("opentype");
 }
 
 body {
-	font-family: 'StudioPro', sans-serif;
-	font-weight: bold;
+	font-family: 'Reader-Regular', sans-serif;
+	font-weight: normal;
 	background: #FEFEFE;
     color: #485A6E;
 }
