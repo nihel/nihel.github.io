@@ -169,8 +169,13 @@ a:visited {
 	padding-left: 0.8rem;
 	padding-right: 0.8rem;
 	background-color: #FFC107;
-	color: #f4f4f4;
+	color: #111111;
 	border-radius: 8px;
+	text-decoration: none;
+}
+
+.chatbubble:hover {
+	background-color: #111111;
 	text-decoration: none;
 }
 
