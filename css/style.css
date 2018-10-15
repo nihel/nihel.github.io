@@ -71,8 +71,8 @@ img {
 body {
 	font-family: 'StudioProNero', sans-serif;
 	font-weight: bold;
-	background: #FEFEFE;
-    color: #485A6E;
+	background: #111111;
+    color: #f4f4f4;
 }
 
 #container {
@@ -129,23 +129,19 @@ aside.side p {
 }
 
 a {
-	color: #485A6E;
+	color: #f4f4f4;
 	transition: 1s cubic-bezier(.2,1,.2,1);
 	-webkit-transition: 1s cubic-bezier(.2,1,.2,1);
 	-o-transition: 1s cubic-bezier(.2,1,.2,1);
 	-ms-transition: 1s cubic-bezier(.2,1,.2,1);
 	text-decoration: none;
-	text-decoration-skip: ink;
 	position: relative;
 	display: inline-block;
 	}
 
 a:hover {
-	background-color: #FFC107;
-	border-radius: 8px;
-	padding-right: 8px;
-	padding-left: 8px;
 	text-decoration: none;
+	opacity: 0.5;
 	transition-duration: 0.3s;
 	-webkit-transition-duration: 0.3s;
 	-o-transition-duration: 0.3s;
