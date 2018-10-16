@@ -80,7 +80,7 @@ img {
 }
 
 body {
-	font-family: 'StudioProNero', sans-serif;
+	font-family: 'StudioProNero', 'Helvetica', sans-serif;
 	font-weight: bold;
 	background: #181818;
     color: #f4f4f4;
