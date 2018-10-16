@@ -23,7 +23,7 @@
 	$(document).ready(function () {
 
 	new ClipboardJS('.chatbubble');
-	
+
 	/**
 	$('.chatbubble').hover(function() {
 		$(this).find('span').text("helmersson.nils@gmail.com 👈");
@@ -32,9 +32,10 @@
 	}); **/
 
 	$('.chatbubble').on({
-		hover: function(){
+		mouserever: function(){
 			$(this).find('span').text("helmersson.nils@gmail.com 👈");
-				}, function() {
+		},
+		mouserout: function(){
 			$(this).find('span').text("Let's talk! 👋");
 		},
 		click: function(){
