@@ -183,11 +183,15 @@ a:visited {
 	background-color: #FAFAFA;
 	color: #181818;
 	border-radius: 1.8rem;
+	border-style: solid;
+	border-width: 2px;
+	border-color: #FAFAFA;
 	text-decoration: none;
 }
 
 .chatbubble:hover {
 	background-color: #181818;
+	border-color: #FAFAFA;
 	text-decoration: none;
 }
 
