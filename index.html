@@ -22,13 +22,26 @@
 	<script type="text/javascript">
 	$(document).ready(function () {
 
+	new ClipboardJS('.chatbubble');
+	
+	/**
 	$('.chatbubble').hover(function() {
 		$(this).find('span').text("helmersson.nils@gmail.com 👈");
 	}, function() {
 		$(this).find('span').text("Let's talk! 👋");
+	}); **/
+
+	$('.chatbubble').on({
+		hover: function(){
+			$(this).find('span').text("helmersson.nils@gmail.com 👈");
+				}, function() {
+			$(this).find('span').text("Let's talk! 👋");
+		},
+		click: function(){
+			$(this).find('span').text("Copied to clipboard");
+		}
 	});
 
-	new ClipboardJS('.chatbubble');
 	// Opens link in new tab
     $("a").each(function(){
         if (this.href.indexOf(location.hostname) === -1) { $(this).attr('target', '_blank'); }
