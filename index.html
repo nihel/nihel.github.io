@@ -22,7 +22,20 @@
 	<script type="text/javascript">
 	$(document).ready(function () {
 	new ClipboardJS('.chatbubble');
+	chatbubble.on('success', function(e) {
+		$(e.trigger).text("Copied!");
+		e.clearSelection();
+		setTimeout(function() {
+			$(e.trigger).text("Copy");
+		}, 2500);
+	});
 
+	chatbubble.on('error', function(e) {
+		$(e.trigger).text("Can't in Safari");
+		setTimeout(function() {
+			$(e.trigger).text("Copy");
+		}, 2500);
+	});
 	// Opens link in new tab
     $("a").each(function(){
         if (this.href.indexOf(location.hostname) === -1) { $(this).attr('target', '_blank'); }
