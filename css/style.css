@@ -67,6 +67,18 @@ img {
     src: url("../fonts/StudioProNero.otf") format("opentype");
 }
 
+@font-face {
+    font-family: Reader-Regular;
+    font-weight: normal;
+    src: url("../fonts/Reader-Regular.otf") format("opentype");
+}
+
+@font-face {
+    font-family: Reader-Bold;
+    font-weight: bold;
+    src: url("../fonts/Reader-Bold.otf") format("opentype");
+}
+
 body {
 	font-family: 'StudioProNero', sans-serif;
 	font-weight: bold;
