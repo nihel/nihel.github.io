@@ -62,9 +62,9 @@ img {
  */
 
 @font-face {
-    font-family: StudioProNero;
+    font-family: StudioProBold;
     font-weight: bold;
-    src: url("../fonts/StudioProNero.otf") format("opentype");
+    src: url("../fonts/StudioProBold.ttf") format("truetype");
 }
 
 @font-face {
@@ -75,13 +75,13 @@ img {
 
 @font-face {
     font-family: StudioProRegular;
-    font-weight: nomral;
+    font-weight: normal;
     src: url("../fonts/StudioProRegular.ttf") format("truetype");
 }
 
 body {
-	font-family: 'StudioProNero', 'Helvetica', sans-serif;
-	font-weight: bold;
+	font-family: 'StudioProMedium', 'Helvetica', sans-serif;
+	font-weight: normal;
 	background: #181818;
     color: #FAFAFA;
 }
