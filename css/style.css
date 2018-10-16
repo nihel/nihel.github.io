@@ -70,7 +70,7 @@ img {
 body {
 	font-family: 'StudioProNero', sans-serif;
 	font-weight: bold;
-	background: #111111;
+	background: #181818;
     color: #f4f4f4;
 }
 
@@ -169,13 +169,13 @@ a:visited {
 	padding-left: 0.8rem;
 	padding-right: 0.8rem;
 	background-color: #f4f4f4;
-	color: #111111;
+	color: #181818;
 	border-radius: 8px;
 	text-decoration: none;
 }
 
 .chatbubble:hover {
-	background-color: #111111;
+	background-color: #181818;
 	text-decoration: none;
 }
 
