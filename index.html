@@ -21,22 +21,7 @@
 	
 	<script type="text/javascript">
 	$(document).ready(function () {
-
-	var clipboard = new Clipboard('.clipboard');
-	clipboard.on('success', function(e) {
-		$(e.trigger).text("Copied!");
-		e.clearSelection();
-		setTimeout(function() {
-			$(e.trigger).text("Copy");
-		}, 2500);
-	});
-
-	clipboard.on('error', function(e) {
-		$(e.trigger).text("Can't in Safari");
-		setTimeout(function() {
-			$(e.trigger).text("Copy");
-		}, 2500);
-	});
+	new ClipboardJS('.chatbubble');
 
 	// Opens link in new tab
     $("a").each(function(){
@@ -58,7 +43,7 @@
 		<main class="content">
 
 			<header>
-				<button data-clipboard-text="helmersson.nils@gmail.com" class="chatbubble clipboard">Let's talk! 👋</button>
+				<button data-clipboard-text="helmersson.nils@gmail.com" class="chatbubble">Let's talk! 👋</button>
 			</header>
 			
 			<section class="intro">

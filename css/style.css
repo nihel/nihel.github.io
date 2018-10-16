@@ -39,6 +39,7 @@ table {
 
 button {
 	outline: none;
+	border-style: none;
 }
 
 *,
