@@ -81,7 +81,6 @@ img {
 
 body {
 	font-family: 'StudioProMedium', 'Helvetica', sans-serif;
-	font-weight: normal;
 	background: #181818;
     color: #FAFAFA;
 }
@@ -176,6 +175,7 @@ a:visited {
 }
 
 .chatbubble {
+	font-family: 'StudioProBold', 'Helvetica', sans-serif;
 	font-size: 0.8em;
 	padding: 0.4rem;
 	padding-left: 0.8rem;
