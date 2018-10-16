@@ -17,14 +17,33 @@
 	<link rel="apple-touch-icon" href="favicon-120.png" sizes="120x120">
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
 	
 	<script type="text/javascript">
 	$(document).ready(function () {
+
+	var clipboard = new Clipboard('.clipboard');
+	clipboard.on('success', function(e) {
+		$(e.trigger).text("Copied!");
+		e.clearSelection();
+		setTimeout(function() {
+			$(e.trigger).text("Copy");
+		}, 2500);
+	});
+
+	clipboard.on('error', function(e) {
+		$(e.trigger).text("Can't in Safari");
+		setTimeout(function() {
+			$(e.trigger).text("Copy");
+		}, 2500);
+	});
+
 	// Opens link in new tab
     $("a").each(function(){
         if (this.href.indexOf(location.hostname) === -1) { $(this).attr('target', '_blank'); }
     	});
 	}); // end
+
 	</script>
 	
 	<style>
