@@ -198,6 +198,11 @@ a:visited {
 	color: #FFC107;
 }
 
+.chatbubble:active {
+	background-color: #FAFAFA;
+	color: #181818;
+}
+
 footer {
 	padding-bottom: 1.25rem;
 	font-size: 1.25rem;
