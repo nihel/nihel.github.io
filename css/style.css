@@ -83,7 +83,7 @@ body {
 	font-family: 'StudioProNero', 'Helvetica', sans-serif;
 	font-weight: bold;
 	background: #181818;
-    color: #f4f4f4;
+    color: #FAFAFA;
 }
 
 #container {
@@ -140,7 +140,7 @@ aside.side p {
 }
 
 a {
-	color: #f4f4f4;
+	color: #FAFAFA;
 	transition: 1s cubic-bezier(.2,1,.2,1);
 	-webkit-transition: 1s cubic-bezier(.2,1,.2,1);
 	-o-transition: 1s cubic-bezier(.2,1,.2,1);
@@ -180,7 +180,7 @@ a:visited {
 	padding: 0.4rem;
 	padding-left: 0.8rem;
 	padding-right: 0.8rem;
-	background-color: #f4f4f4;
+	background-color: #FAFAFA;
 	color: #181818;
 	border-radius: 8px;
 	text-decoration: none;
