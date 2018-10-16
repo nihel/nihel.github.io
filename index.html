@@ -24,13 +24,6 @@
 
 	new ClipboardJS('.chatbubble');
 
-	/**
-	$('.chatbubble').hover(function() {
-		$(this).find('span').text("helmersson.nils@gmail.com 👈");
-	}, function() {
-		$(this).find('span').text("Let's talk! 👋");
-	}); **/
-
 	$('.chatbubble').on({
 		mouseover: function(){
 			$(this).find('span').text("helmersson.nils@gmail.com 👈");
@@ -39,7 +32,7 @@
 			$(this).find('span').text("Let's talk! 👋");
 		},
 		click: function(){
-			$(this).find('span').text("Copied to clipboard! ✂️");
+			$(this).find('span').text("Email copied! ✂️");
 		}
 	});
 
