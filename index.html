@@ -22,7 +22,7 @@
 	<script type="text/javascript">
 	$(document).ready(function () {
 
-	var clipboard = new Clipboard('.clipboard');
+	var clipboard = new Clipboard('.chatbubble');
 	clipboard.on('success', function(e) {
 		$(e.trigger).text("Copied!");
 		e.clearSelection();
@@ -58,7 +58,7 @@
 		<main class="content">
 
 			<header>
-				<a data-clipboard-text="helmersson.nils@gmail.com" class="chatbubble" >Let's talk! 👋</a>
+				<a data-clipboard-text="helmersson.nils@gmail.com" class="chatbubble">Let's talk! 👋</a>
 			</header>
 			
 			<section class="intro">
