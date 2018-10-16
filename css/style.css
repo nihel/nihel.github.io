@@ -68,15 +68,15 @@ img {
 }
 
 @font-face {
-    font-family: Reader-Regular;
+    font-family: StudioProMedium;
     font-weight: normal;
-    src: url("../fonts/Reader-Regular.otf") format("opentype");
+    src: url("../fonts/StudioProMedium.ttf") format("truetype");
 }
 
 @font-face {
-    font-family: Reader-Bold;
-    font-weight: bold;
-    src: url("../fonts/Reader-Bold.otf") format("opentype");
+    font-family: StudioProRegular;
+    font-weight: nomral;
+    src: url("../fonts/StudioProRegular.ttf") format("truetype");
 }
 
 body {
