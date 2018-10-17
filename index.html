@@ -25,10 +25,10 @@
 	new ClipboardJS('.chatbubble');
 
 	$('.chatbubble').on({
-		mouseover: function(){
+		mouseenter: function(){
 			$(this).text("helmersson.nils@gmail.com 👈");
 		},
-		mouseout: function(){
+		mouseleave: function(){
 			$(this).text("Let's talk! 👋");
 		},
 		click: function(){
