@@ -170,6 +170,10 @@ a:hover {
 	-ms-transition-duration: 0.3s;
 }
 
+ul li {
+	display: inline;
+}
+
 ::selection {
     color: #FFC107; 
 }
