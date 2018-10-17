@@ -170,7 +170,12 @@ a:hover {
 	-ms-transition-duration: 0.3s;
 }
 
-ul li {
+ul{
+	padding-top: 1.25rem;
+	padding-bottom: 1.25rem;
+}
+
+li {
 	display: inline;
 	padding-right: 32px;
 }
