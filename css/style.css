@@ -172,6 +172,15 @@ a:hover {
 
 ul li {
 	display: inline;
+	padding-right: 32px;
+}
+
+svg {
+	transition: all .2s ease-in-out;
+}
+
+svg:hover {
+	transform: scale(1.5) rotate(20deg);
 }
 
 ::selection {
