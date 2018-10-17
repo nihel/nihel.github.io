@@ -165,10 +165,10 @@ a:hover {
 
 a:visited {
 	text-decoration: none;
-	color: #FAFAFA;
+	color: #FFC107;
 }
 
-html.can-touch a:hover{
+html.can-touch button:hover{
     background: none; /* disable hover effect on touch devices */
 }
 
