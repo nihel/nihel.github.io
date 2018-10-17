@@ -22,6 +22,7 @@
 	<script type="text/javascript">
 	$(document).ready(function () {
 
+	// Copy to clipboard-button
 	new ClipboardJS('.chatbubble');
 
 	$('.chatbubble').on({
@@ -40,9 +41,15 @@
 	});
 
 	// Opens link in new tab
-    $("a").each(function(){
-        if (this.href.indexOf(location.hostname) === -1) { $(this).attr('target', '_blank'); }
-    	});
+	$("a").each(function(){
+		if (this.href.indexOf(location.hostname) === -1) { $(this).attr('target', '_blank'); }
+	});
+
+	document.addEventListener('touchstart', function addtouchclass(e){ // first time user touches the screen
+    	document.documentElement.classList.add('can-touch') // add "can-touch" class to document root using classList API
+    	document.removeEventListener('touchstart', addtouchclass, false) // de-register touchstart event
+	}, false)
+
 	}); // end
 	</script>
 	
