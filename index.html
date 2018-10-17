@@ -35,7 +35,7 @@
 			$(this).text("Email copied! ✂️");
 			setTimeout(function() { 
         		$('.chatbubble').text("Let's talk! 👋");
-        		$('.chatbubble').off("mouseover");
+        		$(this).off("mouseover","mouseout");
     		}, 4000)
 		}
 	});
