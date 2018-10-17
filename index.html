@@ -26,13 +26,13 @@
 
 	$('.chatbubble').on({
 		mouseover: function(){
-			$(this).find('span').text("helmersson.nils@gmail.com 👈");
+			$(this).text("helmersson.nils@gmail.com 👈");
 		},
 		mouseout: function(){
-			$(this).find('span').text("Let's talk! 👋");
+			$(this).text("Let's talk! 👋");
 		},
 		click: function(){
-			$(this).find('span').text("Email copied! ✂️");
+			$(this).text("Email copied! ✂️");
 		}
 	});
 
@@ -55,7 +55,7 @@
 		<main class="content">
 
 			<header>
-				<button class="chatbubble" data-clipboard-text="helmersson.nils@gmail.com"><span>Let's talk! 👋</span></button>
+				<button class="chatbubble" data-clipboard-text="helmersson.nils@gmail.com">Let's talk! 👋</button>
 			</header>
 			
 			<section class="intro">
