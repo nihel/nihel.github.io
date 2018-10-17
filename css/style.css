@@ -170,10 +170,6 @@ a:hover {
 	-ms-transition-duration: 0.3s;
 }
 
-html.can-touch .chatbubble:hover {
-    background: none; /* disable hover effect on touch devices */
-}
-
 ::selection {
     color: #FFC107; 
 }
