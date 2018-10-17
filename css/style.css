@@ -145,6 +145,10 @@ aside.side p {
 
 a {
 	color: #FAFAFA;
+	transition: 1s cubic-bezier(.2,1,.2,1);
+	-webkit-transition: 1s cubic-bezier(.2,1,.2,1);
+	-o-transition: 1s cubic-bezier(.2,1,.2,1);
+	-ms-transition: 1s cubic-bezier(.2,1,.2,1);
 	text-decoration: none;
 	position: relative;
 	display: inline-block;
@@ -191,6 +195,11 @@ a:visited {
 }
 
 .chatbubble:active {
+	background-color: #FAFAFA;
+	color: #181818;
+}
+
+.chatbubble:visited {
 	background-color: #FAFAFA;
 	color: #181818;
 }
