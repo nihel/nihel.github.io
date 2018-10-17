@@ -176,11 +176,11 @@ ul li {
 }
 
 svg {
-	transition: all .2s ease-in-out;
+	transition: all .25s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
 svg:hover {
-	transform: scale(1.5) rotate(20deg);
+	transform: scale(1.5) rotate(45deg);
 }
 
 ::selection {
