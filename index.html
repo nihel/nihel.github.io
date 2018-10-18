@@ -43,10 +43,10 @@
 	$("a.dud").on({
 		mouseenter: function(){
 			var page = $(this).attr("href");
-			$("#content").load(page); return false;
+			$(".work").load(page); return false;
 		},
 		mouseleave: function(){
-			$("#content").empty();
+			$(".work").empty();
 		}
 	});
 
