@@ -10,7 +10,6 @@ $(document).ready(function(){
 	});
 	**/
 
-
 	$("a").on({
 		mouseenter: function(){
 			var page = $(this).attr("href");
@@ -21,6 +20,7 @@ $(document).ready(function(){
 		}
 	});
 
+	// Removes the link function
 	$('a').click(function(e) {
     	e.preventDefault();
 	});
