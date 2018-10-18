@@ -177,7 +177,7 @@ ul{
 
 li {
 	display: inline-flex;
-	padding: 16px;
+	padding: 8px;
 }
 
 svg {
@@ -186,6 +186,7 @@ svg {
 
 svg:hover {
 	transform: scale(1.5) rotate(45deg);
+	cursor: pointer;
 }
 
 ::selection {
