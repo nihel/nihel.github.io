@@ -40,6 +40,25 @@
 		}
 	});
 
+	/**
+
+	$("a").on({
+		mouseenter: function(){
+			var page = $(this).attr("href");
+			$("#content").load(page); return false;
+		},
+		mouseleave: function(){
+			$("#content").empty();
+		}
+	});
+
+	// Removes the link function
+	$('a').click(function(e) {
+		e.preventDefault();
+	});
+
+	**/
+
 	// Opens link in new tab
 	$("a").each(function(){
 		if (this.href.indexOf(location.hostname) === -1) { $(this).attr('target', '_blank'); }
@@ -75,10 +94,14 @@
 					<a href="https://linkedin.com/in/nilshelmersson">LinkedIn</a>
 					</p>
 					<ul>
-						<li><svg width="56px" height="56px" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg">
+						<li>
+							<svg width="56px" height="56px" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg">
+								<a href="#">
 								<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 									<rect id="Rectangle" fill="#C65688" fill-rule="nonzero" x="12" y="12" width="32" height="32"></rect>
-								</g></svg>
+								</g>
+								</a>
+							</svg>
 						</li>
 						<li><svg width="56px" height="56px" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg">
 								<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
