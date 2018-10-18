@@ -116,31 +116,20 @@ section.intro p {
 	margin-bottom: 1.25rem;
 }
 
-.work-class {
-	list-style-type: none;
-	margin-top: 0;
-	padding: 0;
-}
-
-.work-class li a {
-	text-decoration: line-through;
+.work {
+    background-color: #181818;
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 
 h1 {
 }
 
-aside {
-	min-width: 10rem;
-	padding-top: 5rem;
-}
-
 h2 {
 	padding-bottom: 1rem;
-}
-
-aside.side p {
-	text-decoration: line-through;
-	margin-bottom: 0.5rem;
 }
 
 a {
