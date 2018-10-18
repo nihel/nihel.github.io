@@ -171,13 +171,13 @@ a:hover {
 }
 
 ul{
-	padding-top: 1.25rem;
-	padding-bottom: 1.25rem;
+	padding-top: 1rem;
+	padding-bottom: 1rem;
 }
 
 li {
-	display: inline;
-	padding-right: 32px;
+	display: inline-flex;
+	padding: 16px;
 }
 
 svg {
