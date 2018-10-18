@@ -235,7 +235,7 @@ footer {
 		font-size: 1.2rem;
 	}
 	ul {
-		visibility: hidden;
+		display: : none;
 	}
 	footer {
 		font-size: 1rem;
