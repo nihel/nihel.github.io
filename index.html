@@ -42,7 +42,7 @@
 
 	/**
 
-	$("a").on({
+	$("a.dud").on({
 		mouseenter: function(){
 			var page = $(this).attr("href");
 			$("#content").load(page); return false;
@@ -51,13 +51,13 @@
 			$("#content").empty();
 		}
 	});
+	
+	**/
 
 	// Removes the link function
-	$('a').click(function(e) {
+	$('a.dud').click(function(e) {
 		e.preventDefault();
 	});
-
-	**/
 
 	// Opens link in new tab
 	$("a").each(function(){
@@ -96,7 +96,7 @@
 					<ul>
 						<li>
 							<svg width="56px" height="56px" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg">
-								<a href="#">
+								<a class="dud" href="#">
 								<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 									<rect id="Rectangle" fill="#C65688" fill-rule="nonzero" x="12" y="12" width="32" height="32"></rect>
 								</g>
