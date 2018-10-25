@@ -40,6 +40,12 @@
 		}
 	});
 
+	$("svg").on({
+		click: function(){
+			$("video").prop("muted", false)
+		} 
+	});
+
 	$("a.dud").on({
 		mouseenter: function(){
 			var page = $(this).attr("href");
@@ -47,10 +53,7 @@
 		},
 		mouseleave: function(){
 			$(".work").empty();
-		},
-		click: function(){
-			$("video").prop("muted", false)
-		} 
+		}
 	});
 
 	// Removes the link function
