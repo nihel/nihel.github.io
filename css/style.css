@@ -128,6 +128,7 @@ h2 {
 
 a {
 	color: #FAFAFA;
+	font-family: 'Inter-Bold', 'Helvetica', sans-serif;
 	transition: 1s cubic-bezier(.2,1,.2,1);
 	-webkit-transition: 1s cubic-bezier(.2,1,.2,1);
 	-o-transition: 1s cubic-bezier(.2,1,.2,1);
@@ -207,7 +208,7 @@ svg:hover {
 footer {
 	padding-bottom: 1.25rem;
 	font-size: 1.25rem;
-	color: #FFC107;
+	color: #FAFAFA;
 	line-height: 140%;
 }
 
