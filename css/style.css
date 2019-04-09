@@ -134,6 +134,10 @@ section.intro p {
 
 a::after {
     content: "→";
+    font-family: 'Inter-Regular', 'Helvetica', sans-serif;
+    font-size: 1.5rem;
+    padding-left: 0.4rem;
+    vertical-align: middle;
 }
 
 .work {
