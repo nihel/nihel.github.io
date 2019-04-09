@@ -67,25 +67,19 @@ img {
  */
 
 @font-face {
-    font-family: StudioProBold;
+    font-family: Inter-Bold;
     font-weight: bold;
-    src: url("../fonts/StudioProBold.ttf") format("truetype");
+    src: url("../fonts/Inter-Bold.ttf") format("truetype");
 }
 
 @font-face {
-    font-family: StudioProMedium;
+    font-family: Inter-Regular;
     font-weight: normal;
-    src: url("../fonts/StudioProMedium.ttf") format("truetype");
-}
-
-@font-face {
-    font-family: StudioProRegular;
-    font-weight: normal;
-    src: url("../fonts/StudioProRegular.ttf") format("truetype");
+    src: url("../fonts/Inter-Regular.ttf") format("truetype");
 }
 
 body {
-	font-family: 'StudioProMedium', 'Helvetica', sans-serif;
+	font-family: 'Inter-Regular', 'Helvetica', sans-serif;
 	background: #181818;
     color: #FAFAFA;
 }
@@ -186,7 +180,7 @@ svg:hover {
 }
 
 .chatbubble {
-	font-family: 'StudioProBold', 'Helvetica', sans-serif;
+	font-family: 'Inter-Bold', 'Helvetica', sans-serif;
 	font-size: 0.8em;
 	padding: 0.4rem;
 	padding-left: 1.2rem;
