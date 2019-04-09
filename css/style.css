@@ -125,7 +125,7 @@ section.intro p {
 	padding-top: 1rem;
 }
 
-a.evernote::after {
+a.evernote::before {
 	content: url("evernote-logo.svg");
 }
 
