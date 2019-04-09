@@ -252,8 +252,14 @@ footer {
 	.portfolio {
 		display: none;
 	}
+	.portfolio a::after {
+	font-size: 1rem;
+	}
 	.links {
 		padding-top: 0;
+	}
+	.links a::after {
+	font-size: 1rem;
 	}
 	ul {
 		padding-bottom: 0;
