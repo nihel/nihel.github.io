@@ -139,15 +139,15 @@ a {
 }
 
 a:active {
-	color: #FFC107;
+	color: #181818;
 }
 
 a:visited {
-	color: #FAFAFA;
+	color: #181818;
 }
 
 a:hover {
-	color: #FFC107;
+	color: #FAFAFA;
 	transition-duration: 0.3s;
 	-webkit-transition-duration: 0.3s;
 	-o-transition-duration: 0.3s;
