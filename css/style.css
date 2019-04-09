@@ -149,10 +149,10 @@ h2 {
 a {
 	color: #181818;
 	font-family: 'Inter-Bold', 'Helvetica', sans-serif;
-	transition: 0.8s cubic-bezier(.2,1,.2,1);
-	-webkit-transition: 0.8s cubic-bezier(.2,1,.2,1);
-	-o-transition: 0.8s cubic-bezier(.2,1,.2,1);
-	-ms-transition: 0.8s cubic-bezier(.2,1,.2,1);
+	transition: 0.4s cubic-bezier(.2,1,.2,1);
+	-webkit-transition: 0.4s cubic-bezier(.2,1,.2,1);
+	-o-transition: 0.4s cubic-bezier(.2,1,.2,1);
+	-ms-transition: 0.4s cubic-bezier(.2,1,.2,1);
 	text-decoration: none;
 	position: relative;
 	display: inline-block;
@@ -169,10 +169,10 @@ a:visited {
 a:hover {
 	padding-left: 10px;
 	color: #FAFAFA;
-	transition-duration: 0.8s;
-	-webkit-transition-duration: 0.8s;
-	-o-transition-duration: 0.8s;
-	-ms-transition-duration: 0.8s;
+	transition-duration: 0.4s;
+	-webkit-transition-duration: 0.4s;
+	-o-transition-duration: 0.4s;
+	-ms-transition-duration: 0.4s;
 }
 
 ul{
