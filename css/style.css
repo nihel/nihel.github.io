@@ -126,7 +126,7 @@ section.intro p {
 }
 
 a.evernote::after {
-	content: "hej";
+	content: url("evernote-logo.svg");
 }
 
 .links {
