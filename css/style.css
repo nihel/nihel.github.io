@@ -236,6 +236,9 @@ footer {
 	.portfolio {
 		display: none;
 	}
+	h2 {
+		font-size: 1rem;
+	}
 	footer {
 		font-size: 1rem;
 	}
