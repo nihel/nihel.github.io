@@ -125,12 +125,8 @@ section.intro p {
 	padding-top: 1rem;
 }
 
-.portfolio a::after {
-    content: "→";
-    font-family: 'Inter-Regular', 'Helvetica', sans-serif;
-    font-size: 1.5rem;
-    padding-left: 0.4rem;
-    vertical-align: middle;
+a.evernote::after {
+	content: "url(evernote-logo.svg)";
 }
 
 .links {
@@ -202,15 +198,6 @@ li {
 	padding-bottom: 1rem;
 }
 
-svg {
-	transition: all .25s cubic-bezier(0.22, 0.61, 0.36, 1);
-}
-
-svg:hover {
-	transform: scale(1.5) rotate(45deg);
-	cursor: pointer;
-}
-
 .chatbubble {
 	font-family: 'Inter-Bold', 'Helvetica', sans-serif;
 	font-size: 0.8em;
@@ -248,12 +235,6 @@ footer {
 		padding: 0 1.25rem;
 		line-height: 125%;
 		font-size: 1.2rem;
-	}
-	.portfolio {
-		display: none;
-	}
-	.portfolio a::after {
-	font-size: 1rem;
 	}
 	.links {
 		padding-top: 0;
