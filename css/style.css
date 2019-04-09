@@ -212,8 +212,6 @@ svg:hover {
 }
 
 footer {
-	position: fixed;
-	bottom: 0;
 	padding-bottom: 1.25rem;
 	font-size: 1.25rem;
 	color: #181818;
