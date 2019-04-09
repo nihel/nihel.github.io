@@ -132,6 +132,10 @@ section.intro p {
 	padding-top: 1rem;
 }
 
+a.links::after {
+    content: "→";
+}
+
 .work {
     background-color: #181818;
     position: absolute;
