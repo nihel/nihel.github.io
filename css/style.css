@@ -118,6 +118,18 @@ section.intro p {
 	margin-bottom: 1.25rem;
 }
 
+.portfolio {
+	display: inline-block;
+	vertical-align: top;
+	width: 50%; }
+}
+
+.links {
+	display: inline-block;
+	vertical-align: top;
+	width: 50%; }
+}
+
 .work {
     background-color: #181818;
     position: absolute;
@@ -169,14 +181,6 @@ ul{
 li {
 	padding: 8px;
 }
-
-.left{
-	display: inline-block;
-	width: 50%; }
-
-.right{
-	display: inline-block;
-	width: 50%; }
 
 svg {
 	transition: all .25s cubic-bezier(0.22, 0.61, 0.36, 1);
