@@ -125,8 +125,16 @@ section.intro p {
 	padding-top: 1rem;
 }
 
-a.evernote::before {
+li.evernote::before {
 	content: url("evernote-logo.svg");
+	padding-right: 0.4rem;
+	vertical-align: middle;
+}
+
+li.viaplay::before {
+	content: url("viaplay-logo.svg");
+	padding-right: 0.4rem;
+	vertical-align: middle;
 }
 
 .links {
