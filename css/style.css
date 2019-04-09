@@ -236,6 +236,12 @@ footer {
 	.portfolio {
 		display: none;
 	}
+	.links {
+		padding-top: 0;
+	}
+	ul {
+		padding-bottom: 0;
+	}
 	h2 {
 		font-size: 1rem;
 	}
