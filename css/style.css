@@ -211,8 +211,8 @@ svg:hover {
 	color: #181818;
 }
 
-footer p {
-	position: fixed;
+footer {
+	position: absolute;
 	bottom: 0;
 	padding-bottom: 1.25rem;
 	font-size: 1.25rem;
