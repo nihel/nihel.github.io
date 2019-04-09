@@ -132,7 +132,7 @@ section.intro p {
 	padding-top: 1rem;
 }
 
-.links .portfolio ul li a::after {
+.links a::after {
     content: "→";
     font-family: 'Inter-Regular', 'Helvetica', sans-serif;
     font-size: 1.5rem;
