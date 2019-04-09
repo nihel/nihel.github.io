@@ -171,11 +171,11 @@ li {
 }
 
 .left{
-	float: left;
+	display: inline-block;
 	width: 50%; }
 
 .right{
-	float: right;
+	display: inline-block;
 	width: 50%; }
 
 svg {
@@ -211,7 +211,9 @@ svg:hover {
 	color: #181818;
 }
 
-footer {
+footer p {
+	position: fixed;
+	bottom: 0;
 	padding-bottom: 1.25rem;
 	font-size: 1.25rem;
 	color: #181818;
