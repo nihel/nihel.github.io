@@ -131,7 +131,7 @@ li.evernote::before {
 	vertical-align: middle;
 }
 
-.viaplay::before {
+li.viaplay::before {
 	content: url("viaplay-logo.svg");
 	padding-right: 0.4rem;
 	vertical-align: middle;
