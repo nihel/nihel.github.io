@@ -122,12 +122,14 @@ section.intro p {
 	display: inline-block;
 	vertical-align: top;
 	width: 48%;
+	padding-top: 1rem;
 }
 
 .links {
 	display: inline-block;
 	vertical-align: top;
 	width: 48%;
+	padding-top: 1rem;
 }
 
 .work {
