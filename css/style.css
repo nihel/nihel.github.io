@@ -125,7 +125,7 @@ section.intro p {
 	padding-top: 1rem;
 }
 
-.evernote a::after {
+a.evernote::after {
 	content: "hej";
 }
 
