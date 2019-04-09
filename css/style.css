@@ -132,7 +132,7 @@ section.intro p {
 	padding-top: 1rem;
 }
 
-.link ul li a::after {
+a::after {
     content: "→";
 }
 
