@@ -55,6 +55,14 @@ html {
 	-webkit-tap-highlight-color: rgba(77,150,255,0.25);
 }
 
+::selection {
+    color: #4D96FF; 
+}
+
+::-moz-selection {
+    color: #4D96FF; 
+}
+
 img {
 	display: block;
 	margin: 0;
@@ -170,14 +178,6 @@ svg {
 svg:hover {
 	transform: scale(1.5) rotate(45deg);
 	cursor: pointer;
-}
-
-::selection {
-    color: #FFC107; 
-}
-
-::-moz-selection {
-    color: #FFC107; 
 }
 
 .chatbubble {
