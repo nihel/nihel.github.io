@@ -244,6 +244,9 @@ footer {
 		line-height: 125%;
 		font-size: 1.2rem;
 	}
+	.portfolio {
+		display: none;
+	}
 	.links {
 		padding-top: 0;
 	}
