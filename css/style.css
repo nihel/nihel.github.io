@@ -167,9 +167,16 @@ ul{
 }
 
 li {
-	display: inline-flex;
 	padding: 8px;
 }
+
+.left{
+	float: left;
+	width: 50%; }
+
+.right{
+	float: right;
+	width: 50%; }
 
 svg {
 	transition: all .25s cubic-bezier(0.22, 0.61, 0.36, 1);
