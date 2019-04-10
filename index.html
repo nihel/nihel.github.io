@@ -46,11 +46,12 @@
 			var page = $(this).attr("href");
 			$(".work").load(page);
 			$("a.dud").addClass("selected");
-			$(".content").css({"opacity": ".2"});
+			$(".content").css({"opacity": ".2"}).not(".selected");
 			return false;
 		},
 		mouseleave: function(){
 			$(".work").empty();
+			$("a.dud").removeClass("selected");
 			$(".content").css({"opacity": "1"});
 		},
 		click: function(){
