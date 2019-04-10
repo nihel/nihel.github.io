@@ -144,7 +144,7 @@ li.viaplay::before {
 	padding-top: 1rem;
 }
 
-li.links::before {
+.links li::before {
     content: "→";
     font-family: 'Inter-Regular', 'Helvetica', sans-serif;
     font-size: 1.5rem;
