@@ -47,7 +47,9 @@
 			$(".work").load(page); return false;
 			$(".content").animate({
 				opacity: 0.2
-			)}
+		    }, 1000, function() {
+		        alert('Complete');
+		    });
 		},
 		mouseleave: function(){
 			$(".work").empty();
