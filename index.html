@@ -45,8 +45,9 @@
 		mouseenter: function(){
 			var page = $(this).attr("href");
 			$(".work").load(page); return false;
-				$(".work").fadeIn();
-
+				$(".work").animate({
+					opacity: 1
+				});
 		},
 		mouseleave: function(){
 			$(".work").empty();
