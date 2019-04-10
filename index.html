@@ -44,10 +44,9 @@
 	$("a.dud").on({
 		mouseenter: function(){
 			var page = $(this).attr("href");
-			$(".work").load(page); return false;
-			$(".content").css({
-				"opacity": "0.2"
-			});
+			$(".work").load(page);
+			$(".content").css({"opacity": ".2"});
+			return false;
 		},
 		mouseleave: function(){
 			$(".work").empty();
