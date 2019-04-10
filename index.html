@@ -46,7 +46,9 @@
 			var page = $(this).attr("href");
 			$(".work").load(page);
 			$("a.dud").addClass("selected");
-			$(".content").css({"opacity": ".2"}).not(".selected");
+			$(".content").not(.selected).each(function(){
+				$("this").css({"opacity": ".2"});
+			});
 			return false;
 		},
 		mouseleave: function(){
