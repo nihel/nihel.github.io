@@ -145,21 +145,20 @@ li.viaplay::before {
 }
 
 .links li::before {
-    content: "→";
-    font-family: 'Inter-Regular', 'Helvetica', sans-serif;
-    font-size: 1.5rem;
-    padding-right: 0.4rem;
-    vertical-align: middle;
+	content: "→";
+	font-family: 'Inter-Regular', 'Helvetica', sans-serif;
+	font-size: 1.5rem;
+	padding-right: 0.4rem;
+	vertical-align: middle;
 }
 
 .work {
-    background-color: #181818;
-    position: absolute;
-    z-index: 1;
-    left: 50%;
-    top: 50%;
-    opacity: 0;
-    transform: translate(-50%, -50%);
+	background-color: #181818;
+	position: absolute;
+	z-index: 1;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
 }
 
 h1 {
