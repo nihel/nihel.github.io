@@ -200,7 +200,7 @@ a:hover {
 	-ms-transition-duration: 0.4s;
 }
 
-.content:hover a.portfolio:not(:hover) {
+main.content:hover a:not(:hover) {
 	opacity: .2;
 }
 
