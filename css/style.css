@@ -148,7 +148,7 @@ li.viaplay::before {
     content: "→";
     font-family: 'Inter-Regular', 'Helvetica', sans-serif;
     font-size: 1.5rem;
-    padding-left: 0.4rem;
+    padding-right: 0.4rem;
     vertical-align: middle;
 }
 
@@ -250,7 +250,7 @@ footer {
 	.links {
 		padding-top: 0;
 	}
-	.links a::after {
+	.links li::before {
 	font-size: 1rem;
 	}
 	ul {
