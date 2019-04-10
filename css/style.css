@@ -91,7 +91,7 @@ body {
 	letter-spacing: -0.020rem;
 	font-variant-ligatures: common-ligatures;
 	background: #DADADA;
-    color: #181818;
+	color: #181818;
 }
 
 #container {
@@ -241,6 +241,9 @@ footer {
 
 /* Portrait and Landscape */
 @media screen and (max-width: 480px) {
+	body {
+		letter-spacing: -0.015rem;
+	}
 	main {
 		padding: 0 1.25rem;
 		line-height: 125%;
