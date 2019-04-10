@@ -43,11 +43,11 @@
 
 	$("a.dud").on({
 		mouseenter: function(){
+			$(".content").animate({
+					opacity: 0.2
+			)},
 			var page = $(this).attr("href");
 			$(".work").load(page); return false;
-			$(".content").animate({
-				opacity: 0.2
-			)},
 		},
 		mouseleave: function(){
 			$(".work").empty();
