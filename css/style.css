@@ -200,6 +200,10 @@ a:hover {
 	-ms-transition-duration: 0.4s;
 }
 
+.content:hover a.portfolio:not(:hover) {
+	opacity: .2;
+}
+
 ul{
 	padding-bottom: 1rem;
 }
