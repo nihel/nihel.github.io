@@ -45,11 +45,11 @@
 		mouseenter: function(){
 			var page = $(this).attr("href");
 			$(".work").load(page); return false;
-			$(".content").animate({
+			$(".body").animate({
 				opacity: 0.2
-		    }, 1000, function() {
-		        alert('Complete');
-		    });
+			}, 1000, function() {
+				alert('Complete');
+			});
 		},
 		mouseleave: function(){
 			$(".work").empty();
