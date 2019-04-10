@@ -88,6 +88,7 @@ img {
 
 body {
 	font-family: 'Inter-Regular', 'Helvetica', sans-serif;
+	font-variant-ligatures: common-ligatures;
 	background: #DADADA;
     color: #181818;
 }
