@@ -45,11 +45,7 @@
 		mouseenter: function(){
 			var page = $(this).attr("href");
 			$(".work").load(page); return false;
-			$(".body").animate({
-				opacity: 0.2
-			}, 1000, function() {
-				alert('Complete');
-			});
+			$(".content").css("opacity", "0.2");
 		},
 		mouseleave: function(){
 			$(".work").empty();
