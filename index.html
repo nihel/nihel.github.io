@@ -45,7 +45,7 @@
 		mouseenter: function(){
 			var page = $(this).attr("href");
 			$(".work").load(page);
-			$(".content").css({"opacity": ".2"});
+			$(".content").css({"opacity": ".2"}).not(":hover");
 			return false;
 		},
 		mouseleave: function(){
