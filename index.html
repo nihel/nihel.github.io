@@ -45,14 +45,12 @@
 		mouseenter: function(){
 			var page = $(this).attr("href");
 			$(".work").load(page);
-			$("a.dud").addClass("selected");
-			$("section").not(".portfolio").css({"opacity": ".2"});
+			$("section", "footer", "header").not(".portfolio").css({"opacity": ".2"});
 			return false;
 		},
 		mouseleave: function(){
 			$(".work").empty();
-			$("a.dud").removeClass("selected");
-			$(".content").css({"opacity": "1"});
+			$("section", "footer", "header").css({"opacity": "1"});
 		},
 		click: function(){
 			$("video").prop("muted", false)
