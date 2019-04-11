@@ -45,12 +45,12 @@
 		mouseenter: function(){
 			var page = $(this).attr("href");
 			$(".work").load(page);
-			$("section, footer, header").not(".portfolio").stop(true,false).animate({ "opacity": ".2"}, 250);
+			$("section, footer, header").not(".portfolio").stop(true,false).animate({ "opacity": ".2"}, 120);
 			return false;
 		},
 		mouseleave: function(){
 			$(".work").empty();
-			$("section, footer, header").animate({ "opacity": "1"}, 250);
+			$("section, footer, header").animate({ "opacity": "1"}, 120);
 		},
 		click: function(){
 			$("video").prop("muted", false)
