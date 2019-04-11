@@ -46,7 +46,7 @@
 			var page = $(this).attr("href");
 			$(".work").load(page);
 			$("a.dud").addClass("selected");
-			$(".content").not(".selected").css({"opacity": ".2"});
+			$("section").not(".portfolio").css({"opacity": ".2"});
 			return false;
 		},
 		mouseleave: function(){
