@@ -50,7 +50,7 @@
 		},
 		mouseleave: function(){
 			$(".work").empty();
-			$("section, footer, header").css({"opacity": "1"});
+			$("section, footer, header").animate({ "opacity": "1" }, 250);
 		},
 		click: function(){
 			$("video").prop("muted", false)
