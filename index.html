@@ -45,7 +45,7 @@
 		mouseenter: function(){
 			var page = $(this).attr("href");
 			$(".work").load(page);
-			$("section, footer, header").not(".portfolio").stop(true,false).animate({ "opacity": ".2"}, 180);
+			$("section, footer, header").not(".portfolio").stop(true,false).animate({ "opacity": "0"}, 180);
 			return false;
 		},
 		mouseleave: function(){
