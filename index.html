@@ -42,7 +42,7 @@
 	});
 
 	$("a.dud").on({
-		mouseenter: function(){
+		click: function(){
 			var page = $(this).attr("href");
 			$(".work").load(page);
 			$("section, footer, header").not(".portfolio").stop(true,false).animate({ "opacity": "0"}, 180);
