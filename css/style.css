@@ -159,8 +159,8 @@ li.viaplay::before {
     box-shadow: 0 45px 70px -20px rgba(0,0,0,0.3);
 	position: absolute;
 	z-index: 1;
-	left: 50%;
-	top: 50%;
+	left: 45%;
+	top: 45%;
 	transform: translate(-50%, -50%);
 }
 
