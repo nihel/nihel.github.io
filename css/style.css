@@ -77,11 +77,12 @@ img {
     src: url("../fonts/Inter-Regular.ttf") format("truetype");
 }
 
-/* Opentype settings */
+/* Opentype settings
 font-feature-settings: 'calt' 1;
 font-feature-settings: 'liga' 1;
 font-feature-settings: 'tnum' 1;
 font-feature-settings: 'case' 1;
+*/
 
 
 body {
