@@ -84,8 +84,6 @@ body {
 	font-variant-ligatures: common-ligatures;
 	background: #DADADA;
 	color: #181818;
-	font-feature-settings: 'calt' 1;
-	font-feature-settings: 'liga' 1;
 	font-feature-settings: 'case' 1;
 }
 
