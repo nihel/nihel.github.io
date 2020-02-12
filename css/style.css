@@ -110,6 +110,11 @@ h2 {
 	text-transform: uppercase;
 }
 
+h3 {
+	font-size: 1.6rem;
+	margin-bottom: 0.4rem;
+}
+
 a {
 	color: #181818;
 	text-decoration: none;
