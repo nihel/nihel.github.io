@@ -87,11 +87,8 @@ body {
 }
 
 main {
-    display: flex;
-    align-content: flex-start;
-    align-items: flex-start;
-    max-width: 48rem;
-    margin: 1.25rem auto;
+	max-width: 48rem;
+	margin: 1.25rem auto;
 	padding: 4rem 1.25rem;
 }
 
