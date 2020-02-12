@@ -104,7 +104,7 @@ h1 {
 
 h2 {
 	font-family: 'Inter-Bold', 'Helvetica', sans-serif;
-	font-size: 1.25rem;
+	font-size: 1.2rem;
 	margin-bottom: 0.8rem;
 	text-transform: uppercase;
 }
@@ -147,9 +147,7 @@ p.secondary {
 }
 
 .links {
-	display: inline-block;
-	vertical-align: top;
-	width: 48%;
+
 }
 
 .links li::before {
@@ -199,7 +197,7 @@ ul li a:hover {
 }
 
 footer {
-	font-size: 1.25rem;
+	font-size: 1.4rem;
 	color: #181818;
 	line-height: 140%;
 }
