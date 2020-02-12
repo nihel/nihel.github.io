@@ -156,7 +156,7 @@ a:visited {
 
 a:hover {
 	padding-left: 10px;
-	color: rgba(24,24,24,.4);
+	color: #0072DA;
 	transition-duration: 0.4s;
 	-webkit-transition-duration: 0.4s;
 	-o-transition-duration: 0.4s;
