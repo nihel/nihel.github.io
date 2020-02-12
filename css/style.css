@@ -82,7 +82,7 @@ body {
 	font-family: 'Inter-Regular', 'Helvetica', sans-serif;
 	letter-spacing: -0.020rem;
 	font-variant-ligatures: common-ligatures;
-	background: #DADADA;
+	background: white;
 	color: #181818;
 	font-feature-settings: 'case' 1;
 }
