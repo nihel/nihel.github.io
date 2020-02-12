@@ -144,7 +144,7 @@ li {
 	padding-bottom: 1rem;
 }
 
-ul li:a {
+ul li a {
 	color: #181818;
 	transition: 0.4s cubic-bezier(.2,1,.2,1);
 	-webkit-transition: 0.4s cubic-bezier(.2,1,.2,1);
@@ -163,7 +163,7 @@ a:visited {
 	color: #181818;
 }
 
-ul li:a:hover {
+ul li a:hover {
 	padding-left: 10px;
 	color: #009CFF;
 	transition-duration: 0.4s;
