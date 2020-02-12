@@ -149,6 +149,7 @@ p.secondary {
 }
 
 p.label {
+	font-family: 'Inter-Bold', 'Helvetica', sans-serif;
 	color: #7b7f83;
 	font-size: 1.2rem;
 	line-height: 125%;
@@ -156,7 +157,8 @@ p.label {
 }
 
 p.desc {
-
+	font-size: 1.2rem;
+	line-height: 125%;
 }
 
 .work {
@@ -165,6 +167,8 @@ p.desc {
 
 .workbox {
 	display: flex;
+	padding-top: 1rem;
+	padding-bottom: 1rem;
 }
 
 .work-item {
