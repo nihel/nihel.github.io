@@ -214,12 +214,12 @@ footer {
 		padding-bottom: 0.5rem;
 	}
 	h2 {
-		font-size: 0.8rem;
+		font-size: 1rem;
 		padding-bottom: 0.5rem;
 	}
 	p.primary {
 		line-height: 125%;
-		font-size: 1.2rem;
+		font-size: 1.4rem;
 	}
 	p.secondary {
 		line-height: 125%;
@@ -233,7 +233,7 @@ footer {
 	}
 	ul {
 		padding-bottom: 0;
-		font-size: 1rem;
+		font-size: 1.2rem;
 	}
 	footer {
 		font-size: 1rem;
@@ -243,7 +243,7 @@ footer {
 @media screen and (max-width: 750px) and (min-width: 480px) {
 	p.primary {
 		line-height: 125%;
-		font-size: 1.2rem;
+		font-size: 1.4rem;
 	}
 	p.secondary {
 		line-height: 125%;
