@@ -135,7 +135,16 @@ p.secondary {
 	vertical-align: middle;
 }
 
-a {
+ul{
+	padding-bottom: 1rem;
+	font-size: 1.8rem;
+}
+
+li {
+	padding-bottom: 1rem;
+}
+
+ul li:a {
 	color: #181818;
 	transition: 0.4s cubic-bezier(.2,1,.2,1);
 	-webkit-transition: 0.4s cubic-bezier(.2,1,.2,1);
@@ -154,22 +163,13 @@ a:visited {
 	color: #181818;
 }
 
-a:hover {
+ul li:a:hover {
 	padding-left: 10px;
 	color: #009CFF;
 	transition-duration: 0.4s;
 	-webkit-transition-duration: 0.4s;
 	-o-transition-duration: 0.4s;
 	-ms-transition-duration: 0.4s;
-}
-
-ul{
-	padding-bottom: 1rem;
-	font-size: 1.8rem;
-}
-
-li {
-	padding-bottom: 1rem;
 }
 
 footer {
