@@ -154,6 +154,7 @@ p.secondary {
 .work-item {
 	width: 50%;
 	margin: auto;
+	align-self: flex-start;
 }
 
 .links {
