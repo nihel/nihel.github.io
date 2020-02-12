@@ -147,6 +147,14 @@ p.secondary {
 	padding-bottom: 1rem;
 }
 
+.workbox {
+	display: flex;
+}
+
+.work-item {
+	flex-grow: 2;
+}
+
 .links {
 
 }
