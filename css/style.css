@@ -153,6 +153,7 @@ p.secondary {
 
 .work-item {
 	flex-grow: 2;
+	margin: auto;
 }
 
 .links {
