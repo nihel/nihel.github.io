@@ -113,16 +113,16 @@ a {
 	text-decoration: none;
 }
 
-a:hover {
-	color: #009CFF;
-}
-
 a:active {
 	color: #181818;
 }
 
 a:visited {
 	color: #181818;
+}
+
+a:hover {
+	color: #009CFF;
 }
 
 p.primary {
