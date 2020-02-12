@@ -103,6 +103,7 @@ h1 {
 }
 
 h2 {
+	font-family: 'Inter-Bold', 'Helvetica', sans-serif;
 	font-size: 1.25rem;
 	margin-bottom: 0.8rem;
 	text-transform: uppercase;
