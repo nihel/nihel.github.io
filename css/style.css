@@ -135,21 +135,20 @@ p.primary {
 	margin-bottom: 1rem;
 }
 p.secondary {
-	margin-bottom: 1rem;
 	color: #7b7f83;
 	font-size: 1.8rem;
 	line-height: 125%;
+	margin-bottom: 1rem;
 }
 
 .work {
-
+	padding-bottom: 1rem;
 }
 
 .links {
 	display: inline-block;
 	vertical-align: top;
 	width: 48%;
-	padding-top: 1rem;
 }
 
 .links li::before {
@@ -198,7 +197,6 @@ ul li a:hover {
 }
 
 footer {
-	padding-bottom: 1.25rem;
 	font-size: 1.25rem;
 	color: #181818;
 	line-height: 140%;
