@@ -218,12 +218,10 @@ footer {
 		padding-bottom: 0.5rem;
 	}
 	p.primary {
-		padding: 0 1.25rem;
 		line-height: 125%;
 		font-size: 1.2rem;
 	}
 	p.secondary {
-		padding: 0 1.25rem;
 		line-height: 125%;
 		font-size: 1.2rem;
 	}
@@ -244,12 +242,10 @@ footer {
 
 @media screen and (max-width: 750px) and (min-width: 480px) {
 	p.primary {
-		padding: 0 1.25rem;
 		line-height: 125%;
 		font-size: 1.2rem;
 	}
 	p.secondary {
-		padding: 0 1.25rem;
 		line-height: 125%;
 		font-size: 1.2rem;
 	}
