@@ -134,7 +134,6 @@ h2 {
 
 a {
 	color: #181818;
-	font-family: 'Inter-Bold', 'Helvetica', sans-serif;
 	transition: 0.4s cubic-bezier(.2,1,.2,1);
 	-webkit-transition: 0.4s cubic-bezier(.2,1,.2,1);
 	-o-transition: 0.4s cubic-bezier(.2,1,.2,1);
