@@ -209,13 +209,15 @@ footer {
 	body {
 		letter-spacing: -0.015rem;
 	}
-	main {
+	p.primary {
 		padding: 0 1.25rem;
 		line-height: 125%;
 		font-size: 1.2rem;
 	}
-	.portfolio {
-		display: none;
+	p.secondary {
+		padding: 0 1.25rem;
+		line-height: 125%;
+		font-size: 1.2rem;
 	}
 	.links {
 		padding-top: 0;
@@ -225,6 +227,10 @@ footer {
 	}
 	ul {
 		padding-bottom: 0;
+	}
+	h1 {
+		font-size: 2rem;
+		padding-bottom: 0.5rem;
 	}
 	h2 {
 		font-size: 0.8rem;
