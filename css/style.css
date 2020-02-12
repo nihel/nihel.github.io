@@ -105,12 +105,13 @@ header {
 	padding-bottom: 1.25rem;
 }
 
-section.intro {
-
-}
-
-section.intro p {
+p.primary {
 	margin-bottom: 1.25rem;
+}
+p.secondary {
+	margin-bottom: 1.25rem;
+	color: #7b7f83;
+	font-size: 1.8rem;
 }
 
 .portfolio {
@@ -162,6 +163,7 @@ h1 {
 
 h2 {
 	font-size: 1.25rem;
+	padding-bottom: 0.8rem;
 	text-transform: uppercase;
 }
 
