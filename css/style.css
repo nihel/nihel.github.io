@@ -96,6 +96,18 @@ header {
 	padding-bottom: 1.25rem;
 }
 
+h1 {
+	font-family: 'Inter-Bold', 'Helvetica', sans-serif;
+	font-size: 2.8rem;
+	margin-bottom: 1.5rem
+}
+
+h2 {
+	font-size: 1.25rem;
+	padding-bottom: 0.8rem;
+	text-transform: uppercase;
+}
+
 p.primary {
 	font-size: 2.1rem;
 	line-height: 125%;
@@ -121,15 +133,6 @@ p.secondary {
 	font-size: 1.5rem;
 	padding-right: 0.4rem;
 	vertical-align: middle;
-}
-
-h1 {
-}
-
-h2 {
-	font-size: 1.25rem;
-	padding-bottom: 0.8rem;
-	text-transform: uppercase;
 }
 
 a {
