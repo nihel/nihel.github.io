@@ -210,7 +210,7 @@ footer {
 		letter-spacing: -0.015rem;
 	}
 	main {
-	padding: 2rem 1.25rem;
+		padding: 2rem 1.25rem;
 	}
 	h1 {
 		font-size: 2rem;
@@ -244,6 +244,9 @@ footer {
 }
 
 @media screen and (max-width: 750px) and (min-width: 480px) {
+	main {
+		padding: 2rem 1.25rem;
+	}
 	p.primary {
 		line-height: 125%;
 		font-size: 1.4rem;
