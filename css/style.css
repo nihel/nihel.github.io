@@ -77,7 +77,6 @@ img {
     src: url("../fonts/Inter-Regular.otf") format("Opentype");
 }
 
-
 body {
 	font-family: 'Inter-Regular', 'Helvetica', sans-serif;
 	letter-spacing: -0.020rem;
@@ -87,15 +86,12 @@ body {
 	font-feature-settings: 'case' 1;
 }
 
-#container {
+main {
     display: flex;
     align-content: flex-start;
     align-items: flex-start;
     max-width: 48rem;
     margin: 1.25rem auto;
-}
-
-main {
 	padding: 4rem 1.25rem;
 }
 
