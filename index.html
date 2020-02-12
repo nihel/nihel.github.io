@@ -17,32 +17,10 @@
 	<link rel="apple-touch-icon" href="favicon-120.png" sizes="120x120">
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
 	<script src="//instant.page/1.2.0" type="module" integrity="sha384-0xWpXpkOUkAVETH+RMYJlSFIDNGlnPHgmqv2rP3uZS1BM48EMcxAZGW09n4pTGV4"></script>
 	
 	<script type="text/javascript">
 	$(document).ready(function () {
-
-	$("a.dud").on({
-		mouseenter: function(){
-			var page = $(this).attr("href");
-			$(".work").load(page);
-			$("section, footer, header").not(".portfolio").stop(true,false).animate({ "opacity": "0"}, 180);
-			return false;
-		},
-		mouseleave: function(){
-			$(".work").empty();
-			$("section, footer, header").animate({ "opacity": "1"}, 180);
-		},
-		click: function(){
-			$("video").prop("muted", false)
-		} 
-	});
-
-	// Removes the link function
-	$('a.dud').click(function(e) {
-		e.preventDefault();
-	});
 
 	}); // end
 	</script>
@@ -59,14 +37,16 @@
 		<main class="content">
 
 			<header>
-					<p class="primary">
-					Hey! I’m Nils Helmersson, a Stockholm-based Product Designer. Currently working at <a target="_blank" href="https://Viaplay.se">Viaplay</a></p>
-			</header>
+				<p class="primary">
+					Hey! I’m Nils Helmersson, a Stockholm-based Product Designer. Currently working at <a target="_blank" href="https://Viaplay.se">Viaplay</a>
+				</p>
 			
-			<p class="secondary">
+				<p class="secondary">
 					I focus on solving problems and believe design is a mindset – not a thing. I see research, prototyping and user testing as a natural part of my workflow to create the desired experience.
 					When I’m not working I like to watch E-sport, read about the financial market, listen to podcasts, play board/card games.
-			</p>
+				</p>
+			</header>
+			
 			<section class="links">
 					<h2>Social Media</h2>
 					<ul>
@@ -75,15 +55,7 @@
 						<li><a target="_blank" href="https://linkedin.com/in/nilshelmersson">LinkedIn</a></li>
 					</ul>
 			</section>
-			<!--
-			<section class="portfolio">
-					<h2>Work</h2>
-					<ul>
-						<li class="evernote"><a class="dud" href="../work/evernote.html">Web Clipper</a></li>
-						<li class="viaplay"><a class="dud" href="../work/billboard.html">Billboard</a></li>
-					</ul>
-			</section>
-			-->
+
 			<footer>
 				<h2>Experiece</h2>
 					<p>
