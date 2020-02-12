@@ -123,6 +123,10 @@ a:visited {
 
 a:hover {
 	color: #009CFF;
+	transition-duration: 0.4s;
+	-webkit-transition-duration: 0.4s;
+	-o-transition-duration: 0.4s;
+	-ms-transition-duration: 0.4s;
 }
 
 p.primary {
