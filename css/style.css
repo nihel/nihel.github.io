@@ -108,6 +108,23 @@ h2 {
 	text-transform: uppercase;
 }
 
+a {
+	color: #181818;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #009CFF;
+}
+
+a:active {
+	color: #181818;
+}
+
+a:visited {
+	color: #181818;
+}
+
 p.primary {
 	font-size: 2rem;
 	line-height: 125%;
@@ -155,11 +172,11 @@ ul li a {
 	display: inline-block;
 }
 
-a:active {
+ul li a:active {
 	color: #181818;
 }
 
-a:visited {
+ul li a:visited {
 	color: #181818;
 }
 
