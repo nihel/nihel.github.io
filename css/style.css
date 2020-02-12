@@ -208,6 +208,7 @@ footer {
 @media screen and (max-width: 480px) {
 	body {
 		letter-spacing: -0.015rem;
+		color: red;
 	}
 	p.primary {
 		padding: 0 1.25rem;
