@@ -152,7 +152,7 @@ p.secondary {
 }
 
 .work-item {
-	flex-grow: 2;
+	width: 50%;
 	margin: auto;
 }
 
