@@ -223,10 +223,12 @@ footer {
 	p.primary {
 		line-height: 125%;
 		font-size: 1.4rem;
+		margin-bottom: 0.5rem;
 	}
 	p.secondary {
 		line-height: 125%;
 		font-size: 1.2rem;
+		margin-bottom: 0.5rem;
 	}
 	.links {
 		padding-top: 0;
@@ -239,7 +241,7 @@ footer {
 		font-size: 1.2rem;
 	}
 	footer {
-		font-size: 1rem;
+		font-size: 1.2rem;
 	}
 }
 
