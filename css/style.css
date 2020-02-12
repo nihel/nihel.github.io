@@ -143,6 +143,12 @@ p.secondary {
 	margin-bottom: 1rem;
 }
 
+.button {
+	background-color: red;
+	border-radius: 2rem;
+	padding: 1.5rem 2.75rem;
+}
+
 .work {
 	padding-bottom: 1rem;
 }
