@@ -177,10 +177,11 @@ p.desc {
 	width: 50%;
 	margin: auto;
 	align-self: flex-start;
+	position: relative;
 }
 
 .frame {
-	width: 100%
+	width: 100%;
 	z-index: 10;
 	position: relative;
 }
