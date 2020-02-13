@@ -179,6 +179,21 @@ p.desc {
 	align-self: flex-start;
 }
 
+.frame {
+	width: 100%
+	z-index: 10;
+	position: relative;
+}
+
+.still {
+	width: 100%;
+	top: 0;
+	left: 0;
+	line-height: 0;
+	position: absolute;
+	z-index: 1;
+}
+
 .links {
 
 }
