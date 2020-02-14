@@ -212,7 +212,7 @@ p.desc {
 }
 
 .clip {
-	clip-path: inset(23px 23px 0 23px);
+	clip-path: inset(19px 22px 0 22px);
 }
 
 .links {
