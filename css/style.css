@@ -217,6 +217,7 @@ video::-webkit-media-controls {
 
 .clip {
 	clip-path: inset(19px 22px 0 22px);
+	-webkit-clip-path: inset(19px 22px 0 22px);
 }
 
 .links {
