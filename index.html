@@ -21,11 +21,21 @@
 	
 	<script type="text/javascript">
 	$(document).ready(function () {
+
+		$('.frame').on({
+			mouseenter: function(){
+ 				$('.rec').get(0).play();
+			},
+			mouseleave: function(){
+ 				$('.rec').get(0).pause();
+			},
+		});
+		/*
 	    $('.frame').on('mouseenter', function(){
  			$('.rec').get(0).play();
 	    }).on('mouseleave', function(){
  			$('.rec').get(0).pause();
-	    });
+	    }); */
 	}); // end
 	</script>
 	
