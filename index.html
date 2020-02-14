@@ -21,13 +21,12 @@
 	
 	<script type="text/javascript">
 	$(document).ready(function () {
-		$(".rec").hover(
-		function() {
-		    $(this).children("video").play();
-		}, function() {
-		    $(this).children("video").pause();
-		    $(this).children("video").currentTime = 0;
-		});
+		mouseenter: function(){
+			 $('.rec').get(0).play()
+		},
+		mouseleave: function(){
+ 			$('.rec').get(0).pause()
+		},
 	}); // end
 	</script>
 	
