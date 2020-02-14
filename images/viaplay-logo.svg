@@ -1,46 +1,30 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
-    <title>Artboard Copy</title>
-    <desc>Created with Sketch.</desc>
-    <defs>
-        <circle id="path-1" cx="12" cy="12" r="12"></circle>
-        <linearGradient x1="0.0011342155%" y1="49.9838449%" x2="100.037807%" y2="49.9838449%" id="linearGradient-3">
-            <stop stop-color="#EBF5F7" offset="0%"></stop>
-            <stop stop-color="#F1F8FA" offset="15.24%"></stop>
-            <stop stop-color="#FCFDFE" offset="53.81%"></stop>
-            <stop stop-color="#FFFFFF" offset="100%"></stop>
-        </linearGradient>
-        <path d="M12,12 L1.266,17.37 C0.456,15.75 2.30038211e-12,13.932 2.30038211e-12,12 C2.30038211e-12,10.068 0.456,8.25 1.266,6.63 L12,12 L12,12 Z M12,0 C9.03,0 6.318,1.08 4.224,2.862 L16.8,9.6 L16.8,14.4 L4.224,21.138 C6.318,22.92 9.03,24 12,24 C18.63,24 24,18.63 24,12 C24,5.37 18.63,0 12,0 L12,0 Z" id="path-4"></path>
-        <linearGradient x1="30.4584%" y1="96.037125%" x2="69.5416%" y2="3.962875%" id="linearGradient-6">
-            <stop stop-color="#CC0099" offset="10%"></stop>
-            <stop stop-color="#CF0090" offset="19.89%"></stop>
-            <stop stop-color="#D70078" offset="36.02%"></stop>
-            <stop stop-color="#E40050" offset="56.38%"></stop>
-            <stop stop-color="#F70019" offset="79.95%"></stop>
-            <stop stop-color="#FF0000" offset="90%"></stop>
-        </linearGradient>
-    </defs>
-    <g id="Artboard-Copy" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Symbol" transform="translate(4.000000, 4.000000)">
-            <g id="Clipped">
-                <mask id="mask-2" fill="white">
-                    <use xlink:href="#path-1"></use>
-                </mask>
-                <g id="SVGID_7_"></g>
-                <g id="Group" mask="url(#mask-2)">
-                    <g id="Symbol_2_" transform="translate(1.078394, 2.689873)" fill="url(#linearGradient-3)">
-                        <path d="M15.7086116,6.76652404 L3.16928129,0.0537974526 L3.10337941,0.0179324842 L3.04346861,0.0717299368 C1.81529722,1.11779151 0.814786873,2.39099789 0.0778840393,3.86743909 L0.0239643198,3.975034 L0.131803759,4.02883145 L10.6341669,9.26511684 L0.131803759,14.5073797 L0.0239643198,14.5611772 L0.0778840393,14.6687721 C0.814786873,16.1392358 1.81529722,17.4184197 3.04346861,18.4644812 L3.10337941,18.5182787 L3.17527237,18.4824137 L15.7026205,11.7696871 L15.7505492,11.7338222 L15.8703708,11.6620922 L15.8703708,6.88009644 L15.7505492,6.8083665 L15.7086116,6.76652404 L15.7086116,6.76652404 Z" id="Shape"></path>
-                    </g>
-                    <g id="Clipped">
-                        <mask id="mask-5" fill="white">
-                            <use xlink:href="#path-4"></use>
-                        </mask>
-                        <g id="SVGID_10_"></g>
-                        <circle id="Oval" fill="url(#linearGradient-6)" mask="url(#mask-5)" cx="12" cy="12" r="12"></circle>
-                    </g>
-                </g>
-            </g>
-        </g>
-    </g>
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="48" height="48">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M24 48C37.2548 48 48 37.2548 48 24C48 10.7452 37.2548 0 24 0C10.7452 0 0 10.7452 0 24C0 37.2548 10.7452 48 24 48Z" fill="white"/>
+</mask>
+<g mask="url(#mask0)">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M33.574 18.9128L8.49535 5.48738L8.36354 5.41565L8.24372 5.52324C5.78738 7.61537 3.78636 10.1618 2.31255 13.1147L2.20471 13.3299L2.42039 13.4374L23.4251 23.91L2.42039 34.3945L2.20471 34.5021L2.31255 34.7173C3.78636 37.6583 5.78738 40.2166 8.24372 42.3087L8.36354 42.4163L8.50733 42.3446L33.562 28.9192L33.6579 28.8474L33.8975 28.704V19.14L33.6579 18.9965L33.574 18.9128Z" fill="url(#paint0_linear)"/>
+<mask id="mask1" mask-type="alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="48" height="48">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M24 24L2.532 34.74C0.912 31.5 0 27.864 0 24C0 20.136 0.912 16.5 2.532 13.26L24 24ZM24 0C18.06 0 12.636 2.16 8.448 5.724L33.6 19.2V28.8L8.448 42.276C12.636 45.84 18.06 48 24 48C37.26 48 48 37.26 48 24C48 10.74 37.26 0 24 0Z" fill="white"/>
+</mask>
+<g mask="url(#mask1)">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M24 48C37.2548 48 48 37.2548 48 24C48 10.7452 37.2548 0 24 0C10.7452 0 0 10.7452 0 24C0 37.2548 10.7452 48 24 48Z" fill="url(#paint1_linear)"/>
+</g>
+</g>
+<defs>
+<linearGradient id="paint0_linear" x1="2.20507" y1="42.4172" x2="33.9095" y2="42.4172" gradientUnits="userSpaceOnUse">
+<stop stop-color="#EBF5F7"/>
+<stop offset="0.1524" stop-color="#F1F8FA"/>
+<stop offset="0.5381" stop-color="#FCFDFE"/>
+<stop offset="1" stop-color="white"/>
+</linearGradient>
+<linearGradient id="paint1_linear" x1="36.7179" y1="55.4778" x2="55.4778" y2="11.2821" gradientUnits="userSpaceOnUse">
+<stop offset="0.1" stop-color="#CC0099"/>
+<stop offset="0.1989" stop-color="#CF0090"/>
+<stop offset="0.3602" stop-color="#D70078"/>
+<stop offset="0.5638" stop-color="#E40050"/>
+<stop offset="0.7995" stop-color="#F70019"/>
+<stop offset="0.9" stop-color="#FF0000"/>
+</linearGradient>
+</defs>
 </svg>
