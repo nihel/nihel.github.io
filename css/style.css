@@ -288,6 +288,7 @@ footer {
 	}
 	.workbox {
 		display: block;
+		padding-bottom: 2rem;
 	}
 	.work-item {
 		width: auto;
