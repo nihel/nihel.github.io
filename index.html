@@ -21,7 +21,16 @@
 	
 	<script type="text/javascript">
 	$(document).ready(function () {
+		var figure = $(".rec").hover( hoverVideo, hideVideo );
 
+		function hoverVideo(e) {  
+			$('rec', this).get(0).play(); 
+		}
+
+		function hideVideo(e) {
+			$('rec', this).get(0).pause(); 
+		}
+	
 	}); // end
 	</script>
 	
@@ -52,7 +61,7 @@
 					<div class="work-item">
 						<img class ="frame" src="../images/phone-frame.png">
 						<img class ="still" src="../images/promo-still.png">
-						<video class="rec" preload="auto" loop muted="true" playsinline poster="">
+						<video class="rec clip" preload="auto" loop muted="true" playsinline poster="">
 							<source src="../images/promo-video.mp4" type="video/mp4">
 						</video>
 					</div>
