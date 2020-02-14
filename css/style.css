@@ -180,6 +180,12 @@ p.desc {
 	position: relative;
 }
 
+.logo {
+	width: 40px;
+	height: 40px;
+	margin-left: 1rem;
+}
+
 .frame {
 	width: 100%;
 	z-index: 10;
@@ -276,6 +282,9 @@ footer {
 		font-size: 1rem;
 		margin-bottom: 0.5rem;
 	}
+	h3 {
+		margin: 0.4rem 0 0.4rem 0rem;
+	}
 	p.primary {
 		line-height: 125%;
 		font-size: 1.4rem;
@@ -286,6 +295,13 @@ footer {
 		font-size: 1.2rem;
 		margin-bottom: 0.5rem;
 	}
+
+	p.label {
+		margin: 0.4rem 0 0.4rem 0rem;
+	}
+	p.desc {
+		margin-left: 0;
+	}
 	.workbox {
 		display: block;
 		padding-bottom: 2rem;
@@ -293,6 +309,11 @@ footer {
 	.work-item {
 		width: auto;
 		margin-bottom: 1rem;
+	}
+	.logo {
+	width: 32px;
+	height: 32px;
+	margin-left: 0;
 	}
 	.links {
 		padding-top: 0;
