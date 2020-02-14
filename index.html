@@ -25,17 +25,12 @@
 		$('.frame').on({
 			mouseenter: function(){
  				$('.rec').get(0).play();
+ 				$('.still').animate({ "opacity": "0"}, 120);
 			},
 			mouseleave: function(){
  				$('.rec').get(0).pause();
 			},
 		});
-		/*
-	    $('.frame').on('mouseenter', function(){
- 			$('.rec').get(0).play();
-	    }).on('mouseleave', function(){
- 			$('.rec').get(0).pause();
-	    }); */
 	}); // end
 	</script>
 	
@@ -65,7 +60,7 @@
 				<div class="workbox">
 					<div class="work-item">
 						<img class ="frame" src="../images/phone-frame.png">
-					<!--<img class ="still" src="../images/promo-still.png">-->
+						<img class ="still" src="../images/promo-still.png">
 						<video class="rec clip" preload="auto" playsinline muted poster="../images/promo-still.png">
 							<source src="../images/promo-video.mp4" type="video/mp4">
 						</video>
