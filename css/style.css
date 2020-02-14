@@ -286,6 +286,13 @@ footer {
 		font-size: 1.2rem;
 		margin-bottom: 0.5rem;
 	}
+	.workbox {
+		display: block;
+	}
+	.work-item {
+		width: auto;
+		margin-bottom: 1rem;
+	}
 	.links {
 		padding-top: 0;
 	}
