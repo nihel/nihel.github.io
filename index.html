@@ -21,12 +21,11 @@
 	
 	<script type="text/javascript">
 	$(document).ready(function () {
-		mouseenter: function(){
-			 $('.rec').get(0).play()
-		},
-		mouseleave: function(){
- 			$('.rec').get(0).pause()
-		},
+	    $('.rec').on('mouseenter', function(){
+	        if( this.paused) this.play();
+	    }).on('mouseleave', function(){
+	        if( !this.paused) this.pause();
+	    });
 	}); // end
 	</script>
 	
