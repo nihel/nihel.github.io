@@ -211,6 +211,10 @@ p.desc {
 	z-index: -1;
 }
 
+video::-webkit-media-controls {
+  display:none !important;
+}
+
 .clip {
 	clip-path: inset(19px 22px 0 22px);
 }
