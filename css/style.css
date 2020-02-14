@@ -283,6 +283,7 @@ footer {
 		margin-bottom: 0.5rem;
 	}
 	h3 {
+		font-size: 1.2rem
 		margin: 0.4rem 0 0.4rem 0rem;
 	}
 	p.primary {
@@ -297,9 +298,11 @@ footer {
 	}
 
 	p.label {
-		margin: 0.4rem 0 0.4rem 0rem;
+		font-size: 0.85rem;
+		margin: 0.4rem 0 0.2rem 0rem;
 	}
 	p.desc {
+		font-size: 1rem;
 		margin-left: 0;
 	}
 	.workbox {
@@ -311,8 +314,8 @@ footer {
 		margin-bottom: 1rem;
 	}
 	.logo {
-	width: 32px;
-	height: 32px;
+	width: 24px;
+	height: 24px;
 	margin-left: 0;
 	}
 	.links {
