@@ -195,6 +195,15 @@ p.desc {
 	z-index: 1;
 }
 
+.rec {
+	width: 100%;
+	top: 0;
+	left: 0;
+	line-height: 0;
+	position: absolute;
+	z-index: -1;
+}
+
 .links {
 
 }
