@@ -307,8 +307,7 @@ footer {
 	}
 
 	.clip-me {
-		position: absolute;
-		clip: rect(100px 100px 100px 100px);
+		clip-path: : rect(100px 100px 100px 100px);
 	}
 
 	.workbox {
