@@ -305,6 +305,12 @@ footer {
 		font-size: 1rem;
 		margin-left: 0;
 	}
+
+	.clip-me {
+		position: absolute;
+		clip: rect(100px 100px 100px 100px);
+	}
+
 	.workbox {
 		display: block;
 		padding-bottom: 1rem;
