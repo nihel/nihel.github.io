@@ -21,10 +21,10 @@
 	
 	<script type="text/javascript">
 	$(document).ready(function () {
-	    $('.rec').on('mouseenter', function(){
-	        if( this.paused) this.play();
+	    $('.frame').on('mouseenter', function(){
+ 			$('.rec').get(0).play();
 	    }).on('mouseleave', function(){
-	        if( !this.paused) this.pause();
+ 			$('.rec').get(0).pause();
 	    });
 	}); // end
 	</script>
