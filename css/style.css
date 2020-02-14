@@ -307,7 +307,7 @@ footer {
 	}
 
 	.clip-me {
-		clip-path: : rect(100px 100px 100px 100px);
+		clip-path: inset(100px 100px 100px 100px);
 	}
 
 	.workbox {
