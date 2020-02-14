@@ -306,7 +306,7 @@ footer {
 		margin-left: 0;
 	}
 
-	.clip-me {
+	.clip {
 		clip-path: inset(100px 100px 100px 100px);
 	}
 
