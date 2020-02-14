@@ -210,6 +210,10 @@ p.desc {
 	z-index: -1;
 }
 
+.clip {
+	clip-path: inset(100px 100px 100px 100px);
+}
+
 .links {
 
 }
@@ -305,11 +309,6 @@ footer {
 		font-size: 1rem;
 		margin-left: 0;
 	}
-
-	.clip {
-		clip-path: inset(100px 100px 100px 100px);
-	}
-
 	.workbox {
 		display: block;
 		padding-bottom: 1rem;
