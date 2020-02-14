@@ -33,6 +33,12 @@
  				return false;
 			},
 		});
+		
+		$('.rec').on('ended',function(){
+
+			$('.still').animate({ "opacity": "1"}, 240);
+
+		});
 	}); // end
 	</script>
 	
