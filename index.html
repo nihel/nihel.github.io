@@ -26,10 +26,12 @@
 			mouseenter: function(){
  				$('.rec').get(0).play();
  				$('.still').animate({ "opacity": "0"}, 120);
+ 				return false;
 			},
 			mouseleave: function(){
- 				$('.rec').get(0).load();
+ 				$('.rec').get(0).load(); //Video starts over
  				$('.still').animate({ "opacity": "1"}, 120);
+ 				return false;
 			},
 		});
 	}); // end
