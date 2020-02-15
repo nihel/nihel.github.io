@@ -24,11 +24,12 @@
 		$('.frame').on({
 			mouseenter: function(){
 		 		$('.still').animate({ "opacity": "0"}, 240);
-s 				$('.rec').get(0).play();
+ 				$('.rec').get(0).play();
  				return false;
 			},
 			mouseleave: function(){
 				$('.still').animate({ "opacity": "1"}, 240);
+				setTimeout(2000);
  				$('.rec').get(0).load(); //Video starts over
  				return false;
 			},
