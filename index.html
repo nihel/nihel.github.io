@@ -29,6 +29,7 @@
 			},
 			mouseleave: function(){
 				$('.still').animate({ "opacity": "1"}, 240);
+				$('.rec').animate({ "opacity": "0"}, 240);
  				$('.rec').get(0).load(); //Video starts over
  				return false;
 			},
@@ -68,7 +69,7 @@
 				<div class="workbox">
 					<div class="work-item">
 						<img class ="frame" src="../images/phone-frame.png">
-						<!--<img class ="still" src="../images/promo-still.png">-->
+						<img class ="still" src="../images/promo-still.png">
 						<video class="rec clip" preload="auto" playsinline muted poster="../images/promo-still.png">
 							<source src="../images/promo-video.mp4" type="video/mp4">
 						</video>
