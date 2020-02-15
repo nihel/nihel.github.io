@@ -29,7 +29,8 @@
 			},
 			mouseleave: function(){
 				$('.still').animate({ "opacity": "1"}, 240);
- 				$('.rec').get(0).load(); //Video starts over
+				$('.rec').get(0).stop(); //Video starts over
+ 				$('.rec').get(0).delay(100).load(); //Video starts over
  				return false;
 			},
 		});
