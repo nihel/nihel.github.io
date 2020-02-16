@@ -296,10 +296,6 @@ footer {
 		font-size: 1.2rem;
 		margin: 0.4rem 0 0.4rem 0rem;
 	}
-
-	video {
-		display: none;
-	}
 	p.primary {
 		line-height: 125%;
 		font-size: 1.4rem;
