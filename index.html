@@ -22,9 +22,11 @@
 	<script id="videocontrol" type="text/javascript">
 	$(document).ready(function () {
 
-	if ($(window).width() <= 480) {
- 		 $('#videocontrol').init().destroy();
-}
+		// Prevents the video from playing on mobile
+		if ($(window).width() <= 480) {
+ 			 $('#videocontrol').init().destroy();
+		}
+
 		$('.frame').on({
 			mouseenter: function(){
 		 		$('.still').animate({ "opacity": "0"}, 240);
