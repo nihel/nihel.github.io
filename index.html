@@ -19,7 +19,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="//instant.page/1.2.0" type="module" integrity="sha384-0xWpXpkOUkAVETH+RMYJlSFIDNGlnPHgmqv2rP3uZS1BM48EMcxAZGW09n4pTGV4"></script>
 	
-	<script type="text/javascript">
+	<script id="videocontrol" type="text/javascript">
 	$(document).ready(function () {
 		$('.frame').on({
 			mouseenter: function(){
@@ -105,7 +105,7 @@
 	<script>
 	$(document).ready(function () {
 		if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|Windows Phone/i.test(navigator.userAgent)) {
-    		$('#scScrollFlow').remove();
+    		$('#videocontrol').remove();
     	}
     });
 
