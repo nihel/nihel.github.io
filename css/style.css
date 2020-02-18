@@ -193,6 +193,10 @@ p.desc {
 	position: relative;
 }
 
+.frame:hover {
+	cursor: pointer;
+}
+
 .still {
 	width: 100%;
 	top: 0;
