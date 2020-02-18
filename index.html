@@ -35,7 +35,7 @@
 			},
 			mouseleave: function(){
 				$('.still').animate({ "opacity": "1"}, 80);
- 				$('.rec').hide().get(0).load().fadein(); //Video starts over
+ 				$('.rec').get(0).load(); //Video starts over
  				return false;
 			},
 		});
