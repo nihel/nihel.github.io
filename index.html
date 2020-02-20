@@ -31,13 +31,13 @@
 			mouseenter: function(){
 		 		$('.still').animate({ "opacity": "0"}, 240);
  				$('.rec').get(0).play();
-				e.preventDefault();
 			},
 			mouseleave: function(){
 				$('.still').animate({ "opacity": "1"}, 80);
- 				$('.rec').get(0).load(); //Video starts over
-				e.preventDefault();
-			},
+				$('.still').promise().done(function(){
+ 					$('.rec').get(0).load(); //Video starts over
+ 				});
+ 			},
 		});
 
 		// When video is completed show still image
