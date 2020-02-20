@@ -34,9 +34,9 @@
  				return false;
 			},
 			mouseleave: function(){
-			 	$('.rec').get(0).pause(); //Video starts over
 				$('.still').animate({ "opacity": "1"}, 80);
- 				$('.rec').get(0).load(); //Video starts over
+				$('.rec').get(0).pause(); //Video starts over
+ 				$('.rec').get(80).load(); //Video starts over
  				return false;
 			},
 		});
