@@ -31,12 +31,12 @@
 			mouseenter: function(){
 		 		$('.still').animate({ "opacity": "0"}, 240);
  				$('.rec').get(0).play();
-				event.preventDefault();
+				e.preventDefault();
 			},
 			mouseleave: function(){
 				$('.still').animate({ "opacity": "1"}, 240);
  				$('.rec').get(0).load(); //Video starts over
-				event.preventDefault();
+				e.preventDefault();
 			},
 		});
 
