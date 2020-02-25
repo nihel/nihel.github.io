@@ -28,17 +28,17 @@
 		}
 		$('.frame').on({
 			mouseenter: function(){
-		 		$('.still').stop("true").animate({ "opacity": "0"}, 240);
+		 		$('.still').stop(true).animate({ "opacity": "0"}, 240);
  				$('.rec').get(0).play();
 			},
 			mouseleave: function(){
-				$('.still').stop("true").animate({ "opacity": "1"}, 240);
+				$('.still').stop(true).animate({ "opacity": "1"}, 240);
 				$('.still').promise().done(function(){ //Wait until animation is done
  					$('.rec').stop().get(0).load(); //Video starts over
  				});
  			},
 		});
-		
+
 		// When video is completed show still image
 		$('.rec').on('ended',function(){
 			$('.still').animate({ "opacity": "1"}, 240);
