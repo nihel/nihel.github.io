@@ -129,9 +129,9 @@ a:visited {
 }
 
 a:hover {
-    background: -webkit-linear-gradient(0.65turn, #e66465, #9198e5);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+	background: -webkit-linear-gradient(0.65turn, #e66465, #9198e5);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
 	transition-duration: 0.2s;
 	-webkit-transition-duration: 0.2s;
 	-o-transition-duration: 0.2s;
