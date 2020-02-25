@@ -35,9 +35,9 @@
 				$('.still').animate({ "opacity": "1"}, 240);
 				$('.still').promise().done(function(){ //Wait until animation is done
  					$('.rec').get(0).load(); //Video starts over
+ 				 	event.stopPropagation();
  				});
  			},
-			event.preventDefault()
 		});
 
 		// When video is completed show still image
