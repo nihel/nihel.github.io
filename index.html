@@ -28,11 +28,11 @@
 		}
 		$('.frame').on({
 			mouseenter: function(){
-		 		$('.still').animate({ "opacity": "0"}, 240);
- 				$('.rec').stop().get(0).play();
+		 		$('.still').stop("true").animate({ "opacity": "0"}, 240);
+ 				$('.rec').get(0).play();
 			},
 			mouseleave: function(){
-				$('.still').animate({ "opacity": "1"}, 240);
+				$('.still').stop("true").animate({ "opacity": "1"}, 240);
 				$('.still').promise().done(function(){ //Wait until animation is done
  					$('.rec').stop().get(0).load(); //Video starts over
  				});
