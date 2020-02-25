@@ -30,12 +30,15 @@
 			mouseenter: function(){
 		 		$('.still').animate({ "opacity": "0"}, 240);
  				$('.rec').get(0).play();
+ 				$('.rec').stop();
+ 				$('.rec').clearQueue();
 			},
 			mouseleave: function(){
 				$('.still').animate({ "opacity": "1"}, 240);
 				$('.still').promise().done(function(){ //Wait until animation is done
  					$('.rec').get(0).load(); //Video starts over
- 				 	event.stopPropagation();
+ 					$('.rec').stop();
+ 					$('.rec').clearQueue();
  				});
  			},
 		});
