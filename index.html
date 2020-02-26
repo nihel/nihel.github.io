@@ -34,9 +34,8 @@
  				$('.rec', this).get(0).play();
 			},
 			mouseleave: function(){
-				$('.still', this).stop(true).animate({ "opacity": "1"}, 240).promise().done(function(){
- 					$('.rec', this).get(0).load(); //Video starts over
-				});
+				$('.still', this).stop(true).animate({ "opacity": "1"}, 240).promise().done();
+ 				$('.rec', this).get(0).load(); //Video starts over
 			},
 		});
 
