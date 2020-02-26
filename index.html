@@ -35,7 +35,7 @@
 			},
 			mouseleave: function(){
 				$('.still', this).stop(true).animate({ "opacity": "1"}, 240);
- 				$('.rec', this).get(0).load(); //Video starts over
+ 				$('.rec', this).delay(240).stop(true).get(0).load(); //Video starts over
 			},
 		});
 
