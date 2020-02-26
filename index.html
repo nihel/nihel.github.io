@@ -27,12 +27,12 @@
  			 $('#videocontrol').init().destroy();
 		}
 		$('.frame').on({
-			mouseenter: function($this){
+			mouseenter: function(){
 		 		$('.still').stop(true).animate({ "opacity": "0"}, 240);
 		 		// stop(true) prevent repeating animations
  				$('.rec').get(0).play();
 			},
-			mouseleave: function($this){
+			mouseleave: function(){
 				$('.still').stop(true).animate({ "opacity": "1"}, 240);
 				$('.still').promise().done(function(){ //Wait until animation is done
  					$('.rec').stop().get(0).load(); //Video starts over
@@ -89,13 +89,13 @@
 						<p class="desc">Promote new content with short format trailers. Implemented on iOS, Android, Web and Big Screen.</p>
 					</div>
 				</div>
-				<div class="workbox">
+			<!--<div class="workbox">
 					<div class="work-item">
 						<img class="frame" src="../images/phone-frame.png">
 						<img class="still" src="../images/product-still.png">
-						<!-- <video class="rec clip" preload="auto" playsinline muted>
+						<video class="rec clip" preload="auto" playsinline muted>
 							<source src="../images/promo-video.mp4" poster="../images/product-still.png" type="video/mp4">
-						</video> -->
+						</video>
 					</div>
 					<div class="work-item">
 						<img class="logo" src="../images/viaplay-logo.svg" alt="Viaplay">
@@ -103,7 +103,7 @@
 						<p class="label">2019 • Product Designer</p>
 						<p class="desc">Promote new content with short format trailers. Implemented on iOS, Android, Web and Big Screen.</p>
 					</div>
-				</div>
+				</div>-->
 			</section>
 
 			<section class="links">
