@@ -32,7 +32,7 @@
 		 		// stop(true) prevent repeating animations
  				$('.rec', this).get(0).play();
  				$('.rec', this).on('ended',function(){
-					$('.still').animate({ "opacity": "1"}, 240);
+					$('.still', this).animate({ "opacity": "1"}, 240);
 		});
 			},
 			mouseleave: function(){
