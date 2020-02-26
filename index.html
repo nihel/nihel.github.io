@@ -26,7 +26,8 @@
 		if ($(window).width() <= 480) {
  			 $('#videocontrol').init().destroy();
 		}
-		$('.workbox > img').on({
+
+		$('.workbox > image').on({
 			mouseenter: function(){
 		 		$('.still', this).stop(true).animate({ "opacity": "0"}, 240);
 		 		// stop(true) prevent repeating animations
