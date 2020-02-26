@@ -36,15 +36,15 @@
 			mouseleave: function(){
 				$('.still', this).stop(true).animate({ "opacity": "1"}, 240, function(){
 					$('.rec', this).get(0).load();
-				},
-			)},
+				});
+			},
 		});
 
+		/*
 		$('.rec').on('ended',function(){
 			$('.still').animate({ "opacity": "1"}, 240);
 		});
 
-		/*
 		$('.still', this).promise().then(function(){ //Wait until animation is done
  			$('.rec', this).get(0).load(); //Video starts over
 		});
