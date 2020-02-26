@@ -31,6 +31,9 @@
 		 		$('.still', this).stop(true).animate({ "opacity": "0"}, 240);
 		 		// stop(true) prevent repeating animations
  				$('.rec', this).get(0).play();
+ 				$('.rec', this).on('ended',function(){
+					$('.still').animate({ "opacity": "1"}, 240);
+		});
 			},
 			mouseleave: function(){
 				$('.still', this).stop(true).animate({ "opacity": "1"}, 240);
@@ -38,11 +41,6 @@
  					$('.rec', this).get(0).load(); //Video starts over
  				});
  			},
-		});
-
-		// When video is completed show still image
-		$('.rec').on('ended',function(){
-			$('.still').animate({ "opacity": "1"}, 240);
 		});
 		
 	}); // end
