@@ -31,6 +31,9 @@
 			.mouseenter(function() {
 		 		$('.still', this).stop(true).animate({ "opacity": "0"}, 240);
  				$('.rec', this).get(0).play();
+ 				$('.rec').on('ended',function(){
+					$('.still').animate({ "opacity": "1"}, 240);
+				})
 			})
 			.mouseleave(function() {
 				$('.still', this).stop(true).animate({ "opacity": "1"}, 240);
