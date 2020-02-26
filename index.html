@@ -31,15 +31,15 @@
 			mouseenter: function(){
 		 		$('.still', this).stop(true).animate({ "opacity": "0"}, 240);
 		 		// stop(true) prevent repeating animations
- 				$('video')this.play();
+ 				$('.rec', this).get(0).play();
 			},
 			mouseleave: function(){
 				$('.still', this).stop(true).animate({ "opacity": "1"}, 240);
- 				$('video')this.load(); //Video starts over
+ 				$('.rec', this).get(0).load();
 			},
 		});
 
-		$('video').on('ended',function(){
+		$('.rec').on('ended',function(){
 			$('.still').animate({ "opacity": "1"}, 240);
 		});
 		
