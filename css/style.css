@@ -129,7 +129,9 @@ a:visited {
 }
 
 a:hover {
-	color: #009CFF;
+	background: -webkit-linear-gradient(0.65turn, #4158D0, #FF5ACD);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
 	transition-duration: 0.2s;
 	-webkit-transition-duration: 0.2s;
 	-o-transition-duration: 0.2s;
@@ -267,7 +269,6 @@ ul li a:visited {
 
 ul li a:hover {
 	padding-left: 10px;
-	color: #009CFF;
 	transition-duration: 0.4s;
 	-webkit-transition-duration: 0.4s;
 	-o-transition-duration: 0.4s;

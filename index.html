@@ -26,16 +26,16 @@
 		if ($(window).width() <= 480) {
  			 $('#videocontrol').init().destroy();
 		}
-
 		$('.frame').on({
 			mouseenter: function(){
-		 		$('.still').animate({ "opacity": "0"}, 240);
+		 		$('.still').stop(true).animate({ "opacity": "0"}, 240);
+		 		// stop(true) prevent repeating animations
  				$('.rec').get(0).play();
 			},
 			mouseleave: function(){
-				$('.still').animate({ "opacity": "1"}, 240);
+				$('.still').stop(true).animate({ "opacity": "1"}, 240);
 				$('.still').promise().done(function(){ //Wait until animation is done
- 					$('.rec').get(0).load(); //Video starts over
+ 					$('.rec').stop().get(0).load(); //Video starts over
  				});
  			},
 		});
@@ -67,6 +67,9 @@
 				<p class="secondary">
 					When I’m not working I like to watch E-sport, read about the financial market and listen to podcasts.
 				</p>
+				<p class="secondary">
+					⚡️<a href="mailto:helmersson.nils@gmail.com" target="_blank">Get in touch</a>⚡️
+				</p>
 			</header>
 
 			<section class="work">
@@ -76,7 +79,7 @@
 						<img class ="frame" src="../images/phone-frame.png">
 						<img class ="still" src="../images/promo-still.png">
 						<video class="rec clip" preload="auto" playsinline muted>
-							<source src="../images/promo-video.mp4" type="video/mp4">
+							<source src="../images/promo-video.mp4" poster="../images/promo-still.png" type="video/mp4">
 						</video>
 					</div>
 					<div class="work-item">
