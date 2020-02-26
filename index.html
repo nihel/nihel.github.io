@@ -32,14 +32,14 @@
 		 		$('.still', this).stop(true).animate({ "opacity": "0"}, 240);
 		 		// stop(true) prevent repeating animations
  				$('.rec', this).get(0).play();
- 				 $('.rec', this).on('ended',function(){
-					$('.still', this).animate({ "opacity": "1"}, 240);
+ 				 $('.rec').on('ended',function(){
+					$('.still').animate({ "opacity": "1"}, 240);
 				})
 
 			},
 			mouseleave: function(){
 				$('.still', this).stop(true).animate({ "opacity": "1"}, 240);
-				$('.still', this).promise().then(function(){ //Wait until animation is done
+				$('.still').promise().then(function(){ //Wait until animation is done
  					$('.rec', this).get(0).load(); //Video starts over
 				})
 			},
