@@ -34,13 +34,11 @@
  				$('.rec', this).get(0).play();
  				$('.rec').on('ended',function(){
 					$('.still').animate({ "opacity": "1"}, 240);
-				})
+				});
 			},
 			mouseleave: function(){
 				$('.still', this).stop(true).animate({ "opacity": "1"}, 240);
-				$('.still', this).promise().done(function(){ //Wait until animation is done
- 					$('.rec', this).get(0).load(); //Video starts over
-				})
+ 				$('.rec', this).get(0).pause(); //Video starts over
 			},
 		});
 
