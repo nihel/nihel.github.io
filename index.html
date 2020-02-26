@@ -29,12 +29,12 @@
 
 		$('.workbox > div').on({
 			mouseenter: function(){
-		 		$('.still', this).stop(true).hide(240);
+		 		$('.still', this).stop(true).hide({ "opacity": "0"}, 240);
 		 		// stop(true) prevent repeating animations
  				$('.rec', this).get(0).play();
 			},
 			mouseleave: function(){
-				$('.still', this).stop(true).show(240, function(){
+				$('.still', this).stop(true).animate({ "opacity": "1"}, 240, function(){
 					$('.rec', this).get(0).load();
 				});
 			},
