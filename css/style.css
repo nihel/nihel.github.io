@@ -269,7 +269,6 @@ ul li a:visited {
 
 ul li a:hover {
 	padding-left: 10px;
-	color: #009CFF;
 	transition-duration: 0.4s;
 	-webkit-transition-duration: 0.4s;
 	-o-transition-duration: 0.4s;
