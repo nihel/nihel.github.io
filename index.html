@@ -34,8 +34,9 @@
  				$('.rec', this).get(0).play();
 			},
 			mouseleave: function(){
-				$('.still', this).stop(true).animate({ "opacity": "1"}, 240);
- 				$('.rec', this).get(0).load(); //Video starts over
+				$('.still', this).stop(true).animate({ "opacity": "1"}, 240, function(){
+					$('.rec', this).get(0).load(); 
+				});
 			},
 		});
 
@@ -44,8 +45,7 @@
 		});
 
 		/*
-
-		$('.still', this).promise().done(function(){ //Wait until animation is done
+		$('.still', this).promise().then(function(){ //Wait until animation is done
  			$('.rec', this).get(0).load(); //Video starts over
 		});
 		*/
