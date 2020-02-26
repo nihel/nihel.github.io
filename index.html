@@ -35,8 +35,10 @@
 			},
 			mouseleave: function(){
 				$('.still', this).stop(true).animate({ "opacity": "1"}, 240);
- 				$('.rec', this).get(0).load(); //Video starts over
- 			},
+				$('.still', this).promise().done(function(){ //Wait until animation is done
+ 					$('.rec', this).get(0).load(); //Video starts over
+				}); 
+			},
 		});
 
 		$('.rec').on('ended',function(){
@@ -44,9 +46,6 @@
 		});
 
 		/*
-		$('.rec', this).on('ended',function(){
-			$('.still', this).animate({ "opacity": "1"}, 240);
-		});
 
 		$('.still', this).promise().done(function(){ //Wait until animation is done
  			$('.rec', this).get(0).load(); //Video starts over
