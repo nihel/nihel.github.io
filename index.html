@@ -34,10 +34,9 @@
  				$('.rec', this).get(0).play();
 			},
 			mouseleave: function(){
-				$('.still', this).stop(true).animate({ "opacity": "1"}, 240);
-				$('.still').promise().done(function(){ //Wait until animation is done
+				$('.still', this).stop(true).animate({ "opacity": "1"}, 240).promise().done(function(){;
  					$('.rec', this).get(0).load(); //Video starts over
-				}); 
+				});
 			},
 		});
 
