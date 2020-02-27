@@ -166,11 +166,6 @@ p.desc {
 	margin-left: 1rem;
 }
 
-p:blank {
-	height: 4rem;
-	display: none;
-}
-
 .work {
 	padding-bottom: 2rem;
 }
