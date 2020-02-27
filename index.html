@@ -26,7 +26,14 @@
 		if ($(window).width() <= 480) {
  			 $('#videocontrol').init().destroy();
 		}
+		
+		$('.rec').on('mouseenter', function(){
+			if( this.paused) this.play();
+		}).on('mouseleave', function(){
+			if( !this.paused) this.pause();
+		});
 
+		/*
 		$('.workbox > div').on({
 			mouseenter: function(){
 		 		$('.still', this).stop(true).animate({ "opacity": "0"}, 240);
@@ -37,7 +44,7 @@
 				$('.still', this).stop(true).animate({ "opacity": "1"}, 240);
  				$('.rec', this).get(0).load();
 			},
-		});
+		}); */
 
 		$('.rec').on('ended',function(){
 			$('.still').animate({ "opacity": "1"}, 240);
