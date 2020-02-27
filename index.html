@@ -33,9 +33,9 @@
  				$('.rec', this).get(0).play();
 			},
 			mouseleave: function(){
-				$('.still', this).stop(true).animate({ "opacity": "1"}, 240);
-				$('.still', this).promise().done();
- 				$('.rec', this).get(0).load();
+				$.when($('.still', this).stop(true).animate({ "opacity": "1"}, 240)).done(function(){
+ 					$('.rec', this).get(0).load();s
+ 				});	
 			},
 		});
 
