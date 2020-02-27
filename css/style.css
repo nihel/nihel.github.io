@@ -196,7 +196,7 @@ p.desc {
 	width: 100%;
 	z-index: 10;
 	position: relative;
-	background: linear-gradient(0deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 25%);
+	background: linear-gradient(0deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0) 20%);
 }
 
 .still {
