@@ -166,8 +166,9 @@ p.desc {
 	margin-left: 1rem;
 }
 
-p:empty {
+p:blank {
 	height: 4rem;
+	display: none;
 }
 
 .work {
