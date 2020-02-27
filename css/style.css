@@ -106,7 +106,7 @@ h2 {
 	font-family: 'Inter-Bold', 'Helvetica', sans-serif;
 	font-size: 1.2rem;
 	letter-spacing: 0.04rem;
-	margin-bottom: 1rem;
+	margin-bottom: 1.2rem;
 	text-transform: uppercase;
 }
 
@@ -172,8 +172,7 @@ p.desc {
 
 .workbox {
 	display: flex;
-	padding-top: 1rem;
-	padding-bottom: 1rem;
+	padding-bottom: 1.2rem;
 }
 
 .workbox:hover {
