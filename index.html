@@ -30,7 +30,7 @@
 		$('.workbox > div').on({
 			mouseenter: function(){
 		 		$('.still', this).stop(true).animate({ "opacity": "0"}, 240);
- 				$('.rec', this).trigger().play();
+ 				$('.rec', this).get(0).play();
 			},
 			mouseleave: function(){
 				$('.still', this).stop(true).animate({ "opacity": "1"}, 240);
