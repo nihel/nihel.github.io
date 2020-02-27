@@ -29,6 +29,7 @@
 		
 		$('.workbox > div').on('mouseenter', function(){
 			if('.rec', this.paused) this.play();
+			$('.still', this).stop(true).animate({ "opacity": "0"}, 240);
 		}).on('mouseleave', function(){
 			if( !'.rec', this.paused) this.pause();
 		});
