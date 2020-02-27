@@ -170,14 +170,14 @@ p.desc {
 	padding-bottom: 2rem;
 }
 
-.work:hover {
-	cursor: pointer;
-}
-
 .workbox {
 	display: flex;
 	padding-top: 1rem;
 	padding-bottom: 1rem;
+}
+
+.workbox:hover {
+	cursor: pointer;
 }
 
 .work-item {
