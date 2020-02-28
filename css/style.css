@@ -112,7 +112,7 @@ h2 {
 
 h3 {
 	font-size: 1.8rem;
-	margin: 0.4rem 0 0.4rem 1rem;
+	margin: 0.4rem 1rem 0.4rem 1rem;
 }
 
 a {
@@ -156,7 +156,7 @@ p.label {
 	font-size: 1rem;
 	line-height: 125%;
 	text-transform: uppercase;
-	margin: 0.4rem 0 0.4rem 1rem;
+	margin: 0.4rem 1rem 0.4rem 1rem;
 	letter-spacing: 0.02rem;
 }
 
@@ -164,6 +164,7 @@ p.desc {
 	font-size: 1.2rem;
 	line-height: 125%;
 	margin-left: 1rem;
+	margin-right: 1rem;
 }
 
 .work {
