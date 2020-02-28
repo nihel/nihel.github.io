@@ -33,7 +33,7 @@
  				$('.rec', this).get(0).play();
 			},
 			mouseleave: function(){
-				$('.still', this).stop(true).animate({ "opacity": "1"}, 240, function(){
+				$('.still', this).stop(true).animate({ "opacity": "1"}, 240).promise().then(function(){
  					$('.rec', this).get(0).load();
  				});
 			},
