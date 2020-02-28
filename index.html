@@ -34,10 +34,13 @@
 			},
 			mouseleave: function(){
 				$('.still', this).stop(true).animate({ "opacity": "1"}, 240);
- 				$('.rec', this).get(0).pause();
+				$('.still', this).promise().done(function(){
+ 					$('.rec', this).get(0).pause();
+ 				});
 			},
 		});
 
+		// When video reach the end, show still image
 		$('.rec').on('ended',function(){
 			$('.still').animate({ "opacity": "1"}, 240);
 		});
