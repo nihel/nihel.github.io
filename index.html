@@ -34,7 +34,9 @@
 			},
 			mouseleave: function(){
 				$('.still', this).stop(true).animate({ "opacity": "1"}, 240);
- 				$('.rec', this).get(0).pause();
+				$.when($('.still', this).stop(true).animate({ "opacity": "1"}, 240)).done(function(){
+ 					$('.rec', this).get(0).pause();
+ 				});
 			},
 		});
 
