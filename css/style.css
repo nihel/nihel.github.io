@@ -214,7 +214,7 @@ p.desc {
 }
 
 .frame:hover {
-	cursor: pointer;
+	cursor: url('😎'), pointer;
 }
 
 .still {
