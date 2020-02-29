@@ -70,7 +70,7 @@ img {
 	animation-name: fadeInContent;
 	animation-iteration-count: 1;
 	animation-timing-function: ease-in;
-	animation-duration: 0.8s;
+	animation-duration: 0.48s;
 }
 
 @keyframes fadeInContent {
