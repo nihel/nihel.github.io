@@ -58,6 +58,10 @@ img {
 	display: block;
 	margin: 0;
 	padding: 0;
+	-webkit-user-drag: none;
+	-moz-user-drag: none;
+	-o-user-drag: none;
+	user-drag: none;
 }
 
 /**
