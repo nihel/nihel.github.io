@@ -214,7 +214,7 @@ p.desc {
 }
 
 .frame:hover {
-	cursor: url('../images/play-cursor.png'), auto;
+	cursor: url('../images/play-cursor.svg'), auto;
 }
 
 .still {
