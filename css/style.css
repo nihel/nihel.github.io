@@ -189,7 +189,6 @@ p.desc {
 }
 
 .work {
-	padding-bottom: 2rem;
 }
 
 .workbox {
@@ -249,7 +248,7 @@ video::-webkit-media-controls {
 }
 
 .links {
-	padding-bottom: 2rem;
+	padding-bottom: 1rem;
 }
 
 .links li::before {
