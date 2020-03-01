@@ -28,7 +28,7 @@
 
 		// Prevents the video from playing on mobile
 		if ($(window).width() <= 480){
- 			$('#videocontrol').init().destroy();
+ 			$('#videocontrol').remove();
 		}
 		
 		$('.workbox > .hasVideo').on({
