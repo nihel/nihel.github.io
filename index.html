@@ -33,7 +33,7 @@
 			mouseenter: function(){
 		 		$('.still', this).stop(true).animate({ "opacity": "0"}, 240);
  				$('.rec', this).get(0).play();
- 				$('.visible').css('cursor', 'url(../images/play-cursor.svg), auto');
+ 				$('.playicon').css('cursor', 'url(../images/play-cursor.svg), auto');
 			},
 			mouseleave: function(){
 				$('.still', this).stop(true).animate({ "opacity": "1"}, 240);
@@ -79,7 +79,7 @@
 
 				<div class="workbox">
 					<div class="work-item" id="hasVideo">
-						<img class="frame visible" src="../images/phone-frame.png">
+						<img class="frame playicon" src="../images/phone-frame.png">
 						<img class="still" src="../images/promo-still.png">
 						<video class="rec clip" preload="auto" playsinline muted>
 							<source src="../images/promo-video.mp4" poster="../images/promo-still.png" type="video/mp4">
@@ -95,7 +95,7 @@
 
 				<div class="workbox">
 					<div class="work-item" id="hasVideo">
-						<img class="frame visible" src="../images/phone-frame.png">
+						<img class="frame playicon" src="../images/phone-frame.png">
 						<img class="still" src="../images/product-still.png">
 						<video class="rec clip" preload="auto" playsinline muted>
 							<source src="../images/product-video.mp4" poster="../images/product-still.png" type="video/mp4">
