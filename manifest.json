@@ -14,7 +14,7 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": "nils.io",
+  "start_url": "https://nils.io",
   "background_color": "#ffffff",
   "display": "standalone",
   "scope": "/",
