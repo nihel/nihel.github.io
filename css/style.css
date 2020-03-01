@@ -249,7 +249,7 @@ video::-webkit-media-controls {
 }
 
 .links {
-
+	padding-bottom: 2rem;
 }
 
 .links li::before {
