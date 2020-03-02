@@ -218,11 +218,6 @@ p.desc {
 	position: relative;
 }
 
-/*
-.frame:hover {
-	cursor: url('../images/play-cursor.svg'), auto;
-} */
-
 .still {
 	width: 100%;
 	top: 0;
