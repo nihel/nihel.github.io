@@ -216,7 +216,6 @@ p.desc {
 	width: 100%;
 	z-index: 10;
 	position: relative;
-	background: linear-gradient(0deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0) 20%);
 }
 
 /*
@@ -246,7 +245,12 @@ video::-webkit-media-controls {
   display:none !important;
 }
 
-.clip {
+.clip-iphone {
+	clip-path: inset(19px 22px 0 22px);
+	-webkit-clip-path: inset(19px 22px 0 22px);
+}
+
+.clip-samsung {
 	clip-path: inset(19px 22px 0 22px);
 	-webkit-clip-path: inset(19px 22px 0 22px);
 }
