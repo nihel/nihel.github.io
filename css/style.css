@@ -90,14 +90,14 @@ img {
     font-family: Inter-Bold;
     font-weight: bold;
     src: url("../fonts/Inter-Bold.otf") format("Opentype");
-	font-display: optional;
+	font-display: fallback;
 }
 
 @font-face {
     font-family: Inter-Regular;
     font-weight: normal;
     src: url("../fonts/Inter-Regular.otf") format("Opentype");
-	font-display: optional;
+	font-display: fallback;
 }
 
 body {
