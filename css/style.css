@@ -251,8 +251,8 @@ video::-webkit-media-controls {
 }
 
 .clip-samsung {
-	clip-path: inset(19px 22px 0 22px);
-	-webkit-clip-path: inset(19px 22px 0 22px);
+	clip-path: inset(0px 6px 28px 8px);
+	-webkit-clip-path: inset(0px 6px 28px 8px);
 }
 
 .links {
