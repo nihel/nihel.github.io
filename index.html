@@ -81,7 +81,10 @@
 				<div class="workbox">
 					<div class="work-item hasVideo">
 						<img class="frame playicon" src="../images/frames/iphone-frame.png" alt="iphone">
-						<img class="still clip-iphone" src="../images/stills/promo-still.jpg" alt="Viaplay">
+						<img class="still clip-iphone" alt="Viaplay"
+							src="../images/stills/promo-still-fallback.jpg"
+							srcset="../images/stills/promo-still@1x.jpg 364w, ../images/stills/promo-still@2x.jpg 728w"
+							>
 						<video class="rec clip-iphone" preload="auto" playsinline muted>
 							<source src="../images/videos/promo-video.mp4" poster="../images/stills/promo-still.jpg" type="video/mp4">
 							<source src="../images/videos/promo-video.webm" poster="../images/stills/promo-still.jpg" type="video/webm">
