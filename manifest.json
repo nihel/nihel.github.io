@@ -15,7 +15,7 @@
     },
         {
       "src": "favicon.svg",
-      "type": "image/svg+xml",
+      "type": "image/svg+xml"
     }
   ],
   "start_url": "https://nils.io",
