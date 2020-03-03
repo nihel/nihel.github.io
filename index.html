@@ -123,10 +123,13 @@
 				<div class="workbox">
 					<div class="work-item hasVideo">
 						<img class="frame playicon" src="../images/frames/samsung-frame-bottom.png" alt="samsung">
-						<img class="still clip-samsung" src="../images/stills/chromecast-still.jpg" alt="Viaplay">
+						<img class="still clip-samsung" alt="Viaplay" 
+						src="../images/stills/chromecast-still-fallback.jpg"
+						srcset="../images/stills/chromecast-still@1x.jpg 364w, ../images/stills/chromecast-still@2x.jpg 728w" 
+						>
 						<video class="rec clip-samsung" preload="auto" playsinline muted>
-							<source src="../images/videos/chromecast-video.mp4" poster="../images/stills/chromecast-still.jpg" type="video/mp4">
-							<source src="../images/videos/chromecast-video.webm" poster="../images/stills/chromecast-still.jpgg" type="video/webm">
+							<source src="../images/videos/chromecast-video.mp4" poster="../images/stills/chromecast-still-fallback.jpg" type="video/mp4">
+							<source src="../images/videos/chromecast-video.webm" poster="../images/stills/chromecast-still-fallback.jpg" type="video/webm">
 							I'm sorry; your browser doesn't support HTML5 video.
 						</video>
 					</div>
@@ -141,7 +144,10 @@
 				<div class="workbox">
 					<div class="work-item">
 						<img class="frame" style="opacity: 0" src="../images/frames/iphone-frame.png" alt="iphone">
-						<img class="still" src="../images/stills/web-clipper.jpg" alt="Evernote Web Clipper">
+						<img class="still" alt="Evernote Web Clipper"
+						src="../images/stills/web-clipper-fallback.jpg"
+						srcset="../images/stills/web-clipper@1x.jpg 364w, ../images/stills/web-clipper@2x.jpg 728w" 
+						>
 					</div>
 					<div class="work-item">
 						<img class="logo" src="../images/assets/evernote-logo.svg" alt="Evernote">
