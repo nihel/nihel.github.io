@@ -4,12 +4,12 @@
   "description": "I love to focus on solving problems and believe design is a mindset – not a thing",
   "icons": [
     {
-      "src": "favicon-192.png",
+      "src": "../images/favicons/favicon-192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "favicon-512.png",
+      "src": "../images/favicons/favicon-512.png",
       "type": "image/png",
       "sizes": "512x512"
     }
