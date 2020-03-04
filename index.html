@@ -26,6 +26,34 @@
 	<link rel="manifest" href="/manifest.json">
 	
 	<script rel="preload" as="script" src="jquery.min.js" type="text/javascript"></script>
+	<script rel="preload" as="script" id="videocontrol" type="text/javascript">
+	$(document).ready(function(){
+
+		// Prevents the video from playing on mobile
+		if ($(window).width() <= 480){
+ 			$('#videocontrol').init().destroy();
+		}
+		
+		$('.workbox > .hasVideo').on({
+			mouseenter: function(){
+		 		$('.still', this).stop(true).animate({ "opacity": "0"}, 240);
+ 				$('.rec', this).get(0).play();
+ 				$('.playicon').css('cursor', 'url(../images/assets/play-cursor.svg), auto');
+			},
+			mouseleave: function(){
+				$('.still', this).stop(true).animate({ "opacity": "1"}, 240);
+ 				$('.rec', this).get(0).pause();
+ 				$('.playicon').css('cursor', 'default');
+			},
+		});
+
+		// When video reach the end, show still image
+		$('.rec').on('ended',function(){
+			$('.still').animate({ "opacity": "1"}, 240);
+		});
+		
+	}); // end
+	</script>
 	
 </head>
 
@@ -170,35 +198,6 @@
 		</footer>
 
 	</main>
-
-	<script rel="preload" as="script" id="videocontrol" type="text/javascript">
-	$(document).ready(function(){
-
-		// Prevents the video from playing on mobile
-		if ($(window).width() <= 480){
- 			$('#videocontrol').init().destroy();
-		}
-		
-		$('.workbox > .hasVideo').on({
-			mouseenter: function(){
-		 		$('.still', this).stop(true).animate({ "opacity": "0"}, 240);
- 				$('.rec', this).get(0).play();
- 				$('.playicon').css('cursor', 'url(../images/assets/play-cursor.svg), auto');
-			},
-			mouseleave: function(){
-				$('.still', this).stop(true).animate({ "opacity": "1"}, 240);
- 				$('.rec', this).get(0).pause();
- 				$('.playicon').css('cursor', 'default');
-			},
-		});
-
-		// When video reach the end, show still image
-		$('.rec').on('ended',function(){
-			$('.still').animate({ "opacity": "1"}, 240);
-		});
-		
-	}); // end
-	</script>
 
 </body>
 
