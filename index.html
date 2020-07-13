@@ -175,13 +175,14 @@
 	</main>
 	
 	<script rel="preload" as="script" src="jquery.min.js" type="text/javascript"></script>
-	<script rel="preload" as="script" id="videocontrol" type="text/javascript">
-	$(document).ready(function(){
-
+	<script type="module">
 		import 'https://cdn.jsdelivr.net/npm/@pwabuilder/pwaupdate';
 
 		const el = document.createElement('pwa-update');
 		document.body.appendChild(el);
+	</script>
+	<script rel="preload" as="script" id="videocontrol" type="text/javascript">
+	$(document).ready(function(){
 
 		// Prevents the video from playing on mobile
 		if ($(window).width() <= 480){
