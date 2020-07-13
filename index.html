@@ -178,6 +178,11 @@
 	<script rel="preload" as="script" id="videocontrol" type="text/javascript">
 	$(document).ready(function(){
 
+		import 'https://cdn.jsdelivr.net/npm/@pwabuilder/pwaupdate';
+
+		const el = document.createElement('pwa-update');
+		document.body.appendChild(el);
+
 		// Prevents the video from playing on mobile
 		if ($(window).width() <= 480){
  			$('#videocontrol').init().destroy();
