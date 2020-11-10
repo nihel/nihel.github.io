@@ -383,3 +383,15 @@ footer {
 		font-size: 1.2rem;
 	}
 }
+
+@media screen and (max-width: 360px) and (min-width: 320px) {
+	.clip-iphone {
+		clip-path: inset(17px 18px 0 17px);
+		-webkit-clip-path: inset(17px 18px 0 17px);
+	}
+
+	.clip-samsung {
+		clip-path: inset(0px 5px 22px 6px);
+		-webkit-clip-path: inset(0px 5px 22px 6px);
+	}
+}
