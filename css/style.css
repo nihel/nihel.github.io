@@ -167,12 +167,13 @@ a:hover {
 }
 
 p.primary {
+	color: #505050;
 	font-size: 2rem;
 	line-height: 132%;
 	margin-bottom: 1rem;
 }
 p.secondary {
-	color: #7b7f83;
+	color: #505050;
 	font-size: 2rem;
 	line-height: 132%;
 	margin-bottom: 1rem;
