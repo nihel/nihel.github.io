@@ -106,7 +106,7 @@ img {
 
 body {
 	font-family: 'Inter-Regular', 'Helvetica', sans-serif;
-	letter-spacing: -0.020rem;
+	font-variant-alternates: styleset'ss01';
 	font-variant-ligatures: common-ligatures;
 	background: white;
 	color: #181818;
@@ -190,7 +190,7 @@ p.label {
 
 p.desc {
 	font-size: 1.13rem;
-	line-height: 132%;
+	line-height: 140%;
 	margin-left: 1rem;
 	margin-right: 1rem;
 }
