@@ -87,7 +87,7 @@ img {
 }
 
 @font-face {
-    font-family: 'Inter';
+    font-family: 'Inter-ExtraBold';
 		font-style:  normal;
 		font-weight: 800;
 		font-display: swap;
@@ -96,7 +96,7 @@ img {
 }
 
 @font-face {
-    font-family: 'Inter';
+    font-family: 'Inter-regular';
 		font-style:  normal;
 		font-weight: 800;
 		font-display: swap;
@@ -124,13 +124,13 @@ header {
 }
 
 h1 {
-	font-family: 'Inter-Bold', 'Helvetica', sans-serif;
+	font-family: 'Inter-ExtraBold', 'Helvetica', sans-serif;
 	font-size: 2.8rem;
 	margin-bottom: 1.5rem
 }
 
 h2 {
-	font-family: 'Inter-Bold', 'Helvetica', sans-serif;
+	font-family: 'Inter-ExtraBold', 'Helvetica', sans-serif;
 	font-size: 1.2rem;
 	letter-spacing: 0.04rem;
 	margin-bottom: 1rem;
@@ -179,7 +179,7 @@ p.secondary {
 }
 
 p.label {
-	font-family: 'Inter-Bold', 'Helvetica', sans-serif;
+	font-family: 'Inter-ExtraBold', 'Helvetica', sans-serif;
 	color: #7b7f83;
 	font-size: 0.85rem;
 	line-height: 135%;
