@@ -120,7 +120,7 @@ main {
 }
 
 header {
-	padding-bottom: 1.25rem;
+	padding-bottom: 3rem;
 }
 
 h1 {
@@ -132,12 +132,12 @@ h1 {
 h2 {
 	font-family: 'Inter-ExtraBold', 'Helvetica', sans-serif;
 	font-size: 3rem;
-	margin-bottom: 1rem;
+	margin-bottom: 1.5rem;
 }
 
 h3 {
 	font-family: 'Inter-ExtraBold', 'Helvetica', sans-serif;
-	font-size: 1.4rem;
+	font-size: 1.6rem;
 	margin: 0.4rem 1rem 0.4rem 1rem;
 	line-height: 120%;
 }
@@ -189,8 +189,8 @@ p.label {
 }
 
 p.desc {
-	font-size: 1.12rem;
-	line-height: 135%;
+	font-size: 1.13rem;
+	line-height: 132%;
 	margin-left: 1rem;
 	margin-right: 1rem;
 }
