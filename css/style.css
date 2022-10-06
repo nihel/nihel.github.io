@@ -136,14 +136,15 @@ h2 {
 }
 
 h3 {
-	font-size: 1.6rem;
+	font-family: 'Inter-ExtraBold', 'Helvetica', sans-serif;
+	font-size: 1.4rem;
 	margin: 0.4rem 1rem 0.4rem 1rem;
 	line-height: 120%;
 }
 
 a {
 	color: #505050;
-	text-decoration: underline;
+	text-decoration: none;
 }
 
 a:active {
