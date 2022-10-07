@@ -87,21 +87,30 @@ img {
 }
 
 @font-face {
-    font-family: 'Inter-ExtraBold';
+		font-family: 'Inter-ExtraBold';
 		font-style:  normal;
 		font-weight: 800;
 		font-display: swap;
-    src: url("../fonts/Inter-ExtraBold.otf") format("Opentype");
-	font-display: fallback;
+		src: url("../fonts/Inter-ExtraBold.otf") format("Opentype");
+		font-display: fallback;
 }
 
 @font-face {
-    font-family: 'Inter-regular';
+		font-family: 'Inter-Medium';
+		font-style:  normal;
+		font-weight: 500;
+		font-display: swap;
+		src: url("../fonts/Inter-Regular.otf") format("Opentype");
+		font-display: fallback;
+}
+
+@font-face {
+		font-family: 'Inter-Regular';
 		font-style:  normal;
 		font-weight: 800;
 		font-display: swap;
-    src: url("../fonts/Inter-Regular.otf") format("Opentype");
-	font-display: fallback;
+		src: url("../fonts/Inter-Regular.otf") format("Opentype");
+		font-display: fallback;
 }
 
 :root {
