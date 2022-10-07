@@ -106,7 +106,7 @@ img {
 
 :root {
 	--black: #181818;
-	--grey: #757575;
+	--grey: #666666;
 	--white: #ffffff;
 }
 
@@ -153,8 +153,14 @@ h3 {
 
 a {
 	color: var(--grey);
+	text-decoration: underline;
+}
+
+a.social {
+	color: var(--black);
 	text-decoration: none;
 }
+
 
 a:active {
 	color: var(--grey);
