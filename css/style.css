@@ -264,13 +264,13 @@ video::-webkit-media-controls {
 }
 
 .clip-iphone {
-	clip-path: inset(19px 22px 0 22px);
-	-webkit-clip-path: inset(19px 22px 0 22px);
+	clip-path: inset(19px 21px 0 21px);
+	-webkit-clip-path: inset(19px 21px 0 21px);
 }
 
 .clip-samsung {
-	clip-path: inset(0px 6px 28px 8px);
-	-webkit-clip-path: inset(0px 6px 28px 8px);
+	clip-path: inset(0px 6px 25px 6px);
+	-webkit-clip-path: inset(0px 6px 25px 6px);
 }
 
 .links {
