@@ -197,17 +197,15 @@ p.secondary {
 }
 
 p.label {
-	font-family: 'Inter-Medium', 'Helvetica', sans-serif;
-	color: #7b7f83;
-	font-size: 0.85rem;
+	font-family: 'Inter-Regular', 'Helvetica', sans-serif;
+	color: var(--grey);
+	font-size: 1rem;
 	line-height: 135%;
-	text-transform: uppercase;
 	margin: 0.4rem 1rem 0.4rem 1rem;
-	letter-spacing: 0.02rem;
 }
 
 p.desc {
-	font-family: 'Inter-Medium', 'Helvetica', sans-serif;
+	font-family: 'Inter-Regular', 'Helvetica', sans-serif;
 	font-size: 1.13rem;
 	line-height: 140%;
 	margin-left: 1rem;
