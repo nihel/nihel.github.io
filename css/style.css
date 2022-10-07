@@ -106,7 +106,7 @@ img {
 
 :root {
 	--black: #181818;
-	--grey: #505050;
+	--grey: #757575;
 	--white: #ffffff;
 }
 
@@ -133,12 +133,14 @@ h1 {
 	font-family: 'Inter-ExtraBold', 'Helvetica', sans-serif;
 	font-size: 3rem;
 	margin-bottom: 1.5rem
+	color: var(--black);
 }
 
 h2 {
 	font-family: 'Inter-ExtraBold', 'Helvetica', sans-serif;
 	font-size: 3rem;
 	margin-bottom: 1.5rem;
+	color: var(--black);
 }
 
 h3 {
@@ -146,6 +148,7 @@ h3 {
 	font-size: 1.6rem;
 	margin: 0.4rem 1rem 0.4rem 1rem;
 	line-height: 120%;
+	color: var(--black);
 }
 
 a {
@@ -172,7 +175,7 @@ a:hover {
 }
 
 p.primary {
-	color: var(--black);
+	color: var(--grey);
 	font-size: 2rem;
 	line-height: 132%;
 	margin-bottom: 1rem;
