@@ -187,13 +187,7 @@ p.primary {
 	color: var(--grey);
 	font-size: 2rem;
 	line-height: 132%;
-	margin-bottom: 1rem;
-}
-p.secondary {
-	color: var(--grey);
-	font-size: 2rem;
-	line-height: 132%;
-	margin-bottom: 1rem;
+	margin-bottom: 1.4rem;
 }
 
 p.label {
