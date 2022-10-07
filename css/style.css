@@ -100,7 +100,7 @@ img {
 		font-style:  normal;
 		font-weight: 500;
 		font-display: swap;
-		src: url("../fonts/Inter-Regular.otf") format("Opentype");
+		src: url("../fonts/Inter-Medium.otf") format("Opentype");
 		font-display: fallback;
 }
 
