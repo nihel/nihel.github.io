@@ -104,12 +104,18 @@ img {
 	font-display: fallback;
 }
 
+:root {
+	--black: #181818;
+	--grey: #505050;
+	--white: #ffffff;
+}
+
 body {
 	font-family: 'Inter-Regular', 'Helvetica', sans-serif;
 	font-variant-alternates: styleset'ss01';
 	font-variant-ligatures: common-ligatures;
-	background: white;
-	color: #181818;
+	background: var(--white);
+	color: var(--grey);
 	font-feature-settings: 'case' 1;
 }
 
@@ -143,16 +149,16 @@ h3 {
 }
 
 a {
-	color: #505050;
+	color: var(--grey);
 	text-decoration: none;
 }
 
 a:active {
-	color: #505050;
+	color: var(--grey);
 }
 
 a:visited {
-	color: #505050;
+	color: var(--grey);
 }
 
 a:hover {
@@ -166,13 +172,13 @@ a:hover {
 }
 
 p.primary {
-	color: #505050;
+	color: var(--black);
 	font-size: 2rem;
 	line-height: 132%;
 	margin-bottom: 1rem;
 }
 p.secondary {
-	color: #505050;
+	color: var(--grey);
 	font-size: 2rem;
 	line-height: 132%;
 	margin-bottom: 1rem;
