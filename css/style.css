@@ -152,15 +152,9 @@ h3 {
 }
 
 a {
-	color: var(--grey);
-	text-decoration: underline;
-}
-
-a.social {
 	color: var(--black);
 	text-decoration: none;
 }
-
 
 a:active {
 	color: var(--grey);
