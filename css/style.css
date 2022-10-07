@@ -207,6 +207,7 @@ p.label {
 }
 
 p.desc {
+	font-family: 'Inter-Medium', 'Helvetica', sans-serif;
 	font-size: 1.13rem;
 	line-height: 140%;
 	margin-left: 1rem;
