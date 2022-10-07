@@ -212,6 +212,15 @@ p.desc {
 .workbox {
 	display: flex;
 	margin-bottom: 4rem;
+	border-radius: 2rem;
+	padding-top: 2rem;
+	padding-bottom: 2rem;
+	padding-left: 1rem;
+	padding-right: 1rem;
+}
+
+.workbox:hover {
+	background-color: #ddddd6;
 }
 
 .work-item {
@@ -247,7 +256,7 @@ p.desc {
 	left: 0;
 	line-height: 0;
 	position: absolute;
-	z-index: -1;
+	z-index: 0;
 }
 
 video::-webkit-media-controls {
