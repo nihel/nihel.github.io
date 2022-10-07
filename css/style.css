@@ -157,11 +157,11 @@ a {
 }
 
 a:active {
-	color: var(--grey);
+	color: var(--black);
 }
 
 a:visited {
-	color: var(--grey);
+	color: var(--black);
 }
 
 a:hover {
