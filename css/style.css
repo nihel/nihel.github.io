@@ -212,11 +212,11 @@ p.desc {
 
 .workbox {
 	display: flex;
-	padding-bottom: 4rem;
+	margin-bottom: 4rem;
 }
 
 .work-item {
-	width: 50%;
+	width: 45%;
 	margin: auto;
 	align-self: flex-start;
 	position: relative;
