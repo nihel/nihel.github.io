@@ -296,22 +296,22 @@ li {
 }
 
 ul li a {
-	color: #181818;
+	color: var(--black);
 	transition: 0.4s cubic-bezier(.2,1,.2,1);
 	-webkit-transition: 0.4s cubic-bezier(.2,1,.2,1);
 	-o-transition: 0.4s cubic-bezier(.2,1,.2,1);
 	-ms-transition: 0.4s cubic-bezier(.2,1,.2,1);
 	text-decoration: none;
 	position: relative;
-	display: inline-block;
+	display: inline;
 }
 
 ul li a:active {
-	color: #181818;
+	color: var(--black);
 }
 
 ul li a:visited {
-	color: #181818;
+	color: var(--black);
 }
 
 ul li a:hover {
