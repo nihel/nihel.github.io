@@ -353,7 +353,7 @@ footer {
 	}
 	p.primary {
 		line-height: 140%;
-		font-size: 1.3rem;
+		font-size: 1.28rem;
 		margin-bottom: 1.2rem;
 	}
 
@@ -371,6 +371,7 @@ footer {
 	.workbox {
 		display: block;
 		padding-bottom: 2rem;
+		padding-top: 2rem;
 		background-color: var(--lightgrey);
 	}
 	.work-item {
