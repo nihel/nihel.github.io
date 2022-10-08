@@ -287,7 +287,7 @@ video::-webkit-media-controls {
 }
 
 .links li::before {
-	content: "→";
+	content: "↗";
 	font-family: 'Inter-Regular', 'Helvetica', sans-serif;
 	font-size: 1.5rem;
 	padding-right: 0.4rem;
