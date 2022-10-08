@@ -210,6 +210,7 @@ p.label {
 }
 
 .workbox {
+	background-color: var(--lightgrey);
 	display: flex;
 	margin-bottom: 2rem;
 	border-radius: 2rem;
@@ -217,19 +218,6 @@ p.label {
 	padding-bottom: 2rem;
 	padding-left: 1rem;
 	padding-right: 1rem;
-	transition-duration: 0.4s;
-	-webkit-transition-duration: 0.4s;
-	-o-transition-duration: 0.4s;
-	-ms-transition-duration: 0.4s;
-}
-
-.workbox:hover {
-	background-color: var(--lightgrey);
-	transition-duration: 0.4s;
-	-webkit-transition-duration: 0.4s;
-	-o-transition-duration: 0.4s;
-	-ms-transition-duration: 0.4s;
-	cursor: pointer;
 }
 
 .work-item {
