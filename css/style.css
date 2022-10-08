@@ -116,6 +116,7 @@ img {
 :root {
 	--black: #181818;
 	--grey: #666666;
+	--lightgrey: #f4f4f4;
 	--white: #ffffff;
 }
 
@@ -222,7 +223,7 @@ p.desc {
 }
 
 .workbox:hover {
-	background-color: #f4f4f4;
+	background-color: var(--lightgrey);
 	transition-duration: 0.4s;
 	-webkit-transition-duration: 0.4s;
 	-o-transition-duration: 0.4s;
