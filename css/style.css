@@ -375,6 +375,12 @@ footer {
 		margin-left: 0;
 		margin-right: 0;
 	}
+	a:hover {
+		background: var(--black);
+	}
+	ul li a:hover {
+		padding-left: 0px;
+	}
 	.logo {
 		width: 24px;
 		height: 24px;
