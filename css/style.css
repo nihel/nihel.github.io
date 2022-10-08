@@ -351,6 +351,7 @@ footer {
 	}
 	h3 {
 		font-size: 1.2rem;
+		text-align: center;
 		margin: 0.4rem 0 0.4rem 0rem;
 	}
 	p.primary {
@@ -358,24 +359,22 @@ footer {
 		font-size: 1.4rem;
 		margin-bottom: 0.5rem;
 	}
-	p.secondary {
-		line-height: 125%;
-		font-size: 1.2rem;
-		margin-bottom: 0.5rem;
-	}
 
 	p.label {
 		font-size: 0.85rem;
+		text-align: center;
 		margin: 0.4rem 0 0.2rem 0rem;
 	}
 	p.desc {
 		font-size: 1rem;
+		text-align: center;
 		margin-left: 0;
 		margin-right: 0;
 	}
 	.workbox {
 		display: block;
 		padding-bottom: 1rem;
+		background-color: var(--lightgrey);
 	}
 	.work-item {
 		width: auto;
@@ -384,7 +383,7 @@ footer {
 	.logo {
 		width: 24px;
 		height: 24px;
-		margin-left: 0;
+		margin-left: 50%;
 	}
 	.links {
 		padding-top: 0;
