@@ -338,6 +338,9 @@ footer {
 	main {
 		padding: 2rem 1.25rem;
 	}
+	header {
+		padding-bottom: 1.5rem;
+	}
 	h1 {
 		font-size: 2rem;
 		margin-bottom: 1rem;
