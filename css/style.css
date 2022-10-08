@@ -383,6 +383,7 @@ footer {
 		display: block;
 		padding-bottom: 2rem;
 		padding-top: 2rem;
+		margin-bottom: 2.5rem;
 		background-color: var(--lightgrey);
 	}
 	.work-item {
@@ -390,7 +391,7 @@ footer {
 		margin-bottom: 1rem;
 	}
 	.frame {
-		padding-bottom: 1rem;
+		padding-bottom: 2rem;
 	}
 	.links {
 		padding-top: 0;
