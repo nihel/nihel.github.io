@@ -215,6 +215,10 @@ p.desc {
 	padding-bottom: 2rem;
 	padding-left: 1rem;
 	padding-right: 1rem;
+	transition-duration: 0.4s;
+	-webkit-transition-duration: 0.4s;
+	-o-transition-duration: 0.4s;
+	-ms-transition-duration: 0.4s;
 }
 
 .workbox:hover {
