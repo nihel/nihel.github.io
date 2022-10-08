@@ -219,6 +219,10 @@ p.desc {
 
 .workbox:hover {
 	background-color: #f4f4f4;
+	transition-duration: 0.4s;
+	-webkit-transition-duration: 0.4s;
+	-o-transition-duration: 0.4s;
+	-ms-transition-duration: 0.4s;
 }
 
 .work-item {
