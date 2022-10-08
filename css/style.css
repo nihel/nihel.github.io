@@ -350,7 +350,7 @@ footer {
 		margin-bottom: 0.5rem;
 	}
 	h3 {
-		font-size: 1.2rem;
+		font-size: 1.4rem;
 		text-align: center;
 		margin: 0.4rem 0 0.4rem 0rem;
 	}
@@ -373,7 +373,7 @@ footer {
 	}
 	.workbox {
 		display: block;
-		padding-bottom: 1rem;
+		padding-bottom: 2rem;
 		background-color: var(--lightgrey);
 	}
 	.work-item {
@@ -405,12 +405,8 @@ footer {
 		padding: 2rem 1.25rem;
 	}
 	p.primary {
-		line-height: 125%;
+		line-height: 140%;
 		font-size: 1.4rem;
-	}
-	p.secondary {
-		line-height: 125%;
-		font-size: 1.2rem;
 	}
 }
 
