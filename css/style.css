@@ -121,9 +121,7 @@ img {
 
 body {
 	font-family: 'Inter-Regular', 'Helvetica', sans-serif;
-	font-variant-alternates: stylistic'ss01';
-	font-variant-ligatures: common-ligatures;
-	font-feature-settings: 'case' 1;
+	font-feature-settings: 'ss01','calt','case';
 	background: var(--white);
 	color: var(--grey);
 }
