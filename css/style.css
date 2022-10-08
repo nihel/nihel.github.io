@@ -335,9 +335,6 @@ footer {
 
 /* Portrait and Landscape */
 @media screen and (max-width: 480px) {
-	body {
-		letter-spacing: -0.015rem;
-	}
 	main {
 		padding: 2rem 1.25rem;
 	}
@@ -346,8 +343,8 @@ footer {
 		margin-bottom: 1rem;
 	}
 	h2 {
-		font-size: 1rem;
-		margin-bottom: 0.5rem;
+		font-size: 2rem;
+		margin-bottom: 1rem;
 	}
 	h3 {
 		font-size: 1.4rem;
