@@ -191,19 +191,19 @@ p.primary {
 	margin-bottom: 1.4rem;
 }
 
-p.label {
-	font-family: 'Inter-Regular', 'Helvetica', sans-serif;
-	color: var(--grey);
-	font-size: 0.95rem;
-	line-height: 135%;
-	margin-bottom: 0.4rem;
-}
-
 p.desc {
 	font-family: 'Inter-Regular', 'Helvetica', sans-serif;
 	color: var(--black);
 	font-size: 1.15rem;
 	line-height: 140%;
+}
+
+p.label {
+	font-family: 'Inter-Regular', 'Helvetica', sans-serif;
+	color: var(--grey);
+	font-size: 1rem;
+	line-height: 135%;
+	margin-bottom: 0.4rem;
 }
 
 .work {
