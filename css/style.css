@@ -227,6 +227,7 @@ p.desc {
 	-webkit-transition-duration: 0.4s;
 	-o-transition-duration: 0.4s;
 	-ms-transition-duration: 0.4s;
+	cursor: pointer;
 }
 
 .work-item {
