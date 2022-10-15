@@ -138,6 +138,11 @@ header {
 	padding-bottom: 3rem;
 }
 
+.logotype {
+	content: url("../images/favicons/favicon.svg");
+	position: sticky;
+}
+
 h1 {
 	font-family: 'Inter-ExtraBold', 'Helvetica', sans-serif;
 	font-size: 2.8rem;
