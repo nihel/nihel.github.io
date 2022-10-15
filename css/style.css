@@ -139,8 +139,10 @@ header {
 }
 
 .logotype {
-	content: url("../images/favicons/favicon.svg");
-	position: sticky;
+    background-image: url(../images/favicons/favicon.svg);
+    position: absolute;
+    width: 28px;
+    height: 28px;
 }
 
 h1 {
