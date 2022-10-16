@@ -50,7 +50,7 @@
 
 			<div class="workbox">
 
-				<div class="work-item hasVideo">
+				<div class="work-item incVideo">
 					<img class="frame playicon" alt="iphone"
 						src="../images/frames/iphone-frame@1x.webp" 
 						srcset="../images/frames/iphone-frame@1x.webp 546w, ../images/frames/iphone-frame@2x.webp 1092w" >
@@ -77,7 +77,7 @@
 
 			<div class="workbox">
 
-				<div class="work-item hasVideo">
+				<div class="work-item incVideo">
 					<img class="frame playicon" alt="iphone"
 						src="../images/frames/iphone-frame@1x.webp" 
 						srcset="../images/frames/iphone-frame@1x.webp 546w, ../images/frames/iphone-frame@2x.webp 1092w">
@@ -104,7 +104,7 @@
 				
 			<div class="workbox">
 
-				<div class="work-item hasVideo">
+				<div class="work-item incVideo">
 					<img class="frame playicon" alt="samsung"
 						src="../images/frames/samsung-frame-bottom@1x.webp"
 						srcset="../images/frames/samsung-frame-bottom@1x.webp 546w, ../images/frames/samsung-frame-bottom@2x.webp 1092w">
@@ -171,11 +171,13 @@
 				<li>2011&thinsp;-&thinsp;13' → <a target="_blank" rel="noopener" href="https://hyperisland.com">Hyper Island</a></li>
 			</ul>
 
+			<!--
 			<div id="output">
         		<h2>Click button to load new content inside DIV box</h2>
    			</div>
    				<button type="button">Click to Load Content</button>
-    		<div>
+    		<div> -->
+
 		</footer>
 
 		<div class="logotype"></div>
@@ -192,6 +194,7 @@
 	<script rel="preload" as="script" id="videocontrol" type="text/javascript">
 	$(document).ready(function(){
 
+		//
     	$("button").click(function(){
         	$("#output").load("../portfolio/test.html");
     	});
@@ -201,7 +204,7 @@
  			$('#videocontrol').init().destroy();
 		}
 		
-		$('.workbox > .hasVideo').on({
+		$('.workbox > .incVideo').on({
 			mouseenter: function(){
 		 		$('.still', this).stop(true).animate({ "opacity": "0"}, 240);
  				$('.rec', this).get(0).play();
@@ -218,6 +221,19 @@
 		$('.rec').on('ended',function(){
 			$('.still').animate({ "opacity": "1"}, 240);
 		});
+		
+	}); // end
+	</script>
+
+	<script rel="preload" as="script" type="text/javascript">
+	$(document).ready(function(){
+
+		/*
+    	$("button").click(function(){
+        	$("#output").load("../portfolio/test.html");
+    	});
+    	*/
+
 		
 	}); // end
 	</script>
