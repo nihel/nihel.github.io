@@ -186,7 +186,7 @@ a:hover {
 
 p.primary {
 	color: var(--black);
-	font-size: 2rem;
+	font-size: 1.75rem;
 	line-height: 132%;
 	margin-bottom: 1.4rem;
 }
