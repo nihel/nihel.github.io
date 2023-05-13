@@ -88,20 +88,11 @@ img {
 }
 
 @font-face {
-		font-family: 'Inter-ExtraBold';
+		font-family: 'Inter-Bold';
 		font-style:  normal;
 		font-weight: 800;
 		font-display: swap;
-		src: url("../fonts/Inter-ExtraBold.otf") format("Opentype");
-		font-display: fallback;
-}
-
-@font-face {
-		font-family: 'Inter-Medium';
-		font-style:  normal;
-		font-weight: 500;
-		font-display: swap;
-		src: url("../fonts/Inter-Medium.otf") format("Opentype");
+		src: url("../fonts/Inter-Bold.otf") format("Opentype");
 		font-display: fallback;
 }
 
@@ -167,7 +158,7 @@ header {
 h1 {
 	font-family: 'Inter-Medium', 'Helvetica', sans-serif;
 	font-size: 1.313rem;
-	color: var(--black);
+	color: var(--grey);
 }
 
 h2 {
