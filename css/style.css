@@ -200,6 +200,9 @@ p.desc {
 }
 
 .work {
+	width: 100%;
+	height: 37.5rem;
+	background-image: url(../images/assets/origami_bg.png);
 }
 
 .workbox {
