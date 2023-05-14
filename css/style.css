@@ -136,8 +136,8 @@ header {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	width: 200px;
-	gap: 1rem;
+	width: 120px;
+	gap: 0.6rem;
 	top: 1rem;
 	left: 42%;
 	z-index: 90;
@@ -146,7 +146,7 @@ header {
 	background: rgba(250,250,250,0.8);
 	backdrop-filter: blur(10px);
 	-webkit-backdrop-filter: blur(10px);
-	border-radius: 16px;
+	border-radius: 8px;
 }
 
 .logotype {
@@ -203,6 +203,7 @@ p.desc {
 	width: 100%;
 	height: 37.5rem;
 	background-image: url(../images/assets/origami_bg.png);
+	border-radius: ;
 }
 
 .workbox {
