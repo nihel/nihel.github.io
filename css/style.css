@@ -23,7 +23,6 @@ body {
 }
 ol, ul {
 	list-style: none;
-	width: fit-content;
 }
 blockquote, q {
 	quotes: none;
@@ -37,7 +36,6 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-
 button {
 	outline: none;
 	border-style: none;
@@ -295,6 +293,12 @@ footer {
 	padding-bottom: 3rem;
 	justify-content: center;
 	display: flex;
+}
+
+ul{
+	width: fit-content;
+	display: inline-flex;
+	gap: 1rem;
 }
 
 /* Portrait and Landscape */
