@@ -57,7 +57,6 @@ html {
 
 img {
 	display: block;
-	object-fit: cover;
 	margin: 0;
 	padding: 0;
 	-webkit-user-drag: none;
