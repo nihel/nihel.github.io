@@ -150,7 +150,7 @@ header {
 	border-radius: 8px;
 }
 
-.logotype {
+.favicon {
 		background-image: url(../images/favicons/favicon.svg);
 		width: 24px;
 		height: 24px;
@@ -234,6 +234,11 @@ p.desc {
 	border-radius: 12px;
 	padding: 0.2rem 0.6rem;
 	font-size: 0.875rem;
+}
+
+.logo {
+	width: 32px;
+	height: 32px;
 }
 
 .flex {
