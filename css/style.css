@@ -23,6 +23,7 @@ body {
 }
 ol, ul {
 	list-style: none;
+	width: fit-content;
 }
 blockquote, q {
 	quotes: none;
