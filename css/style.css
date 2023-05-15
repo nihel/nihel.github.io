@@ -90,19 +90,19 @@ img {
 @font-face {
 		font-family: 'Inter-SemiBold';
 		font-style:  normal;
-		font-weight: 800;
+		font-weight: 600;
 		font-display: swap;
-		src: url("../fonts/Inter-SemiBold.otf") format("Opentype");
-		font-display: fallback;
+		src: url('../fonts/Inter-SemiBold.woff2') format('woff2'),
+ 				 url('../fonts/Inter-SemiBold.woff') format('woff');
 }
 
 @font-face {
 		font-family: 'Inter-Regular';
 		font-style:  normal;
-		font-weight: 800;
+		font-weight: 400;
 		font-display: swap;
-		src: url("../fonts/Inter-Regular.otf") format("Opentype");
-		font-display: fallback;
+		src: url('../fonts/Inter-Regular.woff2') format('woff2'),
+ 				 url('../fonts/Inter-Regular.woff') format('woff');
 }
 
 :root {
