@@ -89,11 +89,11 @@ img {
 }
 
 @font-face {
-		font-family: 'Inter-Bold';
+		font-family: 'Inter-SemiBold';
 		font-style:  normal;
 		font-weight: 800;
 		font-display: swap;
-		src: url("../fonts/Inter-Bold.otf") format("Opentype");
+		src: url("../fonts/Inter-SemiBold.otf") format("Opentype");
 		font-display: fallback;
 }
 
@@ -163,7 +163,7 @@ h1 {
 }
 
 h2 {
-	font-family: 'Inter-Bold', 'Helvetica', sans-serif;
+	font-family: 'Inter-SemiBold', 'Helvetica', sans-serif;
 	font-size: 1.313rem;
 	color: var(--black);
 }
@@ -238,6 +238,7 @@ p.desc {
 
 .flex {
 	display: flex;
+	align-items: center;
 	gap: 0.8rem;
 }
 
