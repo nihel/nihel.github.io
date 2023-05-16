@@ -69,23 +69,9 @@ img {
  * http://cssreset.com
  */
 
-/**
- .fade-in {
-	opacity: 1;
-	animation-name: fadeInContent;
-	animation-iteration-count: 1;
-	animation-timing-function: ease-in;
-	animation-duration: 0.48s;
+html.sr .load-hidden {
+    visibility: hidden;
 }
-
-@keyframes fadeInContent {
-	0% {
-		opacity: 0;
-	}
-	100% {
-		opacity: 1;
-	}
-}*/
 
 @font-face {
 		font-family: 'Inter-SemiBold';
