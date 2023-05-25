@@ -183,11 +183,21 @@ p.desc {
 }
 
 .work {
-	width: 100%;
+	align-items: center;
+	display: flex;
+	flex: none;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	gap: 24px;
+	height: min-content;
+	justify-content: flex-start;
+}
+
+.work-content {
+	width: 29rem;
 	height: 37.5rem;
 	border-radius: 24px;
-	background-size: contain;
-	background-image: url("../images/assets/origami_bg.jpg");
+	background-color: #D3D5F4;
 	margin-bottom: 3rem;
 }
 
