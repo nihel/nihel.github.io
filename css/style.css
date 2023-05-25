@@ -393,13 +393,4 @@ ul{
 		font-size: 1.20rem;
 		margin-bottom: 1.2rem;
 	}
-	.clip-iphone {
-		clip-path: inset(17px 18px 0 17px);
-		-webkit-clip-path: inset(17px 18px 0 17px);
-	}
-
-	.clip-samsung {
-		clip-path: inset(0px 5px 22px 6px);
-		-webkit-clip-path: inset(0px 5px 22px 6px);
-	}
 }
