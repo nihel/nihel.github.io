@@ -93,6 +93,10 @@ html.sr .load-hidden {
 	--grey: #666666;
 	--lightgrey: #cccccc;
 	--white: #ffffff;
+	--sunset: #FADFAD;
+	--tea: #D0F0C0;
+	--lavender: #E6E6FA;
+	--champage: #F1DDCF;
 }
 
 body {
