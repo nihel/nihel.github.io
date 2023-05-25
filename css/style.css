@@ -93,7 +93,7 @@ html.sr .load-hidden {
 	--grey: #666666;
 	--lightgrey: #cccccc;
 	--white: #ffffff;
-	--alabaster: #EDEAE0
+	--alabaster: #EDEAE0;
 }
 
 body {
@@ -191,14 +191,13 @@ p.desc {
 	flex-direction: row;
 	gap: 1rem;
 	margin-bottom: 3rem;
-	background: var(--alabaster);
 }
 
 .work-content {
 	width: 29rem;
-	height: 37.5rem;
+	height: 32rem;
 	border-radius: 24px;
-	background-color: #D3D5F4;
+	background-color: var(--alabaster);
 	margin-bottom: 1rem;
 }
 
