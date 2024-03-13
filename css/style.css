@@ -145,7 +145,7 @@ h1 {
 
 h2 {
 	font-family: 'PPNeueMontreal-Medium', 'Helvetica', sans-serif;
-	font-size: 24px;
+	font-size: 26px;
 	letter-spacing: 0.4px;
 	color: var(--black);
 }
@@ -188,7 +188,7 @@ p.desc {
 	font-size: 16px;
 	line-height: 140%;
 	letter-spacing: 0.4px;
-	padding-top: 0.8rem;
+	padding-top: 0.4rem;
 }
 
 .work {
