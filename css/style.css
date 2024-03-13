@@ -170,7 +170,7 @@ a:hover {
 p.primary {
 	color: var(--black);
 	font-size: 26px;
-	line-height: 132%;
+	line-height: 128%;
 	letter-spacing: 0.4px;
 	margin-bottom: 1.4rem;
 }
