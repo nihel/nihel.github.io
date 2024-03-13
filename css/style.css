@@ -71,27 +71,19 @@ html.sr .load-hidden {
 }
 
 @font-face {
-		font-family: 'Aeonik-Bold';
+		font-family: 'PPNeueMontreal-Medium';
 		font-style:  normal;
 		font-display: swap;
-		src: url('../fonts/Aeonik-Bold.woff2') format('woff2'),
- 				 url('../fonts/Aeonik-Bold.woff') format('woff');
+		src: url('../fonts/PPNeueMontreal-Medium.woff2') format('woff2'),
+ 				 url('../fonts/PPNeueMontreal-Medium.woff') format('woff');
 }
 
 @font-face {
-		font-family: 'Aeonik-Medium';
+		font-family: 'PPNeueMontreal-Bold';
 		font-style:  normal;
 		font-display: swap;
-		src: url('../fonts/Aeonik-Medium.woff2') format('woff2'),
- 				 url('../fonts/Aeonik-Medium.woff') format('woff');
-}
-
-@font-face {
-		font-family: 'Aeonik-Regular';
-		font-style:  normal;
-		font-display: swap;
-		src: url('../fonts/Aeonik-Regular.woff2') format('woff2'),
- 				 url('../fonts/Aeonik-Regular.woff') format('woff');
+		src: url('../fonts/PPNeueMontreal-Bold.woff2') format('woff2'),
+ 				 url('../fonts/PPNeueMontreal-Bold.woff') format('woff');
 }
 
 :root {
@@ -146,13 +138,13 @@ header {
 }
 
 h1 {
-	font-family: 'Aeonik-Medium', 'Helvetica', sans-serif;
+	font-family: 'PPNeueMontreal-Medium', 'Helvetica', sans-serif;
 	font-size: 1.313rem;
 	color: var(--black);
 }
 
 h2 {
-	font-family: 'Aeonik-Bold', 'Helvetica', sans-serif;
+	font-family: 'PPNeueMontreal-Bold', 'Helvetica', sans-serif;
 	font-size: 1.313rem;
 	color: var(--black);
 }
@@ -182,7 +174,7 @@ p.primary {
 }
 
 p.desc {
-	font-family: 'Aeonik-Regular', 'Helvetica', sans-serif;
+	font-family: 'PPNeueMontreal-Medium', 'Helvetica', sans-serif;
 	color: var(--grey);
 	font-size: 1rem;
 	line-height: 140%;
