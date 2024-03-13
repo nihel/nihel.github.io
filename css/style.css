@@ -95,8 +95,7 @@ html.sr .load-hidden {
 }
 
 body {
-	font-family: 'Aeonik-Regular', 'Helvetica', sans-serif;
-	font-feature-settings: 'ss01','calt','case';
+	font-family: 'PPNeueMontreal-Medium', 'Helvetica', sans-serif;
 	background: var(--white);
 	color: var(--grey);
 }
