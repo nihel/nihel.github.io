@@ -138,14 +138,14 @@ header {
 
 h1 {
 	font-family: 'PPNeueMontreal-Medium', 'Helvetica', sans-serif;
-	font-size: 1.4rem;
+	font-size: 22px;
 	letter-spacing: 0.4px;
 	color: var(--black);
 }
 
 h2 {
 	font-family: 'PPNeueMontreal-Medium', 'Helvetica', sans-serif;
-	font-size: 1.4rem;
+	font-size: 22px;
 	letter-spacing: 0.4px;
 	color: var(--black);
 }
@@ -169,7 +169,7 @@ a:hover {
 
 p.primary {
 	color: var(--black);
-	font-size: 1.6rem;
+	font-size: 26px;
 	line-height: 132%;
 	letter-spacing: 0.4px;
 	margin-bottom: 1.4rem;
@@ -178,7 +178,7 @@ p.primary {
 p.desc {
 	font-family: 'PPNeueMontreal-Medium', 'Helvetica', sans-serif;
 	color: var(--grey);
-	font-size: 1.1rem;
+	font-size: 16px;
 	line-height: 140%;
 	letter-spacing: 0.4px;
 	padding-top: 0.8rem;
@@ -226,7 +226,7 @@ p.desc {
 	color: var(--grey);
 	border-radius: 12px;
 	padding: 0.2rem 0.6rem;
-	font-size: 0.875rem;
+	font-size: 16px;
 }
 
 .logo {
