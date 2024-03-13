@@ -138,14 +138,21 @@ header {
 
 h1 {
 	font-family: 'PPNeueMontreal-Medium', 'Helvetica', sans-serif;
-	font-size: 22px;
+	font-size: 19px;
 	letter-spacing: 0.4px;
 	color: var(--black);
 }
 
 h2 {
 	font-family: 'PPNeueMontreal-Medium', 'Helvetica', sans-serif;
-	font-size: 22px;
+	font-size: 24px;
+	letter-spacing: 0.4px;
+	color: var(--black);
+}
+
+h3 {
+	font-family: 'PPNeueMontreal-Medium', 'Helvetica', sans-serif;
+	font-size: 19px;
 	letter-spacing: 0.4px;
 	color: var(--black);
 }
