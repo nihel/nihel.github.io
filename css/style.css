@@ -71,21 +71,27 @@ html.sr .load-hidden {
 }
 
 @font-face {
-		font-family: 'Inter-SemiBold';
+		font-family: 'Aeonik-Bold';
 		font-style:  normal;
-		font-weight: 600;
 		font-display: swap;
-		src: url('../fonts/Inter-SemiBold.woff2') format('woff2'),
- 				 url('../fonts/Inter-SemiBold.woff') format('woff');
+		src: url('../fonts/Aeonik-Bold.woff2') format('woff2'),
+ 				 url('../fonts/Aeonik-Bold.woff') format('woff');
 }
 
 @font-face {
-		font-family: 'Inter-Regular';
+		font-family: 'Aeonik-Medium';
 		font-style:  normal;
-		font-weight: 400;
 		font-display: swap;
-		src: url('../fonts/Inter-Regular.woff2') format('woff2'),
- 				 url('../fonts/Inter-Regular.woff') format('woff');
+		src: url('../fonts/Aeonik-Medium.woff2') format('woff2'),
+ 				 url('../fonts/Aeonik-Medium.woff') format('woff');
+}
+
+@font-face {
+		font-family: 'Aeonik-Regular';
+		font-style:  normal;
+		font-display: swap;
+		src: url('../fonts/Aeonik-Regular.woff2') format('woff2'),
+ 				 url('../fonts/Aeonik-Regular.woff') format('woff');
 }
 
 :root {
@@ -97,7 +103,7 @@ html.sr .load-hidden {
 }
 
 body {
-	font-family: 'Inter-Regular', 'Helvetica', sans-serif;
+	font-family: 'Aeonik-Regular', 'Helvetica', sans-serif;
 	font-feature-settings: 'ss01','calt','case';
 	background: var(--white);
 	color: var(--grey);
@@ -140,13 +146,13 @@ header {
 }
 
 h1 {
-	font-family: 'Inter-Regular', 'Helvetica', sans-serif;
+	font-family: 'Aeonik-Regular', 'Helvetica', sans-serif;
 	font-size: 1.313rem;
 	color: var(--black);
 }
 
 h2 {
-	font-family: 'Inter-SemiBold', 'Helvetica', sans-serif;
+	font-family: 'Aeonik-Bold', 'Helvetica', sans-serif;
 	font-size: 1.313rem;
 	color: var(--black);
 }
@@ -176,7 +182,7 @@ p.primary {
 }
 
 p.desc {
-	font-family: 'Inter-Regular', 'Helvetica', sans-serif;
+	font-family: 'Aeonik-Regular', 'Helvetica', sans-serif;
 	color: var(--grey);
 	font-size: 1rem;
 	line-height: 140%;
