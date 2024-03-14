@@ -394,7 +394,12 @@ ul{
 
 @media screen and (max-width: 750px) and (min-width: 480px) {
 	main {
-		padding: 2rem 1.25rem;
+		width: 100%;
+		padding: 4rem 1.25rem;
+	}
+
+	header {
+		width: auto;
 	}
 	p.primary {
 		line-height: 140%;
