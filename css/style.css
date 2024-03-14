@@ -329,7 +329,7 @@ ul{
 }
 
 @media screen and (max-width: 430px) and (min-width: 414px) {
-		main {
+	main {
 		max-width: 23rem;
 		margin: 1.25rem auto;
 	}
@@ -344,12 +344,17 @@ ul{
 	}
 
 	.links {
-	flex-direction: column;
-	align-items: center;
+		flex-direction: column;
+		align-items: center;
 	}
 
 	.chapter-content {
 		width: auto;
+	}
+
+	.chapter {
+		width: auto;
+		padding-bottom: 1.2rem;
 	}
 
 	p.primary {
@@ -364,7 +369,7 @@ ul{
 }
 
 @media screen and (max-width: 390px) and (min-width: 375px) {
-		main {
+	main {
 		max-width: 21rem;
 		margin: 1.25rem auto;
 	}
@@ -389,6 +394,7 @@ ul{
 
 	.chapter {
 		width: auto;
+		padding-bottom: 1.2rem;
 	}
 
 	p.primary {
