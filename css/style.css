@@ -322,14 +322,16 @@ ul{
 
 @media screen and (max-width: 430px) and (min-width: 320px) {
 		main {
-		width: 100%;
-		padding: 2rem 1.25rem;
+		max-width: 22rem;
+		margin: 1.25rem auto;
+		padding-top: 6rem;
+	}
+
+	header {
+		width: auto;
 		margin: 0;
 	}
 
 	p.primary {
-		line-height: 140%;
-		font-size: 1.20rem;
-		margin-bottom: 1.2rem;
 	}
 }
