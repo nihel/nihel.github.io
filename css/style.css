@@ -322,9 +322,9 @@ ul{
 
 @media screen and (max-width: 430px) and (min-width: 375px) {
 		main {
-		max-width: 22rem;
+		max-width: 24rem;
+		min-width: 18rem;
 		margin: 1.25rem auto;
-		padding-top: 6rem;
 	}
 
 	header {
@@ -341,6 +341,7 @@ ul{
 	}
 
 	p.primary {
+		font-size: 19px;
 	}
 
 	footer {
