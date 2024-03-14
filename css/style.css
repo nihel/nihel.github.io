@@ -407,7 +407,7 @@ ul{
 	}
 }
 
-@media screen and (max-width: 375px) and (min-width: 320px) {
+@media screen and (max-width: 430px) and (min-width: 320px) {
 	p.primary {
 		line-height: 140%;
 		font-size: 1.20rem;
