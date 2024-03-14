@@ -332,6 +332,19 @@ ul{
 		margin: 0;
 	}
 
+	.links {
+	flex-direction: column;
+	}
+
+	.chapter-content {
+		width: auto;
+	}
+
 	p.primary {
 	}
+
+	footer {
+		flex-direction: column;
+	}
+
 }
