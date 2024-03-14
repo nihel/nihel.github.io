@@ -104,7 +104,7 @@ html.sr .load-hidden {
 }
 
 body {
-	font-family: 'PPNeueMontreal-Medium', 'Helvetica', sans-serif;
+	font-family: 'PPNeueMontreal-Regular', 'Helvetica', sans-serif;
 	background: var(--white);
 	color: var(--grey);
 }
@@ -184,9 +184,10 @@ a:hover {
 }
 
 p.primary {
+	font-family: 'PPNeueMontreal-Regular', 'Helvetica', sans-serif;
 	color: var(--black);
 	font-size: 26px;
-	line-height: 128%;
+	line-height: 122%;
 	letter-spacing: 0.4px;
 	margin-bottom: 1.4rem;
 }
