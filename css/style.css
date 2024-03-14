@@ -317,6 +317,11 @@ ul{
 /* Mobile views */
 
 @media screen and (max-width: 950px) and (min-width: 540px) {
+	
+	.nav {
+		left: 42%;
+	}
+
 	.work-content {
 		width: 22rem;
 		gap: 2rem;
@@ -332,6 +337,10 @@ ul{
 	header {
 		width: auto;
 		margin: 0;
+	}
+
+	.nav {
+		left: 34%;
 	}
 
 	.links {
@@ -363,6 +372,10 @@ ul{
 	header {
 		width: auto;
 		margin: 0;
+	}
+
+	.nav {
+		left: 34%;
 	}
 
 	.links {
