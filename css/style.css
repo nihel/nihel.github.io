@@ -124,6 +124,7 @@ header {
 .nav {
 	position: fixed;
 	display: flex;
+	flex-direction: row;
 	align-items: center;
 	justify-content: center;
 	width: 120px;
@@ -136,20 +137,52 @@ header {
 	background: rgba(250,250,250,0.8);
 	backdrop-filter: blur(10px);
 	-webkit-backdrop-filter: blur(10px);
-	border-radius: 8px;
+	border-radius: 40px;
+	animation-name: nav-animation;
+	animation-duration: 1.4s;
+  animation-timing-function: cubic-bezier(0.42, 0.24, 0.02, 1);
 }
 
 .favicon {
 		background-image: url(../images/favicons/favicon.svg);
 		width: 24px;
 		height: 24px;
+		animation-name: fade-in;
+		animation-duration: 4s;
+ 		animation-timing-function: cubic-bezier(0.42, 0.24, 0.02, 1);
 }
+
+@keyframes fade-in {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes nav-animation {
+	from {
+		width: 43px;
+		background: rgba(220,220,220,1);
+		opacity: 0.2;
+	}
+	to {
+		width: 120px;
+		background: rgba(250,250,250,0.8);
+		opacity: 1;
+	}
+}
+
 
 h1 {
 	font-family: 'PPNeueMontreal-Medium', 'Helvetica', sans-serif;
 	font-size: 19px;
 	letter-spacing: 0.4px;
 	color: var(--black);
+	animation-name: fade-in;
+	animation-duration: 4s;
+ 	animation-timing-function: cubic-bezier(0.42, 0.24, 0.02, 1);
 }
 
 h2 {
@@ -320,7 +353,7 @@ ul{
 	.nav {
 		left: 42%;
 	}
-	
+
 }
 
 @media screen and (max-width: 430px) and (min-width: 414px) {
