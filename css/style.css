@@ -97,7 +97,7 @@ html.sr .load-hidden {
 
 :root {
 	--black: #181818;
-	--grey: #666666;
+	--grey: #555555;
 	--lightgrey: #cccccc;
 	--white: #ffffff;
 	--alabaster: #EDEAE0;
@@ -188,8 +188,8 @@ p.primary {
 	color: var(--black);
 	font-size: 24px;
 	line-height: 122%;
-	letter-spacing: 0.2px;
-	margin-bottom: 1.4rem;
+	letter-spacing: 0.4px;
+	margin-bottom: 1rem;
 }
 
 p.desc {
