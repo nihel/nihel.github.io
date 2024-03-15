@@ -339,6 +339,14 @@ ul{
 		margin: 0;
 	}
 
+	h2 {
+		font-size: 24px;
+	}
+
+	h3 {
+		font-size: 16px;
+	}
+
 	.nav {
 		left: 34%;
 	}
@@ -354,7 +362,7 @@ ul{
 
 	.chapter {
 		width: auto;
-		padding-bottom: 1.2rem;
+		padding-bottom: 1.4rem;
 	}
 
 	p.primary {
@@ -379,6 +387,14 @@ ul{
 		margin: 0;
 	}
 
+	h2 {
+		font-size: 24px;
+	}
+
+	h3 {
+		font-size: 16px;
+	}
+
 	.nav {
 		left: 34%;
 	}
@@ -394,7 +410,7 @@ ul{
 
 	.chapter {
 		width: auto;
-		padding-bottom: 1.2rem;
+		padding-bottom: 1.4rem;
 	}
 
 	p.primary {
