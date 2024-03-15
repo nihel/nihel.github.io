@@ -412,7 +412,7 @@ ul{
 
 @media screen and (max-width: 390px) and (min-width: 375px) {
 	main {
-		max-width: 21rem;
+		max-width: 20rem;
 		margin: 1.25rem auto;
 	}
 
