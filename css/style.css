@@ -379,6 +379,10 @@ ul{
 		font-size: 16px;
 	}
 
+	.work-content {
+		width: 100%;
+	}
+
 	.nav {
 		left: 34%;
 	}
@@ -425,6 +429,10 @@ ul{
 
 	h3 {
 		font-size: 16px;
+	}
+
+	.work-content {
+		width: 100%;
 	}
 
 	.nav {
