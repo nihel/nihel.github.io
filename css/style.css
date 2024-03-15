@@ -213,11 +213,10 @@ p.desc {
 }
 
 .work-content {
-	width: 28rem;
-	height: 32rem;
+	width: 48%;
+	aspect-ratio: 1 / 1;
 	border-radius: 40px;
 	background-color: var(--alabaster);
-	padding-bottom: 2rem;
 }
 
 .links {
@@ -321,11 +320,7 @@ ul{
 	.nav {
 		left: 42%;
 	}
-
-	.work-content {
-		width: 22rem;
-		gap: 2rem;
-	}
+	
 }
 
 @media screen and (max-width: 430px) and (min-width: 414px) {
