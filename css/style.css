@@ -256,20 +256,18 @@ p.desc {
 	overflow: hidden;
 }
 
+.work-content:before {
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+	mask: linear-gradient(transparent, white 60%);
+	background: rgba(250,250,250,0.8);
+}
+
 .work-content:hover {
 	transform: scale(1.025);
 	animation-timing-function: cubic-bezier(0.42, 0.24, 0.02, 1);
 }
 
-.blur-filter {
-	height: 80%;
-	width: auto;
-	overflow: hidden;
-	backdrop-filter: blur(10px);
-	-webkit-backdrop-filter: blur(10px);
-	mask: linear-gradient(transparent, white 60%);
-
-}
 
 .links {
 	padding-bottom: 3rem;
