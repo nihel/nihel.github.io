@@ -252,6 +252,12 @@ p.desc {
 	aspect-ratio: 1 / 1;
 	border-radius: 40px;
 	background-color: var(--alabaster);
+	transition: transform .2s;
+}
+
+.work-content:hover {
+	transform: scale(1.025);
+	animation-timing-function: cubic-bezier(0.42, 0.24, 0.02, 1);
 }
 
 .links {
