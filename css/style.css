@@ -253,11 +253,22 @@ p.desc {
 	border-radius: 40px;
 	background-color: var(--alabaster);
 	transition: transform .2s;
+	overflow: hidden;
 }
 
 .work-content:hover {
 	transform: scale(1.025);
 	animation-timing-function: cubic-bezier(0.42, 0.24, 0.02, 1);
+}
+
+.blur-filter {
+	height: 80%;
+	width: auto;
+	overflow: hidden;
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+	mask: linear-gradient(transparent, white 60%);
+
 }
 
 .links {
