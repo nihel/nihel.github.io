@@ -100,7 +100,7 @@ html.sr .load-hidden {
 	--grey: #555555;
 	--lightgrey: #cccccc;
 	--white: #ffffff;
-	--alabaster: #EDEAE0;
+	--alabaster: #F2F2F2;
 }
 
 body {
@@ -248,8 +248,8 @@ p.desc {
 }
 
 .work-content {
-	width: 48%;
-	aspect-ratio: 1 / 1;
+	width: 40%;
+	aspect-ratio: 4 / 5;
 	border-radius: 40px;
 	background-color: var(--alabaster);
 	transition: transform .2s;
