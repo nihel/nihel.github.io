@@ -257,6 +257,13 @@ p.desc {
 }
 
 .work-content:before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 2;
 	backdrop-filter: blur(10px);
 	-webkit-backdrop-filter: blur(10px);
 	mask: linear-gradient(transparent, white 60%);
