@@ -215,6 +215,11 @@ a:hover {
 
 }
 
+.git-btn:after {
+	content: '↗';
+	margin-left: 4px;
+}
+
 p.primary {
 	font-family: 'PPNeueMontreal-Regular', 'Helvetica', sans-serif;
 	color: var(--black);
