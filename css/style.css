@@ -220,6 +220,10 @@ a:hover {
 	margin-left: 4px;
 }
 
+.git-btn:hover::after {
+	color: hotpink;
+}
+
 p.primary {
 	font-family: 'PPNeueMontreal-Regular', 'Helvetica', sans-serif;
 	color: var(--black);
