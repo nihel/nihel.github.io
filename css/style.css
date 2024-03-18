@@ -215,9 +215,6 @@ a:hover {
 
 }
 
-.git-btn {
-}
-
 p.primary {
 	font-family: 'PPNeueMontreal-Regular', 'Helvetica', sans-serif;
 	color: var(--black);
@@ -366,7 +363,7 @@ ul{
 
 }
 
-@media screen and (max-width: 430px) and (min-width: 414px) {
+@media screen and (max-width: 430px) and (min-width: 412px) {
 	main {
 		max-width: 23rem;
 		margin: 1.25rem auto;
