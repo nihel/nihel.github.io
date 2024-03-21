@@ -199,9 +199,9 @@ h3 {
 }
 
 h4 {
-	font-family: 'PPNeueMontreal-Regular', 'Helvetica', sans-serif;
+	font-family: 'PPNeueMontreal-Medium', 'Helvetica', sans-serif;
 	font-size: 14px;
-	letter-spacing: 0.4px;
+	letter-spacing: 0.6px;
 	color: var(--black);
 }
 
@@ -367,9 +367,10 @@ p.desc {
 }
 
 .noteworthy li {
+	font-family: 'PPNeueMontreal-Medium', 'Helvetica', sans-serif;
 	background-color: var(--alabaster);
 	font-size: 14px;
-	letter-spacing: 0.4px;
+	letter-spacing: 0.6px;
 	padding: 4px 8px 4px 8px;
 	border-radius: 12px;
 }
