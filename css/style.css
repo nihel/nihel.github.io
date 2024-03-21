@@ -198,6 +198,13 @@ h3 {
 	color: var(--black);
 }
 
+h4 {
+	font-family: 'PPNeueMontreal-Regular', 'Helvetica', sans-serif;
+	font-size: 14px;
+	letter-spacing: 0.4px;
+	color: var(--black);
+}
+
 a {
 	color: var(--black);
 	text-decoration: none;
@@ -344,6 +351,27 @@ p.desc {
 	transition: 0.3s ease;
 	transform-origin: center;
 	scale: 1;
+}
+
+.noteworthy {
+	padding: 0.6rem;
+}
+
+.noteworthy ul {
+  flex-direction: row;
+	padding-top: 0.6rem;
+	width: fit-content;
+	display: inline-flex;
+	gap: 8px;
+	flex-wrap: wrap;
+}
+
+.noteworthy li {
+	background-color: var(--alabaster);
+	font-size: 14px;
+	letter-spacing: 0.4px;
+	padding: 4px 8px 4px 8px;
+	border-radius: 12px;
 }
 
 footer {
