@@ -378,6 +378,8 @@ p.desc {
 
 .viewer {
 	max-width: 215px;
+	overflow: hidden;
+	z-index: 10;
 }
 
 .viewer-header {
@@ -385,7 +387,7 @@ p.desc {
 	flex-direction: row;
 	justify-content: space-between;
 	background-color: #313130;
-	padding: 6px;
+	padding: 10px 12px 10px 12px;
 	border-radius: 10px 10px 0px 0px
 }
 
