@@ -376,6 +376,19 @@ p.desc {
 	border-radius: 12px;
 }
 
+.viewer {
+	max-width: 215px;
+}
+
+.viewer-header {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	background-color: #313130;
+	padding: 6px;
+	border-radius: 10px 10px 0px 0px
+}
+
 footer {
 	padding-bottom: 3rem;
 	justify-content: center;
