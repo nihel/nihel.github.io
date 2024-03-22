@@ -381,12 +381,15 @@ p.desc {
 }
 
 .viewer {
-	max-width: 215px;
+	width: 215px;
+	height: 501px;
 	overflow: hidden;
+	border-radius: 10px;
 	z-index: 10;
 	position: absolute;
 	right: 4%;
 	top: 10%;
+	box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
 }
 
 .viewer-header {
