@@ -387,6 +387,7 @@ p.desc {
 	z-index: 10;
 	user-select: none;
 	transition: 0.3s ease;
+	opacity: 0.8;
 }
 
 .video-control:hover {
@@ -394,6 +395,7 @@ p.desc {
 	transition: 0.3s ease;
 	transform-origin: center;
 	scale: 1.2;
+	opacity: 1;
 }
 
 .mute {
