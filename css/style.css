@@ -378,7 +378,7 @@ p.desc {
 }
 
 .video-control {
-	content:'../images/assets/unmute.svg';
+	content: url(../images/assets/unmute.svg);
 	width: 40px;
 	height: 40px;
 	position: absolute;
