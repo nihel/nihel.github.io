@@ -134,9 +134,9 @@ header {
 	z-index: 90;
 	padding: 0.6em;
 	overflow: hidden;
-	background: rgba(250,250,250,0.8);
-	backdrop-filter: blur(10px);
-	-webkit-backdrop-filter: blur(10px);
+	background: rgba(240,240,240,0.6);
+	backdrop-filter: blur(6px);
+	-webkit-backdrop-filter: blur(6px);
 	border-radius: 40px;
 	animation-name: nav-animation;
 	animation-duration: 1.4s;
