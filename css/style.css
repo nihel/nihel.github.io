@@ -384,14 +384,17 @@ p.desc {
 	top: 48px;
 	left: 24px;
 	z-index: 10;
+	user-select: none;
 }
 
 .mute {
 	content: url(../images/assets/mute.svg);
+	user-select: none;
 }
 
 .unmute {
 	content: url(../images/assets/unmute.svg);
+	user-select: none;
 }
 
 footer {
