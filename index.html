@@ -66,6 +66,7 @@
 		<div class="origami">
 			<div class="frame">
 				<img src="../images/work/frame.png" width="100%" height="auto">
+				<div class="video-control"></div>
 				<div class="viewer">
 					<div class="viewer-header">
 						<img src="../images/assets/controls.svg">
@@ -242,7 +243,7 @@
 
     $('video').prop('muted', true);
 
-    $('.orgami').click( function (){
+    $('.video-control').click( function (){
     	if( $('video').prop('muted') ) {
 				$('video').prop('muted', false);
 		} else {

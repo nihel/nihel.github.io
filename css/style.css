@@ -377,6 +377,16 @@ p.desc {
 	border-radius: 10px 10px 0px 0px
 }
 
+.video-control {
+	content:'../images/assets/unmute.svg';
+	width: 40px;
+	height: 40px;
+	position: absolute;
+	top: 20px;
+	left: 20px;
+	z-index: 10;
+}
+
 footer {
 	padding-bottom: 3rem;
 	justify-content: center;
