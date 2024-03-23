@@ -434,7 +434,7 @@ ul{
 
 @media screen and (max-width: 430px) and (min-width: 412px) {
 	main {
-		max-width: 23rem;
+		max-width: 24rem;
 		margin: 1.25rem auto;
 	}
 
@@ -486,7 +486,7 @@ ul{
 
 @media screen and (max-width: 390px) and (min-width: 375px) {
 	main {
-		max-width: 20rem;
+		max-width: 22rem;
 		margin: 1.25rem auto;
 	}
 
