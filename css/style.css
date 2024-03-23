@@ -176,7 +176,7 @@ header {
 
 h1 {
 	font-family: 'PPNeueMontreal-Medium', 'Helvetica', sans-serif;
-	font-size: 19px;
+	font-size: 16px;
 	letter-spacing: 0.4px;
 	color: var(--black);
 	animation-name: fade-in;
