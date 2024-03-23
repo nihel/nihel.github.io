@@ -434,7 +434,7 @@ ul{
 
 @media screen and (max-width: 430px) and (min-width: 412px) {
 	main {
-		max-width: 24rem;
+		max-width: 23rem;
 		margin: 1.25rem auto;
 	}
 
@@ -474,7 +474,7 @@ ul{
 	}
 
 	p.primary {
-		font-size: 18px;
+		font-size: 16px;
 	}
 
 	footer {
@@ -486,7 +486,7 @@ ul{
 
 @media screen and (max-width: 390px) and (min-width: 375px) {
 	main {
-		max-width: 22rem;
+		max-width: 21rem;
 		margin: 1.25rem auto;
 	}
 
@@ -504,7 +504,7 @@ ul{
 	}
 
 	p.primary {
-		font-size: 18px;
+		font-size: 16px;
 	}
 
 	.nav {
