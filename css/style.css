@@ -388,6 +388,10 @@ p.desc {
 	user-select: none;
 }
 
+.video-control:hover {
+	cursor: pointer;
+}
+
 .mute {
 	content: url(../images/assets/mute.svg);
 	user-select: none;
