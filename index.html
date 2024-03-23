@@ -231,13 +231,12 @@
 	$(document).ready(function(){
 
 	let playAfterThisHeight = 200
-	let pauseAfterThisHeight = 500
 
     $(document).scroll(function() {
         if ($(document).scrollTop()> playAfterThisHeight) {
               $('video').get(0).play();
 
-        } else ($(document).scrollTop()< playAfterThisHeight){
+        } else {
           $('video').get(0).pause();
         }
     });
