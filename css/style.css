@@ -354,6 +354,7 @@ p.desc {
 .origami {
 	position: relative;
 	margin-bottom: 4rem;
+	user-select: none;
 }
 
 .viewer {
