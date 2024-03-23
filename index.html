@@ -240,11 +240,13 @@
         }
     });
 
-    $(".orgami").click( function (){
-    	if( $("video").prop('muted') ) {
-			$("video").prop('muted', false);
+    $('video').prop('muted', true);
+
+    $('.orgami').click( function (){
+    	if( $('video').prop('muted') ) {
+				$('video').prop('muted', false);
 		} else {
-			$("video").prop('muted', true);
+			$('video').prop('muted', true);
 		}
 	});
 
