@@ -246,15 +246,14 @@
     $('.video-control').click( function (){
     	if( $('video').prop('muted') ) {
 				$('video').prop('muted', false);
-				$(this).removeClass('mute');
-				$(this).addClass('unmute');
 		} else {
 			$('video').prop('muted', true);
-			$(this).removeClass('unmute');
-			$(this).addClass('mute');
 		}
 	});
 
+	$(".video-control").click(function () { 
+		$(".video-control").toggleClass("mute unmute"); 
+	}); 
     	
 	}); // end
 	</script>
