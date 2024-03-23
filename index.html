@@ -71,7 +71,7 @@
 						<img src="../images/assets/controls.svg">
 						<img src="../images/assets/icons.svg">
 					</div>
-					<video class="" preload="auto" autoplay loop playsinline muted width="100%" height="auto">
+					<video class="playerembed" preload="auto" autoplay loop playsinline muted width="100%" height="auto">
 						<source src="../images/work/stems.webm" poster="" type="video/webm">
 					</video>
 				</div>
@@ -224,6 +224,24 @@
 		ScrollReveal().reveal('.chapter', {delay: 100});
 		ScrollReveal().reveal('.noteworthy', { interval: 80, scale: 0.85 });
 		ScrollReveal().reveal('.card', { interval: 80, scale: 0.85 });
+	</script>
+
+
+	<script rel="preload" as="script" type="text/javascript">
+	$(document).ready(function(){
+
+	 let playAfterThisHeight = 200
+    $(document).scroll(function() {
+        if ($(document).scrollTop()> playAfterThisHeight) {
+              $('.playerembed').trigger('play');
+
+        } else {
+          $('.playerembed').trigger('pause');
+        }
+    })
+
+		
+	}); // end
 	</script>
 
 </body>
