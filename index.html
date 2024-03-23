@@ -230,33 +230,38 @@
 	<script rel="preload" as="script" type="text/javascript">
 	$(document).ready(function(){
 
-	var videos = document.getElementsByTagName("video");
-
-	function checkScroll() {
-	    var fraction = 0.1; // Play when 10% of the player is visible.
-
-	    for(var i = 0; i < videos.length; i++) {
-
-	        var video = videos[i];
-
-	        var x = video.offsetLeft, y = video.offsetTop, w = video.offsetWidth, h = video.offsetHeight, r = x + w, //right
-	            b = y + h, //bottom
-	            visibleX, visibleY, visible;
-
-	            visibleX = Math.max(0, Math.min(w, window.pageXOffset + window.innerWidth - x, r - window.pageXOffset));
-	            visibleY = Math.max(0, Math.min(h, window.pageYOffset + window.innerHeight - y, b - window.pageYOffset));
-
-	            visible = visibleX * visibleY / (w * h);
-
-	            if (visible > fraction) {
-	                video.play();
-	            } else {
-	                video.pause();
-	            }
-	    }
+	function playPauseVideo() {
+	    let videos = document.querySelectorAll("video");
+	    videos.forEach((video) => {
+	        // We can only control playback without insteraction if video is mute
+	        video.muted = true;
+	        // Play is a promise so we need to check we have it
+	        let playPromise = video.play();
+	        if (playPromise !== undefined) {
+	            playPromise.then((_) => {
+	                let observer = new IntersectionObserver(
+	                    (entries) => {
+	                        entries.forEach((entry) => {
+	                            if (
+	                                entry.intersectionRatio !== 1 &&
+	                                !video.paused
+	                            ) {
+	                                video.pause();
+	                            } else if (video.paused) {
+	                                video.play();
+	                            }
+	                        });
+	                    },
+	                    { threshold: 0.2 }
+	                );
+	                observer.observe(video);
+	            });
+	        }
+	    });
 	}
-	window.addEventListener('scroll', checkScroll, false);
-	window.addEventListener('resize', checkScroll, false);
+
+	// And you would kick this off where appropriate with:
+	playPauseVideo();
 
     $('video').prop('muted', true);
 
