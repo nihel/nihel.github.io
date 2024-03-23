@@ -71,7 +71,7 @@
 						<img src="../images/assets/controls.svg">
 						<img src="../images/assets/icons.svg">
 					</div>
-					<video class="playerembed" preload="auto" autoplay loop playsinline muted width="100%" height="auto">
+					<video class="playerembed" preload="auto" loop playsinline muted width="100%" height="auto">
 						<source src="../images/work/stems.webm" poster="" type="video/webm">
 					</video>
 				</div>
@@ -230,17 +230,18 @@
 	<script rel="preload" as="script" type="text/javascript">
 	$(document).ready(function(){
 
-	 let playAfterThisHeight = 200
+   let playAfterThisHeight = 200
+
     $(document).scroll(function() {
         if ($(document).scrollTop()> playAfterThisHeight) {
-              $('.playerembed').trigger('play');
+              $('video').get(0).play();
 
         } else {
-          $('.playerembed').trigger('pause');
+          $('video').get(0).pause();
         }
     })
 
-		
+    	
 	}); // end
 	</script>
 
