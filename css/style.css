@@ -167,7 +167,7 @@ header {
 		opacity: 0.2;
 	}
 	to {
-		width: 120px;
+		width: auto;
 		background: rgba(250,250,250,0.8);
 		opacity: 1;
 	}
