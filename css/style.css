@@ -401,13 +401,11 @@ p.desc {
 .mute {
 	content: url(../images/assets/mute.svg);
 	user-select: none;
-	transition: 0.3s ease;
 }
 
 .unmute {
 	content: url(../images/assets/unmute.svg);
 	user-select: none;
-	transition: 0.3s ease;
 }
 
 footer {
