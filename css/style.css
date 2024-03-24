@@ -127,12 +127,11 @@ header {
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
-	width: 120px;
 	gap: 0.6rem;
 	top: 1rem;
 	left: 45.5%;
 	z-index: 90;
-	padding: 0.6em;
+	padding: 8px 12px 8px 12px;
 	overflow: hidden;
 	background: rgba(240,240,240,0.6);
 	backdrop-filter: blur(6px);
