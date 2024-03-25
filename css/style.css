@@ -139,7 +139,7 @@ header {
 	-webkit-backdrop-filter: blur(6px);
 	border-radius: 40px;
 	animation-name: nav-animation;
-	animation-duration: 1.4s;
+	animation-duration: 1.2s;
   animation-timing-function: cubic-bezier(0.42, 0.24, 0.02, 1);
 }
 
@@ -162,12 +162,12 @@ header {
 }
 
 @keyframes nav-animation {
-	from {
-		width: 43px;
+	0% {
+		width: 80px;
 		background: rgba(240,240,240,0.1);
-		opacity: 0.2;
+		opacity: 0;
 	}
-	to {
+	100% {
 		width: 100px;
 		background: rgba(240,240,240,0.6);
 		opacity: 1;
