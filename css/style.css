@@ -225,6 +225,7 @@ a:hover {
 .git-btn:after {
 	content: '↗';
 	margin-left: 4px;
+	text-decoration: underline;
 }
 
 p.primary {
