@@ -222,9 +222,7 @@ a:hover {
 
 }
 
-.git-btn:after {
-	content: '↗';
-	margin-left: 4px;
+.email-btn {
 	text-decoration: underline;
 }
 
