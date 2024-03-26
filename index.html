@@ -58,7 +58,7 @@
 			<p class="primary">
 				While I consider research and user testing as natural part of my workflow to craft great products, my true passion lies in tinkering with complex prototypes.</a></p>
 			<p class="primary">
-				<a class="email-btn" href="mailto:hello@nils.io" target="_blank">hello@nils.io</a>
+				<span id="email-btn" onclick="copyCaption()" title="copy to clipboard">hello@nils.io</span>
 			</p>
 		</header>
 
@@ -253,7 +253,19 @@
 
 	$(".video-control").click(function () { 
 		$(".video-control").toggleClass("mute unmute"); 
-	}); 
+	});
+
+	const copyCaption = () =>{
+	  /* Get the text field */
+	  var copyText = document.getElementById("email-btn");
+
+	  /* Select the text field */
+	  copyText.select();
+	  copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+	  /* Copy the text inside the text field */
+	  document.execCommand("copy");
+	}
     	
 	}); // end
 	</script>

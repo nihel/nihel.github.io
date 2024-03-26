@@ -222,8 +222,12 @@ a:hover {
 
 }
 
-.email-btn {
+#email-btn {
 	text-decoration: underline;
+}
+
+#email-btn:hover {
+	cursor: pointer;
 }
 
 p.primary {
