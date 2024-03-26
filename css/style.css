@@ -224,13 +224,14 @@ a:hover {
 
 #email-btn {
 	text-decoration: underline;
+	text-underline-offset: 1px;
 	transition: 0.3s ease;
 }
 
 #email-btn:hover {
 	cursor: pointer;
 	text-underline-offset: 4px;
-	transition: 0.3s ease;
+ 	animation-timing-function: cubic-bezier(0.42, 0.24, 0.02, 1);
 }
 
 p.primary {
