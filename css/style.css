@@ -100,7 +100,8 @@ html.sr .load-hidden {
 	--grey: #555555;
 	--lightgrey: #cccccc;
 	--white: #ffffff;
-	--alabaster: #F2F2F2;
+	--lightblue: #E6F3FF;
+	--blue: #2A7BC8;
 }
 
 body {
@@ -351,7 +352,8 @@ p.desc {
 
 .noteworthy li {
 	font-family: 'PPNeueMontreal-Medium', 'Helvetica', sans-serif;
-	background-color: var(--alabaster);
+	background-color: var(--lightblue);
+	color: var(--blue);
 	font-size: 14px;
 	letter-spacing: 0.6px;
 	padding: 4px 8px 4px 8px;
@@ -366,7 +368,7 @@ p.desc {
 
 .viewer {
 	width: 215px;
-	height: 498px;
+	height: px;
 	overflow: hidden;
 	border-radius: 10px;
 	z-index: 10;
