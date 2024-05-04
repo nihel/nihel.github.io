@@ -100,8 +100,6 @@ html.sr .load-hidden {
 	--grey: #555555;
 	--lightgrey: #cccccc;
 	--white: #ffffff;
-	--lightblue: #E6F3FF;
-	--blue: #2A7BC8;
 }
 
 body {
@@ -352,8 +350,9 @@ p.desc {
 
 .noteworthy li {
 	font-family: 'PPNeueMontreal-Medium', 'Helvetica', sans-serif;
-	background-color: var(--lightblue);
-	color: var(--blue);
+	background: var(--white);
+	border: 1px solid var(--lightgrey);
+	color: var(--grey);
 	font-size: 14px;
 	letter-spacing: 0.6px;
 	padding: 4px 8px 4px 8px;
