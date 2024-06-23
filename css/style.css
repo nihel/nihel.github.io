@@ -432,6 +432,10 @@ ul{
 
 @media screen and (max-width: 950px) and (min-width: 700px) {
 	
+	h2 {
+		font-size: 22px;
+	}
+	
 	.nav {
 		left: 42%;
 	}
@@ -458,11 +462,15 @@ ul{
 	}
 
 	h2 {
-		font-size: 24px;
+		font-size: 22px;
 	}
 
 	h3 {
 		font-size: 16px;
+	}
+
+	p.primary {
+		font-size: 17px;
 	}
 
 	.nav {
