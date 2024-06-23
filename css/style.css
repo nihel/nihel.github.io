@@ -260,12 +260,12 @@ p.desc {
 }
 
 .chapter {
-	width: 11rem;
+	width: 22vh;
 	padding-top: 0.6rem;
 }
 
 .chapter-content {
-	width: 31.25rem;
+	width: 64vh;
 	display: flex;
 	flex-direction: column;
 	gap: 1rem;
