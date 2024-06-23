@@ -109,11 +109,11 @@ body {
 }
 
 main {
-	max-width: 59rem;
-	margin: 1.25rem auto;
-	padding-top: 6rem;
+	max-width: 120vh;
+	margin: 1vh auto;
+	padding-top: 12vh;
 	display: grid;
-	gap: 4rem;
+	gap: 4vh;
 }
 
 header {
