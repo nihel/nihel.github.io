@@ -445,7 +445,7 @@ ul{
 @media screen and (max-width: 699px) and (min-width: 412px) {
 	main {
 		max-width: 23rem;
-		margin: 1.25rem auto;
+		margin: 20% auto;
 	}
 
 	header {
@@ -498,7 +498,7 @@ ul{
 @media screen and (max-width: 390px) {
 	main {
 		max-width: 21rem;
-		margin: 1.25rem auto;
+		margin: 20% auto;
 	}
 
 	header {
