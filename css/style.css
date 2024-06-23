@@ -109,15 +109,14 @@ body {
 }
 
 main {
-	max-width: 120vh;
-	margin: 1vh auto;
-	padding-top: 12vh;
+	max-width: 950px;
+	margin: 10% auto;
 	display: grid;
-	gap: 6vh;
+	gap: 2%;
 }
 
 header {
-	width: 82vh;
+	width: 648px;
 	margin: auto;
 }
 
@@ -260,12 +259,12 @@ p.desc {
 }
 
 .chapter {
-	width: 22vh;
+	width: 160px;
 	padding-top: 0.6rem;
 }
 
 .chapter-content {
-	width: 64vh;
+	width: 500px;
 	display: flex;
 	flex-direction: column;
 	gap: 1rem;
