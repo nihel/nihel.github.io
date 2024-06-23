@@ -442,9 +442,9 @@ ul{
 
 }
 
-@media screen and (max-width: 699px) and (min-width: 412px) {
+@media screen and (max-width: 699px) and (min-width: 501px) {
 	main {
-		max-width: 23rem;
+		max-width: 500px;
 		margin: 20% auto;
 	}
 
@@ -495,7 +495,7 @@ ul{
 
 }
 
-@media screen and (max-width: 390px) {
+@media screen and (width <= 500px) {
 	main {
 		max-width: 21rem;
 		margin: 20% auto;
