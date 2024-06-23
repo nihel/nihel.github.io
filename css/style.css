@@ -253,9 +253,10 @@ p.desc {
 
 
 .links {
-	justify-content: center;
 	display: flex;
-	gap: 1rem;
+	margin: auto;
+	width: 648px;
+	justify-content: space-between;
 }
 
 .chapter {
