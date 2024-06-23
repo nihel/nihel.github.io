@@ -255,7 +255,6 @@ p.desc {
 .links {
 	display: flex;
 	margin: auto;
-	width: 648px;
 	justify-content: space-between;
 }
 
