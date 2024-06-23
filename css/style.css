@@ -268,7 +268,7 @@ p.desc {
 	width: 31.25rem;
 	display: flex;
 	flex-direction: column;
-	gap: 0.8rem;
+	gap: 1rem;
 }
 
 .badge {
