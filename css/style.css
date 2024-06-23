@@ -112,10 +112,11 @@ main {
 	max-width: 59rem;
 	margin: 1.25rem auto;
 	padding-top: 6rem;
+	display: grid;
+	gap: 2rem;
 }
 
 header {
-	padding-bottom: 2rem;
 	width: 40rem;
 	margin: auto;
 }
@@ -253,14 +254,14 @@ p.desc {
 
 
 .links {
-	padding-bottom: 3rem;
 	justify-content: center;
 	display: flex;
+	gap: 1rem;
 }
 
 .chapter {
 	width: 11rem;
-	padding: 0.6rem;
+	padding-top: 0.6rem;
 }
 
 .chapter-content {
@@ -361,7 +362,6 @@ p.desc {
 
 .origami {
 	position: relative;
-	margin-bottom: 4rem;
 	user-select: none;
 }
 
