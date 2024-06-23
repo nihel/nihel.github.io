@@ -254,8 +254,8 @@ p.desc {
 
 .links {
 	display: flex;
-	margin: auto;
-	justify-content: space-between;
+	justify-content: center;
+    	gap: 1rem;
 }
 
 .chapter {
@@ -438,6 +438,11 @@ ul{
 
 	header {
 		width: auto;
+	}
+
+	.links {
+		justify-content: space-between;
+		gap: 0;
 	}
 	
 	h2 {
