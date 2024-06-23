@@ -440,6 +440,10 @@ ul{
 		display: none;
 	}
 
+	p.primary {
+		font-size: 19px;
+	}
+
 }
 
 @media screen and (max-width: 699px) and (min-width: 550px) {
