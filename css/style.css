@@ -443,6 +443,10 @@ ul{
 	h2 {
 		font-size: 22px;
 	}
+
+	.links {
+		justify-content: space-between;
+	}
 	
 	.nav {
 		left: 42%;
@@ -460,7 +464,7 @@ ul{
 
 @media screen and (max-width: 699px) and (min-width: 550px) {
 	main {
-		max-width: 540px;
+		max-width: 500px;
 		margin: 15% auto;
 	}
 
