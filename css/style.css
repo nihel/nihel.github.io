@@ -61,7 +61,6 @@ img {
 	-webkit-user-drag: none;
 	-moz-user-drag: none;
 	-o-user-drag: none;
-	user-drag: none;
 }
 
 /* http://cssreset.com */
@@ -139,7 +138,7 @@ header {
 	border-radius: 40px;
 	animation-name: nav-animation;
 	animation-duration: 1.2s;
-  animation-timing-function: cubic-bezier(0.42, 0.24, 0.02, 1);
+  	animation-timing-function: cubic-bezier(0.42, 0.24, 0.02, 1);
 }
 
 .favicon {
@@ -267,15 +266,11 @@ p.desc {
 	width: 500px;
 	display: flex;
 	flex-direction: column;
-	gap: 1rem;
+	gap: 32px;
 }
 
 .badge {
-	background: var(--white);
-	border: 1px solid var(--lightgrey);
 	color: var(--grey);
-	border-radius: 12px;
-	padding: 0.2rem 0.6rem;
 	font-size: 14px;
 	letter-spacing: 0.4px;
 }
@@ -285,10 +280,21 @@ p.desc {
 	height: 24px;
 }
 
-.flex {
+.company-header {
 	display: flex;
 	align-items: center;
-	gap: 0.8rem;
+	justify-content: space-between;
+}
+
+.company-info {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.flex {
+	display: flex;
+	flex-direction: column;
 }
 
 .card {
