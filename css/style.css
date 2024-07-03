@@ -118,6 +118,9 @@ main {
 header {
 	width: 800px;
 	margin: auto;
+}
+
+.introduction {
 	background: -webkit-linear-gradient(280deg, #555555, #181818);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
@@ -228,6 +231,7 @@ a:hover {
 	text-decoration: underline;
 	text-underline-offset: 1px;
 	transition: 0.3s ease;
+	font-size: 28px;;
 }
 
 #email-btn:hover {
