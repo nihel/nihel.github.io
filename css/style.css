@@ -111,12 +111,16 @@ main {
 	max-width: 950px;
 	margin: 10% auto;
 	display: grid;
+	align-items: center;
 	gap: 2%;
 }
 
 header {
-	width: 648px;
+	width: 800px;
 	margin: auto;
+	background: -webkit-linear-gradient(280deg, #555555, #181818);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
 }
 
 .nav {
@@ -233,11 +237,10 @@ a:hover {
 }
 
 p.primary {
-	font-family: 'PPNeueMontreal-Regular', 'Helvetica', sans-serif;
-	color: var(--black);
-	font-size: 22px;
+	font-family: 'PPNeueMontreal-Medium', 'Helvetica', sans-serif;
+	font-size: 28px;
 	line-height: 124%;
-	letter-spacing: 0.4px;
+	letter-spacing: 0.2px;
 	margin-bottom: 1rem;
 }
 
