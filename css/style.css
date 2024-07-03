@@ -236,7 +236,6 @@ a:hover {
 	text-decoration: underline;
 	text-underline-offset: 1px;
 	transition: 0.3s ease;
-	font-size: 28px;;
 }
 
 #email-btn:hover {
