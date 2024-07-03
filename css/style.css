@@ -97,8 +97,13 @@ html.sr .load-hidden {
 :root {
 	--black: #181818;
 	--grey: #555555;
-	--lightgrey: #cccccc;
+	--lightgrey: #888888;
 	--white: #ffffff;
+	--color1: #9CF0A5;
+	--color2: #9492F0;
+	--color3: #FFB763;
+	--color4: #F092E1;
+	--color5: #FFEB80;
 }
 
 body {
@@ -149,12 +154,12 @@ header {
 }
 
 .favicon {
-		background-image: url(../images/favicons/favicon.svg);
-		width: 24px;
-		height: 24px;
-		animation-name: fade-in;
-		animation-duration: 4s;
- 		animation-timing-function: cubic-bezier(0.42, 0.24, 0.02, 1);
+	background-image: url(../images/favicons/favicon.svg);
+	width: 24px;
+	height: 24px;
+	animation-name: fade-in;
+	animation-duration: 4s;
+ 	animation-timing-function: cubic-bezier(0.42, 0.24, 0.02, 1);
 }
 
 @keyframes fade-in {
@@ -249,8 +254,8 @@ p.primary {
 }
 
 p.desc {
-	font-family: 'PPNeueMontreal-Regular', 'Helvetica', sans-serif;
-	color: var(--grey);
+	font-family: 'PPNeueMontreal-Medium', 'Helvetica', sans-serif;
+	color: var(--lightgrey);
 	font-size: 16px;
 	line-height: 132%;
 	letter-spacing: 0.4px;
@@ -265,7 +270,7 @@ p.desc {
 }
 
 .chapter {
-	width: 160px;
+	width: 200px;
 	padding-top: 0.6rem;
 }
 
@@ -277,7 +282,8 @@ p.desc {
 }
 
 .badge {
-	color: var(--grey);
+	font-family: 'PPNeueMontreal-Medium', 'Helvetica', sans-serif;
+	color: var(--black);
 	font-size: 14px;
 	letter-spacing: 0.4px;
 }
@@ -353,23 +359,20 @@ p.desc {
 }
 
 .noteworthy ul {
-  flex-direction: row;
-	padding-top: 0.6rem;
-	width: fit-content;
-	display: inline-flex;
-	gap: 8px;
-	flex-wrap: wrap;
+	flex-direction: row;
+    padding-top: 0.6rem;
+    width: fit-content;
+    display: inline-flex;
+    gap: 8px;
+    flex-wrap: wrap;
 }
 
 .noteworthy li {
 	font-family: 'PPNeueMontreal-Medium', 'Helvetica', sans-serif;
-	background: var(--white);
-	border: 1px solid var(--lightgrey);
-	color: var(--grey);
+	color: var(--black);
 	font-size: 14px;
 	letter-spacing: 0.6px;
 	padding: 4px 8px 4px 8px;
-	border-radius: 12px;
 }
 
 .origami {
