@@ -24,21 +24,15 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const fadeIn = () => {
-        content.style.opacity = 0;
-        setTimeout(() => {
-            content.style.transition = 'opacity 0.2s';
-            content.style.opacity = 1;
-        }, 10);
+        gsap.fromTo(content, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" });
     };
 
     const navigate = (hash) => {
         const url = routes[hash];
         if (url) {
-            content.style.transition = 'none';
-            content.style.opacity = 0;
-            setTimeout(() => {
+            gsap.to(content, { opacity: 0, duration: 0.5, ease: "power2.inOut", onComplete: () => {
                 loadContent(url);
-            }, 200);
+            }});
         } else {
             content.innerHTML = '<h1>404 Not Found</h1><p>The page you are looking for does not exist.</p>';
             fadeIn();
