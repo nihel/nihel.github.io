@@ -113,7 +113,7 @@ main {
 	margin: 10% auto;
 	display: grid;
 	align-items: center;
-	gap: 2%;
+	gap: 4rem;
 }
 
 header {
@@ -130,11 +130,11 @@ header {
 .nav {
 	position: fixed;
 	display: flex;
-	flex-direction: row;
 	align-items: center;
 	justify-content: center;
-	gap: 8px;
-	width: 100px;
+	gap: 1rem;
+	width: 208px;
+	height: 48px;
 	top: 1rem;
 	left: 45.5%;
 	z-index: 90;
@@ -147,6 +147,19 @@ header {
 	animation-name: nav-animation;
 	animation-duration: 1.2s;
   	animation-timing-function: cubic-bezier(0.42, 0.24, 0.02, 1);
+}
+
+nav ul {
+	display: inline-flex;
+	gap: 1rem;
+}
+
+nav ul li {
+	font-family: 'PPNeueMontreal-Medium', 'Helvetica', sans-serif;
+	font-size: 19px;
+	animation-name: fade-in;
+	animation-duration: 4s;
+ 	animation-timing-function: cubic-bezier(0.42, 0.24, 0.02, 1);
 }
 
 .favicon {
@@ -174,7 +187,7 @@ header {
 		opacity: 0;
 	}
 	100% {
-		width: 100px;
+		width: 208px;
 		background: rgba(240,240,240,0.6);
 		opacity: 1;
 	}
@@ -182,12 +195,10 @@ header {
 
 h1 {
 	font-family: 'PPNeueMontreal-Medium', 'Helvetica', sans-serif;
-	font-size: 16px;
-	letter-spacing: 0.4px;
-	color: var(--black);
-	animation-name: fade-in;
-	animation-duration: 4s;
- 	animation-timing-function: cubic-bezier(0.42, 0.24, 0.02, 1);
+	font-size: 28px;
+	line-height: 124%;
+	letter-spacing: 0.2px;
+	margin-bottom: 1rem;
 }
 
 h2 {
@@ -260,12 +271,13 @@ p.desc {
 
 .links {
 	display: flex;
-	justify-content: center;
-    	gap: 1rem;
+	flex-direction: column;
+	align-items: center;
+    gap: 2rem;
 }
 
 .chapter {
-	width: 200px;
+	width: auto;
 	padding-top: 0.6rem;
 }
 
@@ -428,15 +440,17 @@ p.desc {
 }
 
 footer {
-	padding-bottom: 3rem;
-	justify-content: center;
 	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-bottom: 3rem;
+	gap: 2rem;
 }
 
-ul{
-	width: fit-content;
+.chapter-content ul {
 	display: inline-flex;
-	gap: 1rem;
+	justify-content: center;
+	gap: 2rem;
 }
 
 /* Mobile views */

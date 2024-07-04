@@ -3,7 +3,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const routes = {
         '#/': 'home.html',
-        '#/cv': 'cv.html',
+        '#/work': 'work.html',
+        '#/journey': 'journey.html'
     };
 
     const loadContent = (url) => {
