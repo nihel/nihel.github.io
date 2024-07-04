@@ -136,14 +136,13 @@ header {
 	width: 208px;
 	height: 48px;
 	top: 1rem;
-	left: 45.5%;
+	left: 42.5%;
 	z-index: 90;
-	padding: 8px 12px 8px 12px;
 	overflow: hidden;
 	background: rgba(240,240,240,0.6);
 	backdrop-filter: blur(6px);
 	-webkit-backdrop-filter: blur(6px);
-	border-radius: 40px;
+	border-radius: 8px;
 	animation-name: nav-animation;
 	animation-duration: 1.2s;
   	animation-timing-function: cubic-bezier(0.42, 0.24, 0.02, 1);
@@ -156,7 +155,7 @@ nav ul {
 
 nav ul li {
 	font-family: 'PPNeueMontreal-Medium', 'Helvetica', sans-serif;
-	font-size: 19px;
+	font-size: 16px;
 	animation-name: fade-in;
 	animation-duration: 4s;
  	animation-timing-function: cubic-bezier(0.42, 0.24, 0.02, 1);

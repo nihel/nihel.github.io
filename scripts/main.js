@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
         xhr.onreadystatechange = () => {
             if (xhr.readyState === 4 && xhr.status === 200) {
                 content.innerHTML = xhr.responseText;
+                initializeVideoControls();
                 fadeIn();
             } else if (xhr.readyState === 4 && xhr.status !== 200) {
                 content.innerHTML = '<h1>404 Not Found</h1><p>The page you are looking for does not exist.</p>';
