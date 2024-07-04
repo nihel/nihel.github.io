@@ -99,17 +99,13 @@ html.sr .load-hidden {
 	--grey: #555555;
 	--lightgrey: #888888;
 	--white: #ffffff;
-	--color1: #9CF0A5;
-	--color2: #9492F0;
-	--color3: #FFB763;
-	--color4: #F092E1;
-	--color5: #FFEB80;
 }
 
 body {
 	font-family: 'PPNeueMontreal-Regular', 'Helvetica', sans-serif;
 	background: var(--white);
 	color: var(--grey);
+	cursor: default;
 }
 
 main {
@@ -556,6 +552,11 @@ ul{
 
 	p.primary {
 		font-size: 16px;
+		line-height: 126%;
+	}
+
+	p.desc {
+		font-size: 14px;
 		line-height: 126%;
 	}
 
