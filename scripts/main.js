@@ -23,6 +23,15 @@ document.addEventListener('DOMContentLoaded', () => {
         xhr.send();
     };
 
+    const applyStyles = () => {
+        document.querySelectorAll('.dynamic-style').forEach(link => link.remove());
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = 'styles/styles.css';
+        link.classList.add('dynamic-style');
+        document.head.appendChild(link);
+    };
+
     const fadeIn = () => {
         gsap.fromTo(content, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" });
     };
