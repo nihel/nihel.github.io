@@ -2,8 +2,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const content = document.getElementById('content');
 
     const routes = {
-        '/': 'home.html',
-        '/cv': 'cv.html',
+        '#/': 'home.html',
+        '#/cv': 'cv.html',
     };
 
     const loadContent = (url) => {
@@ -29,8 +29,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 10);
     };
 
-    const navigate = (path) => {
-        const url = routes[path];
+    const navigate = (hash) => {
+        const url = routes[hash];
         if (url) {
             content.style.transition = 'none';
             content.style.opacity = 0;
@@ -43,21 +43,24 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    const handleLinkClick = (e) => {
-        if (e.target.matches('[data-link]')) {
-            e.preventDefault();
-            const path = e.target.getAttribute('href');
-            window.history.pushState(null, null, path);
-            navigate(path);
-        }
+    const handleHashChange = () => {
+        navigate(window.location.hash);
     };
 
-    window.addEventListener('popstate', () => {
-        navigate(window.location.pathname);
+    window.addEventListener('hashchange', handleHashChange);
+
+    document.body.addEventListener('click', (e) => {
+        if (e.target.matches('[data-link]')) {
+            e.preventDefault();
+            const hash = e.target.getAttribute('href');
+            window.location.hash = hash;
+        }
     });
 
-    document.body.addEventListener('click', handleLinkClick);
-
-    // Load the initial content based on the current path
-    navigate(window.location.pathname);
+    // Load the initial content based on the current hash
+    if (!window.location.hash) {
+        window.location.hash = '#/';
+    } else {
+        navigate(window.location.hash);
+    }
 });
