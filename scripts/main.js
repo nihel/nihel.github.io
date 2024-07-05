@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const routes = {
       '#/': 'home.html',
       '#/work': 'work.html',
-      '#/journey': 'journey.html'
+      '#/resume': 'resume.html'
   };
 
   const loadContent = (url) => {
@@ -30,14 +30,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const fadeIn = () => {
       console.log('Fading in content');
-      gsap.fromTo(content, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" });
+      gsap.fromTo(content, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power3.Out" });
   };
 
   const navigate = (hash) => {
       console.log(`Navigating to: ${hash}`);
       const url = routes[hash];
       if (url) {
-          gsap.to(content, { opacity: 0, duration: 0.5, ease: "power2.inOut", onComplete: () => {
+          gsap.to(content, { opacity: 0, duration: 0.5, ease: "power3.Out", onComplete: () => {
               loadContent(url);
           }});
       } else {

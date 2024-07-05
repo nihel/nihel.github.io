@@ -105,7 +105,30 @@ body {
 	font-family: 'PPNeueMontreal-Regular', 'Helvetica', sans-serif;
 	background: var(--white);
 	color: var(--grey);
-	cursor: default;
+}
+
+* {
+	cursor: none;
+}
+
+.custom-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 28px; /* Adjust the size of the cursor */
+    height: 28px; /* Adjust the size of the cursor */
+    border-radius: 50%;
+    background: rgba(105, 105, 105, 0.4); /* Semi-transparent background */
+    pointer-events: none; /* Prevent cursor from blocking interactions */
+    transform: translate(-50%, -50%); /* Center the circle on the cursor */
+    z-index: 10000;
+	visibility: visible;
+}
+
+.custom-cursor.hover {
+    width: 16px;
+    height: 16px;
+    background: rgba(105, 105, 105, 0.2);
 }
 
 main {
@@ -245,7 +268,6 @@ a:hover {
 }
 
 #email-btn:hover {
-	cursor: pointer;
 	text-underline-offset: 4px;
  	animation-timing-function: cubic-bezier(0.42, 0.24, 0.02, 1);
 }
@@ -341,7 +363,7 @@ p.desc {
 	pointer-events: none;
 	transition: 0.3s ease;
 	transform-origin: center;
-	scale: 1.05;
+	scale: 1.06;
 }
 
 .card:hover::after {
@@ -352,33 +374,12 @@ p.desc {
 	height: 100%;
 	width: 100%;
 	border-radius: 6px;
-	background: rgba(0,0,0,0.05);
+	background: rgba(0,0,0,0.04);
 	z-index: -1;
 	pointer-events: none;
 	transition: 0.3s ease;
 	transform-origin: center;
 	scale: 1;
-}
-
-.noteworthy {
-	padding: 0.6rem;
-}
-
-.noteworthy ul {
-	flex-direction: row;
-    padding-top: 0.6rem;
-    width: fit-content;
-    display: inline-flex;
-    gap: 8px;
-    flex-wrap: wrap;
-}
-
-.noteworthy li {
-	font-family: 'PPNeueMontreal-Medium', 'Helvetica', sans-serif;
-	color: var(--black);
-	font-size: 14px;
-	letter-spacing: 0.6px;
-	padding: 4px 8px 4px 8px;
 }
 
 .origami {
