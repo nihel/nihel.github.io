@@ -8,23 +8,29 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const loadContent = (url) => {
+      console.log(`Loading content from: ${url}`);
       const xhr = new XMLHttpRequest();
       xhr.open('GET', url, true);
       xhr.onreadystatechange = () => {
-          if (xhr.readyState === 4 && xhr.status === 200) {
-              content.innerHTML = xhr.responseText;
-              initializeVideoControls();
-              fadeIn();
-              applyStyles();
-          } else if (xhr.readyState === 4 && xhr.status !== 200) {
-              content.innerHTML = '<h1>404 Not Found</h1><p>The page you are looking for does not exist.</p>';
-              fadeIn();
+          if (xhr.readyState === 4) {
+              if (xhr.status === 200) {
+                  console.log('Content loaded successfully');
+                  content.innerHTML = xhr.responseText;
+                  initializeVideoControls();
+                  fadeIn();
+                  applyStyles();
+              } else {
+                  console.error('Failed to load content:', xhr.status);
+                  content.innerHTML = '<h1>404 Not Found</h1><p>The page you are looking for does not exist.</p>';
+                  fadeIn();
+              }
           }
       };
       xhr.send();
   };
 
   const applyStyles = () => {
+      console.log('Applying styles');
       document.querySelectorAll('.dynamic-style').forEach(link => link.remove());
       const link = document.createElement('link');
       link.rel = 'stylesheet';
@@ -34,22 +40,26 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const fadeIn = () => {
+      console.log('Fading in content');
       gsap.fromTo(content, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" });
   };
 
   const navigate = (hash) => {
+      console.log(`Navigating to: ${hash}`);
       const url = routes[hash];
       if (url) {
           gsap.to(content, { opacity: 0, duration: 0.5, ease: "power2.inOut", onComplete: () => {
               loadContent(url);
           }});
       } else {
+          console.error('Invalid route:', hash);
           content.innerHTML = '<h1>404 Not Found</h1><p>The page you are looking for does not exist.</p>';
           fadeIn();
       }
   };
 
   const handleHashChange = () => {
+      console.log('Hash changed:', window.location.hash);
       navigate(window.location.hash);
   };
 
@@ -59,6 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (e.target.matches('[data-link]')) {
           e.preventDefault();
           const hash = e.target.getAttribute('href');
+          console.log('Link clicked:', hash);
           window.location.hash = hash;
       }
   });
@@ -66,6 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Function to load the initial content
   const loadInitialContent = () => {
       const initialHash = window.location.hash || '#/';
+      console.log('Initial content load:', initialHash);
       navigate(initialHash);
   };
 
