@@ -18,7 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
                   content.innerHTML = xhr.responseText;
                   initializeVideoControls();
                   fadeIn();
-                  applyStyles();
               } else {
                   console.error('Failed to load content:', xhr.status);
                   content.innerHTML = '<h1>404 Not Found</h1><p>The page you are looking for does not exist.</p>';
@@ -27,16 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
           }
       };
       xhr.send();
-  };
-
-  const applyStyles = () => {
-      console.log('Applying styles');
-      document.querySelectorAll('.dynamic-style').forEach(link => link.remove());
-      const link = document.createElement('link');
-      link.rel = 'stylesheet';
-      link.href = 'styles/styles.css';
-      link.classList.add('dynamic-style');
-      document.head.appendChild(link);
   };
 
   const fadeIn = () => {
