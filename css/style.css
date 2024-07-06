@@ -140,6 +140,9 @@ header {
 	background: -webkit-linear-gradient(280deg, #555555, #181818);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
+	-moz-background-clip: text;
+	-moz-text-fill-color: transparent;
+	background-clip: text;
 }
 
 .nav {
@@ -171,9 +174,14 @@ nav ul li {
 	display: flex;
     height: 40px;
     width: 72px;
-    border-radius: 4px;
+    border-radius: 6px;
     align-items: center;
     justify-content: center;
+	transition: 0.3s ease;
+}
+
+nav ul li:hover {
+	background-color: rgba(255, 255, 255, 0.8);
 	transition: 0.3s ease;
 }
 
@@ -186,14 +194,19 @@ nav ul li a {
  	animation-timing-function: cubic-bezier(0.42, 0.24, 0.02, 1);
 	display: flex;
 	width: -webkit-fill-available;
+	width: -moz-available;
+	width: fill-available;
 	height: -webkit-fill-available;
+	height: -moz-available;
+	height: fill-available;
  	justify-content: center;
 	align-items: center;
 }
 
-nav ul li:hover {
-	background-color: rgba(255, 255, 255, 0.6);
-	transition: 0.3s ease;
+nav ul li.active a {
+    background-color: rgba(255, 255, 255, 0.8);
+    transition: 0.3s ease;
+	border-radius: 6px;
 }
 
 .favicon {
@@ -454,6 +467,9 @@ footer {
 	align-items: center;
 	padding-bottom: 3rem;
 	gap: 2rem;
+	animation-name: fade-in;
+	animation-duration: 1s;
+  	animation-timing-function: cubic-bezier(0.42, 0.24, 0.02, 1);
 }
 
 .chapter-content ul {
