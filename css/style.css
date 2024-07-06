@@ -115,20 +115,11 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    width: 28px; /* Adjust the size of the cursor */
-    height: 28px; /* Adjust the size of the cursor */
     border-radius: 50%;
-    background: rgba(105, 105, 105, 0.4); /* Semi-transparent background */
     pointer-events: none; /* Prevent cursor from blocking interactions */
     transform: translate(-50%, -50%); /* Center the circle on the cursor */
     z-index: 10000;
 	visibility: visible;
-}
-
-.custom-cursor.hover {
-    width: 16px;
-    height: 16px;
-    background: rgba(105, 105, 105, 0.2);
 }
 
 main {
@@ -262,6 +253,10 @@ a:hover {
 }
 
 #email-btn {
+	font-family: 'PPNeueMontreal-Medium', 'Helvetica', sans-serif;
+	font-size: 28px;
+	line-height: 124%;
+	letter-spacing: 0.2px;
 	text-decoration: underline;
 	text-underline-offset: 1px;
 	transition: 0.3s ease;
@@ -422,7 +417,6 @@ p.desc {
 }
 
 .video-control:hover {
-	cursor: pointer;
 	transition: 0.3s ease;
 	transform-origin: center;
 	scale: 1.2;
