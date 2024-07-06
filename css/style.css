@@ -99,6 +99,7 @@ html.sr .load-hidden {
 	--grey: #555555;
 	--lightgrey: #888888;
 	--white: #ffffff;
+	--blue: #3E80FF;
 }
 
 body {
@@ -146,16 +147,15 @@ header {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	gap: 1rem;
-	width: 208px;
-	height: 48px;
-	top: 1rem;
+	gap: 4px;
+	top: 24px;
+	padding: 4px;
 	left: 42.5%;
 	z-index: 90;
 	overflow: hidden;
-	background: rgba(240,240,240,0.6);
+	background: rgba(240,240,240,0.8);
 	backdrop-filter: blur(6px);
-	-webkit-backdrop-filter: blur(6px);
+	-webkit-backdrop-filter: blur(8px);
 	border-radius: 8px;
 	animation-name: nav-animation;
 	animation-duration: 1.2s;
@@ -164,15 +164,29 @@ header {
 
 nav ul {
 	display: inline-flex;
-	gap: 1rem;
+	gap: 4px;
 }
 
 nav ul li {
+	display: flex;
+    height: 40px;
+    width: 72px;
+    border-radius: 4px;
+    align-items: center;
+    justify-content: center;
+}
+
+nav ul li a {
 	font-family: 'PPNeueMontreal-Medium', 'Helvetica', sans-serif;
 	font-size: 16px;
+	letter-spacing: 0.4px;
 	animation-name: fade-in;
 	animation-duration: 4s;
  	animation-timing-function: cubic-bezier(0.42, 0.24, 0.02, 1);
+}
+
+nav ul li:hover {
+	background-color: rgba(255, 255, 255, 0.6);
 }
 
 .favicon {
@@ -200,7 +214,7 @@ nav ul li {
 		opacity: 0;
 	}
 	100% {
-		width: 208px;
+		width: 232px;
 		background: rgba(240,240,240,0.6);
 		opacity: 1;
 	}
@@ -248,10 +262,6 @@ a:visited {
 	color: var(--black);
 }
 
-a:hover {
-
-}
-
 #email-btn {
 	font-family: 'PPNeueMontreal-Medium', 'Helvetica', sans-serif;
 	font-size: 28px;
@@ -265,6 +275,7 @@ a:hover {
 #email-btn:hover {
 	text-underline-offset: 4px;
  	animation-timing-function: cubic-bezier(0.42, 0.24, 0.02, 1);
+	color: var(--blue);
 }
 
 p.primary {
