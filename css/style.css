@@ -514,6 +514,7 @@ p.combo {
 
 	main {
 		max-width: 700px;
+		margin: 14% auto 6%;
 	}
 
 	header {
@@ -560,7 +561,7 @@ p.combo {
 @media screen and (max-width: 799px) and (min-width: 550px) {
 	main {
 		max-width: 500px;
-		margin: 15% auto;
+		margin: 18% auto 8%;
 	}
 
 	header {
@@ -624,7 +625,8 @@ p.combo {
 @media screen and (width <= 549px) {
 	main {
 		max-width: 21rem;
-		margin: 20% auto;
+		margin: 24% auto 20%;
+		gap: 6rem;
 	}
 
 	header {
