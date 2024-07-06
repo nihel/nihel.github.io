@@ -31,6 +31,11 @@ document.addEventListener('DOMContentLoaded', initializeVideoControls);
 
 // Custom Cursor
 document.addEventListener('DOMContentLoaded', function() {
+    // Check if the device supports touch
+    if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+        return; // Exit the script if the device supports touch
+    }
+    
     const cursor = document.querySelector('.custom-cursor');
 
     // Function to update cursor position
