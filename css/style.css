@@ -174,6 +174,7 @@ nav ul li {
     border-radius: 4px;
     align-items: center;
     justify-content: center;
+	transition: 0.3s ease;
 }
 
 nav ul li a {
@@ -183,19 +184,22 @@ nav ul li a {
 	animation-name: fade-in;
 	animation-duration: 4s;
  	animation-timing-function: cubic-bezier(0.42, 0.24, 0.02, 1);
+	display: flex;
+	width: -webkit-fill-available;
+	height: -webkit-fill-available;
+ 	justify-content: center;
+	align-items: center;
 }
 
 nav ul li:hover {
 	background-color: rgba(255, 255, 255, 0.6);
+	transition: 0.3s ease;
 }
 
 .favicon {
 	background-image: url(../images/favicons/favicon.svg);
 	width: 24px;
 	height: 24px;
-	animation-name: fade-in;
-	animation-duration: 4s;
- 	animation-timing-function: cubic-bezier(0.42, 0.24, 0.02, 1);
 }
 
 @keyframes fade-in {
