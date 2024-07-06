@@ -153,7 +153,8 @@ header {
 	gap: 4px;
 	top: 24px;
 	padding: 4px;
-	left: 42.5%;
+	left: 50%;
+	transform: translateX(-50%);
 	z-index: 90;
 	overflow: hidden;
 	background: rgba(240,240,240,0.8);
@@ -519,30 +520,39 @@ p.combo {
 		width: auto;
 	}
 
-	.links {
-		justify-content: space-between;
-		gap: 0;
+	h1 {
+		font-size: 20px;
 	}
-	
+
 	h2 {
 		font-size: 22px;
 	}
-	
-	.nav {
-		left: 42%;
-	}
 
-	.origami {
-		display: none;
+	.chapter-content {
+		gap: 24px;
 	}
 
 	p.primary {
 		font-size: 20px;
 	}
 
+	#email-btn {
+		font-size: 20px;
+	}
+
+	.viewer {
+		width: 180px;
+		height: 386px;
+		top: 8%;
+	}
+
+	.viewer-header {
+		display: none;
+	}
+
 	footer {
 		justify-content: space-between;
-		gap: 0;
+		gap: 16px;
 	}
 
 }
@@ -558,24 +568,16 @@ p.combo {
 		margin: 0;
 	}
 
+	h1 {
+		font-size: 18px;
+	}
+
 	h2 {
 		font-size: 22px;
 	}
 
-	h3 {
-		font-size: 16px;
-	}
-
 	p.primary {
 		font-size: 18px;
-	}
-
-	.nav {
-		left: 34%;
-	}
-
-	.origami {
-		display: none;
 	}
 
 	.links {
@@ -590,6 +592,26 @@ p.combo {
 	.chapter {
 		width: auto;
 		padding-bottom: 1.4rem;
+	}
+
+	#email-btn {
+		font-size: 18px;
+	}
+
+	.viewer {
+		width: 120px;
+		height: 258px;
+	}
+
+	.viewer-header {
+		display: none;
+	}
+
+	.video-control {
+		top: 24px;
+		left: 16px;
+		width: 24px;
+		height: 24px;;
 	}
 
 	footer {
@@ -610,12 +632,12 @@ p.combo {
 		margin: 0;
 	}
 
-	h2 {
-		font-size: 24px;
+	h1 {
+		font-size: 16px;
 	}
 
-	h3 {
-		font-size: 16px;
+	h2 {
+		font-size: 24px;
 	}
 
 	p.primary {
@@ -624,16 +646,8 @@ p.combo {
 	}
 
 	p.desc {
-		font-size: 14px;
-		line-height: 126%;
-	}
-
-	.nav {
-		left: 34%;
-	}
-
-	.origami {
-		display: none;
+		font-size: 15px;
+		line-height: 128%;
 	}
 
 	.links {
@@ -650,9 +664,37 @@ p.combo {
 		padding-bottom: 1.4rem;
 	}
 
+	#email-btn {
+		font-size: 16px;
+	}
+
+	.viewer {
+		width: 140px;
+		height: 300px;
+		top: -20%;
+		left: 32%;
+	}
+
+	.viewer-header {
+		display: none;
+	}
+
+	.video-control {
+		top: 24px;
+		left: 16px;
+		width: 24px;
+		height: 24px;;
+	}
+
 	footer {
+		max-width: 21rem;
 		flex-direction: column;
 		align-items: center;
+	}
+
+	.footer-info {
+		flex-direction: column;
+		gap: 24px;
 	}
 
 }
