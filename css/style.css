@@ -409,7 +409,7 @@ p.desc {
 	scale: 1;
 }
 
-.origami {
+.frame {
 	position: relative;
 	user-select: none;
 }
@@ -462,6 +462,15 @@ p.desc {
 .unmute {
 	content: url(../images/assets/unmute.svg);
 	user-select: none;
+}
+
+.note {
+	font-size: 12px;
+	font-family: 'PPNeueMontreal-Medium', 'Helvetica', sans-serif;
+	letter-spacing: 0.6px;
+	color: var(--lightgrey);
+	display: block;
+	text-align: center;
 }
 
 footer {
@@ -638,7 +647,7 @@ p.combo {
 		font-size: 24px;
 	}
 
-     span {
+    .custom-heading span {
 		display: block;
 		margin-top: 20px;
 	  }
@@ -683,6 +692,10 @@ p.combo {
 	}
 
 	.video-control {
+		display: none;
+	}
+
+	.note {
 		display: none;
 	}
 
