@@ -55,6 +55,8 @@ html {
 }
 
 img {
+	max-width: 100%;
+	height: auto;
 	display: block;
 	margin: 0;
 	padding: 0;
@@ -128,6 +130,7 @@ main {
 	margin: 10% auto;
 	display: grid;
 	align-items: center;
+	justify-content: center;
 	gap: 4rem;
 }
 
@@ -409,7 +412,6 @@ p.desc {
 .origami {
 	position: relative;
 	user-select: none;
-	aspect-ratio: 14/9;
 }
 
 .viewer {
@@ -496,19 +498,8 @@ p.combo {
 	align-items: center;
 	gap: 4px;
 }
-.door {
-	background-image: url(../images/assets/door.svg);
-	width: 20px;
-	height: 20px;
-}
 
-.gpt {
-	background-image: url(../images/assets/chatgpt.svg);
-	width: 20px;
-	height: 20px;
-}
-
-/* Mobile views */
+/* Responsive */
 
 @media screen and (max-width: 1000px) and (min-width: 800px) {
 
@@ -624,8 +615,8 @@ p.combo {
 
 @media screen and (width <= 549px) {
 	main {
-		max-width: 21rem;
-		margin: 24% auto 20%;
+		max-width: 336px;
+		margin: 28% auto 24%;
 		gap: 6rem;
 	}
 
@@ -682,14 +673,11 @@ p.combo {
 	}
 
 	.video-control {
-		top: 24px;
-		left: 16px;
-		width: 24px;
-		height: 24px;;
+		display: none;
 	}
 
 	footer {
-		max-width: 21rem;
+		max-width: 336px;
 		flex-direction: column;
 		align-items: center;
 	}
