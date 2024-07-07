@@ -542,6 +542,11 @@ p.combo {
 		display: none;
 	}
 
+	.video-control {
+		top: 32px;
+		left: 16px;
+	}
+
 	footer {
 		justify-content: space-between;
 		gap: 16px;
@@ -601,9 +606,9 @@ p.combo {
 
 	.video-control {
 		top: 24px;
-		left: 16px;
+		left: 12px;
 		width: 24px;
-		height: 24px;;
+		height: 24px;
 	}
 
 	footer {
