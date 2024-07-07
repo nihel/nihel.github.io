@@ -638,6 +638,11 @@ p.combo {
 		font-size: 24px;
 	}
 
+     span {
+		display: block;
+		margin-top: 20px;
+	  }
+
 	p.primary {
 		font-size: 16px;
 		line-height: 126%;

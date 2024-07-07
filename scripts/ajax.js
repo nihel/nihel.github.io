@@ -18,10 +18,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     content.innerHTML = xhr.responseText;
                     initializeVideoControls();
                     fadeIn();
+                    window.scrollTo(0, 0); // Reset scroll position
                 } else {
                     console.error('Failed to load content:', xhr.status);
                     content.innerHTML = '<h1>404 Not Found</h1><p>The page you are looking for does not exist.</p>';
                     fadeIn();
+                    window.scrollTo(0, 0); // Reset scroll position
                 }
             }
         };
@@ -45,6 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Invalid route:', hash);
             content.innerHTML = '<h1>404 Not Found</h1><p>The page you are looking for does not exist.</p>';
             fadeIn();
+            window.scrollTo(0, 0); // Reset scroll position
         }
     };
   
@@ -84,4 +87,4 @@ document.addEventListener('DOMContentLoaded', () => {
   
     // Load the initial content
     loadInitialContent();
-  });
+});
