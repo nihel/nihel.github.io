@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Function to handle hover effect
     function handleHoverEffect(event) {
         if (event.target && typeof event.target.closest === 'function') {
-            if (event.target.closest('.card, nav, #email-btn, .video-control')) {
+            if (event.target.closest('.flex, .footer-social li, nav, #email-btn, .video-control')) {
                 gsap.to(cursor, {
                     width: 16,
                     height: 16,
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function handleHoverOutEffect(event) {
         if (event.target && typeof event.target.closest === 'function') {
-            if (event.target.closest('.card, nav, #email-btn, p.primary, .video-control, h1, h2')) {
+            if (event.target.closest('.flex, .footer-social li, nav, #email-btn, p.primary, .video-control, h1, h2')) {
                 gsap.to(cursor, {
                     width: 28,
                     height: 28,
