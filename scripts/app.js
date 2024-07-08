@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
         return; // Exit the script if the device supports touch
     }
-    
+
     const cursor = document.querySelector('.custom-cursor');
 
     // Function to update cursor position
@@ -68,36 +68,42 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Function to handle hover effect
     function handleHoverEffect(event) {
-        if (event.target.closest('.card, nav, #email-btn, .video-control')) {
-            gsap.to(cursor, {
-                width: 16,
-                height: 16,
-                backgroundColor: 'rgba(105, 105, 105, 0.2)',
-                duration: 0.15,
-                ease: 'power3.inOut'
-            });
-        } else if (event.target.closest('p.primary, h1, h2')) {
-            gsap.to(cursor, {
-                width: 4,
-                height: 28,
-                borderRadius: '2px',
-                backgroundColor: 'rgba(62, 128, 255, 1)',
-                duration: 0.15,
-                ease: 'power3.inOut'
-            });
+        if (event.target && typeof event.target.closest === 'function') {
+            if (event.target.closest('.card, nav, #email-btn, .video-control')) {
+                gsap.to(cursor, {
+                    width: 16,
+                    height: 16,
+                    backgroundColor: 'rgba(105, 105, 105, 0.2)',
+                    backdropFilter: 'blur(8px)',
+                    duration: 0.15,
+                    ease: 'power3.inOut'
+                });
+            } else if (event.target.closest('p.primary, h1, h2')) {
+                gsap.to(cursor, {
+                    width: 4,
+                    height: 28,
+                    borderRadius: '2px',
+                    backgroundColor: 'rgba(62, 128, 255, 1)',
+                    duration: 0.15,
+                    ease: 'power3.inOut'
+                });
+            }
         }
     }
 
     function handleHoverOutEffect(event) {
-        if (event.target.closest('.card, nav, #email-btn, p.primary, .video-control, h1, h2')) {
-            gsap.to(cursor, {
-                width: 28,
-                height: 28,
-                borderRadius: '50%',
-                backgroundColor: 'rgba(105, 105, 105, 0.4)',
-                duration: 0.15,
-                ease: 'power3.inOut'
-            });
+        if (event.target && typeof event.target.closest === 'function') {
+            if (event.target.closest('.card, nav, #email-btn, p.primary, .video-control, h1, h2')) {
+                gsap.to(cursor, {
+                    width: 28,
+                    height: 28,
+                    borderRadius: '50%',
+                    backgroundColor: 'rgba(105, 105, 105, 0.4)',
+                    backdropFilter: 'blur(0px)',
+                    duration: 0.15,
+                    ease: 'power3.inOut'
+                });
+            }
         }
     }
 
