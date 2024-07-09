@@ -531,8 +531,12 @@ footer {
     align-items: center;
     margin: auto;
     padding-bottom: 3rem;
+	opacity: 0;
+    transition: opacity 0.3s ease;
     animation-name: fade-in;
     animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-delay: 0.8s; /* Delay to start after nav-animation ends */
     animation-timing-function: cubic-bezier(0.42, 0.24, 0.02, 1);
 }
 
