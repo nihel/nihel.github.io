@@ -190,21 +190,25 @@ nav ul li:hover {
 }
 
 nav ul li a {
-	font-family: 'PPNeueMontreal-Medium', 'Helvetica', sans-serif;
-	font-size: 16px;
-	letter-spacing: 0.4px;
-	animation-name: fade-in;
-	animation-duration: 4s;
- 	animation-timing-function: cubic-bezier(0.42, 0.24, 0.02, 1);
-	display: flex;
-	width: -webkit-fill-available;
-	width: -moz-available;
-	width: fill-available;
-	height: -webkit-fill-available;
-	height: -moz-available;
-	height: fill-available;
- 	justify-content: center;
-	align-items: center;
+    font-family: 'PPNeueMontreal-Medium', 'Helvetica', sans-serif;
+    font-size: 16px;
+    letter-spacing: 0.4px;
+    display: flex;
+    width: -webkit-fill-available;
+    width: -moz-available;
+    width: fill-available;
+    height: -webkit-fill-available;
+    height: -moz-available;
+    height: fill-available;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    animation-name: fade-in;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-delay: 0.8s; /* Delay to start after nav-animation ends */
+    animation-timing-function: cubic-bezier(0.42, 0.24, 0.02, 1);
 }
 
 nav ul li.active a {
@@ -230,7 +234,7 @@ nav ul li.active a {
 
 @keyframes nav-animation {
 	0% {
-		width: 80px;
+		width: 32px;
 		background: rgba(240,240,240,0.1);
 		opacity: 0;
 	}
@@ -462,6 +466,52 @@ p.desc {
 .unmute {
 	content: url(../images/assets/unmute.svg);
 	user-select: none;
+}
+
+.work-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+}
+
+.work-item {
+    box-sizing: border-box;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+}
+
+.work-detail {
+	font-size: 16px;
+	font-family: 'PPNeueMontreal-Medium', 'Helvetica', sans-serif;
+	letter-spacing: 0.4px;
+	color: var(--black);
+}
+
+.work-name {
+	font-size: 14px;
+	font-family: 'PPNeueMontreal-Medium', 'Helvetica', sans-serif;
+	letter-spacing: 0.4px;
+	color: var(--lightgrey);
+}
+
+.work-placeholder {
+	width: 950px;
+	height: 400px;
+	background-color: var(--lightgrey);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#work-image {
+	max-width: 100%;
+	max-height: 100%;
+	object-fit: cover;
+	opacity: 1;
+	transition: opacity 1s;
 }
 
 .note {

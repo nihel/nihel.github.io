@@ -1,12 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
     const content = document.getElementById('content');
-  
+
     const routes = {
         '#/': 'home.html',
         '#/work': 'work.html',
         '#/resume': 'resume.html'
     };
-  
+
     const loadContent = (url) => {
         console.log(`Loading content from: ${url}`);
         const xhr = new XMLHttpRequest();
@@ -29,17 +29,20 @@ document.addEventListener('DOMContentLoaded', () => {
         };
         xhr.send();
     };
-  
+
     const fadeIn = () => {
         console.log('Fading in content');
-        gsap.fromTo(content, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power3.Out" });
+        gsap.fromTo(content, 
+            { opacity: 0, y: 24 },  // Start with opacity 0 and slightly below
+            { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }  // Fade in and move upwards
+        );
     };
-  
+
     const navigate = (hash) => {
         console.log(`Navigating to: ${hash}`);
         const url = routes[hash];
         if (url) {
-            gsap.to(content, { opacity: 0, duration: 0.5, ease: "power3.Out", onComplete: () => {
+            gsap.to(content, { opacity: 0, duration: 0.4, ease: "power3.out", onComplete: () => {
                 loadContent(url);
             }});
             updateActiveLink(hash);
@@ -50,12 +53,12 @@ document.addEventListener('DOMContentLoaded', () => {
             window.scrollTo(0, 0); // Reset scroll position
         }
     };
-  
+
     const handleHashChange = () => {
         console.log('Hash changed:', window.location.hash);
         navigate(window.location.hash);
     };
-  
+
     const updateActiveLink = (hash) => {
         const links = document.querySelectorAll('nav a[data-link]');
         links.forEach(link => {
@@ -66,9 +69,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     };
-  
+
     window.addEventListener('hashchange', handleHashChange);
-  
+
     document.body.addEventListener('click', (e) => {
         if (e.target.matches('[data-link]')) {
             e.preventDefault();
@@ -77,14 +80,14 @@ document.addEventListener('DOMContentLoaded', () => {
             window.location.hash = hash;
         }
     });
-  
+
     // Function to load the initial content
     const loadInitialContent = () => {
         const initialHash = window.location.hash || '#/';
         console.log('Initial content load:', initialHash);
         navigate(initialHash);
     };
-  
+
     // Load the initial content
     loadInitialContent();
 });
