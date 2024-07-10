@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Function to handle hover effect
     function handleHoverEffect(event) {
         if (event.target && typeof event.target.closest === 'function') {
-            if (event.target.closest('.flex, .footer-social li, nav, #email-btn, .video-control')) {
+            if (event.target.closest('.flex, .work-item, .footer-social li, nav, #email-btn, .video-control')) {
                 gsap.to(cursor, {
                     width: 16,
                     height: 16,
@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     duration: 0.15,
                     ease: 'power3.inOut'
                 });
-            } else if (event.target.closest('p.primary, h1, h2')) {
+            } else if (event.target.closest('p.primary, #work-description, h1, h2, h3')) {
                 gsap.to(cursor, {
                     width: 4,
                     height: 28,
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function handleHoverOutEffect(event) {
         if (event.target && typeof event.target.closest === 'function') {
-            if (event.target.closest('.flex, .footer-social li, nav, #email-btn, p.primary, .video-control, h1, h2')) {
+            if (!event.relatedTarget || !event.relatedTarget.closest('.flex, .work-item, #work-description, .footer-social li, nav, #email-btn, p.primary, .video-control, h1, h2, h3')) {
                 gsap.to(cursor, {
                     width: 28,
                     height: 28,
@@ -121,3 +121,65 @@ document.addEventListener('DOMContentLoaded', function() {
         cursor.style.visibility = 'visible';
     });
 });
+
+// Portfolio hover effect
+const initializeHoverEffects = () => {
+    const names = document.querySelectorAll('.work-item');
+    const hoverImage = document.getElementById('work-image');
+    const hoverTitle = document.getElementById('work-title');
+    const hoverDescription = document.getElementById('work-description');
+
+    let lastIndex = -1; // Track the last hovered item index
+    let initialLoad = true; // Flag to check if it's the first load
+
+    const updateSelected = (element) => {
+        document.querySelector('.work-item.selected')?.classList.remove('selected');
+        element.classList.add('selected');
+    };
+
+    names.forEach((name, index) => {
+        name.addEventListener('mouseenter', () => {
+            if (name.classList.contains('selected')) {
+                return; // Do nothing if the item is already selected
+            }
+
+            const imageUrl = name.getAttribute('data-image');
+            const titleText = name.getAttribute('data-title');
+            const descriptionText = name.getAttribute('data-description');
+
+            gsap.killTweensOf(hoverImage); // Kill any ongoing animations
+            hoverImage.src = imageUrl;
+            hoverTitle.textContent = titleText;
+            hoverDescription.textContent = descriptionText;
+
+            if (!initialLoad) {
+                // Determine the direction of the hover
+                const direction = index > lastIndex ? -8 : 8;
+                gsap.fromTo(hoverImage, 
+                    { opacity: 0, y: direction },
+                    { opacity: 1, y: 0, duration: 0.8, ease: 'power1.inOut' }
+                );
+            } else {
+                initialLoad = false; // Set the flag to false after the first load
+                gsap.fromTo(hoverImage, 
+                    { opacity: 0, y: 0 },
+                    { opacity: 1, y: 0, duration: 0.8, ease: 'power1.inOut' }
+                );
+            }
+            
+            gsap.fromTo([hoverTitle, hoverDescription],
+                { opacity: 0 },
+                { opacity: 1, duration: 0.4, ease: 'power1.inOut' }
+            );
+
+            updateSelected(name);
+            lastIndex = index;
+        });
+    });
+
+    // Initialize first item as selected
+    const firstItem = document.querySelector('.work-item');
+    if (firstItem) {
+        firstItem.dispatchEvent(new Event('mouseenter'));
+    }
+};

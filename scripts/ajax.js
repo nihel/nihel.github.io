@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
+    initializeHoverEffects(); // Initialize on initial load
+
     const content = document.getElementById('content');
 
     const routes = {
@@ -16,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (xhr.status === 200) {
                     console.log('Content loaded successfully');
                     content.innerHTML = xhr.responseText;
+                    initializeHoverEffects(); // Re-initialize hover effects after loading content
                     initializeVideoControls();
                     fadeIn();
                     window.scrollTo(0, 0); // Reset scroll position
