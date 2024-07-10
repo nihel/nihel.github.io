@@ -146,9 +146,11 @@ const initializeHoverEffects = () => {
             const imageUrl = name.getAttribute('data-image');
             const titleText = name.getAttribute('data-title');
             const descriptionText = name.getAttribute('data-description');
+            const altText = name.getAttribute('data-alt');
 
             gsap.killTweensOf(hoverImage); // Kill any ongoing animations
             hoverImage.src = imageUrl;
+            hoverImage.alt = altText; 
             hoverTitle.textContent = titleText;
             hoverDescription.textContent = descriptionText;
 
