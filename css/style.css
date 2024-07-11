@@ -478,6 +478,7 @@ p.desc {
     display: flex;
     align-items: flex-start;
 	width: 100%;
+	height: 650px;
 }
 
 .work-list {
