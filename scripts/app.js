@@ -37,6 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     const cursor = document.querySelector('.custom-cursor');
+    let lastMouseEvent;
 
     // Function to update cursor position
     function updateCursorPosition(e) {
@@ -48,23 +49,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Update cursor position on mouse move
-    document.addEventListener('mousemove', updateCursorPosition);
-
-    // Variable to store last mouse event
-    let lastMouseEvent;
-
-    // Save mouse event on mouse move
-    document.addEventListener('mousemove', function(e) {
-        lastMouseEvent = e;
-    });
-
-    // Update cursor position on scroll
-    window.addEventListener('scroll', function() {
-        if (lastMouseEvent) {
-            updateCursorPosition(lastMouseEvent);
-        }
-    });
+    // Function to handle cursor visibility
+    function setCursorVisibility(visible) {
+        cursor.style.opacity = visible ? '1' : '0';
+        document.body.style.cursor = visible ? 'none' : 'default';
+    }
 
     // Function to handle hover effect
     function handleHoverEffect(event) {
@@ -107,19 +96,37 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // Handle mouse move and scroll
+    function handleMouseMove(e) {
+        lastMouseEvent = e;
+        updateCursorPosition(e);
+    }
+
+    function handleScroll() {
+        if (lastMouseEvent) {
+            updateCursorPosition(lastMouseEvent);
+        }
+    }
+
     // Event delegation for hover effect
     document.addEventListener('mouseenter', handleHoverEffect, true);
     document.addEventListener('mouseleave', handleHoverOutEffect, true);
 
-    // Hide cursor when mouse leaves the page
-    document.addEventListener('mouseleave', function() {
-        cursor.style.visibility = 'hidden';
+    // Mouse events to maintain cursor visibility
+    document.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('scroll', handleScroll);
+    document.addEventListener('mousedown', () => setCursorVisibility(true));
+    document.addEventListener('mouseup', () => setCursorVisibility(true));
+    document.addEventListener('focusin', () => setCursorVisibility(true));
+    document.addEventListener('mouseout', (e) => {
+        if (!e.relatedTarget || e.relatedTarget.nodeName === 'HTML') {
+            setCursorVisibility(false);
+        }
     });
+    document.addEventListener('mouseover', () => setCursorVisibility(true));
 
-    // Show cursor when mouse enters the page
-    document.addEventListener('mouseenter', function() {
-        cursor.style.visibility = 'visible';
-    });
+    // Hide the default cursor
+    document.body.style.cursor = 'none';
 });
 
 // Portfolio hover effect
