@@ -156,16 +156,16 @@ const initializeHoverEffects = () => {
 
             if (!initialLoad) {
                 // Determine the direction of the hover
-                const direction = index > lastIndex ? 10 : -10;
+                const direction = index > lastIndex ? -12 : 12;
                 gsap.fromTo(hoverImage, 
                     { opacity: 0, y: direction },
-                    { opacity: 1, y: 0, duration: 0.4, ease: 'power1.inOut' }
+                    { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }
                 );
             } else {
                 initialLoad = false; // Set the flag to false after the first load
                 gsap.fromTo(hoverImage, 
                     { opacity: 0, y: 0 },
-                    { opacity: 1, y: 0, duration: 0.4, ease: 'power1.inOut' }
+                    { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }
                 );
             }
 
