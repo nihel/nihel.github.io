@@ -146,33 +146,28 @@ const initializeHoverEffects = () => {
             const imageUrl = name.getAttribute('data-image');
             const titleText = name.getAttribute('data-title');
             const descriptionText = name.getAttribute('data-description');
-            const altText = name.getAttribute('data-alt');
+            const altText = name.getAttribute('data-alt'); // Get the alt text
 
             gsap.killTweensOf(hoverImage); // Kill any ongoing animations
             hoverImage.src = imageUrl;
-            hoverImage.alt = altText; 
+            hoverImage.alt = altText; // Set the alt attribute
             hoverTitle.textContent = titleText;
             hoverDescription.textContent = descriptionText;
 
             if (!initialLoad) {
                 // Determine the direction of the hover
-                const direction = index > lastIndex ? -8 : 8;
+                const direction = index > lastIndex ? 10 : -10;
                 gsap.fromTo(hoverImage, 
                     { opacity: 0, y: direction },
-                    { opacity: 1, y: 0, duration: 0.8, ease: 'power1.inOut' }
+                    { opacity: 1, y: 0, duration: 0.4, ease: 'power1.inOut' }
                 );
             } else {
                 initialLoad = false; // Set the flag to false after the first load
                 gsap.fromTo(hoverImage, 
                     { opacity: 0, y: 0 },
-                    { opacity: 1, y: 0, duration: 0.8, ease: 'power1.inOut' }
+                    { opacity: 1, y: 0, duration: 0.4, ease: 'power1.inOut' }
                 );
             }
-            
-            gsap.fromTo([hoverTitle, hoverDescription],
-                { opacity: 0 },
-                { opacity: 1, duration: 0.4, ease: 'power1.inOut' }
-            );
 
             updateSelected(name);
             lastIndex = index;
