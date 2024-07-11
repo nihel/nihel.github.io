@@ -1,6 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    initializeHoverEffects(); // Initialize on initial load
-
     const content = document.getElementById('content');
 
     const routes = {
@@ -19,15 +17,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     console.log('Content loaded successfully');
                     content.innerHTML = xhr.responseText;
                     initializeHoverEffects(); // Re-initialize hover effects after loading content
-                    initializeVideoControls();
+                    initializeVideoControls(); // Initialize video controls
                     fadeIn();
-                    window.scrollTo(0, 0); // Reset scroll position
                 } else {
                     console.error('Failed to load content:', xhr.status);
                     content.innerHTML = '<h1>404 Not Found</h1><p>The page you are looking for does not exist.</p>';
                     fadeIn();
-                    window.scrollTo(0, 0); // Reset scroll position
                 }
+                window.scrollTo(0, 0); // Reset scroll position
             }
         };
         xhr.send();
@@ -65,11 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const updateActiveLink = (hash) => {
         const links = document.querySelectorAll('nav a[data-link]');
         links.forEach(link => {
-            if (link.getAttribute('href') === hash) {
-                link.parentElement.classList.add('active');
-            } else {
-                link.parentElement.classList.remove('active');
-            }
+            link.parentElement.classList.toggle('active', link.getAttribute('href') === hash);
         });
     };
 

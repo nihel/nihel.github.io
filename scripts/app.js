@@ -1,3 +1,12 @@
+// Debounce function to limit the rate of function execution
+const debounce = (func, delay) => {
+    let debounceTimer;
+    return function(...args) {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(() => func.apply(this, args), delay);
+    };
+};
+
 // Video Control
 function initializeVideoControls() {
     const playAfterThisHeight = 200;
@@ -5,13 +14,13 @@ function initializeVideoControls() {
     const videoControl = document.querySelector('.video-control');
 
     if (video && videoControl) {
-        const handleScroll = () => {
+        const handleScroll = debounce(() => {
             if (document.documentElement.scrollTop > playAfterThisHeight) {
                 video.play();
             } else {
                 video.pause();
             }
-        };
+        }, 100);
 
         document.addEventListener('scroll', handleScroll);
 
@@ -30,8 +39,7 @@ document.addEventListener('DOMContentLoaded', initializeVideoControls);
 
 
 // Custom Cursor
-document.addEventListener('DOMContentLoaded', function() {
-    // Check if the device supports touch
+document.addEventListener('DOMContentLoaded', () => {
     if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
         return; // Exit the script if the device supports touch
     }
@@ -40,23 +48,23 @@ document.addEventListener('DOMContentLoaded', function() {
     let lastMouseEvent;
 
     // Function to update cursor position
-    function updateCursorPosition(e) {
+    const updateCursorPosition = (e) => {
         gsap.to(cursor, {
             duration: 0.15,
             x: e.clientX,
             y: e.clientY,
             ease: 'power3.out'
         });
-    }
+    };
 
     // Function to handle cursor visibility
-    function setCursorVisibility(visible) {
+    const setCursorVisibility = (visible) => {
         cursor.style.opacity = visible ? '1' : '0';
         document.body.style.cursor = visible ? 'none' : 'default';
-    }
+    };
 
     // Function to handle hover effect
-    function handleHoverEffect(event) {
+    const handleHoverEffect = (event) => {
         if (event.target && typeof event.target.closest === 'function') {
             if (event.target.closest('.flex, .work-item, .footer-social li, nav, #email-btn, .video-control')) {
                 gsap.to(cursor, {
@@ -78,9 +86,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             }
         }
-    }
+    };
 
-    function handleHoverOutEffect(event) {
+    const handleHoverOutEffect = (event) => {
         if (event.target && typeof event.target.closest === 'function') {
             if (!event.relatedTarget || !event.relatedTarget.closest('.flex, .work-item, #work-description, .footer-social li, nav, #email-btn, p.primary, .video-control, h1, h2, h3')) {
                 gsap.to(cursor, {
@@ -94,19 +102,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             }
         }
-    }
+    };
 
     // Handle mouse move and scroll
-    function handleMouseMove(e) {
+    const handleMouseMove = (e) => {
         lastMouseEvent = e;
         updateCursorPosition(e);
-    }
+    };
 
-    function handleScroll() {
+    const handleScroll = debounce(() => {
         if (lastMouseEvent) {
             updateCursorPosition(lastMouseEvent);
         }
-    }
+    }, 100);
 
     // Event delegation for hover effect
     document.addEventListener('mouseenter', handleHoverEffect, true);
