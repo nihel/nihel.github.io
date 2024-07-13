@@ -769,6 +769,33 @@ p.combo {
 		padding-bottom: 1.4rem;
 	}
 
+	.work-list {
+		display: grid;
+		padding: 0;
+	}
+
+	.work-placeholder {
+		padding: 24px 0 0 0;
+	}
+
+	#work-image {
+		border-radius: 12px;
+		margin-top: 16px;
+	}
+
+	#work-title {
+		font-size: 16px;
+	}
+
+	#work-description {
+		font-size: 14px;
+	}
+
+	.portfolio {
+		flex-direction: column;
+		height: 560px;
+	}
+
 	#email-btn {
 		font-size: 16px;
 	}
