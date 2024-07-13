@@ -172,7 +172,7 @@ const initializeHoverEffects = () => {
             if (!initialLoad) {
                 // Apply only the scale effect
                 gsap.fromTo(hoverImage, 
-                    { scale: 0.88 },
+                    { scale: 0.92 },
                     { scale: 1, duration: 0.8, ease: 'power3.out' }
                 );
             } else {

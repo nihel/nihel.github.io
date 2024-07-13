@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         gsap.fromTo(content, 
             { opacity: 0, ...direction },  // Start with opacity 0 and offset in the specified direction
-            { opacity: 1, x: 0, y: 0, duration: 0.8, ease: "power3.out" }  // Fade in and move to original position
+            { opacity: 1, x: 0, y: 0, duration: 0.6, ease: "power3.out" }  // Fade in and move to original position
         );
     };
 
