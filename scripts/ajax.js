@@ -7,6 +7,9 @@ document.addEventListener('DOMContentLoaded', () => {
         '#/resume': 'resume.html'
     };
 
+    const routeOrder = ['#/', '#/work', '#/resume'];
+    let lastRouteIndex = routeOrder.indexOf(window.location.hash || '#/');
+
     const loadContent = (url) => {
         console.log(`Loading content from: ${url}`);
         const xhr = new XMLHttpRequest();
@@ -18,11 +21,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     content.innerHTML = xhr.responseText;
                     initializeHoverEffects(); // Re-initialize hover effects after loading content
                     initializeVideoControls(); // Initialize video controls
-                    fadeIn();
+                    fadeIn(lastRouteIndex, routeOrder.indexOf(window.location.hash));
+                    lastRouteIndex = routeOrder.indexOf(window.location.hash); // Update last route index after fading in
                 } else {
                     console.error('Failed to load content:', xhr.status);
                     content.innerHTML = '<h1>404 Not Found</h1><p>The page you are looking for does not exist.</p>';
-                    fadeIn();
+                    fadeIn(lastRouteIndex, routeOrder.indexOf(window.location.hash));
+                    lastRouteIndex = routeOrder.indexOf(window.location.hash); // Update last route index after fading in
                 }
                 window.scrollTo(0, 0); // Reset scroll position
             }
@@ -30,17 +35,26 @@ document.addEventListener('DOMContentLoaded', () => {
         xhr.send();
     };
 
-    const fadeIn = () => {
+    const fadeIn = (lastIndex, currentIndex) => {
         console.log('Fading in content');
+        let direction;
+        if (lastIndex < currentIndex) {
+            direction = { x: 24 }; // Moving to a higher index, animate from right to left
+        } else if (lastIndex > currentIndex) {
+            direction = { x: -24 }; // Moving to a lower index, animate from left to right
+        } else {
+            direction = { y: 24 }; // Same page, just fade in
+        }
         gsap.fromTo(content, 
-            { opacity: 0, y: 24 },  // Start with opacity 0 and slightly below
-            { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }  // Fade in and move upwards
+            { opacity: 0, ...direction },  // Start with opacity 0 and offset in the specified direction
+            { opacity: 1, x: 0, y: 0, duration: 0.8, ease: "power3.out" }  // Fade in and move to original position
         );
     };
 
     const navigate = (hash) => {
         console.log(`Navigating to: ${hash}`);
         const url = routes[hash];
+        const currentIndex = routeOrder.indexOf(hash);
         if (url) {
             gsap.to(content, { opacity: 0, duration: 0.4, ease: "power3.out", onComplete: () => {
                 loadContent(url);
@@ -49,8 +63,9 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             console.error('Invalid route:', hash);
             content.innerHTML = '<h1>404 Not Found</h1><p>The page you are looking for does not exist.</p>';
-            fadeIn();
+            fadeIn(lastRouteIndex, currentIndex);
             window.scrollTo(0, 0); // Reset scroll position
+            lastRouteIndex = currentIndex; // Update last route index
         }
     };
 

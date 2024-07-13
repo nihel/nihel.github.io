@@ -170,18 +170,13 @@ const initializeHoverEffects = () => {
             hoverDescription.textContent = descriptionText;
 
             if (!initialLoad) {
-                // Determine the direction of the hover
-                const direction = index > lastIndex ? -12 : 12;
+                // Apply only the scale effect
                 gsap.fromTo(hoverImage, 
-                    { opacity: 0, y: direction },
-                    { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }
+                    { scale: 0.88 },
+                    { scale: 1, duration: 0.8, ease: 'power3.out' }
                 );
             } else {
                 initialLoad = false; // Set the flag to false after the first load
-                gsap.fromTo(hoverImage, 
-                    { opacity: 0, y: 0 },
-                    { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }
-                );
             }
 
             updateSelected(name);
@@ -189,9 +184,20 @@ const initializeHoverEffects = () => {
         });
     });
 
-    // Initialize first item as selected
+    // Initialize first item as selected without animation
     const firstItem = document.querySelector('.work-item');
     if (firstItem) {
-        firstItem.dispatchEvent(new Event('mouseenter'));
+        const imageUrl = firstItem.getAttribute('data-image');
+        const titleText = firstItem.getAttribute('data-title');
+        const descriptionText = firstItem.getAttribute('data-description');
+        const altText = firstItem.getAttribute('data-alt');
+
+        hoverImage.src = imageUrl;
+        hoverImage.alt = altText;
+        hoverTitle.textContent = titleText;
+        hoverDescription.textContent = descriptionText;
+
+        updateSelected(firstItem);
+        initialLoad = false;
     }
 };

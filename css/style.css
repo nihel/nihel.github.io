@@ -318,9 +318,9 @@ p.desc {
 	font-family: 'PPNeueMontreal-Medium', 'Helvetica', sans-serif;
 	color: var(--lightgrey);
 	font-size: 16px;
-	line-height: 132%;
-	letter-spacing: 0.4px;
-	padding-top: 0.6rem;
+	line-height: 126%;
+	letter-spacing: 0.2px;
+	padding-top: 8px;
 }
 
 
@@ -522,10 +522,11 @@ p.desc {
 }
 
 #work-description {
-	font-size: 16px;
 	font-family: 'PPNeueMontreal-Medium', 'Helvetica', sans-serif;
-	letter-spacing: 0.2px;
 	color: var(--lightgrey);
+	font-size: 16px;
+	line-height: 126%;
+	letter-spacing: 0.2px;
 }
 
 .work-placeholder {
