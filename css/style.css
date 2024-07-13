@@ -130,7 +130,7 @@ body {
 
 main {
 	max-width: 950px;
-	margin: 10% auto;
+	margin: 10% auto 8%;
 	display: grid;
 	align-items: center;
 	justify-items: center;
@@ -265,7 +265,7 @@ h2 {
 
 h3 {
 	font-family: 'PPNeueMontreal-Medium', 'Helvetica', sans-serif;
-	font-size: 19px;
+	font-size: 21px;
 	letter-spacing: 0.2px;
 	color: var(--black);
 }
@@ -655,7 +655,7 @@ p.combo {
 @media screen and (max-width: 799px) and (min-width: 550px) {
 	main {
 		max-width: 500px;
-		margin: 18% auto 8%;
+		margin: 20% auto 8%;
 	}
 
 	header {
@@ -719,7 +719,7 @@ p.combo {
 @media screen and (width <= 549px) {
 	main {
 		max-width: 336px;
-		margin: 28% auto 24%;
+		margin: 32% auto 24%;
 		gap: 6rem;
 	}
 
@@ -736,10 +736,14 @@ p.combo {
 		font-size: 19px;
 	}
 
-    .custom-heading span {
-		display: block;
-		margin-top: 20px;
-	  }
+	h3 {
+		font-size: 19px;
+	}
+
+	.logo {
+		width: 20px;
+		height: 20px;
+	}
 
 	p.primary {
 		font-size: 16px;
