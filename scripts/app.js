@@ -201,27 +201,3 @@ const initializeHoverEffects = () => {
         initialLoad = false;
     }
 };
-
-gsap.registerPlugin(ScrollTrigger);
-
-let lastScrollTop = 0;
-const nav = document.querySelector('.nav');
-const hideNav = gsap.timeline({ paused: true });
-
-hideNav.to(nav, { y: -100, duration: 0.5, ease: 'power3.out' });
-
-window.addEventListener('scroll', () => {
-    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-    if (scrollTop > 96 ) {
-        if (scrollTop > lastScrollTop) {
-            hideNav.play();
-        } else {
-            hideNav.reverse();
-        }
-    } else {
-        hideNav.reverse();
-    }
-
-    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-}, false);
