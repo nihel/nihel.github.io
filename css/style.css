@@ -629,6 +629,34 @@ p.combo {
 		font-size: 20px;
 	}
 
+	.work-list {
+		display: grid;
+		padding: 0;
+		position: unset;
+	}
+
+	.work-placeholder {
+		padding: 24px 0 0 0;
+	}
+
+	#work-image {
+		border-radius: 12px;
+		margin-top: 16px;
+	}
+
+	#work-title {
+		font-size: 16px;
+	}
+
+	#work-description {
+		font-size: 15px;
+	}
+
+	.portfolio {
+		flex-direction: column;
+		height: 900px;
+	}
+
 	.viewer {
 		width: 180px;
 		height: 386px;
@@ -690,6 +718,34 @@ p.combo {
 
 	#email-btn {
 		font-size: 18px;
+	}
+
+	.work-list {
+		display: grid;
+		padding: 0;
+		position: unset;
+	}
+
+	.work-placeholder {
+		padding: 24px 0 0 0;
+	}
+
+	#work-image {
+		border-radius: 8px;
+		margin-top: 16px;
+	}
+
+	#work-title {
+		font-size: 16px;
+	}
+
+	#work-description {
+		font-size: 15px;
+	}
+
+	.portfolio {
+		flex-direction: column;
+		height: 750px;
 	}
 
 	.viewer {
@@ -769,8 +825,10 @@ p.combo {
 	}
 
 	.work-list {
-		display: grid;
+		display: flex;
 		padding: 0;
+		position: unset;
+		width: 100%;
 	}
 
 	.work-placeholder {
