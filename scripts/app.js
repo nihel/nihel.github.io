@@ -159,12 +159,14 @@ const initializeHoverEffects = () => {
             }
 
             const imageUrl = name.getAttribute('data-image');
+            const srcset = name.getAttribute('data-srcset'); // Get the srcset
             const titleText = name.getAttribute('data-title');
             const descriptionText = name.getAttribute('data-description');
             const altText = name.getAttribute('data-alt'); // Get the alt text
 
             gsap.killTweensOf(hoverImage); // Kill any ongoing animations
             hoverImage.src = imageUrl;
+            hoverImage.srcset = srcset; // Set the srcset attribute
             hoverImage.alt = altText; // Set the alt attribute
             hoverTitle.textContent = titleText;
             hoverDescription.textContent = descriptionText;
@@ -188,11 +190,13 @@ const initializeHoverEffects = () => {
     const firstItem = document.querySelector('.work-item');
     if (firstItem) {
         const imageUrl = firstItem.getAttribute('data-image');
+        const srcset = firstItem.getAttribute('data-srcset'); // Get the srcset
         const titleText = firstItem.getAttribute('data-title');
         const descriptionText = firstItem.getAttribute('data-description');
         const altText = firstItem.getAttribute('data-alt');
 
         hoverImage.src = imageUrl;
+        hoverImage.srcset = srcset; // Set the srcset attribute
         hoverImage.alt = altText;
         hoverTitle.textContent = titleText;
         hoverDescription.textContent = descriptionText;
