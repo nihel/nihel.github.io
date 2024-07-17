@@ -98,14 +98,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('hashchange', handleHashChange);
 
-    document.body.addEventListener('click', (e) => {
+    // Function to handle touch and click events
+    const handleNavigationEvent = (e) => {
         if (e.target.matches('[data-link]')) {
             e.preventDefault();
             const hash = e.target.getAttribute('href');
             console.log('Link clicked:', hash);
             window.location.hash = hash;
         }
-    });
+    };
+
+    // Listen for both click and touch events
+    document.body.addEventListener('click', handleNavigationEvent);
+    document.body.addEventListener('touchend', handleNavigationEvent);
 
     // Function to load the initial content
     const loadInitialContent = () => {

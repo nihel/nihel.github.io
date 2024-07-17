@@ -95,8 +95,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     width: 28,
                     height: 28,
                     borderRadius: '50%',
-                    backgroundColor: 'rgba(105, 105, 105, 0.4)',
-                    backdropFilter: 'blur(0px)',
+                    backgroundColor: 'rgba(180, 180, 180, 0.4)',
+                    backdropFilter: 'blur(8px)',
                     duration: 0.15,
                     ease: 'power3.inOut'
                 });
