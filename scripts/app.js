@@ -13,7 +13,14 @@ function initializeVideoControls() {
     const video = document.querySelector('video');
     const videoControl = document.querySelector('.video-control');
 
-    if (video && videoControl) {
+    if (video) {
+        // Ensure video loads and plays as soon as possible
+        video.addEventListener('canplaythrough', () => {
+            if (document.documentElement.scrollTop > playAfterThisHeight) {
+                video.play();
+            }
+        });
+
         const handleScroll = debounce(() => {
             if (document.documentElement.scrollTop > playAfterThisHeight) {
                 video.play();
@@ -27,11 +34,16 @@ function initializeVideoControls() {
         video.muted = true;
         video.volume = 0.4;
 
-        videoControl.addEventListener('click', () => {
-            video.muted = !video.muted;
-            videoControl.classList.toggle('mute');
-            videoControl.classList.toggle('unmute');
-        });
+        if (videoControl) {
+            videoControl.addEventListener('click', () => {
+                video.muted = !video.muted;
+                videoControl.classList.toggle('mute');
+                videoControl.classList.toggle('unmute');
+            });
+        }
+
+        // Preload video immediately
+        video.load();
     }
 }
 
