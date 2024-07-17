@@ -10,6 +10,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const routeOrder = ['#/', '#/work', '#/resume'];
     let lastRouteIndex = routeOrder.indexOf(window.location.hash || '#/');
 
+    // Function to preload images
+    const preloadImages = (images) => {
+        images.forEach((image) => {
+            const img = new Image();
+            img.src = image;
+        });
+    };
+
     const loadContent = (url) => {
         console.log(`Loading content from: ${url}`);
         const xhr = new XMLHttpRequest();
@@ -21,6 +29,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     content.innerHTML = xhr.responseText;
                     initializeHoverEffects(); // Re-initialize hover effects after loading content
                     initializeVideoControls(); // Initialize video controls
+
+                    // Preload images after loading content
+                    if (url === 'work.html') {
+                        const images = Array.from(document.querySelectorAll('.work-item')).map(item => item.getAttribute('data-image'));
+                        preloadImages(images);
+                    }
+
                     fadeIn(lastRouteIndex, routeOrder.indexOf(window.location.hash));
                     lastRouteIndex = routeOrder.indexOf(window.location.hash); // Update last route index after fading in
                 } else {
