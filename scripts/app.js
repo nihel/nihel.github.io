@@ -144,12 +144,38 @@ const initializeHoverEffects = () => {
     const hoverTitle = document.getElementById('work-title');
     const hoverDescription = document.getElementById('work-description');
 
-    let lastIndex = -1; // Track the last hovered item index
     let initialLoad = true; // Flag to check if it's the first load
 
     const updateSelected = (element) => {
         document.querySelector('.work-item.selected')?.classList.remove('selected');
         element.classList.add('selected');
+    };
+
+    const updateHoverElements = (element) => {
+        const imageUrl = element.getAttribute('data-image');
+        const srcset = element.getAttribute('data-srcset'); // Get the srcset
+        const sizes = element.getAttribute('data-sizes'); // Get the sizes
+        const titleText = element.getAttribute('data-title');
+        const descriptionText = element.getAttribute('data-description');
+        const altText = element.getAttribute('data-alt'); // Get the alt text
+
+        gsap.killTweensOf(hoverImage); // Kill any ongoing animations
+        hoverImage.src = imageUrl;
+        hoverImage.srcset = srcset; // Set the srcset attribute
+        hoverImage.sizes = sizes; // Set the sizes attribute
+        hoverImage.alt = altText; // Set the alt attribute
+        hoverTitle.textContent = titleText;
+        hoverDescription.textContent = descriptionText;
+
+        if (!initialLoad) {
+            // Apply only the scale effect
+            gsap.fromTo(hoverImage, 
+                { scale: 0.92 },
+                { scale: 1, duration: 0.8, ease: 'power3.out' }
+            );
+        } else {
+            initialLoad = false; // Set the flag to false after the first load
+        }
     };
 
     names.forEach((name, index) => {
@@ -158,50 +184,19 @@ const initializeHoverEffects = () => {
                 return; // Do nothing if the item is already selected
             }
 
-            const imageUrl = name.getAttribute('data-image');
-            const srcset = name.getAttribute('data-srcset'); // Get the srcset
-            const titleText = name.getAttribute('data-title');
-            const descriptionText = name.getAttribute('data-description');
-            const altText = name.getAttribute('data-alt'); // Get the alt text
-
-            gsap.killTweensOf(hoverImage); // Kill any ongoing animations
-            hoverImage.src = imageUrl;
-            hoverImage.srcset = srcset; // Set the srcset attribute
-            hoverImage.alt = altText; // Set the alt attribute
-            hoverTitle.textContent = titleText;
-            hoverDescription.textContent = descriptionText;
-
-            if (!initialLoad) {
-                // Apply only the scale effect
-                gsap.fromTo(hoverImage, 
-                    { scale: 0.92 },
-                    { scale: 1, duration: 0.8, ease: 'power3.out' }
-                );
-            } else {
-                initialLoad = false; // Set the flag to false after the first load
-            }
-
+            updateHoverElements(name);
             updateSelected(name);
-            lastIndex = index;
         });
     });
 
     // Initialize first item as selected without animation
     const firstItem = document.querySelector('.work-item');
     if (firstItem) {
-        const imageUrl = firstItem.getAttribute('data-image');
-        const srcset = firstItem.getAttribute('data-srcset'); // Get the srcset
-        const titleText = firstItem.getAttribute('data-title');
-        const descriptionText = firstItem.getAttribute('data-description');
-        const altText = firstItem.getAttribute('data-alt');
-
-        hoverImage.src = imageUrl;
-        hoverImage.srcset = srcset; // Set the srcset attribute
-        hoverImage.alt = altText;
-        hoverTitle.textContent = titleText;
-        hoverDescription.textContent = descriptionText;
-
+        updateHoverElements(firstItem);
         updateSelected(firstItem);
         initialLoad = false;
     }
 };
+
+// Call the function to initialize hover effects
+initializeHoverEffects();
