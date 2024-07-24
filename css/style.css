@@ -119,8 +119,8 @@ body {
     top: 0;
     left: 0;
     border-radius: 50%;
-    pointer-events: none; /* Prevent cursor from blocking interactions */
-    transform: translate(-50%, -50%); /* Center the circle on the cursor */
+    pointer-events: none;
+    transform: translate(-50%, -50%);
     z-index: 10000;
 	visibility: visible;
 	user-select: none;

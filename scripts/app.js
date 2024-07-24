@@ -161,6 +161,7 @@ const initializeHoverEffects = () => {
     const updateSelected = (element) => {
         document.querySelector('.work-item.selected')?.classList.remove('selected');
         element.classList.add('selected');
+        localStorage.setItem('selectedWorkItem', element.getAttribute('data-link')); // Save the selected work item
     };
 
     const updateHoverElements = (element) => {
@@ -201,8 +202,9 @@ const initializeHoverEffects = () => {
         });
     });
 
-    // Initialize first item as selected without animation
-    const firstItem = document.querySelector('.work-item');
+    // Initialize first item as selected without animation if no item is stored
+    const selectedWorkItem = localStorage.getItem('selectedWorkItem');
+    const firstItem = selectedWorkItem ? document.querySelector(`.work-item[data-link="${selectedWorkItem}"]`) : document.querySelector('.work-item');
     if (firstItem) {
         updateHoverElements(firstItem);
         updateSelected(firstItem);
