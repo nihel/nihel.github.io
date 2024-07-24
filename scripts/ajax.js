@@ -30,33 +30,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const loadContent = (url) => {
         console.log(`Loading content from: ${url}`);
-        const xhr = new XMLHttpRequest();
-        xhr.open('GET', url, true);
-        xhr.onreadystatechange = () => {
-            if (xhr.readyState === 4) {
-                if (xhr.status === 200) {
-                    console.log('Content loaded successfully');
-                    content.innerHTML = xhr.responseText;
-                    initializeHoverEffects(); // Re-initialize hover effects after loading content
-                    initializeVideoControls(); // Initialize video controls
-
-                    if (url === 'work.html') {
-                        const images = Array.from(document.querySelectorAll('.work-item')).map(item => item.getAttribute('data-image'));
-                        preloadImages(images);
-                    }
-
-                    fadeIn(lastRouteIndex, routeOrder.indexOf(window.location.hash));
-                    lastRouteIndex = routeOrder.indexOf(window.location.hash); // Update last route index after fading in
-                } else {
-                    console.error('Failed to load content:', xhr.status);
-                    content.innerHTML = '<h1>404 Not Found</h1><p>The page you are looking for does not exist.</p>';
-                    fadeIn(lastRouteIndex, routeOrder.indexOf(window.location.hash));
-                    lastRouteIndex = routeOrder.indexOf(window.location.hash); // Update last route index after fading in
+        fetch(url)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Failed to load content: ${response.status}`);
                 }
+                return response.text();
+            })
+            .then(data => {
+                content.innerHTML = data;
+                initializeHoverEffects(); // Re-initialize hover effects after loading content
+                initializeVideoControls(); // Initialize video controls
+
+                if (url === 'work.html') {
+                    const images = Array.from(document.querySelectorAll('.work-item')).map(item => item.getAttribute('data-image'));
+                    preloadImages(images);
+                }
+
+                fadeIn(lastRouteIndex, routeOrder.indexOf(window.location.hash));
+                lastRouteIndex = routeOrder.indexOf(window.location.hash); // Update last route index after fading in
                 window.scrollTo(0, 0); // Reset scroll position
-            }
-        };
-        xhr.send();
+            })
+            .catch(error => {
+                console.error(error);
+                content.innerHTML = '<h1>404 Not Found</h1><p>The page you are looking for does not exist.</p>';
+                fadeIn(lastRouteIndex, routeOrder.indexOf(window.location.hash));
+                lastRouteIndex = routeOrder.indexOf(window.location.hash); // Update last route index after fading in
+                window.scrollTo(0, 0); // Reset scroll position
+            });
     };
 
     const fadeIn = (lastIndex, currentIndex) => {

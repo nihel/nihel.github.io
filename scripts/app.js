@@ -49,7 +49,6 @@ function initializeVideoControls() {
 
 document.addEventListener('DOMContentLoaded', initializeVideoControls);
 
-
 // Custom Cursor
 document.addEventListener('DOMContentLoaded', () => {
     if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
