@@ -1,4 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
+    
+        // Redirect to #/ if the URL is nils.io without any hash
+        if (window.location.pathname === '/' && !window.location.hash) {
+            window.location.hash = '#/';
+        }
+    
     const content = document.getElementById('content');
 
     const routes = {
