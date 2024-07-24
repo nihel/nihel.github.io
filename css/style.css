@@ -496,14 +496,20 @@ p.desc {
     box-sizing: border-box;
     padding: 12px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 8px;
-    align-items: flex-start;
+    align-items: center;
 }
 
 .work-item.selected {
 	border-radius: 6px;
 	background: rgba(0,0,0,0.04);
+}
+
+.work-info {
+	display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
 .work-detail {

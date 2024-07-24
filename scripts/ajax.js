@@ -4,13 +4,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const routes = {
         '#/': 'home.html',
         '#/work': 'work.html',
-        '#/resume': 'resume.html'
+        '#/resume': 'resume.html',
+        '#/work/viaplay-trailers': 'viaplay-trailers.html',
+        '#/work/savr-new-design': 'savr-new-design.html',
+        '#/work/es-insight-portal': 'es-insight-portal.html'
     };
 
-    const routeOrder = ['#/', '#/work', '#/resume'];
+    const routeOrder = [
+        '#/',
+        '#/work',
+        '#/resume',
+        '#/work/viaplay-trailers',
+        '#/work/savr-new-design',
+        '#/work/es-insight-portal'
+    ];
+    
     let lastRouteIndex = routeOrder.indexOf(window.location.hash || '#/');
 
-    // Function to preload images
     const preloadImages = (images) => {
         images.forEach((image) => {
             const img = new Image();
@@ -30,7 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     initializeHoverEffects(); // Re-initialize hover effects after loading content
                     initializeVideoControls(); // Initialize video controls
 
-                    // Preload images after loading content
                     if (url === 'work.html') {
                         const images = Array.from(document.querySelectorAll('.work-item')).map(item => item.getAttribute('data-image'));
                         preloadImages(images);
@@ -88,37 +97,48 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('Hash changed:', window.location.hash);
         navigate(window.location.hash);
     };
-
+    
     const updateActiveLink = (hash) => {
         const links = document.querySelectorAll('nav a[data-link]');
         links.forEach(link => {
-            link.parentElement.classList.toggle('active', link.getAttribute('href') === hash);
+            const linkHref = link.getAttribute('href');
+            if (linkHref === hash || 
+                (hash.startsWith('#/work') && linkHref === '#/work')) { // Check if the current hash is under the work section
+                link.parentElement.classList.add('active');
+            } else {
+                link.parentElement.classList.remove('active');
+            }
         });
     };
 
     window.addEventListener('hashchange', handleHashChange);
 
-    // Function to handle touch and click events
     const handleNavigationEvent = (e) => {
-        if (e.target.matches('[data-link]')) {
-            e.preventDefault();
-            const hash = e.target.getAttribute('href');
-            console.log('Link clicked:', hash);
-            window.location.hash = hash;
+        let target = e.target;
+
+        // Find the closest element with an href or data-link attribute
+        while (target && !target.getAttribute('href') && !target.getAttribute('data-link')) {
+            target = target.parentElement;
+        }
+
+        if (target) {
+            let hash = target.getAttribute('href') || target.getAttribute('data-link');
+            if (hash) {
+                e.preventDefault();
+                console.log('Link clicked:', hash);
+                window.location.hash = hash;
+            }
         }
     };
 
-    // Listen for both click and touch events
     document.body.addEventListener('click', handleNavigationEvent);
     document.body.addEventListener('touchend', handleNavigationEvent);
 
-    // Function to load the initial content
     const loadInitialContent = () => {
         const initialHash = window.location.hash || '#/';
         console.log('Initial content load:', initialHash);
         navigate(initialHash);
     };
 
-    // Load the initial content
     loadInitialContent();
 });
