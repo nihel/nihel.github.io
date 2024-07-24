@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
         '#/work/savr-new-design',
         '#/work/es-insight-portal'
     ];
-    
+
     let lastRouteIndex = routeOrder.indexOf(window.location.hash || '#/');
 
     const preloadImages = (images) => {
@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('Hash changed:', window.location.hash);
         navigate(window.location.hash);
     };
-    
+
     const updateActiveLink = (hash) => {
         const links = document.querySelectorAll('nav a[data-link]');
         links.forEach(link => {
@@ -124,6 +124,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (target) {
             let hash = target.getAttribute('href') || target.getAttribute('data-link');
             if (hash) {
+                // Check if the link is external
+                if (hash.startsWith('http://') || hash.startsWith('https://')) {
+                    // External link, allow default behavior
+                    return;
+                }
+                // Internal link, handle navigation
                 e.preventDefault();
                 console.log('Link clicked:', hash);
                 window.location.hash = hash;
