@@ -497,8 +497,9 @@ p.desc {
     padding: 12px;
     display: flex;
     flex-direction: row;
-    gap: 8px;
     align-items: center;
+	justify-content: space-between;
+	gap: 8px;
 }
 
 .work-item.selected {
