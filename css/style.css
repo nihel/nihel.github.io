@@ -558,6 +558,20 @@ p.desc {
 	margin-bottom: 32px;
 }
 
+.arrow-icon {
+	background-image: url(../images/assets/arrow.svg);
+	width: 20px;
+	height: 20px;
+	opacity: 0;
+	transform: translateX(-8px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.work-item:hover .arrow-icon {
+    opacity: 1;
+    transform: translateX(0);
+}
+
 .note {
 	font-size: 12px;
 	font-family: 'PPNeueMontreal-Medium', 'Helvetica', sans-serif;
