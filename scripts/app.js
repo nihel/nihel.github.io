@@ -7,10 +7,53 @@ const debounce = (func, delay) => {
     };
 };
 
+
+// Portfolio video hover effect
+function initializePortfolioVideoHover() {
+    const hoverVideoElements = document.querySelectorAll('.portfolio-video'); // Select all video elements with the class 'portfolio-video'
+
+    hoverVideoElements.forEach(videoElement => {
+        videoElement.muted = true; // Ensure video is muted to comply with autoplay policies
+
+        videoElement.addEventListener('mouseenter', () => {
+            videoElement.play().catch(error => {
+                // Handle play error, typically due to autoplay policy
+            });
+        });
+
+        const resetVideo = () => {
+            videoElement.pause();
+            videoElement.currentTime = 0; // Reset the video to the beginning
+
+            // Temporarily remove the source elements to force the video to reload and show the poster
+            const sources = videoElement.querySelectorAll('source');
+            sources.forEach(source => videoElement.removeChild(source));
+
+            // Re-add the source elements
+            sources.forEach(source => videoElement.appendChild(source));
+
+            // Load the video again
+            videoElement.load();
+        };
+
+        videoElement.addEventListener('mouseleave', resetVideo);
+        videoElement.addEventListener('ended', resetVideo);
+
+        videoElement.addEventListener('loadeddata', () => {
+            if (videoElement.readyState >= 3) { // HAVE_FUTURE_DATA or more
+                videoElement.style.backgroundImage = 'none'; // Remove the poster image
+            }
+        });
+    });
+}
+
+// Call the function to initialize hover effects on initial page load
+document.addEventListener('DOMContentLoaded', initializePortfolioVideoHover);
+
 // Video Control
 function initializeVideoControls() {
     const playAfterThisHeight = 200;
-    const video = document.querySelector('video');
+    const video = document.querySelector('#scroll-video');
     const videoControl = document.querySelector('.video-control');
 
     if (video) {

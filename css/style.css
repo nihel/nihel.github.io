@@ -573,6 +573,11 @@ p.desc {
     transform: translateX(0);
 }
 
+.portfolio-video {
+	border-radius: 12px;
+	box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+
 .note {
 	font-size: 12px;
 	font-family: 'PPNeueMontreal-Medium', 'Helvetica', sans-serif;

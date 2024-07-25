@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
+
         // Redirect to #/ if the URL is nils.io without any hash
         if (window.location.pathname === '/' && !window.location.hash) {
             window.location.hash = '#/';
@@ -47,6 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 content.innerHTML = data;
                 initializeHoverEffects(); // Re-initialize hover effects after loading content
                 initializeVideoControls(); // Initialize video controls
+                initializePortfolioVideoHover(); // Initialize portfolio video hover
 
                 if (url === 'work.html') {
                     const images = Array.from(document.querySelectorAll('.work-item')).map(item => item.getAttribute('data-image'));
