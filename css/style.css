@@ -559,6 +559,12 @@ p.desc {
 	margin-bottom: 32px;
 }
 
+.play-icon {
+	background-image: url(../images/assets/play-icon.svg);
+	width: 28px;
+	height: 28px;
+}
+
 .arrow-icon {
 	background-image: url(../images/assets/arrow.svg);
 	width: 20px;

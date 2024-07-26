@@ -120,7 +120,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // Function to handle hover effect
     const handleHoverEffect = (event) => {
         if (event.target && typeof event.target.closest === 'function') {
-            if (event.target.closest('.flex, .work-item, .footer-social li, nav, #email-btn, .video-control')) {
+            if (event.target.closest('.portfolio-video')) {
+                cursor.style.backgroundImage = "url('../images/assets/play-icon.svg')";
+                gsap.to(cursor, {
+                    width: 28,
+                    height: 28,
+                    backgroundColor: 'transparent',
+                    duration: 0.15,
+                    ease: 'power3.inOut'
+                });
+            } else if (event.target.closest('.flex, .work-item, .footer-social li, nav, #email-btn, .video-control')) {
+                cursor.style.backgroundImage = 'none';
                 gsap.to(cursor, {
                     width: 16,
                     height: 16,
@@ -130,6 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     ease: 'power3.inOut'
                 });
             } else if (event.target.closest('p.primary, #work-description, h1, h2, h3')) {
+                cursor.style.backgroundImage = 'none';
                 gsap.to(cursor, {
                     width: 4,
                     height: 28,
@@ -142,9 +153,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    // Function to handle hover out effect
     const handleHoverOutEffect = (event) => {
         if (event.target && typeof event.target.closest === 'function') {
-            if (!event.relatedTarget || !event.relatedTarget.closest('.flex, .work-item, #work-description, .footer-social li, nav, #email-btn, p.primary, .video-control, h1, h2, h3')) {
+            if (!event.relatedTarget || !event.relatedTarget.closest('.flex, .work-item, #work-description, .footer-social li, nav, #email-btn, p.primary, .video-control, h1, h2, h3, .portfolio-video')) {
+                cursor.style.backgroundImage = 'none';
                 gsap.to(cursor, {
                     width: 28,
                     height: 28,
