@@ -107,6 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
             duration: 0.15,
             x: e.clientX,
             y: e.clientY,
+            transform: 'translate(-50%, -50%)',
             ease: 'power3.out'
         });
     };
@@ -129,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     duration: 0.15,
                     ease: 'power3.inOut'
                 });
-            } else if (event.target.closest('.flex, .work-item, .footer-social li, nav, #email-btn, .video-control')) {
+            } else if (event.target.closest('.card, .work-item, .footer-social li, nav, #email-btn, .video-control')) {
                 cursor.style.backgroundImage = 'none';
                 gsap.to(cursor, {
                     width: 16,
@@ -156,7 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Function to handle hover out effect
     const handleHoverOutEffect = (event) => {
         if (event.target && typeof event.target.closest === 'function') {
-            if (!event.relatedTarget || !event.relatedTarget.closest('.flex, .work-item, #work-description, .footer-social li, nav, #email-btn, p.primary, .video-control, h1, h2, h3, .portfolio-video')) {
+            if (!event.relatedTarget || !event.relatedTarget.closest('.card, .work-item, #work-description, .footer-social li, nav, #email-btn, p.primary, .video-control, h1, h2, h3, .portfolio-video')) {
                 cursor.style.backgroundImage = 'none';
                 gsap.to(cursor, {
                     width: 28,
@@ -208,8 +209,6 @@ document.addEventListener('DOMContentLoaded', () => {
 const initializeHoverEffects = () => {
     const names = document.querySelectorAll('.work-item');
     const hoverImage = document.getElementById('work-image');
-    const hoverTitle = document.getElementById('work-title');
-    const hoverDescription = document.getElementById('work-description');
 
     let initialLoad = true; // Flag to check if it's the first load
 
@@ -223,8 +222,6 @@ const initializeHoverEffects = () => {
         const imageUrl = element.getAttribute('data-image');
         const srcset = element.getAttribute('data-srcset'); // Get the srcset
         const sizes = element.getAttribute('data-sizes'); // Get the sizes
-        const titleText = element.getAttribute('data-title');
-        const descriptionText = element.getAttribute('data-description');
         const altText = element.getAttribute('data-alt'); // Get the alt text
 
         gsap.killTweensOf(hoverImage); // Kill any ongoing animations
@@ -232,8 +229,6 @@ const initializeHoverEffects = () => {
         hoverImage.srcset = srcset; // Set the srcset attribute
         hoverImage.sizes = sizes; // Set the sizes attribute
         hoverImage.alt = altText; // Set the alt attribute
-        hoverTitle.textContent = titleText;
-        hoverDescription.textContent = descriptionText;
 
         if (!initialLoad) {
             // Apply only the scale effect

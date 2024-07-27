@@ -107,7 +107,7 @@ html.sr .load-hidden {
 body {
 	font-family: 'PPNeueMontreal-Regular', 'Helvetica', sans-serif;
 	background: var(--white);
-	color: var(--grey);
+	color: var(--black);
 }
 
 * {
@@ -129,8 +129,8 @@ body {
 }
 
 main {
-	max-width: 950px;
-	margin: 10% auto 8%;
+	max-width: 800px;
+	margin: 8% auto 8%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -138,17 +138,8 @@ main {
 }
 
 header {
-	width: 800px;
+	width: 576px;
 	margin: 24px;
-}
-
-.introduction {
-	background: -webkit-linear-gradient(280deg, #555555, #181818);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-	-moz-background-clip: text;
-	-moz-text-fill-color: transparent;
-	background-clip: text;
 }
 
 .nav {
@@ -250,8 +241,8 @@ nav ul li.active a {
 
 h1 {
 	font-family: 'PPNeueMontreal-Medium', 'Helvetica', sans-serif;
-	font-size: 28px;
-	line-height: 124%;
+	font-size: 21px;
+	line-height: 132%;
 	letter-spacing: 0.2px;
 	margin-bottom: 1rem;
 }
@@ -293,8 +284,8 @@ a:visited {
 
 #email-btn {
 	font-family: 'PPNeueMontreal-Medium', 'Helvetica', sans-serif;
-	font-size: 28px;
-	line-height: 124%;
+	font-size: 21px;
+	line-height: 132%;
 	letter-spacing: 0.2px;
 	text-decoration: underline;
 	text-underline-offset: 1px;
@@ -309,8 +300,8 @@ a:visited {
 
 p.primary {
 	font-family: 'PPNeueMontreal-Medium', 'Helvetica', sans-serif;
-	font-size: 28px;
-	line-height: 124%;
+	font-size: 21px;
+	line-height: 132%;
 	letter-spacing: 0.2px;
 	margin-bottom: 1rem;
 }
@@ -319,26 +310,13 @@ p.desc {
 	font-family: 'PPNeueMontreal-Medium', 'Helvetica', sans-serif;
 	color: var(--lightgrey);
 	font-size: 16px;
-	line-height: 126%;
+	line-height: 130%;
 	letter-spacing: 0.2px;
 	padding-top: 8px;
 }
 
-
-.links {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-    gap: 2rem;
-}
-
-.chapter {
-	width: auto;
-	padding-top: 0.6rem;
-}
-
 .chapter-content {
-	width: 500px;
+	width: 494px;
 	display: flex;
 	align-items: center;
 	flex-direction: column;
@@ -366,7 +344,7 @@ p.desc {
 .company-info {
 	display: flex;
 	align-items: center;
-	gap: 8px;
+	gap: 12px;
 }
 
 .flex {
@@ -377,6 +355,7 @@ p.desc {
 }
 
 .card {
+	width: 100%;
 	background: transparent;
 	display: block;
 	border: none;
@@ -427,31 +406,22 @@ p.desc {
 
 .viewer {
 	width: 215px;
-	height: 498px;
+	height: 462px;
 	overflow: hidden;
 	border-radius: 10px;
 	z-index: 10;
 	position: absolute;
 	right: 4%;
-	top: 10%;
+	top: 12%;
 	box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
-}
-
-.viewer-header {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	background-color: #313130;
-	padding: 10px 12px 10px 12px;
-	border-radius: 10px 10px 0px 0px
 }
 
 .video-control {
 	width: 32px;
 	height: 32px;
 	position: absolute;
-	top: 48px;
-	left: 24px;
+	top: 32px;
+	left: 16px;
 	z-index: 10;
 	user-select: none;
 	transition: 0.3s ease;
@@ -477,17 +447,16 @@ p.desc {
 
 .portfolio {
     display: flex;
-    align-items: flex-start;
-	width: 100%;
-	height: 650px;
+    align-items: center;
+    gap: 24px;
+    flex-direction: row;
 }
 
 .work-list {
     display: flex;
     flex-direction: column;
-    width: 320px;
+    width: 276px;
     gap: 8px;
-    padding: 24px;
     position: sticky;
     top: 0;
 }
@@ -516,14 +485,14 @@ p.desc {
 .work-detail {
 	font-size: 16px;
 	font-family: 'PPNeueMontreal-Medium', 'Helvetica', sans-serif;
-	letter-spacing: 0.4px;
+	letter-spacing: 0.6px;
 	color: var(--black);
 }
 
 .work-name {
 	font-size: 14px;
 	font-family: 'PPNeueMontreal-Medium', 'Helvetica', sans-serif;
-	letter-spacing: 0.4px;
+	letter-spacing: 0.6px;
 	color: var(--lightgrey);
 }
 
@@ -540,13 +509,9 @@ p.desc {
 }
 
 .work-placeholder {
-	width: 100%;
-	height: auto;
-	padding: 24px;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: flex-start;
+	width: 500px;
+	height: 400px;
+	align-content: center;
 }
 
 #work-image {
@@ -554,7 +519,7 @@ p.desc {
 	max-height: 100%;
 	object-fit: cover;
 	opacity: 1;
-	border-radius: 16px;
+	border-radius: 12px;
 	box-shadow: rgba(0, 0, 0, 0.25) 0px 12px 16px, rgba(0, 0, 0, 0.15) 0px 2px 4px;
 	margin-bottom: 32px;
 }
@@ -579,9 +544,14 @@ p.desc {
     transform: translateX(0);
 }
 
+.portfolio-video-container {
+	width: 720px;
+}
+
 .portfolio-video {
 	border-radius: 12px;
 	box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    object-fit: cover;
 }
 
 .note {
@@ -734,11 +704,6 @@ p.combo {
 		font-size: 18px;
 	}
 
-	.links {
-		flex-direction: column;
-		align-items: center;
-	}
-
 	.chapter-content {
 		width: auto;
 	}
@@ -840,11 +805,6 @@ p.combo {
 	p.desc {
 		font-size: 15px;
 		line-height: 128%;
-	}
-
-	.links {
-		flex-direction: column;
-		align-items: center;
 	}
 
 	.chapter-content {
