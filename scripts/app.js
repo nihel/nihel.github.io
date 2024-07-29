@@ -11,62 +11,12 @@ const debounce = (func, delay) => {
 // Portfolio play video on hover
 function initializePortfolioVideoHover() {
     const hoverVideoElements = document.querySelectorAll('.portfolio-video'); // Select all video elements with the class 'portfolio-video'
+    const isTouchScreen = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
-    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    hoverVideoElements.forEach(videoElement => {
+        videoElement.muted = true; // Ensure video is muted to comply with autoplay policies
 
-    const showPoster = (videoElement) => {
-        // Temporarily remove the source elements to force the video to reload and show the poster
-        const sources = videoElement.querySelectorAll('source');
-        sources.forEach(source => videoElement.removeChild(source));
-
-        // Re-add the source elements
-        sources.forEach(source => videoElement.appendChild(source));
-
-        // Load the video again
-        videoElement.load();
-    };
-
-    if (isTouchDevice) {
-        // Use Intersection Observer to autoplay videos when they are in the viewport
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.play().catch(error => {
-                        // Handle play error, typically due to autoplay policy
-                    });
-                } else {
-                    entry.target.pause();
-                    entry.target.currentTime = 0; // Reset the video to the beginning
-                }
-            });
-        }, { threshold: 0.5 }); // Adjust threshold as needed
-
-        hoverVideoElements.forEach(videoElement => {
-            videoElement.muted = true; // Ensure video is muted to comply with autoplay policies
-            videoElement.removeAttribute('controls'); // Ensure controls are not shown
-
-            videoElement.addEventListener('ended', () => {
-                // Show the poster after the video ends
-                showPoster(videoElement);
-            });
-
-            videoElement.addEventListener('click', () => {
-                if (videoElement.currentTime === 0 || videoElement.paused) {
-                    videoElement.play().catch(error => {
-                        // Handle play error, typically due to autoplay policy
-                    });
-                }
-            });
-
-            observer.observe(videoElement); // Observe each video element
-        });
-
-    } else {
-        // Handle hover effects for non-touch devices
-        hoverVideoElements.forEach(videoElement => {
-            videoElement.muted = true; // Ensure video is muted to comply with autoplay policies
-            videoElement.removeAttribute('controls'); // Ensure controls are not shown
-
+        if (!isTouchScreen) {
             videoElement.addEventListener('mouseenter', () => {
                 videoElement.play().catch(error => {
                     // Handle play error, typically due to autoplay policy
@@ -76,7 +26,16 @@ function initializePortfolioVideoHover() {
             const resetVideo = () => {
                 videoElement.pause();
                 videoElement.currentTime = 0; // Reset the video to the beginning
-                showPoster(videoElement); // Show the poster
+
+                // Temporarily remove the source elements to force the video to reload and show the poster
+                const sources = videoElement.querySelectorAll('source');
+                sources.forEach(source => videoElement.removeChild(source));
+
+                // Re-add the source elements
+                sources.forEach(source => videoElement.appendChild(source));
+
+                // Load the video again
+                videoElement.load();
             };
 
             videoElement.addEventListener('mouseleave', resetVideo);
@@ -87,8 +46,41 @@ function initializePortfolioVideoHover() {
                     videoElement.style.backgroundImage = 'none'; // Remove the poster image
                 }
             });
-        });
-    }
+        } else {
+            const playVideoOnClick = () => {
+                if (videoElement.paused) {
+                    videoElement.play();
+                } else {
+                    videoElement.pause();
+                    videoElement.currentTime = 0; // Reset the video to the beginning
+                }
+            };
+
+            const resetVideo = () => {
+                videoElement.pause();
+                videoElement.currentTime = 0; // Reset the video to the beginning
+
+                // Temporarily remove the source elements to force the video to reload and show the poster
+                const sources = videoElement.querySelectorAll('source');
+                sources.forEach(source => videoElement.removeChild(source));
+
+                // Re-add the source elements
+                sources.forEach(source => videoElement.appendChild(source));
+
+                // Load the video again
+                videoElement.load();
+            };
+
+            videoElement.addEventListener('click', playVideoOnClick);
+            videoElement.addEventListener('ended', resetVideo);
+
+            videoElement.addEventListener('loadeddata', () => {
+                if (videoElement.readyState >= 3) { // HAVE_FUTURE_DATA or more
+                    videoElement.style.backgroundImage = 'none'; // Remove the poster image
+                }
+            });
+        }
+    });
 }
 
 // Call the function to initialize hover effects on initial page load
