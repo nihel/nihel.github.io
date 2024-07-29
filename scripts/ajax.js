@@ -1,10 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Redirect to #/ if the URL is nils.io without any hash
+    if (window.location.pathname === '/' && !window.location.hash) {
+        window.location.hash = '#/';
+    }
 
-        // Redirect to #/ if the URL is nils.io without any hash
-        if (window.location.pathname === '/' && !window.location.hash) {
-            window.location.hash = '#/';
-        }
-    
     const content = document.getElementById('content');
 
     const routes = {
@@ -134,6 +133,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (target) {
             let hash = target.getAttribute('href') || target.getAttribute('data-link');
             if (hash) {
+                // Check if the link is an email link
+                if (hash.startsWith('mailto:')) {
+                    // Email link, allow default behavior
+                    return;
+                }
                 // Check if the link is external
                 if (hash.startsWith('http://') || hash.startsWith('https://')) {
                     // External link, allow default behavior
