@@ -469,6 +469,13 @@ p.desc {
     flex-direction: row;
 }
 
+.portfolio-video {
+	border-radius: 12px;
+	box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    object-fit: cover;
+	margin-bottom: 16px;
+}
+
 .work-list {
     display: flex;
     flex-direction: column;
@@ -559,13 +566,6 @@ p.desc {
 .work-item:hover .arrow-icon {
     opacity: 1;
     transform: translateX(0);
-}
-
-.portfolio-video {
-	border-radius: 12px;
-	box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
-    object-fit: cover;
-	margin-bottom: 16px;
 }
 
 .note {
@@ -781,6 +781,12 @@ p.combo {
 		height: 560px;
 	}
 
+	.portfolio-video {
+		border-radius: 8px;
+		box-shadow: rgba(0, 0, 0, 0.25) 0px 6px 8px, rgba(0, 0, 0, 0.22) 0px 2px 4px;
+		margin-bottom: 16px;
+	}
+
 	#email-btn {
 		font-size: 16px;
 	}
@@ -816,4 +822,18 @@ p.combo {
 		gap: 24px;
 	}
 
+}
+
+/* Media query for touch devices */
+@media (pointer: coarse) {
+    .arrow-icon {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    /* Ensure the arrow icon is visible even on hover for touch devices */
+    .work-item:hover .arrow-icon {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
