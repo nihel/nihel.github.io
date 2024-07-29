@@ -47,12 +47,11 @@ function initializePortfolioVideoHover() {
                 }
             });
         } else {
-            const playVideoOnClick = () => {
+            const playOrResetVideoOnClick = () => {
                 if (videoElement.paused) {
                     videoElement.play();
                 } else {
-                    videoElement.pause();
-                    videoElement.currentTime = 0; // Reset the video to the beginning
+                    resetVideo();
                 }
             };
 
@@ -71,7 +70,7 @@ function initializePortfolioVideoHover() {
                 videoElement.load();
             };
 
-            videoElement.addEventListener('click', playVideoOnClick);
+            videoElement.addEventListener('click', playOrResetVideoOnClick);
             videoElement.addEventListener('ended', resetVideo);
 
             videoElement.addEventListener('loadeddata', () => {
