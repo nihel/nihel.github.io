@@ -8,7 +8,7 @@ const debounce = (func, delay) => {
 };
 
 
-// Portfolio video hover effect
+// Portfolio play video on hover
 function initializePortfolioVideoHover() {
     const hoverVideoElements = document.querySelectorAll('.portfolio-video'); // Select all video elements with the class 'portfolio-video'
 
@@ -205,15 +205,30 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.style.cursor = 'none';
 });
 
-// Portfolio hover effect
+// Portfolio change image on hover
 const initializeHoverEffects = () => {
+    // Check if the device is a touch screen
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+    // If it's a touch device, hide the hover image container and exit the function
+    if (isTouchDevice) {
+        const hoverImageContainer = document.querySelector('.work-placeholder');
+        if (hoverImageContainer) {
+            hoverImageContainer.style.display = 'none';
+        }
+        return; // Exit the function early for touch devices
+    }
+
     const names = document.querySelectorAll('.work-item');
     const hoverImage = document.getElementById('work-image');
 
     let initialLoad = true; // Flag to check if it's the first load
 
     const updateSelected = (element) => {
-        document.querySelector('.work-item.selected')?.classList.remove('selected');
+        const selectedElement = document.querySelector('.work-item.selected');
+        if (selectedElement) {
+            selectedElement.classList.remove('selected');
+        }
         element.classList.add('selected');
         localStorage.setItem('selectedWorkItem', element.getAttribute('data-link')); // Save the selected work item
     };
@@ -241,7 +256,7 @@ const initializeHoverEffects = () => {
         }
     };
 
-    names.forEach((name, index) => {
+    names.forEach((name) => {
         name.addEventListener('mouseenter', () => {
             if (name.classList.contains('selected')) {
                 return; // Do nothing if the item is already selected
