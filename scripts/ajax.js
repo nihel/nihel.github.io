@@ -13,7 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
         '#/resume': 'resume.html',
         '#/work/viaplay-trailers': 'viaplay-trailers.html',
         '#/work/savr-new-design': 'savr-new-design.html',
-        '#/work/es-insight-portal': 'es-insight-portal.html'
+        '#/work/es-insight-portal': 'es-insight-portal.html',
+        '#/work/viaplay-core-player': 'viaplay-core-player.html'
     };
 
     const routeOrder = [
@@ -22,7 +23,8 @@ document.addEventListener('DOMContentLoaded', () => {
         '#/resume',
         '#/work/viaplay-trailers',
         '#/work/savr-new-design',
-        '#/work/es-insight-portal'
+        '#/work/es-insight-portal',
+        '#/work/viaplay-core-player'
     ];
 
     let lastRouteIndex = routeOrder.indexOf(window.location.hash || '#/');

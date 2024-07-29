@@ -138,6 +138,9 @@ main {
 }
 
 header {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
 	width: 576px;
 }
 
@@ -300,7 +303,6 @@ p.primary {
 	font-size: 21px;
 	line-height: 132%;
 	letter-spacing: 0.2px;
-	margin-bottom: 1rem;
 }
 
 p.secondary {
@@ -709,12 +711,13 @@ p.combo {
 	main {
 		max-width: 336px;
 		margin: 28% auto 24%;
-		gap: 6rem;
+		gap: 2rem;
 	}
 
 	header {
 		width: auto;
 		margin: 0;
+		padding-bottom: 40px;
 	}
 
 	h1 {
@@ -736,7 +739,12 @@ p.combo {
 
 	p.primary {
 		font-size: 16px;
-		line-height: 126%;
+		line-height: 132%;
+	}
+
+	p.secondary {
+		font-size: 16px;
+		line-height: 132%;
 	}
 
 	p.desc {
@@ -840,4 +848,8 @@ p.combo {
         opacity: 1;
         transform: translateX(0);
     }
+
+	.portfolio {
+		height: auto;
+	}
 }
