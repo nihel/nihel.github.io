@@ -175,7 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     duration: 0.15,
                     ease: 'power3.inOut'
                 });
-            } else if (event.target.closest('p.primary, #work-description, h1, h2, h3')) {
+            } else if (event.target.closest('p.primary, p.secondary, h1, h2, h3')) {
                 cursor.style.backgroundImage = 'none';
                 gsap.to(cursor, {
                     width: 4,
@@ -192,7 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Function to handle hover out effect
     const handleHoverOutEffect = (event) => {
         if (event.target && typeof event.target.closest === 'function') {
-            if (!event.relatedTarget || !event.relatedTarget.closest('.card, .work-item, #work-description, .footer-social li, nav, #email-btn, p.primary, .video-control, h1, h2, h3, .portfolio-video')) {
+            if (!event.relatedTarget || !event.relatedTarget.closest('.card, .work-item, .footer-social li, nav, #email-btn, p.primary, p.secondary, .video-control, h1, h2, h3, .portfolio-video')) {
                 cursor.style.backgroundImage = 'none';
                 gsap.to(cursor, {
                     width: 28,
