@@ -126,55 +126,59 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const handleHoverEffect = (event) => {
-        const target = event.target.closest('.portfolio-video, .card, .work-item, .footer-social li, nav, #email-btn, .video-control, p.primary, p.secondary, h1, h2, h3');
-        if (target) {
-            if (target.classList.contains('portfolio-video')) {
-                cursor.style.backgroundImage = "url('../images/assets/play-icon.svg')";
-                gsap.to(cursor, {
-                    width: 28,
-                    height: 28,
-                    backgroundColor: 'transparent',
-                    duration: 0.15,
-                    ease: 'power3.inOut'
-                });
-            } else if (target.matches('.card, .work-item, .footer-social li, nav, #email-btn, .video-control')) {
-                cursor.style.backgroundImage = 'none';
-                gsap.to(cursor, {
-                    width: 16,
-                    height: 16,
-                    backgroundColor: 'rgba(105, 105, 105, 0.2)',
-                    backdropFilter: 'blur(8px)',
-                    duration: 0.15,
-                    ease: 'power3.inOut'
-                });
-            } else if (target.matches('p.primary, p.secondary, h1, h2, h3')) {
-                cursor.style.backgroundImage = 'none';
-                gsap.to(cursor, {
-                    width: 4,
-                    height: 28,
-                    borderRadius: '2px',
-                    backgroundColor: 'rgba(62, 128, 255, 1)',
-                    duration: 0.15,
-                    ease: 'power3.inOut'
-                });
+        if (event.target.nodeType === 1) { // Ensure the target is an element
+            const target = event.target.closest('.portfolio-video, .card, .work-item, .footer-social li, nav, #email-btn, .video-control, p.primary, p.secondary, h1, h2, h3');
+            if (target) {
+                if (target.classList.contains('portfolio-video')) {
+                    cursor.style.backgroundImage = "url('../images/assets/play-icon.svg')";
+                    gsap.to(cursor, {
+                        width: 28,
+                        height: 28,
+                        backgroundColor: 'transparent',
+                        duration: 0.15,
+                        ease: 'power3.inOut'
+                    });
+                } else if (target.matches('.card, .work-item, .footer-social li, nav, #email-btn, .video-control')) {
+                    cursor.style.backgroundImage = 'none';
+                    gsap.to(cursor, {
+                        width: 16,
+                        height: 16,
+                        backgroundColor: 'rgba(105, 105, 105, 0.2)',
+                        backdropFilter: 'blur(8px)',
+                        duration: 0.15,
+                        ease: 'power3.inOut'
+                    });
+                } else if (target.matches('p.primary, p.secondary, h1, h2, h3')) {
+                    cursor.style.backgroundImage = 'none';
+                    gsap.to(cursor, {
+                        width: 4,
+                        height: 28,
+                        borderRadius: '2px',
+                        backgroundColor: 'rgba(62, 128, 255, 1)',
+                        duration: 0.15,
+                        ease: 'power3.inOut'
+                    });
+                }
             }
         }
     };
 
     const handleHoverOutEffect = (event) => {
-        const target = event.target.closest('.portfolio-video, .card, .work-item, .footer-social li, nav, #email-btn, .video-control, p.primary, p.secondary, h1, h2, h3');
-        if (target) {
-            if (!event.relatedTarget || !event.relatedTarget.closest('.portfolio-video, .card, .work-item, .footer-social li, nav, #email-btn, .video-control, p.primary, p.secondary, h1, h2, h3')) {
-                cursor.style.backgroundImage = 'none';
-                gsap.to(cursor, {
-                    width: 28,
-                    height: 28,
-                    borderRadius: '50%',
-                    backgroundColor: 'rgba(180, 180, 180, 0.4)',
-                    backdropFilter: 'blur(8px)',
-                    duration: 0.15,
-                    ease: 'power3.inOut'
-                });
+        if (event.target.nodeType === 1) { // Ensure the target is an element
+            const target = event.target.closest('.portfolio-video, .card, .work-item, .footer-social li, nav, #email-btn, .video-control, p.primary, p.secondary, h1, h2, h3');
+            if (target) {
+                if (!event.relatedTarget || (event.relatedTarget.nodeType === 1 && !event.relatedTarget.closest('.portfolio-video, .card, .work-item, .footer-social li, nav, #email-btn, .video-control, p.primary, p.secondary, h1, h2, h3'))) {
+                    cursor.style.backgroundImage = 'none';
+                    gsap.to(cursor, {
+                        width: 28,
+                        height: 28,
+                        borderRadius: '50%',
+                        backgroundColor: 'rgba(180, 180, 180, 0.4)',
+                        backdropFilter: 'blur(8px)',
+                        duration: 0.15,
+                        ease: 'power3.inOut'
+                    });
+                }
             }
         }
     };
