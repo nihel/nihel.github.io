@@ -153,8 +153,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (!target.closest('a')) {
                         cursor.style.backgroundImage = 'none';
                         gsap.to(cursor, {
-                            width: 4,
-                            height: 28,
+                            width: 3,
+                            height: 24,
                             borderRadius: '2px',
                             backgroundColor: 'rgba(62, 128, 255, 1)',
                             duration: 0.15,

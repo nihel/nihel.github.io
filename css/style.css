@@ -283,6 +283,7 @@ a:visited {
 }
 
 #email-btn {
+	width: fit-content;
 	font-family: 'PPNeueMontreal-Medium', 'Helvetica', sans-serif;
 	font-size: 21px;
 	line-height: 132%;
