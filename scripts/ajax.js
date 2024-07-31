@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    const loadContent = async (url) => {
+    const loadContent = async (url, animate = true) => {
         console.log(`Loading content from: ${url}`);
         try {
             const response = await fetch(url);
@@ -53,13 +53,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 preloadImages(images);
             }
 
-            fadeIn(lastRouteIndex, routeOrder.indexOf(window.location.hash));
+            if (animate) {
+                fadeIn(lastRouteIndex, routeOrder.indexOf(window.location.hash));
+            }
             lastRouteIndex = routeOrder.indexOf(window.location.hash);
             window.scrollTo(0, 0);
         } catch (error) {
             console.error(error);
             content.innerHTML = '<h1>404 Not Found</h1><p>The page you are looking for does not exist.</p>';
-            fadeIn(lastRouteIndex, routeOrder.indexOf(window.location.hash));
+            if (animate) {
+                fadeIn(lastRouteIndex, routeOrder.indexOf(window.location.hash));
+            }
             lastRouteIndex = routeOrder.indexOf(window.location.hash);
             window.scrollTo(0, 0);
         }
@@ -81,27 +85,33 @@ document.addEventListener('DOMContentLoaded', () => {
         );
     };
 
-    const navigate = (hash) => {
+    const navigate = (hash, animate = true) => {
         console.log(`Navigating to: ${hash}`);
         const url = routes[hash];
         const currentIndex = routeOrder.indexOf(hash);
         if (url) {
-            gsap.to(content, { opacity: 0, duration: 0.4, ease: "power3.out", onComplete: () => {
-                loadContent(url);
-            }});
+            if (animate) {
+                gsap.to(content, { opacity: 0, duration: 0.4, ease: "power3.out", onComplete: () => {
+                    loadContent(url, animate);
+                }});
+            } else {
+                loadContent(url, animate);
+            }
             updateActiveLink(hash);
         } else {
             console.error('Invalid route:', hash);
             content.innerHTML = '<h1>404 Not Found</h1><p>The page you are looking for does not exist.</p>';
-            fadeIn(lastRouteIndex, currentIndex);
+            if (animate) {
+                fadeIn(lastRouteIndex, currentIndex);
+            }
             window.scrollTo(0, 0);
             lastRouteIndex = currentIndex;
         }
     };
 
-    const handleHashChange = () => {
+    const handleHashChange = (animate = true) => {
         console.log('Hash changed:', window.location.hash);
-        navigate(window.location.hash);
+        navigate(window.location.hash, animate);
     };
 
     const updateActiveLink = (hash) => {
@@ -117,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // Debounce the hash change handler
-    const debouncedHandleHashChange = debounce(handleHashChange, 100);
+    const debouncedHandleHashChange = debounce(() => handleHashChange(true), 100);
     window.addEventListener('hashchange', debouncedHandleHashChange);
 
     const handleNavigationEvent = (e) => {
@@ -149,8 +159,48 @@ document.addEventListener('DOMContentLoaded', () => {
     const loadInitialContent = () => {
         const initialHash = window.location.hash || '#/';
         console.log('Initial content load:', initialHash);
-        navigate(initialHash);
+        navigate(initialHash, false);
     };
+
+    let startX;
+    let startY;
+    let threshold = 50; // Minimum distance for a swipe gesture
+    let allowedTime = 300; // Maximum time for a swipe gesture
+    let startTime;
+
+    document.addEventListener('touchstart', (e) => {
+        const touch = e.changedTouches[0];
+        startX = touch.pageX;
+        startY = touch.pageY;
+        startTime = new Date().getTime();
+    }, false);
+
+    document.addEventListener('touchend', (e) => {
+        const touch = e.changedTouches[0];
+        const distX = touch.pageX - startX;
+        const distY = touch.pageY - startY;
+        const elapsedTime = new Date().getTime() - startTime;
+
+        if (elapsedTime <= allowedTime) {
+            if (Math.abs(distX) >= threshold && Math.abs(distY) <= 100) {
+                const isSwipeLeft = distX < 0;
+                const isSwipeRight = distX > 0;
+                if (isSwipeLeft || isSwipeRight) {
+                    const currentHashIndex = routeOrder.indexOf(window.location.hash);
+                    let newHashIndex = currentHashIndex;
+                    if (isSwipeLeft) {
+                        newHashIndex = Math.min(routeOrder.length - 1, currentHashIndex + 1);
+                    } else if (isSwipeRight) {
+                        newHashIndex = Math.max(0, currentHashIndex - 1);
+                    }
+                    if (newHashIndex !== currentHashIndex) {
+                        window.location.hash = routeOrder[newHashIndex];
+                        handleHashChange(false);
+                    }
+                }
+            }
+        }
+    }, false);
 
     loadInitialContent();
 });
