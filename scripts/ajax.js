@@ -27,7 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     let lastRouteIndex = routeOrder.indexOf(window.location.hash || '#/');
-    let isSwipeGesture = false;
 
     const preloadImages = (images) => {
         images.forEach((image) => {
@@ -54,17 +53,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 preloadImages(images);
             }
 
-            if (!isSwipeGesture) {
-                fadeIn(lastRouteIndex, routeOrder.indexOf(window.location.hash));
-            }
+            fadeIn(lastRouteIndex, routeOrder.indexOf(window.location.hash));
             lastRouteIndex = routeOrder.indexOf(window.location.hash);
             window.scrollTo(0, 0);
         } catch (error) {
             console.error(error);
             content.innerHTML = '<h1>404 Not Found</h1><p>The page you are looking for does not exist.</p>';
-            if (!isSwipeGesture) {
-                fadeIn(lastRouteIndex, routeOrder.indexOf(window.location.hash));
-            }
+            fadeIn(lastRouteIndex, routeOrder.indexOf(window.location.hash));
             lastRouteIndex = routeOrder.indexOf(window.location.hash);
             window.scrollTo(0, 0);
         }
@@ -91,20 +86,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const url = routes[hash];
         const currentIndex = routeOrder.indexOf(hash);
         if (url) {
-            if (!isSwipeGesture) {
-                gsap.to(content, { opacity: 0, duration: 0.4, ease: "power3.out", onComplete: () => {
-                    loadContent(url);
-                }});
-            } else {
+            gsap.to(content, { opacity: 0, duration: 0.4, ease: "power3.out", onComplete: () => {
                 loadContent(url);
-            }
+            }});
             updateActiveLink(hash);
         } else {
             console.error('Invalid route:', hash);
             content.innerHTML = '<h1>404 Not Found</h1><p>The page you are looking for does not exist.</p>';
-            if (!isSwipeGesture) {
-                fadeIn(lastRouteIndex, currentIndex);
-            }
+            fadeIn(lastRouteIndex, currentIndex);
             window.scrollTo(0, 0);
             lastRouteIndex = currentIndex;
         }
@@ -164,28 +153,4 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     loadInitialContent();
-
-    // Swipe detection logic
-    let touchstartX = 0;
-    let touchendX = 0;
-
-    const checkSwipeGesture = () => {
-        const minSwipeDistance = 50; // Minimum distance for a swipe
-        if (Math.abs(touchendX - touchstartX) >= minSwipeDistance) {
-            console.log('Swipe gesture detected');
-            isSwipeGesture = true;
-        } else {
-            isSwipeGesture = false;
-        }
-    };
-
-    window.addEventListener('touchstart', (e) => {
-        touchstartX = e.changedTouches[0].screenX;
-    });
-
-    window.addEventListener('touchend', (e) => {
-        touchendX = e.changedTouches[0].screenX;
-        checkSwipeGesture();
-        handleHashChange();
-    });
 });
