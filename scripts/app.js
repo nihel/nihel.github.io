@@ -7,43 +7,36 @@ const debounce = (func, delay) => {
     };
 };
 
-
 // Portfolio play video on hover
-function initializePortfolioVideoHover() {
-    const hoverVideoElements = document.querySelectorAll('.portfolio-video'); // Select all video elements with the class 'portfolio-video'
+const initializePortfolioVideoHover = () => {
+    const hoverVideoElements = document.querySelectorAll('.portfolio-video');
     const isTouchScreen = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
     hoverVideoElements.forEach(videoElement => {
         videoElement.muted = true; // Ensure video is muted to comply with autoplay policies
 
+        const resetVideo = () => {
+            videoElement.pause();
+            videoElement.currentTime = 0;
+
+            const sources = videoElement.querySelectorAll('source');
+            sources.forEach(source => videoElement.removeChild(source));
+            sources.forEach(source => videoElement.appendChild(source));
+            videoElement.load();
+        };
+
         if (!isTouchScreen) {
             videoElement.addEventListener('mouseenter', () => {
                 videoElement.play().catch(error => {
-                    // Handle play error, typically due to autoplay policy
+                    console.error('Autoplay error:', error);
                 });
             });
 
-            const resetVideo = () => {
-                videoElement.pause();
-                videoElement.currentTime = 0; // Reset the video to the beginning
-
-                // Temporarily remove the source elements to force the video to reload and show the poster
-                const sources = videoElement.querySelectorAll('source');
-                sources.forEach(source => videoElement.removeChild(source));
-
-                // Re-add the source elements
-                sources.forEach(source => videoElement.appendChild(source));
-
-                // Load the video again
-                videoElement.load();
-            };
-
             videoElement.addEventListener('mouseleave', resetVideo);
             videoElement.addEventListener('ended', resetVideo);
-
             videoElement.addEventListener('loadeddata', () => {
-                if (videoElement.readyState >= 3) { // HAVE_FUTURE_DATA or more
-                    videoElement.style.backgroundImage = 'none'; // Remove the poster image
+                if (videoElement.readyState >= 3) {
+                    videoElement.style.backgroundImage = 'none';
                 }
             });
         } else {
@@ -55,44 +48,26 @@ function initializePortfolioVideoHover() {
                 }
             };
 
-            const resetVideo = () => {
-                videoElement.pause();
-                videoElement.currentTime = 0; // Reset the video to the beginning
-
-                // Temporarily remove the source elements to force the video to reload and show the poster
-                const sources = videoElement.querySelectorAll('source');
-                sources.forEach(source => videoElement.removeChild(source));
-
-                // Re-add the source elements
-                sources.forEach(source => videoElement.appendChild(source));
-
-                // Load the video again
-                videoElement.load();
-            };
-
             videoElement.addEventListener('click', playOrResetVideoOnClick);
             videoElement.addEventListener('ended', resetVideo);
-
             videoElement.addEventListener('loadeddata', () => {
-                if (videoElement.readyState >= 3) { // HAVE_FUTURE_DATA or more
-                    videoElement.style.backgroundImage = 'none'; // Remove the poster image
+                if (videoElement.readyState >= 3) {
+                    videoElement.style.backgroundImage = 'none';
                 }
             });
         }
     });
-}
+};
 
-// Call the function to initialize hover effects on initial page load
 document.addEventListener('DOMContentLoaded', initializePortfolioVideoHover);
 
 // Auto play video on main screen
-function initializeVideoControls() {
+const initializeVideoControls = () => {
     const playAfterThisHeight = 200;
     const video = document.querySelector('#scroll-video');
     const videoControl = document.querySelector('.video-control');
 
     if (video) {
-        // Ensure video loads and plays as soon as possible
         video.addEventListener('canplaythrough', () => {
             if (document.documentElement.scrollTop > playAfterThisHeight) {
                 video.play();
@@ -120,10 +95,9 @@ function initializeVideoControls() {
             });
         }
 
-        // Preload video immediately
         video.load();
     }
-}
+};
 
 document.addEventListener('DOMContentLoaded', initializeVideoControls);
 
@@ -136,7 +110,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const cursor = document.querySelector('.custom-cursor');
     let lastMouseEvent;
 
-    // Function to update cursor position
     const updateCursorPosition = (e) => {
         gsap.to(cursor, {
             duration: 0.15,
@@ -147,16 +120,15 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    // Function to handle cursor visibility
     const setCursorVisibility = (visible) => {
         cursor.style.opacity = visible ? '1' : '0';
         document.body.style.cursor = visible ? 'none' : 'default';
     };
 
-    // Function to handle hover effect
     const handleHoverEffect = (event) => {
-        if (event.target && typeof event.target.closest === 'function') {
-            if (event.target.closest('.portfolio-video')) {
+        const target = event.target.closest('.portfolio-video, .card, .work-item, .footer-social li, nav, #email-btn, .video-control, p.primary, p.secondary, h1, h2, h3');
+        if (target) {
+            if (target.classList.contains('portfolio-video')) {
                 cursor.style.backgroundImage = "url('../images/assets/play-icon.svg')";
                 gsap.to(cursor, {
                     width: 28,
@@ -165,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     duration: 0.15,
                     ease: 'power3.inOut'
                 });
-            } else if (event.target.closest('.card, .work-item, .footer-social li, nav, #email-btn, .video-control')) {
+            } else if (target.matches('.card, .work-item, .footer-social li, nav, #email-btn, .video-control')) {
                 cursor.style.backgroundImage = 'none';
                 gsap.to(cursor, {
                     width: 16,
@@ -175,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     duration: 0.15,
                     ease: 'power3.inOut'
                 });
-            } else if (event.target.closest('p.primary, p.secondary, h1, h2, h3')) {
+            } else if (target.matches('p.primary, p.secondary, h1, h2, h3')) {
                 cursor.style.backgroundImage = 'none';
                 gsap.to(cursor, {
                     width: 4,
@@ -189,10 +161,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Function to handle hover out effect
     const handleHoverOutEffect = (event) => {
-        if (event.target && typeof event.target.closest === 'function') {
-            if (!event.relatedTarget || !event.relatedTarget.closest('.card, .work-item, .footer-social li, nav, #email-btn, p.primary, p.secondary, .video-control, h1, h2, h3, .portfolio-video')) {
+        const target = event.target.closest('.portfolio-video, .card, .work-item, .footer-social li, nav, #email-btn, .video-control, p.primary, p.secondary, h1, h2, h3');
+        if (target) {
+            if (!event.relatedTarget || !event.relatedTarget.closest('.portfolio-video, .card, .work-item, .footer-social li, nav, #email-btn, .video-control, p.primary, p.secondary, h1, h2, h3')) {
                 cursor.style.backgroundImage = 'none';
                 gsap.to(cursor, {
                     width: 28,
@@ -207,7 +179,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Handle mouse move and scroll
     const handleMouseMove = (e) => {
         lastMouseEvent = e;
         updateCursorPosition(e);
@@ -219,11 +190,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }, 100);
 
-    // Event delegation for hover effect
     document.addEventListener('mouseenter', handleHoverEffect, true);
     document.addEventListener('mouseleave', handleHoverOutEffect, true);
-
-    // Mouse events to maintain cursor visibility
     document.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('scroll', handleScroll);
     document.addEventListener('mousedown', () => setCursorVisibility(true));
@@ -236,28 +204,24 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     document.addEventListener('mouseover', () => setCursorVisibility(true));
 
-    // Hide the default cursor
     document.body.style.cursor = 'none';
 });
 
 // Portfolio change image on hover
 const initializeHoverEffects = () => {
-    // Check if the device is a touch screen
     const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
-    // If it's a touch device, hide the hover image container and exit the function
     if (isTouchDevice) {
         const hoverImageContainer = document.querySelector('.work-placeholder');
         if (hoverImageContainer) {
             hoverImageContainer.style.display = 'none';
         }
-        return; // Exit the function early for touch devices
+        return;
     }
 
     const names = document.querySelectorAll('.work-item');
     const hoverImage = document.getElementById('work-image');
-
-    let initialLoad = true; // Flag to check if it's the first load
+    let initialLoad = true;
 
     const updateSelected = (element) => {
         const selectedElement = document.querySelector('.work-item.selected');
@@ -265,44 +229,41 @@ const initializeHoverEffects = () => {
             selectedElement.classList.remove('selected');
         }
         element.classList.add('selected');
-        localStorage.setItem('selectedWorkItem', element.getAttribute('data-link')); // Save the selected work item
+        localStorage.setItem('selectedWorkItem', element.getAttribute('data-link'));
     };
 
     const updateHoverElements = (element) => {
         const imageUrl = element.getAttribute('data-image');
-        const srcset = element.getAttribute('data-srcset'); // Get the srcset
-        const sizes = element.getAttribute('data-sizes'); // Get the sizes
-        const altText = element.getAttribute('data-alt'); // Get the alt text
+        const srcset = element.getAttribute('data-srcset');
+        const sizes = element.getAttribute('data-sizes');
+        const altText = element.getAttribute('data-alt');
 
-        gsap.killTweensOf(hoverImage); // Kill any ongoing animations
+        gsap.killTweensOf(hoverImage);
         hoverImage.src = imageUrl;
-        hoverImage.srcset = srcset; // Set the srcset attribute
-        hoverImage.sizes = sizes; // Set the sizes attribute
-        hoverImage.alt = altText; // Set the alt attribute
+        hoverImage.srcset = srcset;
+        hoverImage.sizes = sizes;
+        hoverImage.alt = altText;
 
         if (!initialLoad) {
-            // Apply only the scale effect
             gsap.fromTo(hoverImage, 
                 { scale: 0.92 },
                 { scale: 1, duration: 0.8, ease: 'power3.out' }
             );
         } else {
-            initialLoad = false; // Set the flag to false after the first load
+            initialLoad = false;
         }
     };
 
     names.forEach((name) => {
         name.addEventListener('mouseenter', () => {
-            if (name.classList.contains('selected')) {
-                return; // Do nothing if the item is already selected
+            if (!name.classList.contains('selected')) {
+                updateHoverElements(name);
+                updateSelected(name);
             }
-
-            updateHoverElements(name);
-            updateSelected(name);
         });
     });
 
-    // Initialize first item as selected without animation if no item is stored
+    // Initialize the first item as selected without animation if no item is stored
     const selectedWorkItem = localStorage.getItem('selectedWorkItem');
     const firstItem = selectedWorkItem ? document.querySelector(`.work-item[data-link="${selectedWorkItem}"]`) : document.querySelector('.work-item');
     if (firstItem) {
@@ -313,4 +274,4 @@ const initializeHoverEffects = () => {
 };
 
 // Call the function to initialize hover effects
-initializeHoverEffects();
+document.addEventListener('DOMContentLoaded', initializeHoverEffects);

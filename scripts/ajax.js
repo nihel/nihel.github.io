@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Redirect to #/ if the URL is nils.io without any hash
+    // Redirect to #/ if the URL is '/' without any hash
     if (window.location.pathname === '/' && !window.location.hash) {
         window.location.hash = '#/';
     }
@@ -35,37 +35,34 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    const loadContent = (url) => {
+    const loadContent = async (url) => {
         console.log(`Loading content from: ${url}`);
-        fetch(url)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`Failed to load content: ${response.status}`);
-                }
-                return response.text();
-            })
-            .then(data => {
-                content.innerHTML = data;
-                initializeHoverEffects(); // Re-initialize hover effects after loading content
-                initializeVideoControls(); // Initialize video controls
-                initializePortfolioVideoHover(); // Initialize portfolio video hover
+        try {
+            const response = await fetch(url);
+            if (!response.ok) {
+                throw new Error(`Failed to load content: ${response.status}`);
+            }
+            const data = await response.text();
+            content.innerHTML = data;
+            initializeHoverEffects();
+            initializeVideoControls();
+            initializePortfolioVideoHover();
 
-                if (url === 'work.html') {
-                    const images = Array.from(document.querySelectorAll('.work-item')).map(item => item.getAttribute('data-image'));
-                    preloadImages(images);
-                }
+            if (url === 'work.html') {
+                const images = Array.from(document.querySelectorAll('.work-item')).map(item => item.getAttribute('data-image'));
+                preloadImages(images);
+            }
 
-                fadeIn(lastRouteIndex, routeOrder.indexOf(window.location.hash));
-                lastRouteIndex = routeOrder.indexOf(window.location.hash); // Update last route index after fading in
-                window.scrollTo(0, 0); // Reset scroll position
-            })
-            .catch(error => {
-                console.error(error);
-                content.innerHTML = '<h1>404 Not Found</h1><p>The page you are looking for does not exist.</p>';
-                fadeIn(lastRouteIndex, routeOrder.indexOf(window.location.hash));
-                lastRouteIndex = routeOrder.indexOf(window.location.hash); // Update last route index after fading in
-                window.scrollTo(0, 0); // Reset scroll position
-            });
+            fadeIn(lastRouteIndex, routeOrder.indexOf(window.location.hash));
+            lastRouteIndex = routeOrder.indexOf(window.location.hash);
+            window.scrollTo(0, 0);
+        } catch (error) {
+            console.error(error);
+            content.innerHTML = '<h1>404 Not Found</h1><p>The page you are looking for does not exist.</p>';
+            fadeIn(lastRouteIndex, routeOrder.indexOf(window.location.hash));
+            lastRouteIndex = routeOrder.indexOf(window.location.hash);
+            window.scrollTo(0, 0);
+        }
     };
 
     const fadeIn = (lastIndex, currentIndex) => {
@@ -79,8 +76,8 @@ document.addEventListener('DOMContentLoaded', () => {
             direction = { y: 24 }; // Same page, just fade in
         }
         gsap.fromTo(content, 
-            { opacity: 0, ...direction },  // Start with opacity 0 and offset in the specified direction
-            { opacity: 1, x: 0, y: 0, duration: 0.6, ease: "power3.out" }  // Fade in and move to original position
+            { opacity: 0, ...direction }, 
+            { opacity: 1, x: 0, y: 0, duration: 0.6, ease: "power3.out" }
         );
     };
 
@@ -97,8 +94,8 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Invalid route:', hash);
             content.innerHTML = '<h1>404 Not Found</h1><p>The page you are looking for does not exist.</p>';
             fadeIn(lastRouteIndex, currentIndex);
-            window.scrollTo(0, 0); // Reset scroll position
-            lastRouteIndex = currentIndex; // Update last route index
+            window.scrollTo(0, 0);
+            lastRouteIndex = currentIndex;
         }
     };
 
@@ -111,8 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const links = document.querySelectorAll('nav a[data-link]');
         links.forEach(link => {
             const linkHref = link.getAttribute('href');
-            if (linkHref === hash || 
-                (hash.startsWith('#/work') && linkHref === '#/work')) { // Check if the current hash is under the work section
+            if (linkHref === hash || (hash.startsWith('#/work') && linkHref === '#/work')) {
                 link.parentElement.classList.add('active');
             } else {
                 link.parentElement.classList.remove('active');
@@ -122,7 +118,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Debounce the hash change handler
     const debouncedHandleHashChange = debounce(handleHashChange, 100);
-
     window.addEventListener('hashchange', debouncedHandleHashChange);
 
     const handleNavigationEvent = (e) => {
@@ -134,16 +129,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (target) {
-            let hash = target.getAttribute('href') || target.getAttribute('data-link');
+            const hash = target.getAttribute('href') || target.getAttribute('data-link');
             if (hash) {
                 // Check if the link is an email link
-                if (hash.startsWith('mailto:')) {
-                    // Email link, allow default behavior
-                    return;
-                }
-                // Check if the link is external
-                if (hash.startsWith('http://') || hash.startsWith('https://')) {
-                    // External link, allow default behavior
+                if (hash.startsWith('mailto:') || hash.startsWith('http://') || hash.startsWith('https://')) {
                     return;
                 }
                 // Internal link, handle navigation
