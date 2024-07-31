@@ -149,15 +149,18 @@ document.addEventListener('DOMContentLoaded', () => {
                         ease: 'power3.inOut'
                     });
                 } else if (target.matches('p.primary, p.secondary, h1, h2, h3')) {
-                    cursor.style.backgroundImage = 'none';
-                    gsap.to(cursor, {
-                        width: 4,
-                        height: 28,
-                        borderRadius: '2px',
-                        backgroundColor: 'rgba(62, 128, 255, 1)',
-                        duration: 0.15,
-                        ease: 'power3.inOut'
-                    });
+                    // Check if the target is part of a link
+                    if (!target.closest('a')) {
+                        cursor.style.backgroundImage = 'none';
+                        gsap.to(cursor, {
+                            width: 4,
+                            height: 28,
+                            borderRadius: '2px',
+                            backgroundColor: 'rgba(62, 128, 255, 1)',
+                            duration: 0.15,
+                            ease: 'power3.inOut'
+                        });
+                    }
                 }
             }
         }
