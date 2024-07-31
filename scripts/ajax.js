@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     let lastRouteIndex = routeOrder.indexOf(window.location.hash || '#/');
+    let isSwipeGesture = false;
 
     const preloadImages = (images) => {
         images.forEach((image) => {
@@ -35,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    const loadContent = async (url, animate = true) => {
+    const loadContent = async (url) => {
         console.log(`Loading content from: ${url}`);
         try {
             const response = await fetch(url);
@@ -53,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 preloadImages(images);
             }
 
-            if (animate) {
+            if (!isSwipeGesture) {
                 fadeIn(lastRouteIndex, routeOrder.indexOf(window.location.hash));
             }
             lastRouteIndex = routeOrder.indexOf(window.location.hash);
@@ -61,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } catch (error) {
             console.error(error);
             content.innerHTML = '<h1>404 Not Found</h1><p>The page you are looking for does not exist.</p>';
-            if (animate) {
+            if (!isSwipeGesture) {
                 fadeIn(lastRouteIndex, routeOrder.indexOf(window.location.hash));
             }
             lastRouteIndex = routeOrder.indexOf(window.location.hash);
@@ -85,23 +86,23 @@ document.addEventListener('DOMContentLoaded', () => {
         );
     };
 
-    const navigate = (hash, animate = true) => {
+    const navigate = (hash) => {
         console.log(`Navigating to: ${hash}`);
         const url = routes[hash];
         const currentIndex = routeOrder.indexOf(hash);
         if (url) {
-            if (animate) {
+            if (!isSwipeGesture) {
                 gsap.to(content, { opacity: 0, duration: 0.4, ease: "power3.out", onComplete: () => {
-                    loadContent(url, animate);
+                    loadContent(url);
                 }});
             } else {
-                loadContent(url, animate);
+                loadContent(url);
             }
             updateActiveLink(hash);
         } else {
             console.error('Invalid route:', hash);
             content.innerHTML = '<h1>404 Not Found</h1><p>The page you are looking for does not exist.</p>';
-            if (animate) {
+            if (!isSwipeGesture) {
                 fadeIn(lastRouteIndex, currentIndex);
             }
             window.scrollTo(0, 0);
@@ -109,9 +110,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    const handleHashChange = (animate = true) => {
+    const handleHashChange = () => {
         console.log('Hash changed:', window.location.hash);
-        navigate(window.location.hash, animate);
+        navigate(window.location.hash);
     };
 
     const updateActiveLink = (hash) => {
@@ -127,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // Debounce the hash change handler
-    const debouncedHandleHashChange = debounce(() => handleHashChange(true), 100);
+    const debouncedHandleHashChange = debounce(handleHashChange, 100);
     window.addEventListener('hashchange', debouncedHandleHashChange);
 
     const handleNavigationEvent = (e) => {
@@ -159,48 +160,32 @@ document.addEventListener('DOMContentLoaded', () => {
     const loadInitialContent = () => {
         const initialHash = window.location.hash || '#/';
         console.log('Initial content load:', initialHash);
-        navigate(initialHash, false);
+        navigate(initialHash);
     };
 
-    let startX;
-    let startY;
-    let threshold = 50; // Minimum distance for a swipe gesture
-    let allowedTime = 300; // Maximum time for a swipe gesture
-    let startTime;
-
-    document.addEventListener('touchstart', (e) => {
-        const touch = e.changedTouches[0];
-        startX = touch.pageX;
-        startY = touch.pageY;
-        startTime = new Date().getTime();
-    }, false);
-
-    document.addEventListener('touchend', (e) => {
-        const touch = e.changedTouches[0];
-        const distX = touch.pageX - startX;
-        const distY = touch.pageY - startY;
-        const elapsedTime = new Date().getTime() - startTime;
-
-        if (elapsedTime <= allowedTime) {
-            if (Math.abs(distX) >= threshold && Math.abs(distY) <= 100) {
-                const isSwipeLeft = distX < 0;
-                const isSwipeRight = distX > 0;
-                if (isSwipeLeft || isSwipeRight) {
-                    const currentHashIndex = routeOrder.indexOf(window.location.hash);
-                    let newHashIndex = currentHashIndex;
-                    if (isSwipeLeft) {
-                        newHashIndex = Math.min(routeOrder.length - 1, currentHashIndex + 1);
-                    } else if (isSwipeRight) {
-                        newHashIndex = Math.max(0, currentHashIndex - 1);
-                    }
-                    if (newHashIndex !== currentHashIndex) {
-                        window.location.hash = routeOrder[newHashIndex];
-                        handleHashChange(false);
-                    }
-                }
-            }
-        }
-    }, false);
-
     loadInitialContent();
+
+    // Swipe detection logic
+    let touchstartX = 0;
+    let touchendX = 0;
+
+    const checkSwipeGesture = () => {
+        const minSwipeDistance = 50; // Minimum distance for a swipe
+        if (Math.abs(touchendX - touchstartX) >= minSwipeDistance) {
+            console.log('Swipe gesture detected');
+            isSwipeGesture = true;
+        } else {
+            isSwipeGesture = false;
+        }
+    };
+
+    window.addEventListener('touchstart', (e) => {
+        touchstartX = e.changedTouches[0].screenX;
+    });
+
+    window.addEventListener('touchend', (e) => {
+        touchendX = e.changedTouches[0].screenX;
+        checkSwipeGesture();
+        handleHashChange();
+    });
 });
