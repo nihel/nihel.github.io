@@ -286,7 +286,7 @@ a:visited {
 	width: fit-content;
 	font-family: 'PPNeueMontreal-Medium', 'Helvetica', sans-serif;
 	font-size: 21px;
-	line-height: 132%;
+	line-height: 136%;
 	letter-spacing: 0.2px;
 	text-decoration: underline;
 	text-underline-offset: 1px;
@@ -309,7 +309,7 @@ p.primary {
 p.secondary {
 	font-family: 'PPNeueMontreal-Medium', 'Helvetica', sans-serif;
 	color: var(--grey);
-	font-size: 18px;
+	font-size: 16px;
 	line-height: 142%;
 	letter-spacing: 0.2px;
 	padding-top: 8px;
