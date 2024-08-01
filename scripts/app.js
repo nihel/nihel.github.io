@@ -243,7 +243,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (lastMouseEvent) {
             updateCursorPosition(lastMouseEvent);
         }
-    }, 100);
+    }, 20);
 
     document.addEventListener('mouseenter', handleHoverEffect, true);
     document.addEventListener('mouseleave', handleHoverOutEffect, true);
