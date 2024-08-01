@@ -477,6 +477,11 @@ p.desc {
 	box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
     object-fit: cover;
 	margin-bottom: 16px;
+	width: 100%;
+}
+
+.portfolio-video.portrait {
+	width: 33%;
 }
 
 .portfolio-content {
@@ -692,6 +697,10 @@ p.combo {
 		height: 750px;
 	}
 
+	.portfolio-video.portrait {
+		width: 42%;
+	}
+
 	.viewer {
 		width: 120px;
 		height: 258px;
@@ -806,6 +815,10 @@ p.combo {
 		border-radius: 8px;
 		box-shadow: rgba(0, 0, 0, 0.25) 0px 6px 8px, rgba(0, 0, 0, 0.22) 0px 2px 4px;
 		margin-bottom: 16px;
+	}
+
+	.portfolio-video.portrait {
+		width: 58%;
 	}
 
 	#email-btn {
