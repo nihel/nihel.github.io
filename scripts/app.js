@@ -12,51 +12,102 @@ const initializePortfolioVideoHover = () => {
     const hoverVideoElements = document.querySelectorAll('.portfolio-video');
     const isTouchScreen = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
-    hoverVideoElements.forEach(videoElement => {
-        videoElement.muted = true; // Ensure video is muted to comply with autoplay policies
+    const resetVideo = (videoElement) => {
+        videoElement.pause();
+        videoElement.currentTime = 0;
 
-        const resetVideo = () => {
-            videoElement.pause();
-            videoElement.currentTime = 0;
+        const sources = videoElement.querySelectorAll('source');
+        sources.forEach(source => videoElement.removeChild(source));
+        sources.forEach(source => videoElement.appendChild(source));
+        videoElement.load();
+    };
 
-            const sources = videoElement.querySelectorAll('source');
-            sources.forEach(source => videoElement.removeChild(source));
-            sources.forEach(source => videoElement.appendChild(source));
-            videoElement.load();
-        };
+    if (!isTouchScreen) {
+        hoverVideoElements.forEach(videoElement => {
+            videoElement.muted = true; // Ensure video is muted to comply with autoplay policies
 
-        if (!isTouchScreen) {
             videoElement.addEventListener('mouseenter', () => {
                 videoElement.play().catch(error => {
                     console.error('Autoplay error:', error);
                 });
             });
 
-            videoElement.addEventListener('mouseleave', resetVideo);
-            videoElement.addEventListener('ended', resetVideo);
+            videoElement.addEventListener('mouseleave', () => resetVideo(videoElement));
+            videoElement.addEventListener('ended', () => resetVideo(videoElement));
             videoElement.addEventListener('loadeddata', () => {
                 if (videoElement.readyState >= 3) {
                     videoElement.style.backgroundImage = 'none';
                 }
             });
-        } else {
-            const playOrResetVideoOnClick = () => {
-                if (videoElement.paused) {
-                    videoElement.play();
-                } else {
-                    resetVideo();
-                }
-            };
+        });
+    } else {
+        let currentlyPlayingVideo = null;
 
-            videoElement.addEventListener('click', playOrResetVideoOnClick);
-            videoElement.addEventListener('ended', resetVideo);
+        const playVideoInTopThird = () => {
+            const viewportHeight = window.innerHeight;
+            const topThird = viewportHeight / 3;
+            let videoToPlay = null;
+            let maxVisibleArea = 0;
+
+            hoverVideoElements.forEach(videoElement => {
+                const rect = videoElement.getBoundingClientRect();
+                const visibleArea = Math.max(0, Math.min(rect.bottom, topThird) - Math.max(rect.top, 0));
+                
+                if (visibleArea > maxVisibleArea) {
+                    maxVisibleArea = visibleArea;
+                    videoToPlay = videoElement;
+                }
+            });
+
+            if (videoToPlay !== currentlyPlayingVideo) {
+                if (currentlyPlayingVideo) {
+                    resetVideo(currentlyPlayingVideo);
+                }
+
+                if (videoToPlay) {
+                    videoToPlay.play().catch(error => {
+                        console.error('Autoplay error:', error);
+                    });
+                }
+
+                currentlyPlayingVideo = videoToPlay;
+            }
+        };
+
+        document.addEventListener('scroll', debounce(playVideoInTopThird, 100));
+        window.addEventListener('resize', debounce(playVideoInTopThird, 100));
+
+        hoverVideoElements.forEach(videoElement => {
+            videoElement.muted = true; // Ensure video is muted to comply with autoplay policies
+
+            videoElement.addEventListener('click', () => {
+                if (videoElement.paused) {
+                    if (currentlyPlayingVideo && currentlyPlayingVideo !== videoElement) {
+                        resetVideo(currentlyPlayingVideo);
+                    }
+                    videoElement.play();
+                    currentlyPlayingVideo = videoElement;
+                } else {
+                    resetVideo(videoElement);
+                    currentlyPlayingVideo = null;
+                }
+            });
+
+            videoElement.addEventListener('ended', () => {
+                resetVideo(videoElement);
+                currentlyPlayingVideo = null;
+            });
+
             videoElement.addEventListener('loadeddata', () => {
                 if (videoElement.readyState >= 3) {
                     videoElement.style.backgroundImage = 'none';
                 }
             });
-        }
-    });
+        });
+
+        // Initial check
+        playVideoInTopThird();
+    }
 };
 
 document.addEventListener('DOMContentLoaded', initializePortfolioVideoHover);
