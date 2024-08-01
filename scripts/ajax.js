@@ -102,19 +102,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const handleHashChange = () => {
         console.log('Hash changed:', window.location.hash);
         navigate(window.location.hash);
-        updateActiveLink(window.location.hash);
     };
 
+    // Optimized updateActiveLink function
     const updateActiveLink = (hash) => {
         const links = document.querySelectorAll('nav a[data-link]');
+        const linkMap = new Map();
+
         links.forEach(link => {
-            const linkHref = link.getAttribute('href');
-            if (linkHref === hash || (hash.startsWith('#/work') && linkHref === '#/work')) {
-                link.parentElement.classList.add('active');
-            } else {
-                link.parentElement.classList.remove('active');
+            const href = link.getAttribute('href');
+            if (href) {
+                linkMap.set(href, link.parentElement);
             }
         });
+
+        linkMap.forEach(parent => parent.classList.remove('active'));
+
+        const activeParent = linkMap.get(hash) || (hash.startsWith('#/work') ? linkMap.get('#/work') : null);
+        if (activeParent) {
+            activeParent.classList.add('active');
+        }
     };
 
     // Debounce the hash change handler
