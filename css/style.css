@@ -308,7 +308,7 @@ p.primary {
 
 p.secondary {
 	font-family: 'PPNeueMontreal-Medium', 'Helvetica', sans-serif;
-	color: var(--grey);
+	color: var(--lightgrey);
 	font-size: 18px;
 	line-height: 142%;
 	letter-spacing: 0.2px;
@@ -477,6 +477,13 @@ p.desc {
 	box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
     object-fit: cover;
 	margin-bottom: 16px;
+}
+
+.portfolio-content {
+	width: 100%;
+    display: flex;
+    flex-direction: column;
+	align-items: center;
 }
 
 .work-list {
