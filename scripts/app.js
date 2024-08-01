@@ -63,26 +63,23 @@ document.addEventListener('DOMContentLoaded', initializePortfolioVideoHover);
 
 // Auto play video on main screen
 const initializeVideoControls = () => {
-    const playAfterThisHeight = 200;
     const video = document.querySelector('#scroll-video');
     const videoControl = document.querySelector('.video-control');
 
     if (video) {
-        video.addEventListener('canplaythrough', () => {
-            if (document.documentElement.scrollTop > playAfterThisHeight) {
-                video.play();
-            }
-        });
+        // Create an intersection observer to monitor when the video is in the viewport
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    video.play();
+                } else {
+                    video.pause();
+                }
+            });
+        }, { threshold: [0.5] }); // Trigger when at least 50% of the video is visible
 
-        const handleScroll = debounce(() => {
-            if (document.documentElement.scrollTop > playAfterThisHeight) {
-                video.play();
-            } else {
-                video.pause();
-            }
-        }, 100);
-
-        document.addEventListener('scroll', handleScroll);
+        // Start observing the video element
+        observer.observe(video);
 
         video.muted = true;
         video.volume = 0.4;
