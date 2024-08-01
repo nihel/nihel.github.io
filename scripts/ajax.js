@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Redirect to #/ if the URL is '/' without any hash
     if (window.location.pathname === '/' && !window.location.hash) {
         window.location.hash = '#/';
     }
@@ -103,27 +104,23 @@ document.addEventListener('DOMContentLoaded', () => {
         navigate(window.location.hash);
     };
 
+    // Optimized updateActiveLink function
     const updateActiveLink = (hash) => {
         const links = document.querySelectorAll('nav a[data-link]');
-        let foundActive = false;
+        const linkMap = new Map();
 
         links.forEach(link => {
             const href = link.getAttribute('href');
-            const parent = link.parentElement;
-
-            // Remove 'active' class from all links
-            parent.classList.remove('active');
-
-            // Add 'active' class only to the matching link
-            if (href === hash || (hash.startsWith('#/work') && href === '#/work')) {
-                parent.classList.add('active');
-                foundActive = true;
+            if (href) {
+                linkMap.set(href, link.parentElement);
             }
         });
 
-        // Ensure at least one link has the 'active' class
-        if (!foundActive) {
-            links[0].parentElement.classList.add('active'); // Default behavior, if needed
+        linkMap.forEach(parent => parent.classList.remove('active'));
+
+        const activeParent = linkMap.get(hash) || (hash.startsWith('#/work') ? linkMap.get('#/work') : null);
+        if (activeParent) {
+            activeParent.classList.add('active');
         }
     };
 
@@ -131,7 +128,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const debouncedHandleHashChange = debounce(handleHashChange, 100);
     window.addEventListener('hashchange', debouncedHandleHashChange);
 
-    // Unified event handler for click events
     const handleNavigationEvent = (e) => {
         let target = e.target;
 
@@ -143,26 +139,21 @@ document.addEventListener('DOMContentLoaded', () => {
         if (target) {
             const hash = target.getAttribute('href') || target.getAttribute('data-link');
             if (hash) {
-                // Prevent default behavior for internal links
-                if (!hash.startsWith('mailto:') && !hash.startsWith('http://') && !hash.startsWith('https://')) {
-                    e.preventDefault();
-                    console.log('Link clicked:', hash);
-                    window.location.hash = hash;
-                    updateActiveLink(hash);
+                // Check if the link is an email link
+                if (hash.startsWith('mailto:') || hash.startsWith('http://') || hash.startsWith('https://')) {
+                    return;
                 }
+                // Internal link, handle navigation
+                e.preventDefault();
+                console.log('Link clicked:', hash);
+                window.location.hash = hash;
+                updateActiveLink(hash);
             }
         }
     };
 
     document.body.addEventListener('click', handleNavigationEvent);
-
-    // Handle popstate event for browser navigation
-    const handlePopState = () => {
-        console.log('Popstate event triggered:', window.location.hash);
-        updateActiveLink(window.location.hash);
-    };
-
-    window.addEventListener('popstate', handlePopState);
+    document.body.addEventListener('touchend', handleNavigationEvent);
 
     const loadInitialContent = () => {
         const initialHash = window.location.hash || '#/';
