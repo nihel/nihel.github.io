@@ -104,7 +104,33 @@ document.addEventListener('DOMContentLoaded', () => {
         navigate(window.location.hash);
     };
 
-    // Optimized updateActiveLink function
+    // Unified event handler for both click and touchend
+    const handleNavigationEvent = (e) => {
+        let target = e.target;
+
+        // Find the closest element with an href or data-link attribute
+        while (target && !target.getAttribute('href') && !target.getAttribute('data-link')) {
+            target = target.parentElement;
+        }
+
+        if (target) {
+            const hash = target.getAttribute('href') || target.getAttribute('data-link');
+            if (hash) {
+                // Prevent default behavior for internal links
+                if (!hash.startsWith('mailto:') && !hash.startsWith('http://') && !hash.startsWith('https://')) {
+                    e.preventDefault();
+                    console.log('Link clicked:', hash);
+                    window.location.hash = hash;
+                    updateActiveLink(hash);
+                }
+            }
+        }
+    };
+
+    // Add event listeners for both click and touchend
+    document.body.addEventListener('click', handleNavigationEvent);
+    document.body.addEventListener('touchend', handleNavigationEvent);
+
     const updateActiveLink = (hash) => {
         const links = document.querySelectorAll('nav a[data-link]');
         const linkMap = new Map();
@@ -135,33 +161,6 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     window.addEventListener('popstate', handlePopState);
-
-    const handleNavigationEvent = (e) => {
-        let target = e.target;
-
-        // Find the closest element with an href or data-link attribute
-        while (target && !target.getAttribute('href') && !target.getAttribute('data-link')) {
-            target = target.parentElement;
-        }
-
-        if (target) {
-            const hash = target.getAttribute('href') || target.getAttribute('data-link');
-            if (hash) {
-                // Check if the link is an email link
-                if (hash.startsWith('mailto:') || hash.startsWith('http://') || hash.startsWith('https://')) {
-                    return;
-                }
-                // Internal link, handle navigation
-                e.preventDefault();
-                console.log('Link clicked:', hash);
-                window.location.hash = hash;
-                updateActiveLink(hash);
-            }
-        }
-    };
-
-    document.body.addEventListener('click', handleNavigationEvent);
-    document.body.addEventListener('touchend', handleNavigationEvent);
 
     const loadInitialContent = () => {
         const initialHash = window.location.hash || '#/';
