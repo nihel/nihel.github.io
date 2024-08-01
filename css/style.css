@@ -711,7 +711,7 @@ p.combo {
 @media screen and (width <= 549px) {
 	main {
 		max-width: 336px;
-		margin: 28% auto 24%;
+		margin: 32% auto 24%;
 		gap: 2rem;
 	}
 

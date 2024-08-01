@@ -102,6 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const handleHashChange = () => {
         console.log('Hash changed:', window.location.hash);
         navigate(window.location.hash);
+        updateActiveLink(window.location.hash);
     };
 
     const updateActiveLink = (hash) => {
@@ -139,6 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 e.preventDefault();
                 console.log('Link clicked:', hash);
                 window.location.hash = hash;
+                updateActiveLink(hash);
             }
         }
     };
@@ -150,6 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const initialHash = window.location.hash || '#/';
         console.log('Initial content load:', initialHash);
         navigate(initialHash);
+        updateActiveLink(initialHash);
     };
 
     loadInitialContent();
