@@ -127,6 +127,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // Debounce the hash change handler
     const debouncedHandleHashChange = debounce(handleHashChange, 100);
     window.addEventListener('hashchange', debouncedHandleHashChange);
+    
+    // Handle popstate event for browser navigation
+    const handlePopState = () => {
+        console.log('Popstate event triggered:', window.location.hash);
+        updateActiveLink(window.location.hash);
+    };
+
+    window.addEventListener('popstate', handlePopState);
 
     const handleNavigationEvent = (e) => {
         let target = e.target;
