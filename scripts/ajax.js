@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
         navigate(window.location.hash);
     };
 
-    // Unified event handler for both click and touchend
+    // Unified event handler for click events
     const handleNavigationEvent = (e) => {
         let target = e.target;
 
@@ -127,9 +127,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Add event listeners for both click and touchend
+    // Add click event listener
     document.body.addEventListener('click', handleNavigationEvent);
-    document.body.addEventListener('touchend', handleNavigationEvent);
 
     const updateActiveLink = (hash) => {
         const links = document.querySelectorAll('nav a[data-link]');
@@ -153,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Debounce the hash change handler
     const debouncedHandleHashChange = debounce(handleHashChange, 100);
     window.addEventListener('hashchange', debouncedHandleHashChange);
-    
+
     // Handle popstate event for browser navigation
     const handlePopState = () => {
         console.log('Popstate event triggered:', window.location.hash);
