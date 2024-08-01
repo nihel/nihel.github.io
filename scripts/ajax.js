@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
         '#/': 'home.html',
         '#/work': 'work.html',
         '#/resume': 'resume.html',
-        '#/work/viaplay-trailers': 'viaplay-trailers.html',
+        '#/work/viaplay-promos': 'viaplay-promos.html',
         '#/work/savr-new-design': 'savr-new-design.html',
         '#/work/es-insight-portal': 'es-insight-portal.html',
         '#/work/viaplay-core-player': 'viaplay-core-player.html'
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
         '#/',
         '#/work',
         '#/resume',
-        '#/work/viaplay-trailers',
+        '#/work/viaplay-promos',
         '#/work/savr-new-design',
         '#/work/es-insight-portal',
         '#/work/viaplay-core-player'
