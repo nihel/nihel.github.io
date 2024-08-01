@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Redirect to #/ if the URL is '/' without any hash
     if (window.location.pathname === '/' && !window.location.hash) {
         window.location.hash = '#/';
     }
@@ -104,6 +103,34 @@ document.addEventListener('DOMContentLoaded', () => {
         navigate(window.location.hash);
     };
 
+    const updateActiveLink = (hash) => {
+        const links = document.querySelectorAll('nav a[data-link]');
+        let foundActive = false;
+
+        links.forEach(link => {
+            const href = link.getAttribute('href');
+            const parent = link.parentElement;
+
+            // Remove 'active' class from all links
+            parent.classList.remove('active');
+
+            // Add 'active' class only to the matching link
+            if (href === hash || (hash.startsWith('#/work') && href === '#/work')) {
+                parent.classList.add('active');
+                foundActive = true;
+            }
+        });
+
+        // Ensure at least one link has the 'active' class
+        if (!foundActive) {
+            links[0].parentElement.classList.add('active'); // Default behavior, if needed
+        }
+    };
+
+    // Debounce the hash change handler
+    const debouncedHandleHashChange = debounce(handleHashChange, 100);
+    window.addEventListener('hashchange', debouncedHandleHashChange);
+
     // Unified event handler for click events
     const handleNavigationEvent = (e) => {
         let target = e.target;
@@ -127,31 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Add click event listener
     document.body.addEventListener('click', handleNavigationEvent);
-
-    const updateActiveLink = (hash) => {
-        const links = document.querySelectorAll('nav a[data-link]');
-        const linkMap = new Map();
-
-        links.forEach(link => {
-            const href = link.getAttribute('href');
-            if (href) {
-                linkMap.set(href, link.parentElement);
-            }
-        });
-
-        linkMap.forEach(parent => parent.classList.remove('active'));
-
-        const activeParent = linkMap.get(hash) || (hash.startsWith('#/work') ? linkMap.get('#/work') : null);
-        if (activeParent) {
-            activeParent.classList.add('active');
-        }
-    };
-
-    // Debounce the hash change handler
-    const debouncedHandleHashChange = debounce(handleHashChange, 100);
-    window.addEventListener('hashchange', debouncedHandleHashChange);
 
     // Handle popstate event for browser navigation
     const handlePopState = () => {
