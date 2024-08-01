@@ -634,7 +634,7 @@ p.combo {
 
 /* Responsive */
 
-@media screen and (max-width: 799px) and (min-width: 550px) {
+@media screen and (max-width: 900px) and (min-width: 550px) {
 	main {
 		max-width: 500px;
 		margin: 20% auto 8%;
