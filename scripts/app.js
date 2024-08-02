@@ -183,6 +183,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         width: 28,
                         height: 28,
                         backgroundColor: 'transparent',
+                        borderRadius: '50%',
                         duration: 0.15,
                         ease: 'power3.inOut'
                     });
@@ -193,6 +194,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         height: 16,
                         backgroundColor: 'rgba(105, 105, 105, 0.2)',
                         backdropFilter: 'blur(8px)',
+                        borderRadius: '50%',
                         duration: 0.15,
                         ease: 'power3.inOut'
                     });
@@ -239,11 +241,11 @@ document.addEventListener('DOMContentLoaded', () => {
         updateCursorPosition(e);
     };
 
-    const handleScroll = debounce(() => {
+    const handleScroll = () => {
         if (lastMouseEvent) {
             updateCursorPosition(lastMouseEvent);
         }
-    }, 20);
+    };
 
     document.addEventListener('mouseenter', handleHoverEffect, true);
     document.addEventListener('mouseleave', handleHoverOutEffect, true);
