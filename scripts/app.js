@@ -13,7 +13,9 @@ const initializePortfolioVideoHover = () => {
     const isTouchScreen = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
     const resetVideo = (videoElement) => {
-        videoElement.pause();
+        if (!videoElement.paused) {
+            videoElement.pause();
+        }
         videoElement.currentTime = 0;
 
         const sources = videoElement.querySelectorAll('source');
@@ -27,9 +29,11 @@ const initializePortfolioVideoHover = () => {
             videoElement.muted = true; // Ensure video is muted to comply with autoplay policies
 
             videoElement.addEventListener('mouseenter', () => {
-                videoElement.play().catch(error => {
-                    console.error('Autoplay error:', error);
-                });
+                if (videoElement.paused) {
+                    videoElement.play().catch(error => {
+                        console.error('Autoplay error:', error);
+                    });
+                }
             });
 
             videoElement.addEventListener('mouseleave', () => resetVideo(videoElement));
@@ -85,7 +89,9 @@ const initializePortfolioVideoHover = () => {
                     if (currentlyPlayingVideo && currentlyPlayingVideo !== videoElement) {
                         resetVideo(currentlyPlayingVideo);
                     }
-                    videoElement.play();
+                    videoElement.play().catch(error => {
+                        console.error('Autoplay error:', error);
+                    });
                     currentlyPlayingVideo = videoElement;
                 } else {
                     resetVideo(videoElement);
