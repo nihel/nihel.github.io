@@ -161,8 +161,10 @@ document.addEventListener('DOMContentLoaded', () => {
         return; // Exit the script if the device supports touch
     }
 
-    const cursor = document.querySelector('.custom-cursor');
-    let lastMouseEvent;
+    // Create custom cursor element
+    const cursor = document.createElement('div');
+    cursor.classList.add('custom-cursor');
+    document.body.appendChild(cursor);
 
     const updateCursorPosition = (e) => {
         gsap.to(cursor, {
@@ -176,11 +178,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const setCursorVisibility = (visible) => {
         cursor.style.opacity = visible ? '1' : '0';
-        document.body.style.cursor = visible ? 'none' : 'default';
     };
 
     const handleHoverEffect = (event) => {
-        if (event.target.nodeType === 1) { // Ensure the target is an element
+        if (event.target.nodeType === 1) {
             const target = event.target.closest('.portfolio-video, .card, .work-item, .footer-social li, nav, #email-btn, .video-control, p.primary, p.secondary, h1, h2, h3');
             if (target) {
                 if (target.classList.contains('portfolio-video')) {
@@ -205,7 +206,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         ease: 'power3.inOut'
                     });
                 } else if (target.matches('p.primary, p.secondary, h1, h2, h3')) {
-                    // Check if the target is part of a link
                     if (!target.closest('a')) {
                         cursor.style.backgroundImage = 'none';
                         gsap.to(cursor, {
@@ -223,7 +223,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const handleHoverOutEffect = (event) => {
-        if (event.target.nodeType === 1) { // Ensure the target is an element
+        if (event.target.nodeType === 1) {
             const target = event.target.closest('.portfolio-video, .card, .work-item, .footer-social li, nav, #email-btn, .video-control, p.primary, p.secondary, h1, h2, h3');
             if (target) {
                 if (!event.relatedTarget || (event.relatedTarget.nodeType === 1 && !event.relatedTarget.closest('.portfolio-video, .card, .work-item, .footer-social li, nav, #email-btn, .video-control, p.primary, p.secondary, h1, h2, h3'))) {
@@ -242,31 +242,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    const handleMouseMove = (e) => {
-        lastMouseEvent = e;
-        updateCursorPosition(e);
-    };
-
-    const handleScroll = () => {
-        if (lastMouseEvent) {
-            updateCursorPosition(lastMouseEvent);
-        }
-    };
-
+    document.addEventListener('mousemove', updateCursorPosition);
     document.addEventListener('mouseenter', handleHoverEffect, true);
     document.addEventListener('mouseleave', handleHoverOutEffect, true);
-    document.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('scroll', handleScroll);
-    document.addEventListener('mousedown', () => setCursorVisibility(true));
-    document.addEventListener('mouseup', () => setCursorVisibility(true));
-    document.addEventListener('focusin', () => setCursorVisibility(true));
-    document.addEventListener('mouseout', (e) => {
-        if (!e.relatedTarget || e.relatedTarget.nodeName === 'HTML') {
-            setCursorVisibility(false);
-        }
-    });
-    document.addEventListener('mouseover', () => setCursorVisibility(true));
 
+    // Hide default cursor globally
     document.body.style.cursor = 'none';
 });
 
