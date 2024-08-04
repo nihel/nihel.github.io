@@ -124,9 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Debounce the hash change handler
-    const debouncedHandleHashChange = debounce(handleHashChange, 100);
-    window.addEventListener('hashchange', debouncedHandleHashChange);
+    window.addEventListener('hashchange', handleHashChange);
 
     const handleNavigationEvent = (e) => {
         let target = e.target;
