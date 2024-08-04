@@ -126,6 +126,7 @@ body {
 	user-select: none;
 	opacity: 1;
     transition: opacity 0.3s ease; 
+	backface-visibility: hidden;
 }
 
 main {
