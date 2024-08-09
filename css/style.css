@@ -54,6 +54,11 @@ html {
 	-webkit-tap-highlight-color: transparent;
 }
 
+::-webkit-scrollbar-track {
+	background: transparent;
+   }
+
+
 img {
 	max-width: 100%;
 	height: auto;
@@ -108,6 +113,7 @@ body {
 	font-family: 'PPNeueMontreal-Regular', 'Helvetica', sans-serif;
 	background: var(--white);
 	color: var(--black);
+	overflow-y: scroll;
 }
 
 main {
@@ -128,10 +134,6 @@ header {
 
 .nav {
 	position: fixed;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap: 4px;
 	top: 24px;
 	padding: 4px;
 	left: 50%;
@@ -153,12 +155,9 @@ nav ul {
 }
 
 nav ul li {
-	display: flex;
     height: 40px;
     width: 72px;
     border-radius: 6px;
-    align-items: center;
-    justify-content: center;
 	transition: 0.3s ease;
 }
 
