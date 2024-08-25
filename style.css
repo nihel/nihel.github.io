@@ -159,6 +159,7 @@ p.small {
 	font-size: 14px;
 	line-height: 150%;
 	text-wrap: pretty;
+	font-variant-numeric: tabular-nums;
 }
 
 /* CONTENT */
@@ -307,7 +308,6 @@ ul.footer-social {
 	main {
 		max-width: 336px;
 		margin: 8rem auto 8rem;
-		gap: 2rem;
 	}
 
 	.content {
