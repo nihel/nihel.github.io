@@ -34,8 +34,8 @@ function initialize() {
                 }
 
                 if (mediaElement) {
-                    mediaElement.style.maxWidth = '320px';
-                    mediaElement.style.maxHeight = '320px';
+                    mediaElement.style.maxWidth = '360px';
+                    mediaElement.style.maxHeight = '360px';
                     mediaElement.style.width = 'auto';
                     mediaElement.style.height = 'auto';
                     mediaElement.style.objectFit = 'contain'; // Maintain aspect ratio
@@ -55,6 +55,9 @@ function initialize() {
                 hoverMediaContainer.style.left = event.clientX + 'px';
                 hoverMediaContainer.style.top = event.clientY + 'px';
 
+                // Cancel any ongoing animations before starting a new one
+                gsap.killTweensOf(hoverMediaContainer);
+
                 gsap.fromTo(hoverMediaContainer, 
                     { opacity: 0, scale: 0.8 }, 
                     { opacity: 1, scale: 1, duration: 0.2, ease: "power3.out" }
@@ -62,6 +65,9 @@ function initialize() {
             });
 
             card.addEventListener('mouseleave', function () {
+                // Cancel any ongoing animations before starting a new one
+                gsap.killTweensOf(hoverMediaContainer);
+
                 gsap.to(hoverMediaContainer, { 
                     opacity: 0, 
                     scale: 0.8, 
@@ -73,13 +79,14 @@ function initialize() {
                             videoElement.pause();
                             videoElement.currentTime = 0;
                         }
+                        hoverMediaContainer.innerHTML = ''; // Clear content after hiding
                     }
                 });
             });
 
             card.addEventListener('mousemove', function (e) {
-                const posX = e.clientX + 20; // Offset 20px to the right of the cursor
-                const posY = e.clientY + 20; // Offset 20px below the cursor
+                const posX = e.clientX + 120; // Offset 120px to the right of the cursor
+                const posY = e.clientY - 80; // Offset 80px above the cursor
 
                 const hoverMediaRect = hoverMediaContainer.getBoundingClientRect();
                 const isPortrait = hoverMediaContainer.dataset.isPortrait === 'true';
