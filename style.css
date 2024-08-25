@@ -195,7 +195,7 @@ main {
 .flex-column {
 	display: flex;
     flex-direction: column;
-    width: 100%;
+    width: max-content;
 	gap: 4px;
 }
 
