@@ -1,10 +1,8 @@
 :root {
-	--black: #181818;
-	--grey: #555555;
-	--lightgrey: #888888;
-	--softgrey: #cccccc;
+	--black: #313131;
+	--grey: #a1a1a1;
+	--softgrey: #e1e1e1;
 	--white: #ffffff;
-	--blue: #3E80FF;
 	font-family: Inter, sans-serif;
   	font-feature-settings: 'liga' 1, 'calt' 1;
 }
@@ -52,7 +50,7 @@ a {
 }
 
 a:hover {
-	text-decoration-color: var(--lightgrey);
+	text-decoration-color: var(--grey);
 	transition: 0.3s ease;
 }
 
@@ -78,7 +76,7 @@ a:visited {
 }
 
 #email-btn:hover {
-	text-decoration-color: var(--lightgrey);
+	text-decoration-color: var(--grey);
 	transition: 0.3s ease;
 }
 
@@ -147,7 +145,7 @@ p.large {
 
 p.medium {
 	font-family: 'Inter-Regular', 'Helvetica', sans-serif;
-	color: var(--lightgrey);
+	color: var(--grey);
 	font-size: 15px;
 	line-height: 150%;
 	text-wrap: pretty;
