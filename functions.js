@@ -34,33 +34,23 @@ function initialize() {
                 }
 
                 if (mediaElement) {
-                    mediaElement.style.maxWidth = '360px';
-                    mediaElement.style.maxHeight = '360px';
+                    mediaElement.style.maxWidth = '400px';
+                    mediaElement.style.maxHeight = '400px';
                     mediaElement.style.width = 'auto';
                     mediaElement.style.height = 'auto';
                     mediaElement.style.objectFit = 'contain'; // Maintain aspect ratio
                     hoverMediaContainer.appendChild(mediaElement);
-
-                    mediaElement.addEventListener('loadedmetadata', () => {
-                        const isPortrait = mediaElement.videoHeight > mediaElement.videoWidth;
-                        hoverMediaContainer.dataset.isPortrait = isPortrait && videoPath ? 'true' : 'false';
-                    });
-
-                    mediaElement.addEventListener('load', () => {
-                        const isPortrait = mediaElement.naturalHeight > mediaElement.naturalWidth;
-                        hoverMediaContainer.dataset.isPortrait = isPortrait && imagePath ? 'true' : 'false';
-                    });
                 }
 
-                hoverMediaContainer.style.left = event.clientX + 'px';
-                hoverMediaContainer.style.top = event.clientY + 'px';
+                hoverMediaContainer.style.left = event.clientX + 200 + 'px';
+                hoverMediaContainer.style.top = event.clientY - 200 + 'px';
 
                 // Cancel any ongoing animations before starting a new one
                 gsap.killTweensOf(hoverMediaContainer);
 
                 gsap.fromTo(hoverMediaContainer, 
-                    { opacity: 0, scale: 0.8 }, 
-                    { opacity: 1, scale: 1, duration: 0.2, ease: "power3.out" }
+                    { opacity: 0.8, filter:'Blur(24px)' }, 
+                    { opacity: 1, filter:'Blur(0px)', duration: 0.6, ease: "power3.out" }
                 );
             });
 
@@ -70,8 +60,8 @@ function initialize() {
 
                 gsap.to(hoverMediaContainer, { 
                     opacity: 0, 
-                    scale: 0.8, 
-                    duration: 0.2, 
+                    filter:'Blur(24px)', 
+                    duration: 0.6, 
                     ease: "power3.out",
                     onComplete: () => {
                         const videoElement = hoverMediaContainer.querySelector('video');
@@ -85,11 +75,10 @@ function initialize() {
             });
 
             card.addEventListener('mousemove', function (e) {
-                const posX = e.clientX + 120; // Offset 120px to the right of the cursor
-                const posY = e.clientY - 80; // Offset 80px above the cursor
+                const posX = e.clientX + 200; // Offset 120px to the right of the cursor
+                const posY = e.clientY - 200; // Offset 80px above the cursor
 
                 const hoverMediaRect = hoverMediaContainer.getBoundingClientRect();
-                const isPortrait = hoverMediaContainer.dataset.isPortrait === 'true';
 
                 let adjustedPosX = posX;
                 if (posX + hoverMediaRect.width > window.innerWidth + 60) {
@@ -99,10 +88,6 @@ function initialize() {
                 let adjustedPosY = posY;
                 if (posY + hoverMediaRect.height > window.innerHeight + 60) {
                     adjustedPosY = e.clientY - hoverMediaRect.height - 20;
-                }
-
-                if (isPortrait) {
-                    adjustedPosY -= 120; // Adjust this value as needed
                 }
 
                 gsap.to(hoverMediaContainer, { 
