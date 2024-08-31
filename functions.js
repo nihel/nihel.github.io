@@ -1,4 +1,12 @@
 function initialize() {
+    // Check if the device supports touch
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+    // If it's a touch device, don't initialize hover effects
+    if (isTouchDevice) {
+        return;
+    }
+
     // Ensure the hover media container is only created once
     let hoverMediaContainer = document.getElementById('hover-media');
     if (!hoverMediaContainer) {
