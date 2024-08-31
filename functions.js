@@ -89,13 +89,20 @@ function initialize() {
                 const hoverMediaRect = hoverMediaContainer.getBoundingClientRect();
 
                 let adjustedPosX = posX;
-                if (posX + hoverMediaRect.width > window.innerWidth + 60) {
-                    adjustedPosX = e.clientX - hoverMediaRect.width - 20;
+                let adjustedPosY = posY;
+
+                // Check if the media is outside the viewport horizontally and adjust if needed
+                if (posX + hoverMediaRect.width - window.innerWidth > 50) {
+                    adjustedPosX = window.innerWidth - hoverMediaRect.width - 50;
+                } else if (posX < 50) {
+                    adjustedPosX = 50;
                 }
 
-                let adjustedPosY = posY;
-                if (posY + hoverMediaRect.height > window.innerHeight + 60) {
-                    adjustedPosY = e.clientY - hoverMediaRect.height - 20;
+                // Check if the media is outside the viewport vertically and adjust if needed
+                if (posY + hoverMediaRect.height - window.innerHeight > 50) {
+                    adjustedPosY = window.innerHeight - hoverMediaRect.height - 50;
+                } else if (posY < 50) {
+                    adjustedPosY = 50;
                 }
 
                 gsap.to(hoverMediaContainer, { 
