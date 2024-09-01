@@ -1,137 +1,102 @@
-let lastPageIndex = 0; // Initialize to track the last page index
+let lastPageIndex = 0;
 
-// Function to set the active link
-function setActiveLink(path) {
-    path = path.replace(/\/$/, '').replace(/^\//, '');
-
-    document.querySelectorAll('nav ul li').forEach(li => {
-        li.classList.remove('active');
-    });
-
-    document.querySelectorAll('nav ul li a').forEach(link => {
-        const linkHref = link.getAttribute('href').replace(/^\//, '');
-        if (linkHref === path) {
-            link.parentElement.classList.add('active');
-        }
-    });
-}
-
-// Function to determine the page index based on the path
+// Determine the page index based on the path
 function getPageIndex(path) {
     switch (path) {
-        case '/work':
-            return 2;
-        case '/resume':
-            return 3;
-        default:
+        case '/':
             return 1;
+        case '/insight-portal':
+            return 2;
+        // Add new pages here
+        // case '/new-page':
+        //     return 3;
+        default:
+            return 0;
     }
 }
 
-// Function to animate the content based on page navigation direction
+// Animate content based on navigation direction
 function animatePageIn(lastIndex, currentIndex) {
     const content = document.getElementById('wrapper');
-    let direction = {}; // No default direction
-
-    if (lastIndex < currentIndex) {
-        direction = { x: 24, y: 0 }; // Moving to a higher index, animate from right to left
-    } else if (lastIndex > currentIndex) {
-        direction = { x: -24, y: 0 }; // Moving to a lower index, animate from left to right
-    }
+    const direction = lastIndex < currentIndex ? { x: 24, y: 0 } : { x: -24, y: 0 };
 
     gsap.fromTo(content, 
-        { opacity: 0, ...direction }, 
+        { opacity: 0, x: direction.x, y: direction.y }, 
         { opacity: 1, x: 0, y: 0, duration: 0.6, ease: "back.out(1.4)" }
     );
 }
 
-// Function to load page content with scroll reset and directional animation
-function loadPageWithScrollReset(page, currentIndex) {
+// Load page content with scroll reset and apply animation
+function loadPageWithScrollReset(path, currentIndex) {
     const content = document.getElementById('wrapper');
-    content.style.display = 'none'; // Hide content initially
-    window.scrollTo(0, 0); // Reset scroll position to the top
+    content.style.display = 'none';
+    window.scrollTo(0, 0);
 
-    fetch(`pages/${page}.html`)
+    fetch(`pages/${path}.html`)
         .then(response => {
-            if (response.ok) {
-                return response.text();
-            } else {
-                content.innerHTML = "<p>Sorry, the page could not be loaded.</p>";
+            if (!response.ok) {
                 throw new Error('Page not found');
             }
+            return response.text();
         })
         .then(data => {
             content.innerHTML = data;
-            content.style.display = ''; // Show content
+            content.style.display = '';
 
-            // Animate fade-in on the first load
-            if (currentIndex === lastPageIndex && lastPageIndex === 1) {
-                gsap.fromTo(content, { opacity: 0, y: 0 }, 
-                { opacity: 1, y: -24,  duration: 1.2, ease: "power3.out" });
-            } else {
-                animatePageIn(lastPageIndex, currentIndex); // Animate with direction
-            }
+            animatePageIn(lastPageIndex, currentIndex);
 
-            lastPageIndex = currentIndex; // Update last page index
-            initialize(); // Initialize animations for newly loaded content
+            lastPageIndex = currentIndex;
+            if (typeof initialize === 'function') initialize(); // Ensure initialize function exists
         })
         .catch(error => {
+            content.innerHTML = "<p>Sorry, the page could not be loaded.</p>";
             console.error('Error loading page:', error);
         });
 }
 
-// Middleware to reset scroll before the route changes
+// Reset scroll position before route changes
 function resetScroll(ctx, next) {
-    window.scrollTo(0, 0); // Reset scroll position to the top
-    next(); // Move to the next middleware or route handler
+    window.scrollTo(0, 0);
+    next();
 }
 
-// Apply the scroll reset middleware before every route
+// Define routes
 page('*', resetScroll);
 
-// Define the routes with corresponding page indices
 page('/', () => {
     const currentIndex = getPageIndex('/');
-    setActiveLink('/');
     loadPageWithScrollReset('intro', currentIndex);
 });
-page('/work', () => {
-    const currentIndex = getPageIndex('/work');
-    setActiveLink('/work');
-    loadPageWithScrollReset('work', currentIndex);
-});
-page('/resume', () => {
-    const currentIndex = getPageIndex('/resume');
-    setActiveLink('/resume');
-    loadPageWithScrollReset('resume', currentIndex);
-});
-page('*', () => {
-    const currentIndex = getPageIndex('/');
-    setActiveLink('/');
-    loadPageWithScrollReset('intro', currentIndex);
+page('/insight-portal', () => {
+    const currentIndex = getPageIndex('/insight-portal');
+    loadPageWithScrollReset('insight-portal', currentIndex);
 });
 
-// Initialize page.js routing
+// Add new routes here
+// page('/new-page', () => {
+//     const currentIndex = getPageIndex('/new-page');
+//     loadPageWithScrollReset('new-page', currentIndex);
+// });
+
+// Initialize page routing
 page();
 
-// Handle popstate event for browser back/forward buttons
+// Handle browser back/forward buttons
 window.addEventListener('popstate', () => {
     const path = window.location.pathname;
     const currentIndex = getPageIndex(path);
 
-    setActiveLink(path);
-    animatePageIn(lastPageIndex, currentIndex); // Apply the animation with correct direction
-    loadPageWithScrollReset(path.substring(1) || 'intro', currentIndex); // Load content
-    lastPageIndex = currentIndex; // Update the lastPageIndex
-    window.scrollTo(0, 0); // Ensure scroll position is reset when using back/forward buttons
+    animatePageIn(lastPageIndex, currentIndex);
+    loadPageWithScrollReset(path.substring(1) || 'intro', currentIndex);
+    lastPageIndex = currentIndex;
 });
 
-// Event listener for touch events on navigation links
-document.querySelectorAll('nav ul li a').forEach(link => {
+// Handle touch events on navigation links
+document.querySelectorAll('a').forEach(link => {
     link.addEventListener('touchstart', (e) => {
-        e.preventDefault(); // Prevent the default touch behavior
+        e.preventDefault();
         const path = link.getAttribute('href');
-        page(path); // Trigger page.js navigation
+        page(path);
     });
 });
 
@@ -140,6 +105,5 @@ document.addEventListener('DOMContentLoaded', () => {
     const initialPath = window.location.pathname;
     const currentIndex = getPageIndex(initialPath);
     lastPageIndex = currentIndex;
-    setActiveLink(initialPath);
     loadPageWithScrollReset(initialPath.substring(1) || 'intro', currentIndex);
 });

@@ -62,6 +62,16 @@ a:visited {
 	color: var(--black);
 }
 
+a.item {
+	text-decoration: none;
+	transition: 0.2s ease;
+}
+
+a.item:hover {
+	transition: 0.2s ease;
+	padding-left: 12px;
+}
+
 #email-btn {
 	width: fit-content;
 	font-family: 'Inter-Medium', 'Helvetica', sans-serif;
@@ -92,7 +102,6 @@ img {
     pointer-events: none;
     opacity: 0;
     z-index: 9999; 
-    border-radius: 12px;
     overflow: hidden;
     display: block;
 }
@@ -203,6 +212,8 @@ main {
 
 .item {
 	cursor: pointer;
+	padding-top: 12px;
+	padding-bottom: 12px;
 }
 
 
@@ -216,8 +227,8 @@ main {
 	gap: 2rem;
 }
 
-.pb-4 {
-	padding-bottom: 4px;
+.pb-1rem {
+	padding-bottom: 1rem;
 }
 
 /* ANIMATIONS */
@@ -254,19 +265,13 @@ main {
 }
 
 .small-logo {
-	width: 20px;
-	height: 20px;
+	width: 24px;
+	height: 24px;
 }
 
 .tiny-logo {
 	width: 16px;
 	height: 16px;
-}
-
-.arrow-icon {
-	background-image: url(../images/assets/arrow.svg);
-	width: 20px;
-	height: 20px;
 }
 
 /* FOOTER */

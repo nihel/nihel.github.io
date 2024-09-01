@@ -15,6 +15,23 @@ function initialize() {
         document.body.appendChild(hoverMediaContainer);
     }
 
+    // Function to apply border-radius based on media orientation
+    function applyBorderRadius(mediaElement) {
+        const checkOrientation = () => {
+            if (mediaElement.videoWidth > mediaElement.videoHeight || mediaElement.naturalWidth > mediaElement.naturalHeight) {
+                hoverMediaContainer.style.borderRadius = '12px'; // Landscape
+            } else {
+                hoverMediaContainer.style.borderRadius = '16px'; // Portrait
+            }
+        };
+
+        if (mediaElement.tagName === 'VIDEO') {
+            mediaElement.addEventListener('loadedmetadata', checkOrientation);
+        } else if (mediaElement.tagName === 'IMG') {
+            mediaElement.addEventListener('load', checkOrientation);
+        }
+    }
+
     // Initialize hover effects for '.item' elements
     function initializeHoverEffects() {
         document.querySelectorAll('.item').forEach(card => {
@@ -32,10 +49,6 @@ function initialize() {
                     mediaElement.loop = true;
                     mediaElement.muted = true; // Prevent sound from playing
                     mediaElement.playsInline = true; // Ensure it plays on mobile browsers
-
-                    mediaElement.addEventListener('canplaythrough', () => {
-                        mediaElement.play();
-                    });
                 } else if (imagePath) {
                     mediaElement = document.createElement('img');
                     mediaElement.src = imagePath;
@@ -47,6 +60,10 @@ function initialize() {
                     mediaElement.style.width = 'auto';
                     mediaElement.style.height = 'auto';
                     mediaElement.style.objectFit = 'contain'; // Maintain aspect ratio
+
+                    // Apply border-radius based on orientation
+                    applyBorderRadius(mediaElement);
+
                     hoverMediaContainer.appendChild(mediaElement);
                 }
 
@@ -57,8 +74,8 @@ function initialize() {
                 gsap.killTweensOf(hoverMediaContainer);
 
                 gsap.fromTo(hoverMediaContainer, 
-                    { opacity: 0.8, filter:'Blur(24px)' }, 
-                    { opacity: 1, filter:'Blur(0px)', duration: 0.6, ease: "power3.out" }
+                    { opacity: 0.8, filter: 'blur(24px)' }, 
+                    { opacity: 1, filter: 'blur(0px)', duration: 0.6, ease: "power3.out" }
                 );
             });
 
@@ -68,7 +85,7 @@ function initialize() {
 
                 gsap.to(hoverMediaContainer, { 
                     opacity: 0, 
-                    filter:'Blur(24px)', 
+                    filter: 'blur(24px)', 
                     duration: 0.6, 
                     ease: "power3.out",
                     onComplete: () => {
@@ -83,22 +100,21 @@ function initialize() {
             });
 
             card.addEventListener('mousemove', function (e) {
-                const posX = e.clientX + 200; // Offset 120px to the right of the cursor
-                const posY = e.clientY - 200; // Offset 80px above the cursor
+                const posX = e.clientX + 200; // Offset to the right of the cursor
+                const posY = e.clientY - 200; // Offset above the cursor
 
                 const hoverMediaRect = hoverMediaContainer.getBoundingClientRect();
 
                 let adjustedPosX = posX;
                 let adjustedPosY = posY;
 
-                // Check if the media is outside the viewport horizontally and adjust if needed
+                // Adjust position if media goes outside viewport
                 if (posX + hoverMediaRect.width - window.innerWidth > 50) {
                     adjustedPosX = window.innerWidth - hoverMediaRect.width - 50;
                 } else if (posX < 50) {
                     adjustedPosX = 50;
                 }
 
-                // Check if the media is outside the viewport vertically and adjust if needed
                 if (posY + hoverMediaRect.height - window.innerHeight > 50) {
                     adjustedPosY = window.innerHeight - hoverMediaRect.height - 50;
                 } else if (posY < 50) {
@@ -118,8 +134,7 @@ function initialize() {
     // Call this function once when the page loads
     initializeHoverEffects();
 
-    // If your one-pager has dynamic content loading or sections that appear on scroll
-    // you might need to re-initialize the hover effects when new content is added.
+    // Re-initialize hover effects if dynamic content is loaded
     document.addEventListener('contentUpdated', initializeHoverEffects);
 }
 
