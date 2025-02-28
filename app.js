@@ -26,11 +26,10 @@ function animatePageIn(lastIndex, currentIndex) {
     );
 }
 
-// Load page content with scroll reset and apply animation
-function loadPageWithScrollReset(path, currentIndex) {
+// Load page content and apply animation, restoring scroll position if available
+function loadPageWithScroll(path, currentIndex) {
     const content = document.getElementById('wrapper');
     content.style.display = 'none';
-    window.scrollTo(0, 0);
 
     fetch(`pages/${path}.html`)
         .then(response => {
@@ -47,6 +46,12 @@ function loadPageWithScrollReset(path, currentIndex) {
 
             lastPageIndex = currentIndex;
             if (typeof initialize === 'function') initialize(); // Ensure initialize function exists
+
+            // Restore scroll position if available
+            const savedScroll = sessionStorage.getItem('scrollPosition-' + path);
+            if (savedScroll) {
+                window.scrollTo(0, parseInt(savedScroll, 10));
+            }
         })
         .catch(error => {
             content.innerHTML = "<p>Sorry, the page could not be loaded.</p>";
@@ -54,28 +59,33 @@ function loadPageWithScrollReset(path, currentIndex) {
         });
 }
 
-// Reset scroll position before route changes
-function resetScroll(ctx, next) {
-    window.scrollTo(0, 0);
+// Save scroll position before route changes
+function saveScrollPosition(path) {
+    sessionStorage.setItem('scrollPosition-' + path, window.scrollY);
+}
+
+// Middleware to save scroll position
+function handleScrollSave(ctx, next) {
+    saveScrollPosition(window.location.pathname);
     next();
 }
 
 // Define routes
-page('*', resetScroll);
+page('*', handleScrollSave);
 
 page('/', () => {
     const currentIndex = getPageIndex('/');
-    loadPageWithScrollReset('intro', currentIndex);
+    loadPageWithScroll('intro', currentIndex);
 });
 page('/insight-portal', () => {
     const currentIndex = getPageIndex('/insight-portal');
-    loadPageWithScrollReset('insight-portal', currentIndex);
+    loadPageWithScroll('insight-portal', currentIndex);
 });
 
 // Add new routes here
 // page('/new-page', () => {
 //     const currentIndex = getPageIndex('/new-page');
-//     loadPageWithScrollReset('new-page', currentIndex);
+//     loadPageWithScroll('new-page', currentIndex);
 // });
 
 // Initialize page routing
@@ -87,7 +97,7 @@ window.addEventListener('popstate', () => {
     const currentIndex = getPageIndex(path);
 
     animatePageIn(lastPageIndex, currentIndex);
-    loadPageWithScrollReset(path.substring(1) || 'intro', currentIndex);
+    loadPageWithScroll(path.substring(1) || 'intro', currentIndex);
     lastPageIndex = currentIndex;
 });
 
@@ -96,14 +106,15 @@ document.querySelectorAll('a').forEach(link => {
     link.addEventListener('touchstart', (e) => {
         e.preventDefault();
         const path = link.getAttribute('href');
+        saveScrollPosition(window.location.pathname);
         page(path);
     });
 });
 
-// Initialize the first page load
+// Initialize the first page load and restore scroll position
 document.addEventListener('DOMContentLoaded', () => {
     const initialPath = window.location.pathname;
     const currentIndex = getPageIndex(initialPath);
     lastPageIndex = currentIndex;
-    loadPageWithScrollReset(initialPath.substring(1) || 'intro', currentIndex);
+    loadPageWithScroll(initialPath.substring(1) || 'intro', currentIndex);
 });
