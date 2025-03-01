@@ -4,7 +4,7 @@
 	--softgrey: #e1e1e1;
 	--white: #ffffff;
 	font-family: Inter, sans-serif;
-  	font-feature-settings: 'liga' 1, 'calt' 1;
+  	font-feature-settings: 'liga' 1, 'calt' 1,"ss01" 1, "ss03" 1, "cv10" 1;
 }
 
 @font-face {
@@ -41,7 +41,7 @@ html {
 }
 
 body {
-	font-family: 'Inter-Regular', 'Helvetica', sans-serif;
+	font-family: 'Inter-Medium', 'Helvetica', sans-serif;
 	background: var(--white);
 	color: var(--black);
 	overflow-y: scroll;
