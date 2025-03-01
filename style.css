@@ -79,6 +79,10 @@ a.item:hover {
 	padding-left: 12px;
 }
 
+#logo-lottie:hover {
+	cursor: pointer;
+}
+
 #email-btn {
 	width: fit-content;
 	font-family: 'Inter-Medium', 'Helvetica', sans-serif;

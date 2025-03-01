@@ -1,5 +1,23 @@
 function initialize() {
     
+let player = document.getElementById("logo-lottie");
+
+    player.addEventListener("ready", () => {
+        LottieInteractivity.create({
+            player: "#logo-lottie",
+            mode: "cursor",
+            actions: [
+                { type: "click", forceFlag: false }
+            ]
+        });
+        player.play();
+    });
+
+    // Add click event listener to play the animation
+    player.addEventListener("click", () => {
+        player.play();
+    });
+
     // Check if the device supports touch
     const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
