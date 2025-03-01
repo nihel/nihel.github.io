@@ -114,23 +114,26 @@ function initialize() {
 
             card.addEventListener('mousemove', function (e) {
                 if (isTouchDevice) return;
-                const posX = e.clientX + 200;
-                const posY = e.clientY - 200;
+                const posX = e.clientX + 200 + window.scrollX; // Offset to the right of the cursor
+                const posY = e.clientY - 200 + window.scrollY; // Offset above the cursor
+
                 const hoverMediaRect = hoverMediaContainer.getBoundingClientRect();
 
                 let adjustedPosX = posX;
                 let adjustedPosY = posY;
 
+                // Check if the media is outside the viewport horizontally and adjust if needed
                 if (posX + hoverMediaRect.width - window.innerWidth > 50) {
-                    adjustedPosX = window.innerWidth - hoverMediaRect.width - 50;
+                    adjustedPosX = window.innerWidth - hoverMediaRect.width - 50 + window.scrollX;
                 } else if (posX < 50) {
-                    adjustedPosX = 50;
+                    adjustedPosX = 50 + window.scrollX;
                 }
 
+                // Check if the media is outside the viewport vertically and adjust if needed
                 if (posY + hoverMediaRect.height - window.innerHeight > 50) {
-                    adjustedPosY = window.innerHeight - hoverMediaRect.height - 50;
+                    adjustedPosY = window.innerHeight - hoverMediaRect.height - 50 + window.scrollY;
                 } else if (posY < 50) {
-                    adjustedPosY = 50;
+                    adjustedPosY = 50 + window.scrollY;
                 }
 
                 gsap.to(hoverMediaContainer, { left: adjustedPosX + 'px', top: adjustedPosY + 'px', duration: 0.4, ease: "power3.out" });
@@ -145,7 +148,7 @@ function initialize() {
                     hoverMediaContainer.style.left = '50%';
                     hoverMediaContainer.style.top = '10px';
                     hoverMediaContainer.style.transform = 'translateX(-50%)';
-
+                    
                     let mediaElement;
                     if (videoPath) {
                         mediaElement = document.createElement('video');
