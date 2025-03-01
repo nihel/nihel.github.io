@@ -43,6 +43,8 @@ function initialize() {
         }
     }
 
+    let isHoverMediaVisible = false;
+
     function initializeHoverEffects() {
         document.querySelectorAll('.item').forEach(card => {
             card.addEventListener('mouseenter', function (event) {
@@ -67,12 +69,31 @@ function initialize() {
                 }
 
                 if (mediaElement) {
-                    mediaElement.style.maxWidth = '400px';
+                    if (isTouchDevice) {
+                        mediaElement.style.maxWidth = mediaElement.naturalWidth > mediaElement.naturalHeight ? '375px' : '400px';
+                    } else {
+                        mediaElement.style.maxWidth = '400px';
+                    }
                     mediaElement.style.maxHeight = '400px';
                     mediaElement.style.width = 'auto';
                     mediaElement.style.height = 'auto';
                     mediaElement.style.objectFit = 'contain';
                     applyBorderRadius(mediaElement);
+                    if (isTouchDevice) {
+                        if (mediaElement.tagName === 'IMG') {
+                            mediaElement.onload = () => {
+                                if (mediaElement.naturalWidth > mediaElement.naturalHeight) {
+                                    mediaElement.style.maxWidth = '375px';
+                                }
+                            };
+                        } else if (mediaElement.tagName === 'VIDEO') {
+                            mediaElement.onloadedmetadata = () => {
+                                if (mediaElement.videoWidth > mediaElement.videoHeight) {
+                                    mediaElement.style.maxWidth = '375px';
+                                }
+                            };
+                        }
+                    }
                     hoverMediaContainer.appendChild(mediaElement);
                 }
 
@@ -117,6 +138,7 @@ function initialize() {
 
             card.addEventListener('click', function (event) {
                 if (isTouchDevice) {
+                    event.stopPropagation(); // Prevent the document click event from firing
                     const imagePath = card.getAttribute('data-image');
                     const videoPath = card.getAttribute('data-video');
                     hoverMediaContainer.innerHTML = '';
@@ -136,9 +158,9 @@ function initialize() {
                         mediaElement = document.createElement('img');
                         mediaElement.src = imagePath;
                     }
-
+    
                     if (mediaElement) {
-                        mediaElement.style.maxWidth = '400px';
+                        mediaElement.style.maxWidth = '375px';
                         mediaElement.style.maxHeight = '400px';
                         mediaElement.style.width = 'auto';
                         mediaElement.style.height = 'auto';
@@ -149,8 +171,20 @@ function initialize() {
 
                     gsap.killTweensOf(hoverMediaContainer);
                     gsap.fromTo(hoverMediaContainer, { opacity: 0, filter: 'blur(24px)' }, { opacity: 1, filter: 'blur(0px)', duration: 0.4, ease: "power3.out" });
+
+                    isHoverMediaVisible = true;
                 }
             });
+        });
+
+        document.addEventListener('click', function (event) {
+            if (isHoverMediaVisible && !hoverMediaContainer.contains(event.target)) {
+                gsap.killTweensOf(hoverMediaContainer);
+                gsap.to(hoverMediaContainer, { opacity: 0, filter: 'blur(24px)', duration: 0.4, ease: "power3.out", onComplete: () => {
+                    hoverMediaContainer.innerHTML = '';
+                    isHoverMediaVisible = false;
+                }});
+            }
         });
     }
 
