@@ -79,6 +79,10 @@ a.item:hover {
 	padding-left: 12px;
 }
 
+#logo-lottie {
+	margin-left: -8px
+}
+
 #logo-lottie:hover {
 	cursor: pointer;
 }
