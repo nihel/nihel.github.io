@@ -49,7 +49,7 @@ function initialize() {
         document.querySelectorAll('.item').forEach(card => {
             card.addEventListener('mouseenter', function (event) {
                 if (isTouchDevice) return;
-                
+
                 const imagePath = card.getAttribute('data-image');
                 const videoPath = card.getAttribute('data-video');
                 hoverMediaContainer.innerHTML = '';
@@ -97,8 +97,8 @@ function initialize() {
                     hoverMediaContainer.appendChild(mediaElement);
                 }
 
-                hoverMediaContainer.style.left = event.clientX + 200 + 'px';
-                hoverMediaContainer.style.top = event.clientY - 200 + 'px';
+                hoverMediaContainer.style.left = event.pageX + 200 + 'px';
+                hoverMediaContainer.style.top = event.pageY - 200 + 'px';
 
                 gsap.killTweensOf(hoverMediaContainer);
                 gsap.fromTo(hoverMediaContainer, { opacity: 0, filter: 'blur(24px)' }, { opacity: 1, filter: 'blur(0px)', duration: 0.4, ease: "power3.out" });
@@ -114,26 +114,28 @@ function initialize() {
 
             card.addEventListener('mousemove', function (e) {
                 if (isTouchDevice) return;
-                const posX = e.clientX + 200 + window.scrollX; // Offset to the right of the cursor
-                const posY = e.clientY - 200 + window.scrollY; // Offset above the cursor
+                const posX = e.pageX + 200; // Offset to the right of the cursor
+                const posY = e.pageY - 200; // Offset above the cursor
 
                 const hoverMediaRect = hoverMediaContainer.getBoundingClientRect();
 
                 let adjustedPosX = posX;
                 let adjustedPosY = posY;
 
-                // Check if the media is outside the viewport horizontally and adjust if needed
-                if (posX + hoverMediaRect.width - window.innerWidth > 50) {
-                    adjustedPosX = window.innerWidth - hoverMediaRect.width - 50 + window.scrollX;
-                } else if (posX < 50) {
-                    adjustedPosX = 50 + window.scrollX;
+                // Clamp horizontally
+                if (adjustedPosX + hoverMediaRect.width > window.scrollX + window.innerWidth) {
+                    adjustedPosX = window.scrollX + window.innerWidth - hoverMediaRect.width - 10;
+                }
+                if (adjustedPosX < window.scrollX + 10) {
+                    adjustedPosX = window.scrollX + 10;
                 }
 
-                // Check if the media is outside the viewport vertically and adjust if needed
-                if (posY + hoverMediaRect.height - window.innerHeight > 50) {
-                    adjustedPosY = window.innerHeight - hoverMediaRect.height - 50 + window.scrollY;
-                } else if (posY < 50) {
-                    adjustedPosY = 50 + window.scrollY;
+                // Clamp vertically
+                if (adjustedPosY + hoverMediaRect.height > window.scrollY + window.innerHeight) {
+                    adjustedPosY = window.scrollY + window.innerHeight - hoverMediaRect.height - 10;
+                }
+                if (adjustedPosY < window.scrollY + 10) {
+                    adjustedPosY = window.scrollY + 10;
                 }
 
                 gsap.to(hoverMediaContainer, { left: adjustedPosX + 'px', top: adjustedPosY + 'px', duration: 0.4, ease: "power3.out" });
