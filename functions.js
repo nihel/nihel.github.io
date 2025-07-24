@@ -13,6 +13,10 @@ function initialize() {
     });
 
     player.addEventListener("click", () => {
+        // Don't trigger if drawer is active (being opened/closed)
+        if (document.body.classList.contains('scrim-active')) {
+            return;
+        }
         player.play();
     });
 

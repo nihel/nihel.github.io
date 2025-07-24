@@ -129,18 +129,6 @@ img {
     border-radius: inherit;
 }
 
-.hero-image {
-	width: 100%;
-	height: 576px;
-	background-color: burlywood;
-	border-radius: 8px;
-}
-
-.subpage-info {
-	opacity: 1;
-	scale: 1;
-}
-
 /* TYPOGRAPHY */
 
 h1 {
@@ -258,41 +246,33 @@ main {
 .grid-container {
     display: flex;
     flex-wrap: wrap;
-    width: 800px;
-    gap: 36px; /* Gap between boxes */
+    width: 100%;
+    gap: 0.4rem;
 }
 
-.box {
-    background-color: var(--softgrey);
-	border-radius: 16px;	
+.sidedrawer {
+    position: fixed;
+    top: 0; right: 0; bottom: 0;
+    width: 480px;
+    max-width: 100vw;
+    background: #212428;
+    box-shadow: -2px 0 24px rgba(0,0,0,0.24);
+    z-index: 2000;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+.sidedrawer .drawer-content {
+    padding: 0.4rem;
 }
 
-.box1 {
-    width: 280px;
-    height: 280px;
+html.no-scroll,
+body.no-scroll {
+    overflow: hidden !important;
 }
 
-.box2 {
-    width: 484px;
-    height: 280px;
-}
-
-.box3 {
-    width: 484px;
-    height: 280px;
-}
-
-.box4 {
-    width: 280px;
-    height: 280px;
-}
-
-.grid-container > .box:nth-child(2) {
-    margin-left: auto;
-}
-
-.grid-container > .box:nth-child(3) {
-    margin-left: auto;
+#wrapper.no-scroll {
+    overflow: hidden;
 }
 
 /* SPACING */
