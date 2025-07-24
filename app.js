@@ -56,17 +56,21 @@ function openSidedrawer(item) {
         .then(res => res.ok ? res.text() : "<p>Not found.</p>")
         .then(html => {
             sidedrawer.querySelector('.drawer-content').innerHTML = html;
-            // Animate images in drawer-content with GSAP fade-in sequence
-            const images = sidedrawer.querySelectorAll('.drawer-content img');
-            if (images.length > 0) {
-                gsap.set(images, { opacity: 0, y: 32 });
-                gsap.to(images, {
+            // Animate images and videos in drawer-content with GSAP fade-in sequence
+            const media = sidedrawer.querySelectorAll('.drawer-content img, .drawer-content video');
+            if (media.length > 0) {
+                gsap.set(media, { opacity: 0, y: 32 });
+                gsap.to(media, {
                     opacity: 1,
                     y: 0,
                     duration: 0.8,
                     stagger: 0.24,
+                    delay: 0.2,
                     ease: 'power3.out'
                 });
+                
+                // Set up video autoplay on viewport entry
+                setupVideoAutoplay(sidedrawer);
             }
         });
 
@@ -132,6 +136,10 @@ function closeSidedrawer({ navigate = false, updateUrl = false } = {}) {
             duration: 0.5, 
             ease: "power2.out", 
             onComplete: () => {
+            // Clean up video observer
+            if (sidedrawer._videoObserver) {
+                sidedrawer._videoObserver.disconnect();
+            }
             sidedrawer.remove();
             sidedrawer = null;
             if (navigate) {
@@ -176,3 +184,45 @@ document.addEventListener('click', e => {
 
 // Initialize router
 page();
+
+// Setup video autoplay functionality
+function setupVideoAutoplay(container) {
+    const videos = container.querySelectorAll('video');
+    
+    if (videos.length === 0) return;
+    
+    // Create intersection observer
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            const video = entry.target;
+            
+            if (entry.isIntersecting) {
+                // Video is in viewport, play it
+                video.play().catch(e => {
+                    // Handle autoplay policy restrictions
+                    console.log('Autoplay prevented:', e);
+                });
+            } else {
+                // Video is out of viewport, pause it
+                video.pause();
+            }
+        });
+    }, {
+        root: container, // Use the drawer as the root
+        threshold: 0.5   // Play when 50% of video is visible
+    });
+    
+    // Observe all videos
+    videos.forEach(video => {
+        // Set video attributes for better autoplay behavior
+        video.muted = true;  // Required for autoplay in most browsers
+        video.loop = false;  // Don't loop the video
+        video.playsInline = true; // Prevent fullscreen on mobile
+        video.controls = false; // Hide player controls
+        
+        observer.observe(video);
+    });
+    
+    // Store observer reference for cleanup
+    container._videoObserver = observer;
+}

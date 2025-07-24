@@ -112,6 +112,14 @@ img {
 	-o-user-drag: none;
 }
 
+video {
+	width: 100%;
+	height: auto;
+	-webkit-user-drag: none;
+	-moz-user-drag: none;
+	-o-user-drag: none;
+}
+
 #hover-media {
     position: fixed;
     pointer-events: none;
