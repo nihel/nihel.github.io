@@ -56,6 +56,16 @@ function openSidedrawer(item) {
         .then(res => res.ok ? res.text() : "<p>Not found.</p>")
         .then(html => {
             sidedrawer.querySelector('.drawer-content').innerHTML = html;
+            
+            // Check for custom background color
+            const drawerContent = sidedrawer.querySelector('.drawer-content');
+            const colorElement = drawerContent.querySelector('[data-bg-color]');
+            
+            if (colorElement) {
+                const customColor = colorElement.getAttribute('data-bg-color');
+                sidedrawer.style.background = customColor;
+            }
+            
             // Animate images and videos in drawer-content with GSAP fade-in sequence
             const media = sidedrawer.querySelectorAll('.drawer-content img, .drawer-content video');
             if (media.length > 0) {
@@ -140,6 +150,8 @@ function closeSidedrawer({ navigate = false, updateUrl = false } = {}) {
             if (sidedrawer._videoObserver) {
                 sidedrawer._videoObserver.disconnect();
             }
+            // Reset background color
+            sidedrawer.style.background = '';
             sidedrawer.remove();
             sidedrawer = null;
             if (navigate) {
