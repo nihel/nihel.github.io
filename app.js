@@ -35,7 +35,7 @@ function openSidedrawer(item) {
 
     sidedrawer = document.createElement('div');
     sidedrawer.className = 'sidedrawer';
-    sidedrawer.innerHTML = `<div class="drawer-content">Loading...</div>`;
+    sidedrawer.innerHTML = `<div class="drawer-content" style="opacity: 0;">Loading...</div>`;
     document.body.appendChild(sidedrawer);
 
     // Prevent scroll propagation to body
@@ -56,6 +56,9 @@ function openSidedrawer(item) {
         .then(res => res.ok ? res.text() : "<p>Not found.</p>")
         .then(html => {
             sidedrawer.querySelector('.drawer-content').innerHTML = html;
+            
+            // Show the content now that it's loaded
+            sidedrawer.querySelector('.drawer-content').style.opacity = '1';
             
             // Check for custom background color
             const drawerContent = sidedrawer.querySelector('.drawer-content');
