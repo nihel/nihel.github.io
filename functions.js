@@ -114,6 +114,20 @@ function initialize() {
                 });
             });
 
+            card.addEventListener('click', function () {
+                // Force hide hover media when clicking on a card (fix for Safari)
+                if (!isTouchDevice) {
+                    gsap.killTweensOf(hoverMediaContainer);
+                    gsap.to(hoverMediaContainer, { 
+                        opacity: 0, 
+                        filter: BLUR_IN, 
+                        duration: 0.2, 
+                        ease: "power3.out", 
+                        onComplete: () => hoverMediaContainer.innerHTML = ''
+                    });
+                }
+            });
+
             card.addEventListener('mousemove', function (e) {
                 if (isTouchDevice) return;
                 const posX = e.pageX + 200; // Offset to the right of the cursor
