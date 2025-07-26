@@ -433,6 +433,9 @@ function setupVideoAutoplay(container) {
     
     console.log('Setting up autoplay for', videos.length, 'videos');
     
+    // Flag to track if user has interacted
+    let userHasInteracted = false;
+    
     // Enhanced video setup for mobile compatibility
     videos.forEach((video, index) => {
         console.log(`Video ${index}:`, video.src);
@@ -462,31 +465,79 @@ function setupVideoAutoplay(container) {
         
         video.addEventListener('canplay', () => {
             console.log(`Video ${index} can play`);
-            // Try to play when video is ready
-            video.play().catch(e => {
-                console.log(`Video ${index} autoplay failed:`, e);
-            });
+            // Only try autoplay after user interaction
+            if (userHasInteracted) {
+                video.play().catch(e => {
+                    console.log(`Video ${index} autoplay failed:`, e);
+                });
+            }
         });
         
         // Force load the video
         video.load();
         
-        // Add click handler for manual play
-        video.addEventListener('click', () => {
+        // Add click handler for manual play with visual feedback
+        video.addEventListener('click', (e) => {
+            e.stopPropagation();
+            userHasInteracted = true;
+            
             if (video.paused) {
-                video.play();
+                console.log(`User clicked to play video ${index}`);
+                video.play().then(() => {
+                    console.log(`Video ${index} started playing`);
+                    // Once one video plays successfully, try to play others
+                    videos.forEach((otherVideo, otherIndex) => {
+                        if (otherVideo !== video && otherVideo.paused) {
+                            otherVideo.play().catch(e => {
+                                console.log(`Failed to autostart video ${otherIndex}:`, e);
+                            });
+                        }
+                    });
+                }).catch(e => {
+                    console.error(`Failed to play video ${index}:`, e);
+                });
             } else {
                 video.pause();
             }
         });
+        
+        // Add hover effect to indicate videos are clickable
+        video.style.cursor = 'pointer';
+        video.addEventListener('mouseenter', () => {
+            video.style.opacity = '0.8';
+        });
+        video.addEventListener('mouseleave', () => {
+            video.style.opacity = '1';
+        });
     });
+    
+    // Add a one-time click handler to the drawer for mobile
+    const enableVideoPlayback = () => {
+        userHasInteracted = true;
+        console.log('User interacted with drawer, enabling video playback');
+        
+        videos.forEach((video, index) => {
+            if (video.readyState >= 2 && video.paused) {
+                video.play().catch(e => {
+                    console.log(`Auto-start after interaction failed for video ${index}:`, e);
+                });
+            }
+        });
+        
+        // Remove this listener after first interaction
+        container.removeEventListener('touchstart', enableVideoPlayback);
+        container.removeEventListener('click', enableVideoPlayback);
+    };
+    
+    container.addEventListener('touchstart', enableVideoPlayback, { once: true });
+    container.addEventListener('click', enableVideoPlayback, { once: true });
     
     // Intersection observer for viewport-based playback
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             const video = entry.target;
             
-            if (entry.isIntersecting) {
+            if (entry.isIntersecting && userHasInteracted) {
                 if (video.readyState >= 2) { // HAVE_CURRENT_DATA
                     video.play().catch(e => console.log('Observer play failed:', e));
                 }
