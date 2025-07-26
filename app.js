@@ -185,11 +185,21 @@ page('/', () => {
     closeSidedrawer({ navigate: true, updateUrl: false });
 });
 page('/portfolio/:item', ctx => {
-    // Load main content first if not already loaded
-    if (!document.getElementById('wrapper').innerHTML.trim()) {
-        loadMainContent();
+    // Always load main content first if not already loaded
+    const wrapper = document.getElementById('wrapper');
+    if (!wrapper || !wrapper.innerHTML.trim()) {
+        // Load main content and wait for it to complete
+        fetch('pages/intro.html')
+            .then(res => res.ok ? res.text() : "<p>Not found.</p>")
+            .then(html => {
+                document.getElementById('wrapper').innerHTML = html;
+                if (typeof initialize === 'function') initialize();
+                // Now open the drawer
+                openSidedrawer(ctx.params.item);
+            });
+    } else {
+        openSidedrawer(ctx.params.item);
     }
-    openSidedrawer(ctx.params.item);
 });
 
 // Intercept portfolio link clicks
