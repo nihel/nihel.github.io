@@ -140,9 +140,8 @@ function openSidedrawer(item) {
                 isDragging = true;
                 e.preventDefault();
                 
-                // Apply smoother drag resistance with exponential easing
-                const maxDrag = 300;
-                const resistance = maxDrag * (1 - Math.exp(-deltaY / 100));
+                // Apply drag resistance (slower movement as user drags further)
+                const resistance = Math.min(deltaY * 0.6, 200);
                 sidedrawer.style.transform = `translateY(${resistance}px)`;
                 
                 // Remove the opacity fade effect - keep drawer fully opaque during drag
@@ -158,29 +157,18 @@ function openSidedrawer(item) {
             }
             
             const deltaY = currentY - startY;
-            const velocity = Math.abs(deltaY) / 16; // Approximate velocity based on distance
-            const threshold = 80; // Lower threshold for easier closing
+            const threshold = 100; // Close if dragged more than 100px
             
-            // Consider both distance and velocity for closing decision
-            const shouldClose = deltaY > threshold || velocity > 3;
-            
-            if (shouldClose) {
-                // Close the drawer with smooth animation
-                gsap.to(sidedrawer, {
-                    y: '100%',
-                    duration: 0.4,
-                    ease: "power2.out",
-                    onComplete: () => {
-                        closeSidedrawer({ updateUrl: true });
-                        removeEventListeners();
-                    }
-                });
+            if (deltaY > threshold) {
+                // Close the drawer
+                closeSidedrawer({ updateUrl: true });
+                removeEventListeners();
             } else {
-                // Snap back to original position with smoother easing
+                // Snap back to original position
                 gsap.to(sidedrawer, {
                     y: 0,
-                    duration: 0.4,
-                    ease: "back.out(1.7)",
+                    duration: 0.3,
+                    ease: "power2.out",
                     onComplete: () => {
                         sidedrawer.style.transform = '';
                     }
