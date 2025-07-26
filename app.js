@@ -212,6 +212,20 @@ function openSidedrawer(item) {
             // Animate images and videos in drawer-content with GSAP fade-in sequence
             const media = sidedrawer.querySelectorAll('.drawer-content img, .drawer-content video');
             if (media.length > 0) {
+                // First, ensure videos are properly set up before animation
+                const videos = sidedrawer.querySelectorAll('.drawer-content video');
+                videos.forEach(video => {
+                    // Set essential attributes immediately
+                    video.muted = true;
+                    video.playsInline = true;
+                    video.controls = false;
+                    video.preload = 'metadata';
+                    video.loop = video.hasAttribute('data-loop');
+                    
+                    // Force video to load
+                    video.load();
+                });
+                
                 gsap.set(media, { opacity: 0, y: 32 });
                 gsap.to(media, {
                     opacity: 1,
@@ -219,11 +233,12 @@ function openSidedrawer(item) {
                     duration: 0.8,
                     stagger: 0.24,
                     delay: 0.2,
-                    ease: 'power3.out'
+                    ease: 'power3.out',
+                    onComplete: () => {
+                        // Set up video autoplay after animation completes
+                        setupVideoAutoplay(sidedrawer);
+                    }
                 });
-                
-                // Set up video autoplay on viewport entry
-                setupVideoAutoplay(sidedrawer);
             }
         });
 
@@ -416,46 +431,46 @@ function setupVideoAutoplay(container) {
     
     if (videos.length === 0) return;
     
-    // Create intersection observer
+    console.log('Setting up autoplay for', videos.length, 'videos');
+    
+    // Simple approach: try to play all videos immediately
+    videos.forEach((video, index) => {
+        console.log(`Video ${index}:`, video.src);
+        
+        // Ensure all attributes are set
+        video.muted = true;
+        video.playsInline = true;
+        video.controls = false;
+        video.loop = video.hasAttribute('data-loop');
+        video.preload = 'auto';
+        
+        // Try to play immediately
+        video.play().catch(e => {
+            console.log(`Video ${index} autoplay failed:`, e);
+            
+            // Fallback: add click handler for manual play
+            video.addEventListener('click', () => {
+                video.play();
+            });
+        });
+    });
+    
+    // Also keep the intersection observer as backup
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             const video = entry.target;
             
             if (entry.isIntersecting) {
-                // Video is in viewport, try to play immediately for mobile compatibility
-                video.play().catch(e => {
-                    // Handle autoplay policy restrictions
-                    console.log('Autoplay prevented:', e);
-                    
-                    // For mobile devices, try to load the video at least
-                    video.load();
-                });
+                video.play().catch(e => console.log('Observer play failed:', e));
             } else {
-                // Video is out of viewport, pause it immediately
                 video.pause();
             }
         });
     }, {
-        root: container, // Use the drawer as the root
-        threshold: 0.1   // Play when 10% of video is visible (more aggressive)
+        root: container,
+        threshold: 0.1
     });
     
-    // Observe all videos
-    videos.forEach(video => {
-        // Set video attributes for better autoplay behavior
-        video.muted = true;  // Required for autoplay in most browsers
-        video.loop = video.hasAttribute('data-loop');  // Loop only if data-loop attribute is present
-        video.playsInline = true; // Prevent fullscreen on mobile
-        video.controls = false; // Hide player controls
-        video.preload = 'metadata'; // Preload video metadata for faster loading
-        
-        // Add additional mobile-specific attributes
-        video.setAttribute('webkit-playsinline', 'true');
-        video.setAttribute('x5-playsinline', 'true'); // For some Android browsers
-        
-        observer.observe(video);
-    });
-    
-    // Store observer reference for cleanup
+    videos.forEach(video => observer.observe(video));
     container._videoObserver = observer;
 }
