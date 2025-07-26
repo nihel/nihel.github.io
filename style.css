@@ -120,6 +120,14 @@ video {
 	-o-user-drag: none;
 }
 
+.box {
+	width: 100%;
+	height: auto;
+	-webkit-user-drag: none;
+	-moz-user-drag: none;
+	-o-user-drag: none;
+}
+
 .logo-wordmark {
 	width: auto;
 	height: auto;
