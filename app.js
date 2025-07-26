@@ -144,9 +144,9 @@ function openSidedrawer(item) {
                 const resistance = Math.min(deltaY * 0.6, 200);
                 sidedrawer.style.transform = `translateY(${resistance}px)`;
                 
-                // Add opacity fade effect based on drag distance
-                const opacity = Math.max(1 - (resistance / 200), 0.3);
-                sidedrawer.style.opacity = opacity;
+                // Remove the opacity fade effect - keep drawer fully opaque during drag
+                // const opacity = Math.max(1 - (resistance / 200), 0.3);
+                // sidedrawer.style.opacity = opacity;
             }
         };
 
@@ -167,12 +167,10 @@ function openSidedrawer(item) {
                 // Snap back to original position
                 gsap.to(sidedrawer, {
                     y: 0,
-                    opacity: 1,
                     duration: 0.3,
                     ease: "power2.out",
                     onComplete: () => {
                         sidedrawer.style.transform = '';
-                        sidedrawer.style.opacity = '';
                     }
                 });
             }
