@@ -191,28 +191,24 @@ page('/', () => {
     }
 });
 page('/portfolio/:item', ctx => {
-    console.log('Portfolio route triggered for:', ctx.params.item);
     // Always load main content first if not already loaded
     const wrapper = document.getElementById('wrapper');
-    console.log('Wrapper exists:', !!wrapper, 'Has content:', wrapper?.innerHTML.trim().length > 0);
     
     if (!wrapper || !wrapper.innerHTML.trim()) {
-        console.log('Loading main content first...');
         // Load main content and wait for it to complete
         fetch('pages/intro.html')
             .then(res => res.ok ? res.text() : "<p>Not found.</p>")
             .then(html => {
                 document.getElementById('wrapper').innerHTML = html;
                 if (typeof initialize === 'function') initialize();
-                console.log('Main content loaded, opening drawer...');
                 // Now open the drawer
                 openSidedrawer(ctx.params.item);
             })
             .catch(err => {
-                console.error('Failed to load main content:', err);
+                // Silent redirect on error
+                page.redirect('/');
             });
     } else {
-        console.log('Main content already loaded, opening drawer...');
         openSidedrawer(ctx.params.item);
     }
 });
