@@ -140,8 +140,8 @@ function closeSidedrawer({ navigate = false, updateUrl = false } = {}) {
             x: 0,
             transformOrigin: "center center",
             transformPerspective: 1000,
-            duration: 0.5,
-            ease: "power3.out"
+            duration: 0.65,
+            ease: "power2.out"
         });
 
         gsap.to(sidedrawer, { 
@@ -185,6 +185,10 @@ page('/', () => {
     closeSidedrawer({ navigate: true, updateUrl: false });
 });
 page('/portfolio/:item', ctx => {
+    // Load main content first if not already loaded
+    if (!document.getElementById('wrapper').innerHTML.trim()) {
+        loadMainContent();
+    }
     openSidedrawer(ctx.params.item);
 });
 
@@ -212,13 +216,18 @@ function setupVideoAutoplay(container) {
             const video = entry.target;
             
             if (entry.isIntersecting) {
-                // Video is in viewport, play it
-                video.play().catch(e => {
-                    // Handle autoplay policy restrictions
-                    console.log('Autoplay prevented:', e);
-                });
+                // Video is in viewport, play it after 1 second delay
+                setTimeout(() => {
+                    // Check if video is still in viewport before playing
+                    if (entry.isIntersecting) {
+                        video.play().catch(e => {
+                            // Handle autoplay policy restrictions
+                            console.log('Autoplay prevented:', e);
+                        });
+                    }
+                }, 1000);
             } else {
-                // Video is out of viewport, pause it
+                // Video is out of viewport, pause it immediately
                 video.pause();
             }
         });
@@ -231,7 +240,7 @@ function setupVideoAutoplay(container) {
     videos.forEach(video => {
         // Set video attributes for better autoplay behavior
         video.muted = true;  // Required for autoplay in most browsers
-        video.loop = false;  // Don't loop the video
+        video.loop = video.hasAttribute('data-loop');  // Loop only if data-loop attribute is present
         video.playsInline = true; // Prevent fullscreen on mobile
         video.controls = false; // Hide player controls
         

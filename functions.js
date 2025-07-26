@@ -28,6 +28,8 @@ function initialize() {
         hoverMediaContainer.id = 'hover-media';
         hoverMediaContainer.style.position = 'fixed';
         hoverMediaContainer.style.zIndex = '1000';
+        hoverMediaContainer.style.filter = 'drop-shadow(0 2px 8px rgba(0, 0, 0, 0.15))';
+        hoverMediaContainer.style.borderRadius = '8px';
         document.body.appendChild(hoverMediaContainer);
     }
 
@@ -105,15 +107,24 @@ function initialize() {
                 hoverMediaContainer.style.top = event.pageY - 200 + 'px';
 
                 gsap.killTweensOf(hoverMediaContainer);
-                gsap.fromTo(hoverMediaContainer, { opacity: 0, filter: 'blur(24px)' }, { opacity: 1, filter: 'blur(0px)', duration: 0.4, ease: "power3.out" });
+                gsap.fromTo(hoverMediaContainer, 
+                    { opacity: 0, filter: 'blur(24px) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.15))' }, 
+                    { opacity: 1, filter: 'blur(0px) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.15))', duration: 0.4, ease: "power3.out" }
+                );
             });
 
             card.addEventListener('mouseleave', function () {
                 if (isTouchDevice) return;
                 gsap.killTweensOf(hoverMediaContainer);
-                gsap.to(hoverMediaContainer, { opacity: 0, filter: 'blur(24px)', duration: 0.4, ease: "power3.out", onComplete: () => {
-                    hoverMediaContainer.innerHTML = '';
-                }});
+                gsap.to(hoverMediaContainer, { 
+                    opacity: 0, 
+                    filter: 'blur(24px) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.15))', 
+                    duration: 0.4, 
+                    ease: "power3.out", 
+                    onComplete: () => {
+                        hoverMediaContainer.innerHTML = '';
+                    }
+                });
             });
 
             card.addEventListener('mousemove', function (e) {
@@ -179,7 +190,10 @@ function initialize() {
                     }
 
                     gsap.killTweensOf(hoverMediaContainer);
-                    gsap.fromTo(hoverMediaContainer, { opacity: 0, filter: 'blur(24px)' }, { opacity: 1, filter: 'blur(0px)', duration: 0.4, ease: "power3.out" });
+                    gsap.fromTo(hoverMediaContainer, 
+                        { opacity: 0, filter: 'blur(24px) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.15))' }, 
+                        { opacity: 1, filter: 'blur(0px) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.15))', duration: 0.4, ease: "power3.out" }
+                    );
 
                     isHoverMediaVisible = true;
                 }
@@ -189,10 +203,16 @@ function initialize() {
         document.addEventListener('click', function (event) {
             if (isHoverMediaVisible && !hoverMediaContainer.contains(event.target)) {
                 gsap.killTweensOf(hoverMediaContainer);
-                gsap.to(hoverMediaContainer, { opacity: 0, filter: 'blur(24px)', duration: 0.4, ease: "power3.out", onComplete: () => {
-                    hoverMediaContainer.innerHTML = '';
-                    isHoverMediaVisible = false;
-                }});
+                gsap.to(hoverMediaContainer, { 
+                    opacity: 0, 
+                    filter: 'blur(24px) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.15))', 
+                    duration: 0.4, 
+                    ease: "power3.out", 
+                    onComplete: () => {
+                        hoverMediaContainer.innerHTML = '';
+                        isHoverMediaVisible = false;
+                    }
+                });
             }
         });
     }
