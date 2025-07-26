@@ -77,8 +77,6 @@ function initialize() {
         return mediaElement;
     }
 
-    let isHoverMediaVisible = false;
-
     function initializeHoverEffects() {
         document.querySelectorAll('.item').forEach(card => {
             card.addEventListener('mouseenter', function (event) {
@@ -145,46 +143,6 @@ function initialize() {
                 gsap.to(hoverMediaContainer, { left: adjustedPosX + 'px', top: adjustedPosY + 'px', duration: 0.4, ease: "power3.out" });
             });
 
-            card.addEventListener('click', function (event) {
-                if (!isTouchDevice) return;
-                
-                event.stopPropagation();
-                const imagePath = card.getAttribute('data-image');
-                const videoPath = card.getAttribute('data-video');
-                hoverMediaContainer.innerHTML = '';
-                hoverMediaContainer.style.left = '50%';
-                hoverMediaContainer.style.top = '10px';
-                hoverMediaContainer.style.transform = 'translateX(-50%)';
-                
-                const mediaElement = createMediaElement(imagePath, videoPath, '375px');
-                if (mediaElement) {
-                    hoverMediaContainer.appendChild(mediaElement);
-                }
-
-                gsap.killTweensOf(hoverMediaContainer);
-                gsap.fromTo(hoverMediaContainer, 
-                    { opacity: 0, filter: BLUR_IN }, 
-                    { opacity: 1, filter: BLUR_OUT, duration: 0.4, ease: "power3.out" }
-                );
-
-                isHoverMediaVisible = true;
-            });
-        });
-
-        document.addEventListener('click', function (event) {
-            if (isHoverMediaVisible && !hoverMediaContainer.contains(event.target)) {
-                gsap.killTweensOf(hoverMediaContainer);
-                gsap.to(hoverMediaContainer, { 
-                    opacity: 0, 
-                    filter: BLUR_IN, 
-                    duration: 0.4, 
-                    ease: "power3.out", 
-                    onComplete: () => {
-                        hoverMediaContainer.innerHTML = '';
-                        isHoverMediaVisible = false;
-                    }
-                });
-            }
         });
     }
 

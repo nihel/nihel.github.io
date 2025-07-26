@@ -1,6 +1,11 @@
 // Sidedrawer state
 let sidedrawer = null;
 
+// Mobile detection
+function isMobile() {
+    return window.innerWidth <= 549;
+}
+
 // Animation constants
 const WRAPPER_OPEN = {
     scale: 0.9, rotationY: 0, x: -64,
@@ -10,6 +15,18 @@ const WRAPPER_OPEN = {
 const WRAPPER_CLOSE = {
     scale: 1, rotationY: 0, x: 0,
     transformOrigin: "center center", transformPerspective: 1000,
+    duration: 0.65, ease: "power2.out"
+};
+
+// Mobile animation constants
+const WRAPPER_MOBILE_OPEN = {
+    scale: 0.85, y: "-10vh",
+    transformOrigin: "center top",
+    duration: 0.5, ease: "power3.out"
+};
+const WRAPPER_MOBILE_CLOSE = {
+    scale: 1, y: 0,
+    transformOrigin: "center center",
     duration: 0.65, ease: "power2.out"
 };
 
@@ -23,6 +40,15 @@ function setWrapperInteraction(enabled) {
     if (wrapper) {
         wrapper.style.pointerEvents = enabled ? 'auto' : 'none';
         wrapper.style.userSelect = enabled ? 'auto' : 'none';
+        
+        // Handle mobile class for CSS-based styling
+        if (isMobile()) {
+            if (enabled) {
+                wrapper.classList.remove('mobile-drawer-open');
+            } else {
+                wrapper.classList.add('mobile-drawer-open');
+            }
+        }
     }
 }
 
@@ -44,9 +70,22 @@ function loadMainContent() {
 function openSidedrawer(item) {
     closeSidedrawer(); // Remove any existing drawer
 
-    // Animate wrapper with perspective effect and disable interactions
+    const mobile = isMobile();
+    
+    // Kill any existing wrapper animations and clear transforms to ensure clean state
+    const wrapper = getWrapper();
+    gsap.killTweensOf(wrapper);
+    gsap.set(wrapper, { 
+        clearProps: "transform,scale,x,y,rotationY,transformOrigin,transformPerspective" 
+    });
+    
+    // Animate wrapper with appropriate effect for mobile/desktop and disable interactions
     setWrapperInteraction(false);
-    gsap.to(getWrapper(), WRAPPER_OPEN);
+    if (mobile) {
+        gsap.to(wrapper, WRAPPER_MOBILE_OPEN);
+    } else {
+        gsap.to(wrapper, WRAPPER_OPEN);
+    }
 
     sidedrawer = document.createElement('div');
     sidedrawer.className = 'sidedrawer';
@@ -111,7 +150,12 @@ function openSidedrawer(item) {
     // Close on scroll attempt on main page
     document.addEventListener('wheel', scrollHandler, { passive: false });
 
-    gsap.fromTo(sidedrawer, { x: '100%' }, { x: '0%', duration: 0.5, ease: "power2.out" });
+    // Animate drawer entry: from bottom on mobile, from right on desktop
+    if (mobile) {
+        gsap.fromTo(sidedrawer, { y: '100%' }, { y: '0%', duration: 0.5, ease: "power2.out" });
+    } else {
+        gsap.fromTo(sidedrawer, { x: '100%' }, { x: '0%', duration: 0.5, ease: "power2.out" });
+    }
 
     function removeEventListeners() {
         document.removeEventListener('keydown', escHandler);
@@ -145,14 +189,27 @@ function openSidedrawer(item) {
 // Remove sidedrawer
 function closeSidedrawer({ navigate = false, updateUrl = false } = {}) {
     if (sidedrawer) {
+        const mobile = isMobile();
+        
         // Re-enable interactions and start wrapper animation immediately
         setWrapperInteraction(true);
-        gsap.to(getWrapper(), WRAPPER_CLOSE);
+        
+        // Kill any existing wrapper animations to prevent conflicts
+        gsap.killTweensOf(getWrapper());
+        
+        if (mobile) {
+            gsap.to(getWrapper(), WRAPPER_MOBILE_CLOSE);
+        } else {
+            gsap.to(getWrapper(), WRAPPER_CLOSE);
+        }
+
+        // Animate drawer exit: to bottom on mobile, to right on desktop
+        const exitAnimation = mobile 
+            ? { y: '100%', duration: 0.5, ease: "power2.out" }
+            : { x: '100%', duration: 0.5, ease: "power2.out" };
 
         gsap.to(sidedrawer, { 
-            x: '100%', 
-            duration: 0.5, 
-            ease: "power2.out", 
+            ...exitAnimation,
             onComplete: () => {
                 // Clean up video observer
                 if (sidedrawer._videoObserver) {
@@ -160,6 +217,14 @@ function closeSidedrawer({ navigate = false, updateUrl = false } = {}) {
                 }
                 // Reset background color
                 sidedrawer.style.background = '';
+                
+                // Clear all transforms on wrapper to ensure clean state
+                const wrapper = getWrapper();
+                gsap.set(wrapper, { 
+                    clearProps: "transform,scale,x,y,rotationY,transformOrigin,transformPerspective" 
+                });
+                wrapper.classList.remove('mobile-drawer-open');
+                
                 sidedrawer.remove();
                 sidedrawer = null;
                 if (navigate) loadMainContent();
@@ -219,6 +284,39 @@ if (document.readyState === 'loading') {
     // DOM is already ready
     page();
 }
+
+// Handle window resize and orientation changes
+window.addEventListener('resize', () => {
+    // If drawer is open and we switch between mobile/desktop, adjust accordingly
+    if (sidedrawer) {
+        const wrapper = getWrapper();
+        const mobile = isMobile();
+        
+        // Kill any existing animations to prevent conflicts
+        gsap.killTweensOf(wrapper);
+        
+        // Update wrapper class and styling based on current viewport
+        if (mobile) {
+            wrapper.classList.add('mobile-drawer-open');
+            // Clear desktop transforms and apply mobile transforms
+            gsap.set(wrapper, { 
+                rotationY: 0, 
+                x: 0, 
+                transformPerspective: 0,
+                clearProps: "rotationY,x,transformPerspective"
+            });
+            gsap.set(wrapper, WRAPPER_MOBILE_OPEN);
+        } else {
+            wrapper.classList.remove('mobile-drawer-open');
+            // Clear mobile transforms and apply desktop transforms
+            gsap.set(wrapper, { 
+                y: 0,
+                clearProps: "y"
+            });
+            gsap.set(wrapper, WRAPPER_OPEN);
+        }
+    }
+});
 
 // Setup video autoplay functionality
 function setupVideoAutoplay(container) {
