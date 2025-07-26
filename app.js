@@ -422,16 +422,14 @@ function setupVideoAutoplay(container) {
             const video = entry.target;
             
             if (entry.isIntersecting) {
-                // Video is in viewport, play it after 1 second delay
-                setTimeout(() => {
-                    // Check if video is still in viewport before playing
-                    if (entry.isIntersecting) {
-                        video.play().catch(e => {
-                            // Handle autoplay policy restrictions
-                            console.log('Autoplay prevented:', e);
-                        });
-                    }
-                }, 1000);
+                // Video is in viewport, try to play immediately for mobile compatibility
+                video.play().catch(e => {
+                    // Handle autoplay policy restrictions
+                    console.log('Autoplay prevented:', e);
+                    
+                    // For mobile devices, try to load the video at least
+                    video.load();
+                });
             } else {
                 // Video is out of viewport, pause it immediately
                 video.pause();
@@ -439,7 +437,7 @@ function setupVideoAutoplay(container) {
         });
     }, {
         root: container, // Use the drawer as the root
-        threshold: 0.5   // Play when 50% of video is visible
+        threshold: 0.1   // Play when 10% of video is visible (more aggressive)
     });
     
     // Observe all videos
@@ -449,6 +447,11 @@ function setupVideoAutoplay(container) {
         video.loop = video.hasAttribute('data-loop');  // Loop only if data-loop attribute is present
         video.playsInline = true; // Prevent fullscreen on mobile
         video.controls = false; // Hide player controls
+        video.preload = 'metadata'; // Preload video metadata for faster loading
+        
+        // Add additional mobile-specific attributes
+        video.setAttribute('webkit-playsinline', 'true');
+        video.setAttribute('x5-playsinline', 'true'); // For some Android browsers
         
         observer.observe(video);
     });
