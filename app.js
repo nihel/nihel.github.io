@@ -212,20 +212,6 @@ function openSidedrawer(item) {
             // Animate images and videos in drawer-content with GSAP fade-in sequence
             const media = sidedrawer.querySelectorAll('.drawer-content img, .drawer-content video');
             if (media.length > 0) {
-                // First, ensure videos are properly set up before animation
-                const videos = sidedrawer.querySelectorAll('.drawer-content video');
-                videos.forEach(video => {
-                    // Set essential attributes immediately
-                    video.muted = true;
-                    video.playsInline = true;
-                    video.controls = false;
-                    video.preload = 'metadata';
-                    video.loop = video.hasAttribute('data-loop');
-                    
-                    // Force video to load
-                    video.load();
-                });
-                
                 gsap.set(media, { opacity: 0, y: 32 });
                 gsap.to(media, {
                     opacity: 1,
@@ -233,12 +219,11 @@ function openSidedrawer(item) {
                     duration: 0.8,
                     stagger: 0.24,
                     delay: 0.2,
-                    ease: 'power3.out',
-                    onComplete: () => {
-                        // Set up video autoplay after animation completes
-                        setupVideoAutoplay(sidedrawer);
-                    }
+                    ease: 'power3.out'
                 });
+                
+                // Set up video autoplay on viewport entry
+                setupVideoAutoplay(sidedrawer);
             }
         });
 
@@ -431,125 +416,43 @@ function setupVideoAutoplay(container) {
     
     if (videos.length === 0) return;
     
-    console.log('Setting up autoplay for', videos.length, 'videos');
-    
-    // Flag to track if user has interacted
-    let userHasInteracted = false;
-    
-    // Enhanced video setup for mobile compatibility
-    videos.forEach((video, index) => {
-        console.log(`Video ${index}:`, video.src);
-        
-        // Set essential attributes
-        video.muted = true;
-        video.playsInline = true;
-        video.controls = false;
-        video.loop = video.hasAttribute('data-loop');
-        video.preload = 'auto';
-        video.setAttribute('webkit-playsinline', 'true');
-        video.setAttribute('x5-playsinline', 'true');
-        
-        // Add error handling
-        video.addEventListener('error', (e) => {
-            console.error(`Video ${index} error:`, e);
-            console.error('Video error details:', video.error);
-        });
-        
-        video.addEventListener('loadstart', () => {
-            console.log(`Video ${index} loading started`);
-        });
-        
-        video.addEventListener('loadeddata', () => {
-            console.log(`Video ${index} data loaded`);
-        });
-        
-        video.addEventListener('canplay', () => {
-            console.log(`Video ${index} can play`);
-            // Only try autoplay after user interaction
-            if (userHasInteracted) {
-                video.play().catch(e => {
-                    console.log(`Video ${index} autoplay failed:`, e);
-                });
-            }
-        });
-        
-        // Force load the video
-        video.load();
-        
-        // Add click handler for manual play with visual feedback
-        video.addEventListener('click', (e) => {
-            e.stopPropagation();
-            userHasInteracted = true;
-            
-            if (video.paused) {
-                console.log(`User clicked to play video ${index}`);
-                video.play().then(() => {
-                    console.log(`Video ${index} started playing`);
-                    // Once one video plays successfully, try to play others
-                    videos.forEach((otherVideo, otherIndex) => {
-                        if (otherVideo !== video && otherVideo.paused) {
-                            otherVideo.play().catch(e => {
-                                console.log(`Failed to autostart video ${otherIndex}:`, e);
-                            });
-                        }
-                    });
-                }).catch(e => {
-                    console.error(`Failed to play video ${index}:`, e);
-                });
-            } else {
-                video.pause();
-            }
-        });
-        
-        // Add hover effect to indicate videos are clickable
-        video.style.cursor = 'pointer';
-        video.addEventListener('mouseenter', () => {
-            video.style.opacity = '0.8';
-        });
-        video.addEventListener('mouseleave', () => {
-            video.style.opacity = '1';
-        });
-    });
-    
-    // Add a one-time click handler to the drawer for mobile
-    const enableVideoPlayback = () => {
-        userHasInteracted = true;
-        console.log('User interacted with drawer, enabling video playback');
-        
-        videos.forEach((video, index) => {
-            if (video.readyState >= 2 && video.paused) {
-                video.play().catch(e => {
-                    console.log(`Auto-start after interaction failed for video ${index}:`, e);
-                });
-            }
-        });
-        
-        // Remove this listener after first interaction
-        container.removeEventListener('touchstart', enableVideoPlayback);
-        container.removeEventListener('click', enableVideoPlayback);
-    };
-    
-    container.addEventListener('touchstart', enableVideoPlayback, { once: true });
-    container.addEventListener('click', enableVideoPlayback, { once: true });
-    
-    // Intersection observer for viewport-based playback
+    // Create intersection observer
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             const video = entry.target;
             
-            if (entry.isIntersecting && userHasInteracted) {
-                if (video.readyState >= 2) { // HAVE_CURRENT_DATA
-                    video.play().catch(e => console.log('Observer play failed:', e));
-                }
+            if (entry.isIntersecting) {
+                // Video is in viewport, play it after 1 second delay
+                setTimeout(() => {
+                    // Check if video is still in viewport before playing
+                    if (entry.isIntersecting) {
+                        video.play().catch(e => {
+                            // Handle autoplay policy restrictions
+                            console.log('Autoplay prevented:', e);
+                        });
+                    }
+                }, 1000);
             } else {
+                // Video is out of viewport, pause it immediately
                 video.pause();
             }
         });
     }, {
-        root: container,
-        threshold: 0.1
+        root: container, // Use the drawer as the root
+        threshold: 0.5   // Play when 50% of video is visible
     });
     
-    videos.forEach(video => observer.observe(video));
+    // Observe all videos
+    videos.forEach(video => {
+        // Set video attributes for better autoplay behavior
+        video.muted = true;  // Required for autoplay in most browsers
+        video.loop = video.hasAttribute('data-loop');  // Loop only if data-loop attribute is present
+        video.playsInline = true; // Prevent fullscreen on mobile
+        video.controls = false; // Hide player controls
+        
+        observer.observe(video);
+    });
+    
+    // Store observer reference for cleanup
     container._videoObserver = observer;
 }
