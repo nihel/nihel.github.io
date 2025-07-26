@@ -33,20 +33,48 @@ function initialize() {
         document.body.appendChild(hoverMediaContainer);
     }
 
+    // Shared animation filter values
+    const BLUR_IN = 'blur(24px) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.15))';
+    const BLUR_OUT = 'blur(0px) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.15))';
+
     function applyBorderRadius(mediaElement) {
         const checkOrientation = () => {
-            if (mediaElement.videoWidth > mediaElement.videoHeight || mediaElement.naturalWidth > mediaElement.naturalHeight) {
-                hoverMediaContainer.style.borderRadius = '12px';
-            } else {
-                hoverMediaContainer.style.borderRadius = '16px';
-            }
+            const isLandscape = (mediaElement.videoWidth || mediaElement.naturalWidth) > 
+                              (mediaElement.videoHeight || mediaElement.naturalHeight);
+            hoverMediaContainer.style.borderRadius = isLandscape ? '12px' : '16px';
         };
 
         if (mediaElement.tagName === 'VIDEO') {
             mediaElement.addEventListener('loadedmetadata', checkOrientation);
-        } else if (mediaElement.tagName === 'IMG') {
+        } else {
             mediaElement.addEventListener('load', checkOrientation);
         }
+    }
+
+    function createMediaElement(imagePath, videoPath, maxWidth = '400px') {
+        let mediaElement;
+        if (videoPath) {
+            mediaElement = document.createElement('video');
+            mediaElement.src = videoPath;
+            mediaElement.autoplay = true;
+            mediaElement.loop = true;
+            mediaElement.muted = true;
+            mediaElement.playsInline = true;
+        } else if (imagePath) {
+            mediaElement = document.createElement('img');
+            mediaElement.src = imagePath;
+        }
+
+        if (mediaElement) {
+            mediaElement.style.maxWidth = maxWidth;
+            mediaElement.style.maxHeight = '400px';
+            mediaElement.style.width = 'auto';
+            mediaElement.style.height = 'auto';
+            mediaElement.style.objectFit = 'contain';
+            applyBorderRadius(mediaElement);
+        }
+
+        return mediaElement;
     }
 
     let isHoverMediaVisible = false;
@@ -61,45 +89,8 @@ function initialize() {
                 hoverMediaContainer.innerHTML = '';
                 hoverMediaContainer.style.position = 'absolute';
 
-                let mediaElement;
-                if (videoPath) {
-                    mediaElement = document.createElement('video');
-                    mediaElement.src = videoPath;
-                    mediaElement.autoplay = true;
-                    mediaElement.loop = true;
-                    mediaElement.muted = true;
-                    mediaElement.playsInline = true;
-                } else if (imagePath) {
-                    mediaElement = document.createElement('img');
-                    mediaElement.src = imagePath;
-                }
-
+                const mediaElement = createMediaElement(imagePath, videoPath);
                 if (mediaElement) {
-                    if (isTouchDevice) {
-                        mediaElement.style.maxWidth = mediaElement.naturalWidth > mediaElement.naturalHeight ? '375px' : '400px';
-                    } else {
-                        mediaElement.style.maxWidth = '400px';
-                    }
-                    mediaElement.style.maxHeight = '400px';
-                    mediaElement.style.width = 'auto';
-                    mediaElement.style.height = 'auto';
-                    mediaElement.style.objectFit = 'contain';
-                    applyBorderRadius(mediaElement);
-                    if (isTouchDevice) {
-                        if (mediaElement.tagName === 'IMG') {
-                            mediaElement.onload = () => {
-                                if (mediaElement.naturalWidth > mediaElement.naturalHeight) {
-                                    mediaElement.style.maxWidth = '375px';
-                                }
-                            };
-                        } else if (mediaElement.tagName === 'VIDEO') {
-                            mediaElement.onloadedmetadata = () => {
-                                if (mediaElement.videoWidth > mediaElement.videoHeight) {
-                                    mediaElement.style.maxWidth = '375px';
-                                }
-                            };
-                        }
-                    }
                     hoverMediaContainer.appendChild(mediaElement);
                 }
 
@@ -108,8 +99,8 @@ function initialize() {
 
                 gsap.killTweensOf(hoverMediaContainer);
                 gsap.fromTo(hoverMediaContainer, 
-                    { opacity: 0, filter: 'blur(24px) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.15))' }, 
-                    { opacity: 1, filter: 'blur(0px) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.15))', duration: 0.4, ease: "power3.out" }
+                    { opacity: 0, filter: BLUR_IN }, 
+                    { opacity: 1, filter: BLUR_OUT, duration: 0.4, ease: "power3.out" }
                 );
             });
 
@@ -118,12 +109,10 @@ function initialize() {
                 gsap.killTweensOf(hoverMediaContainer);
                 gsap.to(hoverMediaContainer, { 
                     opacity: 0, 
-                    filter: 'blur(24px) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.15))', 
+                    filter: BLUR_IN, 
                     duration: 0.4, 
                     ease: "power3.out", 
-                    onComplete: () => {
-                        hoverMediaContainer.innerHTML = '';
-                    }
+                    onComplete: () => hoverMediaContainer.innerHTML = ''
                 });
             });
 
@@ -157,46 +146,28 @@ function initialize() {
             });
 
             card.addEventListener('click', function (event) {
-                if (isTouchDevice) {
-                    event.stopPropagation(); // Prevent the document click event from firing
-                    const imagePath = card.getAttribute('data-image');
-                    const videoPath = card.getAttribute('data-video');
-                    hoverMediaContainer.innerHTML = '';
-                    hoverMediaContainer.style.left = '50%';
-                    hoverMediaContainer.style.top = '10px';
-                    hoverMediaContainer.style.transform = 'translateX(-50%)';
-                    
-                    let mediaElement;
-                    if (videoPath) {
-                        mediaElement = document.createElement('video');
-                        mediaElement.src = videoPath;
-                        mediaElement.autoplay = true;
-                        mediaElement.loop = true;
-                        mediaElement.muted = true;
-                        mediaElement.playsInline = true;
-                    } else if (imagePath) {
-                        mediaElement = document.createElement('img');
-                        mediaElement.src = imagePath;
-                    }
-    
-                    if (mediaElement) {
-                        mediaElement.style.maxWidth = '375px';
-                        mediaElement.style.maxHeight = '400px';
-                        mediaElement.style.width = 'auto';
-                        mediaElement.style.height = 'auto';
-                        mediaElement.style.objectFit = 'contain';
-                        applyBorderRadius(mediaElement);
-                        hoverMediaContainer.appendChild(mediaElement);
-                    }
-
-                    gsap.killTweensOf(hoverMediaContainer);
-                    gsap.fromTo(hoverMediaContainer, 
-                        { opacity: 0, filter: 'blur(24px) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.15))' }, 
-                        { opacity: 1, filter: 'blur(0px) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.15))', duration: 0.4, ease: "power3.out" }
-                    );
-
-                    isHoverMediaVisible = true;
+                if (!isTouchDevice) return;
+                
+                event.stopPropagation();
+                const imagePath = card.getAttribute('data-image');
+                const videoPath = card.getAttribute('data-video');
+                hoverMediaContainer.innerHTML = '';
+                hoverMediaContainer.style.left = '50%';
+                hoverMediaContainer.style.top = '10px';
+                hoverMediaContainer.style.transform = 'translateX(-50%)';
+                
+                const mediaElement = createMediaElement(imagePath, videoPath, '375px');
+                if (mediaElement) {
+                    hoverMediaContainer.appendChild(mediaElement);
                 }
+
+                gsap.killTweensOf(hoverMediaContainer);
+                gsap.fromTo(hoverMediaContainer, 
+                    { opacity: 0, filter: BLUR_IN }, 
+                    { opacity: 1, filter: BLUR_OUT, duration: 0.4, ease: "power3.out" }
+                );
+
+                isHoverMediaVisible = true;
             });
         });
 
@@ -205,7 +176,7 @@ function initialize() {
                 gsap.killTweensOf(hoverMediaContainer);
                 gsap.to(hoverMediaContainer, { 
                     opacity: 0, 
-                    filter: 'blur(24px) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.15))', 
+                    filter: BLUR_IN, 
                     duration: 0.4, 
                     ease: "power3.out", 
                     onComplete: () => {

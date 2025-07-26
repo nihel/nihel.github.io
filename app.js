@@ -1,37 +1,52 @@
 // Sidedrawer state
 let sidedrawer = null;
-let mainScrollY = 0; // Store main scroll position
 
-// Show main content
-function loadMainContent() {
-    fetch('pages/intro.html')
+// Animation constants
+const WRAPPER_OPEN = {
+    scale: 0.9, rotationY: 0, x: -64,
+    transformOrigin: "left center", transformPerspective: 1000,
+    duration: 0.5, ease: "power3.out"
+};
+const WRAPPER_CLOSE = {
+    scale: 1, rotationY: 0, x: 0,
+    transformOrigin: "center center", transformPerspective: 1000,
+    duration: 0.65, ease: "power2.out"
+};
+
+// Utility functions
+function getWrapper() {
+    return document.getElementById('wrapper');
+}
+
+function setWrapperInteraction(enabled) {
+    const wrapper = getWrapper();
+    if (wrapper) {
+        wrapper.style.pointerEvents = enabled ? 'auto' : 'none';
+        wrapper.style.userSelect = enabled ? 'auto' : 'none';
+    }
+}
+
+function loadMainContentAsync() {
+    return fetch('pages/intro.html')
         .then(res => res.ok ? res.text() : "<p>Not found.</p>")
         .then(html => {
-            document.getElementById('wrapper').innerHTML = html;
+            getWrapper().innerHTML = html;
             if (typeof initialize === 'function') initialize();
         });
 }
 
+// Show main content
+function loadMainContent() {
+    loadMainContentAsync();
+}
+
 // Create and show sidedrawer with portfolio content
 function openSidedrawer(item) {
-    // Save current scroll position
-    mainScrollY = window.scrollY;
-
     closeSidedrawer(); // Remove any existing drawer
 
     // Animate wrapper with perspective effect and disable interactions
-    const wrapper = document.getElementById('wrapper');
-    wrapper.style.pointerEvents = 'none';
-    wrapper.style.userSelect = 'none';
-    gsap.to(wrapper, {
-        scale: 0.9,
-        rotationY: 0,
-        x: -64,
-        transformOrigin: "left center",
-        transformPerspective: 1000,
-        duration: 0.5,
-        ease: "power3.out"
-    });
+    setWrapperInteraction(false);
+    gsap.to(getWrapper(), WRAPPER_OPEN);
 
     sidedrawer = document.createElement('div');
     sidedrawer.className = 'sidedrawer';
@@ -98,21 +113,23 @@ function openSidedrawer(item) {
 
     gsap.fromTo(sidedrawer, { x: '100%' }, { x: '0%', duration: 0.5, ease: "power2.out" });
 
+    function removeEventListeners() {
+        document.removeEventListener('keydown', escHandler);
+        document.removeEventListener('click', outsideClickHandler);
+        document.removeEventListener('wheel', scrollHandler);
+    }
+
     function escHandler(e) {
         if (e.key === "Escape") {
             closeSidedrawer({ updateUrl: true });
-            document.removeEventListener('keydown', escHandler);
-            document.removeEventListener('click', outsideClickHandler);
-            document.removeEventListener('wheel', scrollHandler);
+            removeEventListeners();
         }
     }
 
     function outsideClickHandler(e) {
         if (!sidedrawer.contains(e.target)) {
             closeSidedrawer({ updateUrl: true });
-            document.removeEventListener('keydown', escHandler);
-            document.removeEventListener('click', outsideClickHandler);
-            document.removeEventListener('wheel', scrollHandler);
+            removeEventListeners();
         }
     }
 
@@ -120,9 +137,7 @@ function openSidedrawer(item) {
         if (!sidedrawer.contains(e.target)) {
             e.preventDefault();
             closeSidedrawer({ updateUrl: true });
-            document.removeEventListener('keydown', escHandler);
-            document.removeEventListener('click', outsideClickHandler);
-            document.removeEventListener('wheel', scrollHandler);
+            removeEventListeners();
         }
     }
 }
@@ -131,52 +146,31 @@ function openSidedrawer(item) {
 function closeSidedrawer({ navigate = false, updateUrl = false } = {}) {
     if (sidedrawer) {
         // Re-enable interactions and start wrapper animation immediately
-        const wrapper = document.getElementById('wrapper');
-        wrapper.style.pointerEvents = 'auto';
-        wrapper.style.userSelect = 'auto';
-        gsap.to(wrapper, {
-            scale: 1,
-            rotationY: 0,
-            x: 0,
-            transformOrigin: "center center",
-            transformPerspective: 1000,
-            duration: 0.65,
-            ease: "power2.out"
-        });
+        setWrapperInteraction(true);
+        gsap.to(getWrapper(), WRAPPER_CLOSE);
 
         gsap.to(sidedrawer, { 
             x: '100%', 
             duration: 0.5, 
             ease: "power2.out", 
             onComplete: () => {
-            // Clean up video observer
-            if (sidedrawer._videoObserver) {
-                sidedrawer._videoObserver.disconnect();
+                // Clean up video observer
+                if (sidedrawer._videoObserver) {
+                    sidedrawer._videoObserver.disconnect();
+                }
+                // Reset background color
+                sidedrawer.style.background = '';
+                sidedrawer.remove();
+                sidedrawer = null;
+                if (navigate) loadMainContent();
+                if (updateUrl) page.redirect('/');
             }
-            // Reset background color
-            sidedrawer.style.background = '';
-            sidedrawer.remove();
-            sidedrawer = null;
-            if (navigate) {
-                loadMainContent();
-            }
-            if (updateUrl) {
-                page.redirect('/');
-            }
-        }});
+        });
     } else {
         // Re-enable interactions if they were disabled
-        const wrapper = document.getElementById('wrapper');
-        if (wrapper) {
-            wrapper.style.pointerEvents = 'auto';
-            wrapper.style.userSelect = 'auto';
-        }
-        if (navigate) {
-            loadMainContent();
-        }
-        if (updateUrl) {
-            page.redirect('/');
-        }
+        setWrapperInteraction(true);
+        if (navigate) loadMainContent();
+        if (updateUrl) page.redirect('/');
     }
 }
 
@@ -192,22 +186,13 @@ page('/', () => {
 });
 page('/portfolio/:item', ctx => {
     // Always load main content first if not already loaded
-    const wrapper = document.getElementById('wrapper');
+    const wrapper = getWrapper();
     
     if (!wrapper || !wrapper.innerHTML.trim()) {
         // Load main content and wait for it to complete
-        fetch('pages/intro.html')
-            .then(res => res.ok ? res.text() : "<p>Not found.</p>")
-            .then(html => {
-                document.getElementById('wrapper').innerHTML = html;
-                if (typeof initialize === 'function') initialize();
-                // Now open the drawer
-                openSidedrawer(ctx.params.item);
-            })
-            .catch(err => {
-                // Silent redirect on error
-                page.redirect('/');
-            });
+        loadMainContentAsync()
+            .then(() => openSidedrawer(ctx.params.item))
+            .catch(() => page.redirect('/'));
     } else {
         openSidedrawer(ctx.params.item);
     }
