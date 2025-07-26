@@ -61,6 +61,16 @@ function loadMainContentAsync() {
         });
 }
 
+// Helper function to convert hex to RGB
+function hexToRgb(hex) {
+    const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result ? {
+        r: parseInt(result[1], 16),
+        g: parseInt(result[2], 16),
+        b: parseInt(result[3], 16)
+    } : null;
+}
+
 // Show main content
 function loadMainContent() {
     loadMainContentAsync();
@@ -104,6 +114,84 @@ function openSidedrawer(item) {
     sidedrawer.addEventListener('touchmove', function(e) {
         e.stopPropagation();
     }, { passive: false });
+
+    // Add mobile drag-to-close functionality
+    if (mobile) {
+        let startY = 0;
+        let currentY = 0;
+        let isDragging = false;
+        let initialDrawerY = 0;
+
+        const handleTouchStart = (e) => {
+            startY = e.touches[0].clientY;
+            currentY = startY;
+            isDragging = false;
+            initialDrawerY = 0;
+        };
+
+        const handleTouchMove = (e) => {
+            if (!startY) return;
+            
+            currentY = e.touches[0].clientY;
+            const deltaY = currentY - startY;
+            
+            // Only allow dragging down and only if we're at the top of the drawer
+            if (deltaY > 0 && sidedrawer.scrollTop === 0) {
+                isDragging = true;
+                e.preventDefault();
+                
+                // Apply drag resistance (slower movement as user drags further)
+                const resistance = Math.min(deltaY * 0.6, 200);
+                sidedrawer.style.transform = `translateY(${resistance}px)`;
+                
+                // Add opacity fade effect based on drag distance
+                const opacity = Math.max(1 - (resistance / 200), 0.3);
+                sidedrawer.style.opacity = opacity;
+            }
+        };
+
+        const handleTouchEnd = (e) => {
+            if (!isDragging) {
+                startY = 0;
+                return;
+            }
+            
+            const deltaY = currentY - startY;
+            const threshold = 100; // Close if dragged more than 100px
+            
+            if (deltaY > threshold) {
+                // Close the drawer
+                closeSidedrawer({ updateUrl: true });
+                removeEventListeners();
+            } else {
+                // Snap back to original position
+                gsap.to(sidedrawer, {
+                    y: 0,
+                    opacity: 1,
+                    duration: 0.3,
+                    ease: "power2.out",
+                    onComplete: () => {
+                        sidedrawer.style.transform = '';
+                        sidedrawer.style.opacity = '';
+                    }
+                });
+            }
+            
+            startY = 0;
+            isDragging = false;
+        };
+
+        sidedrawer.addEventListener('touchstart', handleTouchStart, { passive: true });
+        sidedrawer.addEventListener('touchmove', handleTouchMove, { passive: false });
+        sidedrawer.addEventListener('touchend', handleTouchEnd, { passive: true });
+        
+        // Store cleanup functions for drag handlers
+        sidedrawer._cleanupDragHandlers = () => {
+            sidedrawer.removeEventListener('touchstart', handleTouchStart);
+            sidedrawer.removeEventListener('touchmove', handleTouchMove);
+            sidedrawer.removeEventListener('touchend', handleTouchEnd);
+        };
+    }
 
     // Load portfolio content from /pages/
     fetch(`pages/${item}.html`)
@@ -215,6 +303,12 @@ function closeSidedrawer({ navigate = false, updateUrl = false } = {}) {
                 if (sidedrawer._videoObserver) {
                     sidedrawer._videoObserver.disconnect();
                 }
+                
+                // Clean up drag handlers (mobile)
+                if (sidedrawer._cleanupDragHandlers) {
+                    sidedrawer._cleanupDragHandlers();
+                }
+                
                 // Reset background color
                 sidedrawer.style.background = '';
                 

@@ -288,6 +288,26 @@ main {
     padding: 0.4rem;
 }
 
+/* Sticky header container in drawer */
+.sidedrawer .sticky-header {
+    position: relative;
+    top: 0;
+    width: 100%;
+    height: 56px;
+    z-index: 10;
+    background: transparent;
+    padding: 0.4rem;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Reset logo-wordmark margins when inside sticky header */
+.sidedrawer .sticky-header .logo-wordmark {
+    margin: 0;
+}
+
 html.no-scroll,
 body.no-scroll {
     overflow: hidden !important;
@@ -415,6 +435,11 @@ ul.footer-social {
 	#wrapper.mobile-drawer-open {
 		pointer-events: none !important;
 		user-select: none !important;
+	}
+
+	/* Make sticky header sticky only on mobile */
+	.sidedrawer .sticky-header {
+		position: sticky;
 	}
 
 }
