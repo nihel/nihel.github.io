@@ -182,22 +182,37 @@ function closeSidedrawer({ navigate = false, updateUrl = false } = {}) {
 
 // Portfolio routes
 page('/', () => {
-    closeSidedrawer({ navigate: true, updateUrl: false });
+    // Only close drawer and navigate if there's actually a drawer open
+    if (sidedrawer) {
+        closeSidedrawer({ navigate: true, updateUrl: false });
+    } else {
+        // Just load main content if no drawer is open
+        loadMainContent();
+    }
 });
 page('/portfolio/:item', ctx => {
+    console.log('Portfolio route triggered for:', ctx.params.item);
     // Always load main content first if not already loaded
     const wrapper = document.getElementById('wrapper');
+    console.log('Wrapper exists:', !!wrapper, 'Has content:', wrapper?.innerHTML.trim().length > 0);
+    
     if (!wrapper || !wrapper.innerHTML.trim()) {
+        console.log('Loading main content first...');
         // Load main content and wait for it to complete
         fetch('pages/intro.html')
             .then(res => res.ok ? res.text() : "<p>Not found.</p>")
             .then(html => {
                 document.getElementById('wrapper').innerHTML = html;
                 if (typeof initialize === 'function') initialize();
+                console.log('Main content loaded, opening drawer...');
                 // Now open the drawer
                 openSidedrawer(ctx.params.item);
+            })
+            .catch(err => {
+                console.error('Failed to load main content:', err);
             });
     } else {
+        console.log('Main content already loaded, opening drawer...');
         openSidedrawer(ctx.params.item);
     }
 });
@@ -211,8 +226,18 @@ document.addEventListener('click', e => {
     }
 });
 
-// Initialize router
-page();
+// Initialize router after DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+    page();
+});
+
+// Fallback if DOMContentLoaded has already fired
+if (document.readyState === 'loading') {
+    // DOM is still loading, wait for DOMContentLoaded
+} else {
+    // DOM is already ready
+    page();
+}
 
 // Setup video autoplay functionality
 function setupVideoAutoplay(container) {
