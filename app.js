@@ -433,35 +433,63 @@ function setupVideoAutoplay(container) {
     
     console.log('Setting up autoplay for', videos.length, 'videos');
     
-    // Simple approach: try to play all videos immediately
+    // Enhanced video setup for mobile compatibility
     videos.forEach((video, index) => {
         console.log(`Video ${index}:`, video.src);
         
-        // Ensure all attributes are set
+        // Set essential attributes
         video.muted = true;
         video.playsInline = true;
         video.controls = false;
         video.loop = video.hasAttribute('data-loop');
         video.preload = 'auto';
+        video.setAttribute('webkit-playsinline', 'true');
+        video.setAttribute('x5-playsinline', 'true');
         
-        // Try to play immediately
-        video.play().catch(e => {
-            console.log(`Video ${index} autoplay failed:`, e);
-            
-            // Fallback: add click handler for manual play
-            video.addEventListener('click', () => {
-                video.play();
+        // Add error handling
+        video.addEventListener('error', (e) => {
+            console.error(`Video ${index} error:`, e);
+            console.error('Video error details:', video.error);
+        });
+        
+        video.addEventListener('loadstart', () => {
+            console.log(`Video ${index} loading started`);
+        });
+        
+        video.addEventListener('loadeddata', () => {
+            console.log(`Video ${index} data loaded`);
+        });
+        
+        video.addEventListener('canplay', () => {
+            console.log(`Video ${index} can play`);
+            // Try to play when video is ready
+            video.play().catch(e => {
+                console.log(`Video ${index} autoplay failed:`, e);
             });
+        });
+        
+        // Force load the video
+        video.load();
+        
+        // Add click handler for manual play
+        video.addEventListener('click', () => {
+            if (video.paused) {
+                video.play();
+            } else {
+                video.pause();
+            }
         });
     });
     
-    // Also keep the intersection observer as backup
+    // Intersection observer for viewport-based playback
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             const video = entry.target;
             
             if (entry.isIntersecting) {
-                video.play().catch(e => console.log('Observer play failed:', e));
+                if (video.readyState >= 2) { // HAVE_CURRENT_DATA
+                    video.play().catch(e => console.log('Observer play failed:', e));
+                }
             } else {
                 video.pause();
             }
