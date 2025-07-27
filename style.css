@@ -123,6 +123,8 @@ video {
 .box {
 	width: 100%;
 	height: auto;
+	padding-left: 0.4rem;
+	padding-right: 0.4rem;
 	-webkit-user-drag: none;
 	-moz-user-drag: none;
 	-o-user-drag: none;
@@ -293,7 +295,7 @@ main {
     flex-direction: column;
 }
 .sidedrawer .drawer-content {
-    padding: 0.4rem;
+    padding: 0;
 }
 
 /* Sticky header container in drawer */
@@ -304,16 +306,88 @@ main {
     height: 56px;
     z-index: 10;
     background: transparent;
-    padding: 0.4rem;
     margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+/* Blur step layers */
+.sidedrawer .nav-blur-step-1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px);
+    mask: linear-gradient(to top, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 10%, rgba(255,255,255,1) 30%, rgba(255,255,255,0) 40%);
+    -webkit-mask: linear-gradient(to top, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 10%, rgba(255,255,255,1) 30%, rgba(255,255,255,0) 40%);
+    pointer-events: none;
+}
+
+.sidedrawer .nav-blur-step-2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    mask: linear-gradient(to top, rgba(255,255,255,0) 10%, rgba(255,255,255,1) 20%, rgba(255,255,255,1) 50%, rgba(255,255,255,0) 60%);
+    -webkit-mask: linear-gradient(to top, rgba(255,255,255,0) 10%, rgba(255,255,255,1) 20%, rgba(255,255,255,1) 50%, rgba(255,255,255,0) 60%);
+    pointer-events: none;
+}
+
+.sidedrawer .nav-blur-step-3 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 3;
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3x);
+    mask: linear-gradient(to top, rgba(255,255,255,0) 20%, rgba(255,255,255,1) 30%, rgba(255,255,255,1) 70%, rgba(255,255,255,0) 80%);
+    -webkit-mask: linear-gradient(to top, rgba(255,255,255,0) 20%, rgba(255,255,255,1) 30%, rgba(255,255,255,1) 70%, rgba(255,255,255,0) 80%);
+    pointer-events: none;
+}
+
+.sidedrawer .nav-blur-step-4 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 4;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    mask: linear-gradient(to top, rgba(255,255,255,0) 30%, rgba(255,255,255,1) 40%, rgba(255,255,255,1) 85%, rgba(255,255,255,0) 95%);
+    -webkit-mask: linear-gradient(to top, rgba(255,255,255,0) 30%, rgba(255,255,255,1) 40%, rgba(255,255,255,1) 85%, rgba(255,255,255,0) 95%);
+    pointer-events: none;
+}
+
+.sidedrawer .nav-blur-step-5 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 5;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    mask: linear-gradient(to top, rgba(255,255,255,0) 40%, rgba(255,255,255,1) 50%, rgba(255,255,255,1) 100%);
+    -webkit-mask: linear-gradient(to top, rgba(255,255,255,0) 40%, rgba(255,255,255,1) 50%, rgba(255,255,255,1) 100%);
+    pointer-events: none;
+}
+
 /* Reset logo-wordmark margins when inside sticky header */
 .sidedrawer .sticky-header .logo-wordmark {
     margin: 0;
+    position: relative;
+    z-index: 20;
 }
 
 html.no-scroll,
@@ -450,7 +524,6 @@ ul.footer-social {
 		right: 0;
 		width: 100%;
 		height: 75vh;
-		border-radius: 48px 48px 0 0;
 		box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.15);
 	}
 
