@@ -439,7 +439,7 @@ ul.footer-social {
 
 	.footer-notes {
 		flex-direction: column;
-		gap: 24px;
+		gap: 8px;
 	}
 
 	/* Mobile drawer styles */
@@ -501,7 +501,7 @@ ul.footer-social {
 
 	.footer-notes {
 		flex-direction: column;
-		gap: 24px;
+		gap: 8px;
 	}
 
 }
