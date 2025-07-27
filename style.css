@@ -392,6 +392,21 @@ ul.footer-social {
 }
 
 @media (pointer: coarse) {
+	
+	a:hover {
+		text-decoration-color: var(--softgrey);
+		transition: none;
+	}
+
+	a.item:hover {
+		padding-left: 0;
+		transition: none;
+	}
+
+	#email-btn:hover {
+		text-decoration-color: var(--softgrey);
+		transition: none;
+	}
 
 }
 
