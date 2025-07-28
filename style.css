@@ -123,8 +123,8 @@ video {
 .box {
 	width: 100%;
 	height: auto;
-	padding-left: 0.4rem;
-	padding-right: 0.4rem;
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
 	-webkit-user-drag: none;
 	-moz-user-drag: none;
 	-o-user-drag: none;
@@ -280,7 +280,7 @@ main {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-    gap: 0.4rem;
+    gap: 0.5rem;
 	justify-content: center;
 }
 
@@ -310,6 +310,7 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
+	padding-top: 0.5rem;
 }
 
 /* Blur step layers */
@@ -322,8 +323,8 @@ main {
     z-index: 1;
     backdrop-filter: blur(1px);
     -webkit-backdrop-filter: blur(1px);
-    mask: linear-gradient(to top, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 10%, rgba(255,255,255,1) 30%, rgba(255,255,255,0) 40%);
-    -webkit-mask: linear-gradient(to top, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 10%, rgba(255,255,255,1) 30%, rgba(255,255,255,0) 40%);
+    mask: linear-gradient(to top, #fff0 0%, #fff 12.5% 37.5%, #fff0 50%);
+    -webkit-mask: linear-gradient(to top, #fff0 0%, #fff 12.5% 37.5%, #fff0 50%);
     pointer-events: none;
 }
 
@@ -336,8 +337,8 @@ main {
     z-index: 2;
     backdrop-filter: blur(2px);
     -webkit-backdrop-filter: blur(2px);
-    mask: linear-gradient(to top, rgba(255,255,255,0) 10%, rgba(255,255,255,1) 20%, rgba(255,255,255,1) 50%, rgba(255,255,255,0) 60%);
-    -webkit-mask: linear-gradient(to top, rgba(255,255,255,0) 10%, rgba(255,255,255,1) 20%, rgba(255,255,255,1) 50%, rgba(255,255,255,0) 60%);
+    mask: linear-gradient(to top, #fff0 12.5%, #fff 37.5% 50%, #fff0 62.5%);
+    -webkit-mask: linear-gradient(to top, #fff0 12.5%, #fff 37.5% 50%, #fff0 62.5%);
     pointer-events: none;
 }
 
@@ -349,9 +350,9 @@ main {
     bottom: 0;
     z-index: 3;
     backdrop-filter: blur(3px);
-    -webkit-backdrop-filter: blur(3x);
-    mask: linear-gradient(to top, rgba(255,255,255,0) 20%, rgba(255,255,255,1) 30%, rgba(255,255,255,1) 70%, rgba(255,255,255,0) 80%);
-    -webkit-mask: linear-gradient(to top, rgba(255,255,255,0) 20%, rgba(255,255,255,1) 30%, rgba(255,255,255,1) 70%, rgba(255,255,255,0) 80%);
+    -webkit-backdrop-filter: blur(3px);
+    mask: linear-gradient(to top, #fff0 37.5%, #fff 50% 62.5%, #fff0 75%);
+    -webkit-mask: linear-gradient(to top, #fff0 37.5%, #fff 50% 62.5%, #fff0 75%);
     pointer-events: none;
 }
 
@@ -364,8 +365,8 @@ main {
     z-index: 4;
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
-    mask: linear-gradient(to top, rgba(255,255,255,0) 30%, rgba(255,255,255,1) 40%, rgba(255,255,255,1) 85%, rgba(255,255,255,0) 95%);
-    -webkit-mask: linear-gradient(to top, rgba(255,255,255,0) 30%, rgba(255,255,255,1) 40%, rgba(255,255,255,1) 85%, rgba(255,255,255,0) 95%);
+    mask: linear-gradient(to top, #fff0 50%, #fff 62.5% 75%, #fff0 87.5%);
+    -webkit-mask: linear-gradient(to top, #fff0 50%, #fff 62.5% 75%, #fff0 87.5%);
     pointer-events: none;
 }
 
@@ -376,10 +377,10 @@ main {
     right: 0;
     bottom: 0;
     z-index: 5;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    mask: linear-gradient(to top, rgba(255,255,255,0) 40%, rgba(255,255,255,1) 50%, rgba(255,255,255,1) 100%);
-    -webkit-mask: linear-gradient(to top, rgba(255,255,255,0) 40%, rgba(255,255,255,1) 50%, rgba(255,255,255,1) 100%);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    mask: linear-gradient(to top, #fff0 50%, #fff 75% 100%);
+    -webkit-mask: linear-gradient(to top, #fff0 50%, #fff 75% 100%);
     pointer-events: none;
 }
 
@@ -524,7 +525,24 @@ ul.footer-social {
 		right: 0;
 		width: 100%;
 		height: 75vh;
+		border-radius: 48px 48px 0 0;
 		box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.15);
+	}
+
+	/* Hide blur steps on mobile */
+	.sidedrawer .nav-blur-step-1,
+	.sidedrawer .nav-blur-step-2,
+	.sidedrawer .nav-blur-step-3,
+	.sidedrawer .nav-blur-step-4,
+	.sidedrawer .nav-blur-step-5 {
+		display: none;
+	}
+
+	/* Mobile sticky header - simple transparent */
+	.sidedrawer .sticky-header {
+		border-radius: 48px 48px 0 0;
+		background: transparent;
+		padding-top: 0.5rem;
 	}
 
 	/* Mobile wrapper adjustments when drawer is open */
