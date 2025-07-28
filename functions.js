@@ -1,25 +1,4 @@
 function initialize() {
-    let player = document.getElementById("logo-lottie");
-
-    player.addEventListener("ready", () => {
-        LottieInteractivity.create({
-            player: "#logo-lottie",
-            mode: "cursor",
-            actions: [
-                { type: "click", forceFlag: true }
-            ]
-        });
-        player.play();
-    });
-
-    player.addEventListener("click", () => {
-        // Don't trigger if drawer is active (being opened/closed)
-        if (document.body.classList.contains('scrim-active')) {
-            return;
-        }
-        player.play();
-    });
-
     const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
     
     let hoverMediaContainer = document.getElementById('hover-media');
