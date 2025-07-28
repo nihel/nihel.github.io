@@ -422,16 +422,11 @@ function setupVideoAutoplay(container) {
             const video = entry.target;
             
             if (entry.isIntersecting) {
-                // Video is in viewport, play it after 1 second delay
-                setTimeout(() => {
-                    // Check if video is still in viewport before playing
-                    if (entry.isIntersecting) {
-                        video.play().catch(e => {
-                            // Handle autoplay policy restrictions
-                            console.log('Autoplay prevented:', e);
-                        });
-                    }
-                }, 1000);
+                // Video is in viewport, play it
+                video.play().catch(e => {
+                    // Handle autoplay policy restrictions
+                    console.log('Autoplay prevented:', e);
+                });
             } else {
                 // Video is out of viewport, pause it immediately
                 video.pause();
@@ -446,7 +441,7 @@ function setupVideoAutoplay(container) {
     videos.forEach(video => {
         // Set video attributes for better autoplay behavior
         video.muted = true;  // Required for autoplay in most browsers
-        video.loop = video.hasAttribute('data-loop');  // Loop only if data-loop attribute is present
+        video.loop = video.hasAttribute('loop');  // Loop if loop attribute is present
         video.playsInline = true; // Prevent fullscreen on mobile
         video.controls = false; // Hide player controls
         
