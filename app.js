@@ -339,6 +339,12 @@ function closeSidedrawer({ navigate = false, updateUrl = false } = {}) {
                     sidedrawer._videoObserver.disconnect();
                 }
                 
+                // Clean up video timeouts
+                if (sidedrawer._videoTimeouts) {
+                    sidedrawer._videoTimeouts.forEach(timeoutId => clearTimeout(timeoutId));
+                    sidedrawer._videoTimeouts.clear();
+                }
+                
                 // Clean up drag handlers (mobile)
                 if (sidedrawer._cleanupDragHandlers) {
                     sidedrawer._cleanupDragHandlers();
@@ -453,18 +459,50 @@ function setupVideoAutoplay(container) {
     
     if (videos.length === 0) return;
     
+    // Track timeouts for each video
+    const videoTimeouts = new Map();
+    
     // Create intersection observer
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             const video = entry.target;
             
             if (entry.isIntersecting) {
-                // Video is in viewport, play it
-                video.play().catch(e => {
-                    // Handle autoplay policy restrictions
-                    console.log('Autoplay prevented:', e);
-                });
+                // Clear any existing timeout for this video
+                if (videoTimeouts.has(video)) {
+                    clearTimeout(videoTimeouts.get(video));
+                }
+                
+                // Video is in viewport, play it after 1 second delay
+                const timeoutId = setTimeout(() => {
+                    // Re-check if video is still in viewport using getBoundingClientRect
+                    const rect = video.getBoundingClientRect();
+                    const containerRect = container.getBoundingClientRect();
+                    const isStillVisible = rect.top < containerRect.bottom && 
+                                         rect.bottom > containerRect.top &&
+                                         rect.left < containerRect.right && 
+                                         rect.right > containerRect.left;
+                    
+                    if (isStillVisible) {
+                        video.play().catch(e => {
+                            // Handle autoplay policy restrictions
+                            console.log('Autoplay prevented:', e);
+                        });
+                    }
+                    
+                    // Remove timeout from tracking
+                    videoTimeouts.delete(video);
+                }, 1000);
+                
+                // Store timeout ID for this video
+                videoTimeouts.set(video, timeoutId);
             } else {
+                // Clear any pending timeout for this video
+                if (videoTimeouts.has(video)) {
+                    clearTimeout(videoTimeouts.get(video));
+                    videoTimeouts.delete(video);
+                }
+                
                 // Video is out of viewport, pause it immediately
                 video.pause();
             }
@@ -487,4 +525,5 @@ function setupVideoAutoplay(container) {
     
     // Store observer reference for cleanup
     container._videoObserver = observer;
+    container._videoTimeouts = videoTimeouts;
 }
