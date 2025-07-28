@@ -1,5 +1,6 @@
 // Sidedrawer state
 let sidedrawer = null;
+let hasPlayedEntranceAnimation = false;
 
 // Mobile detection
 function isMobile() {
@@ -56,9 +57,46 @@ function loadMainContentAsync() {
     return fetch('pages/intro.html')
         .then(res => res.ok ? res.text() : "<p>Not found.</p>")
         .then(html => {
-            getWrapper().innerHTML = html;
+            const wrapper = getWrapper();
+            wrapper.innerHTML = html;
+            
+            // Only set up entrance animations on first load
+            if (!hasPlayedEntranceAnimation) {
+                // Use requestAnimationFrame to ensure DOM is rendered before animating
+                requestAnimationFrame(() => {
+                    setupEntranceAnimations();
+                    hasPlayedEntranceAnimation = true;
+                });
+            }
+            
             if (typeof initialize === 'function') initialize();
         });
+}
+
+// Setup entrance animations for main content
+function setupEntranceAnimations() {
+    const wrapper = getWrapper();
+    const animatedElements = wrapper.querySelectorAll('.content, header');
+    
+    if (animatedElements.length === 0) return;
+    
+    // Set initial state: invisible and blurred
+    gsap.set(animatedElements, { 
+        opacity: 0, 
+        filter: 'blur(8px)',
+        y: 24
+    });
+    
+    // Animate each element in sequence
+    gsap.to(animatedElements, {
+        opacity: 1,
+        filter: 'blur(0px)',
+        y: 0,
+        duration: 0.8,
+        stagger: 0.15,
+        delay: 0.2,
+        ease: 'power3.out'
+    });
 }
 
 // Helper function to convert hex to RGB
