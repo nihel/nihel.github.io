@@ -281,6 +281,7 @@ main {
     flex-wrap: wrap;
     width: 100%;
     gap: 0.5rem;
+	padding-bottom: 0.5rem;
 	justify-content: center;
 }
 
