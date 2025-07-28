@@ -165,7 +165,12 @@ function openSidedrawer(item) {
                 const currentY = currentTransform.match(/translateY\(([^)]+)\)/);
                 const startFromY = currentY ? currentY[1] : '0px';
                 
-                // Animate to closed position (100%) from current position
+                // Start wrapper animation immediately (same as normal close)
+                setWrapperInteraction(true);
+                gsap.killTweensOf(getWrapper());
+                gsap.to(getWrapper(), WRAPPER_MOBILE_CLOSE);
+                
+                // Animate drawer to closed position from current position
                 gsap.fromTo(sidedrawer, 
                     { y: startFromY }, 
                     { 
@@ -173,8 +178,25 @@ function openSidedrawer(item) {
                         duration: 0.5, 
                         ease: "power2.out",
                         onComplete: () => {
-                            closeSidedrawer({ updateUrl: true });
+                            // Clean up without additional animations
+                            if (sidedrawer._videoObserver) {
+                                sidedrawer._videoObserver.disconnect();
+                            }
+                            if (sidedrawer._cleanupDragHandlers) {
+                                sidedrawer._cleanupDragHandlers();
+                            }
+                            sidedrawer.style.background = '';
+                            
+                            const wrapper = getWrapper();
+                            gsap.set(wrapper, { 
+                                clearProps: "transform,scale,x,y,rotationY,transformOrigin,transformPerspective" 
+                            });
+                            wrapper.classList.remove('mobile-drawer-open');
+                            
+                            sidedrawer.remove();
+                            sidedrawer = null;
                             removeEventListeners();
+                            page.redirect('/');
                         }
                     }
                 );
