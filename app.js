@@ -160,9 +160,24 @@ function openSidedrawer(item) {
             const threshold = 100; // Close if dragged more than 100px
             
             if (deltaY > threshold) {
-                // Close the drawer
-                closeSidedrawer({ updateUrl: true });
-                removeEventListeners();
+                // Close the drawer starting from current dragged position
+                const currentTransform = sidedrawer.style.transform;
+                const currentY = currentTransform.match(/translateY\(([^)]+)\)/);
+                const startFromY = currentY ? currentY[1] : '0px';
+                
+                // Animate to closed position (100%) from current position
+                gsap.fromTo(sidedrawer, 
+                    { y: startFromY }, 
+                    { 
+                        y: '100%', 
+                        duration: 0.5, 
+                        ease: "power2.out",
+                        onComplete: () => {
+                            closeSidedrawer({ updateUrl: true });
+                            removeEventListeners();
+                        }
+                    }
+                );
             } else {
                 // Snap back to original position
                 gsap.to(sidedrawer, {
