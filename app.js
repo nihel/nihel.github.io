@@ -76,7 +76,7 @@ function loadMainContentAsync() {
 // Setup entrance animations for main content
 function setupEntranceAnimations() {
     const wrapper = getWrapper();
-    const animatedElements = wrapper.querySelectorAll('.content, header');
+    const animatedElements = wrapper.querySelectorAll('header, .content > *, .content .item');
     
     if (animatedElements.length === 0) return;
     
@@ -92,9 +92,9 @@ function setupEntranceAnimations() {
         opacity: 1,
         filter: 'blur(0px)',
         y: 0,
-        duration: 0.8,
-        stagger: 0.15,
-        delay: 0.2,
+        duration: 0.5,
+        stagger: 0.08,
+        delay: 0.1,
         ease: 'power3.out'
     });
 }
