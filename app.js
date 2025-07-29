@@ -67,6 +67,9 @@ function loadMainContentAsync() {
                     setupEntranceAnimations();
                     hasPlayedEntranceAnimation = true;
                 });
+            } else {
+                // If animations have already played, remove the pending class to show content immediately
+                document.body.classList.remove('entrance-animation-pending');
             }
             
             if (typeof initialize === 'function') initialize();
@@ -95,7 +98,11 @@ function setupEntranceAnimations() {
         duration: 0.5,
         stagger: 0.08,
         delay: 0.1,
-        ease: 'power3.out'
+        ease: 'power3.out',
+        onComplete: () => {
+            // Remove the pending class after animation completes to allow normal CSS behavior
+            document.body.classList.remove('entrance-animation-pending');
+        }
     });
 }
 
@@ -447,6 +454,8 @@ document.addEventListener('click', e => {
 
 // Initialize router after DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
+    // Add class to enable FOUC prevention on initial load
+    document.body.classList.add('entrance-animation-pending');
     page();
 });
 
@@ -455,6 +464,7 @@ if (document.readyState === 'loading') {
     // DOM is still loading, wait for DOMContentLoaded
 } else {
     // DOM is already ready
+    document.body.classList.add('entrance-animation-pending');
     page();
 }
 

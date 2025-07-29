@@ -47,10 +47,10 @@ body {
 	overflow-y: scroll;
 }
 
-/* Hide elements that will be animated on initial load */
-#wrapper header,
-#wrapper .content > *,
-#wrapper .content .item {
+/* Hide elements that will be animated on initial load - only before entrance animation plays */
+body.entrance-animation-pending #wrapper header,
+body.entrance-animation-pending #wrapper .content > *,
+body.entrance-animation-pending #wrapper .content .item {
 	opacity: 0;
 }
 
