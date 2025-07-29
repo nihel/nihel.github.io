@@ -47,6 +47,13 @@ body {
 	overflow-y: scroll;
 }
 
+/* Hide elements that will be animated on initial load */
+#wrapper header,
+#wrapper .content > *,
+#wrapper .content .item {
+	opacity: 0;
+}
+
 a {
 	color: var(--black);
 	text-decoration-style: dotted;
