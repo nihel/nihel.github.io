@@ -3,6 +3,7 @@
 	--grey: #a1a1a1;
 	--softgrey: #e1e1e1;
 	--white: #ffffff;
+	--orange: #ff2f00;
 	font-family: Inter, sans-serif;
   	font-feature-settings: 'liga' 1, 'calt' 1,"ss01" 1, "ss03" 1, "cv10" 1;
 }
@@ -79,11 +80,53 @@ a:visited {
 a.item {
 	text-decoration: none;
 	transition: 0.2s ease;
+	position: relative;
+	overflow: hidden;
 }
 
 a.item:hover {
 	transition: 0.2s ease;
 	padding-left: 12px;
+}
+
+/* Coming soon animation for items without href */
+a.item:not([href]) {
+	cursor: default;
+}
+
+a.item:not([href]):hover {
+	padding-left: 0; /* Don't add padding for disabled items */
+}
+
+a.item:not([href]) h3 {
+	transition: transform 0.2s ease 0.25s, opacity 0.2s ease 0.25s;
+}
+
+a.item:not([href]):hover h3 {
+	transform: translateX(12px);
+	opacity: 0;
+	transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+a.item:not([href])::after {
+	content: "Coming soon";
+	position: absolute;
+	left: 0;
+	top: 50%;
+	transform: translateY(-50%) translateX(5%);
+	color: var(--orange);
+	font-family: 'Inter-Medium', 'Helvetica', sans-serif;
+	font-size: 15px;
+	line-height: 1;
+	opacity: 0;
+	transition: transform 0.3s ease, opacity 0.4s ease;
+	pointer-events: none;
+}
+
+a.item:not([href]):hover::after {
+	transform: translateY(-50%) translateX(0);
+	opacity: 1;
+	transition: transform 0.3s ease 0.25s, opacity 0.4s ease 0.25s;
 }
 
 #logo-lottie {
@@ -484,6 +527,17 @@ ul.footer-social {
 	a.item:hover {
 		padding-left: 0;
 		transition: none;
+	}
+
+	/* Disable coming soon animation on touch devices */
+	a.item:not([href]):hover h3 {
+		transform: none;
+		opacity: 1;
+	}
+
+	a.item:not([href]):hover::after {
+		transform: translateY(-50%) translateX(-100%);
+		opacity: 0;
 	}
 
 	#email-btn:hover {
