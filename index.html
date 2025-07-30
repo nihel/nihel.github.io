@@ -9,18 +9,36 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Nils Helmersson • Product Designer">
     <meta name="theme-color" content="#ffffff">
+    
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    
     <meta name="author" content="Nils Helmersson">
     <meta name="keywords" content="Nils Helmersson, Product Designer, Prototyping, Technology, UI, UX, User Experience">
     <meta name="description" content="Nils Helmersson. Stockholm-based Product Designer.">
+    <meta property="og:title" content="Nils Helmersson • Product Designer">
+    <meta property="og:description" content="Stockholm-based Product Designer specializing in UI/UX and prototyping.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="/images/favicons/favicon-512.png">
+   
+	<link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+	<link rel="dns-prefetch" href="//unpkg.com">
 
-	<link rel="icon" size="32x32" href="../images/favicons/favicon.ico">
-	<link rel="icon" type="image/svg+xml" href="../images/favicons/favicon.svg">
-	<link rel="apple-touch-icon" type="image/png" href="../images/favicons/favicon-192.png">
-	<link rel="icon" type="image/png" href="../images/favicons/favicon-512.png">
+	<link rel="icon" href="images/favicons/favicon.ico" sizes="32x32">
+	<link rel="icon" type="image/svg+xml" href="images/favicons/favicon.svg">
+	<link rel="apple-touch-icon" type="image/png" href="images/favicons/favicon-192.png">
+	<link rel="icon" type="image/png" sizes="512x512" href="images/favicons/favicon-512.png">
 
 	<title>Nils Helmersson • Product Designer</title>
-	<link rel="stylesheet" type="text/css" href="style.css" onload="this.media='all'">
-	<link rel="stylesheet" type="text/css" href="reset.css" onload="this.media='all'">
+	
+	<link rel="preload" href="style.css" as="style">
+	<link rel="preload" href="reset.css" as="style">
+	<link rel="preload" href="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" as="script">
+	
+	<link rel="preload" href="fonts/Inter-Medium.woff2" as="font" type="font/woff2" crossorigin>
+	<link rel="preload" href="fonts/Inter-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
+	
+	<link rel="stylesheet" type="text/css" href="reset.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <body>
