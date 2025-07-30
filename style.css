@@ -479,10 +479,11 @@ body.no-scroll {
     overflow: hidden !important;
 }
 
-/* Hide main scrollbar when drawer is open */
-html.drawer-open,
+/* Prevent scrolling when drawer is open without resetting scroll position */
 body.drawer-open {
-    overflow: hidden !important;
+    position: fixed;
+    width: 100%;
+    /* top will be set dynamically by JavaScript to preserve scroll position */
 }
 
 #wrapper {

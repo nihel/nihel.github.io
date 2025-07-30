@@ -127,8 +127,9 @@ function openSidedrawer(item) {
 
     const mobile = isMobile();
     
-    // Hide main page scrollbar
-    document.documentElement.classList.add('drawer-open');
+    // Save current scroll position and prevent scrolling without resetting position
+    const scrollY = window.scrollY;
+    document.body.style.top = `-${scrollY}px`;
     document.body.classList.add('drawer-open');
     
     // Kill any existing wrapper animations and clear transforms to ensure clean state
@@ -363,9 +364,18 @@ function closeSidedrawer({ navigate = false, updateUrl = false } = {}) {
     if (sidedrawer) {
         const mobile = isMobile();
         
-        // Show main page scrollbar again
-        document.documentElement.classList.remove('drawer-open');
+        // Restore scroll position and re-enable scrolling
+        const scrollY = document.body.style.top;
         document.body.classList.remove('drawer-open');
+        document.body.style.top = '';
+        if (scrollY) {
+            // Temporarily disable smooth scrolling for instant restoration
+            const originalScrollBehavior = document.documentElement.style.scrollBehavior;
+            document.documentElement.style.scrollBehavior = 'auto';
+            window.scrollTo(0, parseInt(scrollY || '0') * -1);
+            // Restore original scroll behavior
+            document.documentElement.style.scrollBehavior = originalScrollBehavior;
+        }
         
         // Re-enable interactions and start wrapper animation immediately
         setWrapperInteraction(true);
