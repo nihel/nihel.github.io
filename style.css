@@ -48,6 +48,35 @@ body {
 	overflow-y: scroll;
 }
 
+/* Transparent scrollbar styling for all browsers */
+/* Webkit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+	width: 8px;
+}
+
+::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+	background: rgba(200, 200, 200, 0.5);
+	border-radius: 4px;
+	backdrop-filter: blur(8px);
+	-webkit-backdrop-filter: blur(8px);
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: rgba(200, 200, 200, 1.0);
+	backdrop-filter: blur(12px);
+	-webkit-backdrop-filter: blur(12px);
+}
+
+/* Firefox */
+html {
+	scrollbar-width: thin;
+	scrollbar-color: rgba(200, 200, 200, 1.0) transparent;
+}
+
 /* Hide elements that will be animated on initial load - only before entrance animation plays */
 body.entrance-animation-pending #wrapper header,
 body.entrance-animation-pending #wrapper .content > *,
@@ -447,6 +476,12 @@ main {
 
 html.no-scroll,
 body.no-scroll {
+    overflow: hidden !important;
+}
+
+/* Hide main scrollbar when drawer is open */
+html.drawer-open,
+body.drawer-open {
     overflow: hidden !important;
 }
 

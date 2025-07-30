@@ -127,6 +127,10 @@ function openSidedrawer(item) {
 
     const mobile = isMobile();
     
+    // Hide main page scrollbar
+    document.documentElement.classList.add('drawer-open');
+    document.body.classList.add('drawer-open');
+    
     // Kill any existing wrapper animations and clear transforms to ensure clean state
     const wrapper = getWrapper();
     gsap.killTweensOf(wrapper);
@@ -358,6 +362,10 @@ function openSidedrawer(item) {
 function closeSidedrawer({ navigate = false, updateUrl = false } = {}) {
     if (sidedrawer) {
         const mobile = isMobile();
+        
+        // Show main page scrollbar again
+        document.documentElement.classList.remove('drawer-open');
+        document.body.classList.remove('drawer-open');
         
         // Re-enable interactions and start wrapper animation immediately
         setWrapperInteraction(true);
