@@ -556,18 +556,6 @@ body.drawer-open {
 	height: 16px;
 }
 
-/* Static gradient with noise texture for platform-rework page */
-.textured-gradient-bg {
-	--_noise-texture: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'><defs><filter id='n' x='0' y='0' width='100%' height='100%' color-interpolation-filters='sRGB'><feTurbulence type='fractalNoise' baseFrequency='0.3' numOctaves='3' stitchTiles='stitch' result='t'/><feColorMatrix type='saturate' values='0' in='t' result='g'/><feComponentTransfer in='g' result='a'><feFuncA type='linear' slope='0.5'/></feComponentTransfer></filter></defs><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
-	--_noise-size: 12.6%;
-	--_gradient: linear-gradient(315deg, #393261, #866FAB 33%, #C0ADF7 67%, #393261 100%);
-	
-	background-image: var(--_noise-texture), var(--_gradient);
-	background-size: var(--_noise-size), auto;
-	background-position: center, center;
-	background-repeat: repeat, no-repeat;
-}
-
 /* FOOTER */
 footer {
     display: flex;
