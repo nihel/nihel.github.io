@@ -374,6 +374,9 @@ main {
     gap: 0.5rem;
 	padding-bottom: 0.5rem;
 	justify-content: center;
+	/* Optimize grid rendering for large collections */
+	content-visibility: auto;
+	contain-intrinsic-size: 0 300px;
 }
 
 .sidedrawer {
@@ -386,9 +389,16 @@ main {
     display: flex;
     flex-direction: column;
     will-change: transform;
+    /* Optimize rendering when drawer is hidden */
+    content-visibility: auto;
+    contain-intrinsic-size: 480px 100vh;
 }
+
 .sidedrawer .drawer-content {
     padding: 0;
+    /* Optimize nested drawer content */
+    content-visibility: auto;
+    contain-intrinsic-size: 0 800px;
 }
 
 /* Sticky header container in drawer */
@@ -552,6 +562,9 @@ footer {
 	gap: 32px;
     padding-bottom: 3rem;
 	padding-top: 1rem;
+	/* Optimize footer rendering - often below fold */
+	content-visibility: auto;
+	contain-intrinsic-size: 0 200px;
 }
 
 ul.footer-social {
