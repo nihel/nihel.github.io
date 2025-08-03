@@ -77,6 +77,14 @@ html {
 	scrollbar-color: rgba(200, 200, 200, 1.0) transparent;
 }
 
+/* Focus styles for keyboard navigation */
+*:focus-visible {
+	outline: none;
+	background-color: var(--softgrey);
+	border-radius: 4px;
+	box-shadow: 0 0 0 2px var(--softgrey);
+}
+
 /* Hide elements that will be animated on initial load - only before entrance animation plays */
 body.entrance-animation-pending #wrapper header,
 body.entrance-animation-pending #wrapper .content > *,
@@ -353,8 +361,10 @@ main {
 
 .item {
 	cursor: pointer;
-	padding-top: 12px;
-	padding-bottom: 12px;
+	padding-top: 4px;
+    padding-bottom: 4px;
+    margin-top: 4px;
+    margin-bottom: 4px;
 }
 
 .grid-container {

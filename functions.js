@@ -7,7 +7,7 @@ function initialize() {
         hoverMediaContainer = document.createElement('div');
         hoverMediaContainer.id = 'hover-media';
         Object.assign(hoverMediaContainer.style, {
-            position: 'fixed',
+            position: 'absolute',
             zIndex: '1000',
             filter: 'drop-shadow(0 2px 8px rgba(0, 0, 0, 0.15))',
             borderRadius: '8px'
@@ -128,7 +128,6 @@ function initialize() {
 
             card.addEventListener('mouseenter', function (event) {
                 hoverMediaContainer.innerHTML = '';
-                hoverMediaContainer.style.position = 'absolute';
 
                 const mediaElement = createMediaElement(imagePath, videoPath);
                 if (mediaElement) {
