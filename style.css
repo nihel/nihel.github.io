@@ -1,6 +1,6 @@
 :root {
 	--black: #231F20;
-	--grey: #a1a1a1;
+	--grey: #888888;
 	--softgrey: #e1e1e1;
 	--white: #ffffff;
 	--orange: #ff2f00;
@@ -855,7 +855,6 @@ ul.footer-social {
 
 .experience-details-inner {
 	padding-bottom: 8px;
-	margin-left: 14px
 }
 
 /* Hover State */
@@ -1009,6 +1008,7 @@ ul.footer-social {
 	margin-bottom: 2px;
 	color: var(--black);
 	margin-top: 0;
+	margin-left: 14px;
 	padding-top: 4px;
 }
 
@@ -1018,12 +1018,13 @@ ul.footer-social {
 	list-style-type: none;
 	padding-left: 0;
 	margin: 0;
+	margin-left: 21px;
 }
 
 .experience-details li {
 	font-family: 'Inter-Medium', 'Helvetica', sans-serif;
 	font-size: 14px;
-	color: var(--grey);
+	color: var(--black);
 	line-height: 1.5;
 	margin-bottom: 4px;
 }

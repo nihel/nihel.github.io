@@ -1,7 +1,7 @@
-// Sidedrawer state
 let sidedrawer = null;
 let hasPlayedEntranceAnimation = false;
 let lastMousePosition = { x: 0, y: 0 };
+let isAnimating = false;
 
 // Track mouse position globally
 window.addEventListener('mousemove', (e) => {
@@ -262,6 +262,7 @@ function openSidedrawer(item) {
     closeSidedrawer(); // Remove any existing drawer
 
     const mobile = isMobile();
+    isAnimating = true;
 
     // Save current scroll position and prevent scrolling without resetting position
     const scrollY = window.scrollY;
@@ -349,6 +350,7 @@ function openSidedrawer(item) {
 
         // Close drawer on click
         const handleClick = () => {
+            if (isAnimating) return;
             closeSidedrawer({ updateUrl: true });
         };
 
@@ -532,9 +534,23 @@ function openSidedrawer(item) {
 
     // Animate drawer entry: from bottom on mobile, from right on desktop
     if (mobile) {
-        gsap.fromTo(sidedrawer, { y: '100%' }, { y: '0%', duration: 0.5, ease: "power2.out" });
+        gsap.fromTo(sidedrawer, { y: '100%' }, {
+            y: '0%',
+            duration: 0.5,
+            ease: "power2.out",
+            onComplete: () => {
+                isAnimating = false;
+            }
+        });
     } else {
-        gsap.fromTo(sidedrawer, { x: '100%' }, { x: '0%', duration: 0.5, ease: "power2.out" });
+        gsap.fromTo(sidedrawer, { x: '100%' }, {
+            x: '0%',
+            duration: 0.5,
+            ease: "power2.out",
+            onComplete: () => {
+                isAnimating = false;
+            }
+        });
     }
 
     function removeEventListeners() {
@@ -552,6 +568,8 @@ function openSidedrawer(item) {
     }
 
     function outsideClickHandler(e) {
+        if (isAnimating) return;
+
         if (!sidedrawer.contains(e.target)) {
             closeSidedrawer({ updateUrl: true });
             removeEventListeners();
@@ -561,7 +579,10 @@ function openSidedrawer(item) {
 
 // Remove sidedrawer
 function closeSidedrawer({ navigate = false, updateUrl = false } = {}) {
-    if (sidedrawer) {
+    // Capture the current drawer instance to avoid race conditions if a new one is opened immediately
+    const drawerToClose = sidedrawer;
+
+    if (drawerToClose) {
         const mobile = isMobile();
 
         // Restore scroll position and re-enable scrolling
@@ -595,6 +616,7 @@ function closeSidedrawer({ navigate = false, updateUrl = false } = {}) {
             // Hide dynamic background
             const dynamicBg = document.getElementById('dynamic-background');
             if (dynamicBg) {
+                gsap.killTweensOf(dynamicBg);
                 gsap.set(dynamicBg, { opacity: 0 });
                 dynamicBg.classList.remove('is-active');
 
@@ -603,19 +625,6 @@ function closeSidedrawer({ navigate = false, updateUrl = false } = {}) {
                     dynamicBg._cleanupCursor();
                     dynamicBg._cleanupCursor = null;
                 }
-
-                // Cleanup cursor listeners
-                if (dynamicBg._cleanupCursor) {
-                    dynamicBg._cleanupCursor();
-                    dynamicBg._cleanupCursor = null;
-                }
-
-                // Cleanup cursor listeners
-                if (dynamicBg._cleanupCursor) {
-                    dynamicBg._cleanupCursor();
-                    dynamicBg._cleanupCursor = null;
-                }
-
             }
         }
 
@@ -624,32 +633,32 @@ function closeSidedrawer({ navigate = false, updateUrl = false } = {}) {
             ? { y: '100%', duration: 0.5, ease: "power2.out" }
             : { x: '100%', duration: 0.5, ease: "power2.out" };
 
-        gsap.to(sidedrawer, {
+        gsap.to(drawerToClose, {
             ...exitAnimation,
             onComplete: () => {
                 // Clean up video observer
-                if (sidedrawer._videoObserver) {
-                    sidedrawer._videoObserver.disconnect();
+                if (drawerToClose._videoObserver) {
+                    drawerToClose._videoObserver.disconnect();
                 }
 
                 // Clean up video timeouts
-                if (sidedrawer._videoTimeouts) {
-                    sidedrawer._videoTimeouts.forEach(timeoutId => clearTimeout(timeoutId));
-                    sidedrawer._videoTimeouts.clear();
+                if (drawerToClose._videoTimeouts) {
+                    drawerToClose._videoTimeouts.forEach(timeoutId => clearTimeout(timeoutId));
+                    drawerToClose._videoTimeouts.clear();
                 }
 
                 // Clean up drag handlers (mobile)
-                if (sidedrawer._cleanupDragHandlers) {
-                    sidedrawer._cleanupDragHandlers();
+                if (drawerToClose._cleanupDragHandlers) {
+                    drawerToClose._cleanupDragHandlers();
                 }
 
                 // Clean up event listeners
-                if (sidedrawer._cleanupListeners) {
-                    sidedrawer._cleanupListeners();
+                if (drawerToClose._cleanupListeners) {
+                    drawerToClose._cleanupListeners();
                 }
 
                 // Reset background color
-                sidedrawer.style.background = '';
+                drawerToClose.style.background = '';
 
                 // Clear all transforms on wrapper to ensure clean state
                 const wrapper = getWrapper();
@@ -658,8 +667,13 @@ function closeSidedrawer({ navigate = false, updateUrl = false } = {}) {
                 });
                 wrapper.classList.remove('mobile-drawer-open');
 
-                sidedrawer.remove();
-                sidedrawer = null;
+                drawerToClose.remove();
+
+                // Only clear the global reference if it's still pointing to the drawer we just closed
+                if (sidedrawer === drawerToClose) {
+                    sidedrawer = null;
+                }
+
                 if (navigate) loadMainContent();
                 if (updateUrl) page.redirect('/');
             }
