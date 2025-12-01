@@ -167,6 +167,11 @@ video {
 	-o-user-drag: none;
 }
 
+.hover-play {
+	border-radius: 24px;
+	cursor: pointer;
+}
+
 .box {
 	width: 100%;
 	height: auto;
@@ -795,7 +800,8 @@ ul.footer-social {
 
 #dynamic-background h1 {
 	font-family: 'Inter-Bold', 'Helvetica', sans-serif;
-	font-size: 40px;
+	font-size: 32px;
+	line-height: 1.2;
 	color: #231F20;
 	margin: 0;
 }
@@ -998,7 +1004,6 @@ ul.footer-social {
 
 .experience-item.active .flex-row p.small:first-child::before {
 	transform: rotate(45deg);
-	border-color: var(--black);
 }
 
 /* Typography for Details */

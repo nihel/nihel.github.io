@@ -523,6 +523,9 @@ function openSidedrawer(item) {
 
                 // Set up video autoplay on viewport entry
                 setupVideoAutoplay(sidedrawer);
+
+                // Set up hover-to-play videos
+                setupHoverPlayVideos(sidedrawer);
             }
         });
 
@@ -766,7 +769,8 @@ window.addEventListener('resize', () => {
 
 // Setup video autoplay functionality
 function setupVideoAutoplay(container) {
-    const videos = container.querySelectorAll('video');
+    // Select videos that are NOT hover-play
+    const videos = container.querySelectorAll('video:not(.hover-play)');
 
     if (videos.length === 0) return;
 
@@ -823,6 +827,7 @@ function setupVideoAutoplay(container) {
         threshold: 0.5   // Play when 50% of video is visible
     });
 
+
     // Observe all videos
     videos.forEach(video => {
         // Set video attributes for better autoplay behavior
@@ -834,7 +839,38 @@ function setupVideoAutoplay(container) {
         observer.observe(video);
     });
 
-    // Store observer reference for cleanup
+    // Store observer on container for cleanup
     container._videoObserver = observer;
     container._videoTimeouts = videoTimeouts;
+}
+
+// Setup hover-to-play functionality
+function setupHoverPlayVideos(container) {
+    const videos = container.querySelectorAll('video.hover-play');
+
+    videos.forEach(video => {
+        // Ensure video is ready
+        video.muted = true;
+        video.loop = true;
+        video.playsInline = true;
+
+        const playVideo = () => {
+            video.play().catch(e => console.log('Hover play prevented:', e));
+        };
+
+        const pauseVideo = () => {
+            video.pause();
+            video.currentTime = 0; // Reset to start
+        };
+
+        video.addEventListener('mouseenter', playVideo);
+        video.addEventListener('mouseleave', pauseVideo);
+
+        // Store listeners for cleanup if needed (though removing elements cleans up listeners usually)
+        // We can attach them to the element for explicit cleanup if we wanted to be very strict
+        video._hoverPlayCleanup = () => {
+            video.removeEventListener('mouseenter', playVideo);
+            video.removeEventListener('mouseleave', pauseVideo);
+        };
+    });
 }
