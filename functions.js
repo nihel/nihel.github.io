@@ -1,6 +1,6 @@
 function initialize() {
     const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-    
+
     // Cache DOM elements
     let hoverMediaContainer = document.getElementById('hover-media');
     if (!hoverMediaContainer) {
@@ -26,8 +26,8 @@ function initialize() {
 
     function applyBorderRadius(mediaElement) {
         const checkOrientation = () => {
-            const isLandscape = (mediaElement.videoWidth || mediaElement.naturalWidth) > 
-                              (mediaElement.videoHeight || mediaElement.naturalHeight);
+            const isLandscape = (mediaElement.videoWidth || mediaElement.naturalWidth) >
+                (mediaElement.videoHeight || mediaElement.naturalHeight);
             hoverMediaContainer.style.borderRadius = isLandscape ? '12px' : '16px';
         };
 
@@ -35,35 +35,50 @@ function initialize() {
         mediaElement.addEventListener(eventType, checkOrientation, { once: true });
     }
 
-    function createMediaElement(imagePath, videoPath, maxWidth = '400px') {
-        let mediaElement;
-        
+    // Create persistent media elements
+    let persistentImg = document.createElement('img');
+    let persistentVideo = document.createElement('video');
+
+    Object.assign(persistentVideo, {
+        autoplay: true,
+        loop: true,
+        muted: true,
+        playsInline: true
+    });
+
+    // Style persistent elements
+    [persistentImg, persistentVideo].forEach(el => {
+        Object.assign(el.style, {
+            maxWidth: '400px',
+            maxHeight: '400px',
+            width: 'auto',
+            height: 'auto',
+            objectFit: 'contain',
+            display: 'none' // Hidden by default
+        });
+        hoverMediaContainer.appendChild(el);
+    });
+
+    function updateMediaElement(imagePath, videoPath) {
+        // Hide both initially
+        persistentImg.style.display = 'none';
+        persistentVideo.style.display = 'none';
+
+        let activeElement = null;
+
         if (videoPath) {
-            mediaElement = document.createElement('video');
-            mediaElement.src = videoPath;
-            Object.assign(mediaElement, {
-                autoplay: true,
-                loop: true,
-                muted: true,
-                playsInline: true
-            });
+            persistentVideo.src = videoPath;
+            persistentVideo.style.display = 'block';
+            activeElement = persistentVideo;
+            applyBorderRadius(persistentVideo);
         } else if (imagePath) {
-            mediaElement = document.createElement('img');
-            mediaElement.src = imagePath;
+            persistentImg.src = imagePath;
+            persistentImg.style.display = 'block';
+            activeElement = persistentImg;
+            applyBorderRadius(persistentImg);
         }
 
-        if (mediaElement) {
-            Object.assign(mediaElement.style, {
-                maxWidth,
-                maxHeight: '400px',
-                width: 'auto',
-                height: 'auto',
-                objectFit: 'contain'
-            });
-            applyBorderRadius(mediaElement);
-        }
-
-        return mediaElement;
+        return activeElement;
     }
 
     // Throttle utility for performance
@@ -72,7 +87,7 @@ function initialize() {
         let lastExecTime = 0;
         return function (...args) {
             const currentTime = Date.now();
-            
+
             if (currentTime - lastExecTime > delay) {
                 func.apply(this, args);
                 lastExecTime = currentTime;
@@ -92,7 +107,7 @@ function initialize() {
         const viewportHeight = window.innerHeight;
         const scrollX = window.scrollX;
         const scrollY = window.scrollY;
-        
+
         let adjustedPosX = pageX + HOVER_OFFSET_X;
         let adjustedPosY = pageY + HOVER_OFFSET_Y;
 
@@ -117,83 +132,125 @@ function initialize() {
 
     function initializeHoverEffects() {
         if (isTouchDevice) return; // Early return for touch devices
-        
-        document.querySelectorAll('.item').forEach(card => {
+
+        // Event Delegation: Attach listeners to document.body once
+        // We use a flag to prevent multiple attachments if this function is called multiple times
+        if (document.body.dataset.hoverEffectsInitialized) return;
+        document.body.dataset.hoverEffectsInitialized = 'true';
+
+        document.body.addEventListener('mouseover', function (e) {
+            const header = e.target.closest('.item h3');
+            if (!header) return;
+            const card = header.closest('.item');
+            if (!card) return;
+
             // Cache data attributes
             const imagePath = card.getAttribute('data-image');
             const videoPath = card.getAttribute('data-video');
-            
+
             // Skip if no media to show
             if (!imagePath && !videoPath) return;
 
-            card.addEventListener('mouseenter', function (event) {
-                hoverMediaContainer.innerHTML = '';
+            const activeElement = updateMediaElement(imagePath, videoPath);
 
-                const mediaElement = createMediaElement(imagePath, videoPath);
-                if (mediaElement) {
-                    hoverMediaContainer.appendChild(mediaElement);
-                    
-                    const { x, y } = calculatePosition(event.pageX, event.pageY, { width: 400, height: 400 });
-                    hoverMediaContainer.style.left = x + 'px';
-                    hoverMediaContainer.style.top = y + 'px';
+            if (activeElement) {
+                const { x, y } = calculatePosition(e.pageX, e.pageY, { width: 400, height: 400 });
+                hoverMediaContainer.style.left = x + 'px';
+                hoverMediaContainer.style.top = y + 'px';
 
-                    gsap.killTweensOf(hoverMediaContainer);
-                    gsap.fromTo(hoverMediaContainer, 
-                        { opacity: 0, filter: BLUR_IN }, 
-                        { opacity: 1, filter: BLUR_OUT, duration: ANIMATION_DURATION, ease: EASE_TYPE }
-                    );
-                }
-            });
-
-            card.addEventListener('mouseleave', function () {
                 gsap.killTweensOf(hoverMediaContainer);
-                gsap.to(hoverMediaContainer, { 
-                    opacity: 0, 
-                    filter: BLUR_IN, 
-                    duration: ANIMATION_DURATION, 
-                    ease: EASE_TYPE, 
-                    onComplete: () => hoverMediaContainer.innerHTML = ''
-                });
-            });
-
-            card.addEventListener('click', function () {
-                gsap.killTweensOf(hoverMediaContainer);
-                gsap.to(hoverMediaContainer, { 
-                    opacity: 0, 
-                    filter: BLUR_IN, 
-                    duration: 0.2, 
-                    ease: EASE_TYPE, 
-                    onComplete: () => hoverMediaContainer.innerHTML = ''
-                });
-            });
-
-            // Throttled mousemove for better performance
-            const throttledMouseMove = throttle(function (e) {
-                const mediaRect = hoverMediaContainer.getBoundingClientRect();
-                const { x, y } = calculatePosition(e.pageX, e.pageY, mediaRect);
-                
-                gsap.to(hoverMediaContainer, { 
-                    left: x + 'px', 
-                    top: y + 'px', 
-                    duration: ANIMATION_DURATION, 
-                    ease: EASE_TYPE 
-                });
-            }, 16); // ~60fps throttling
-
-            card.addEventListener('mousemove', throttledMouseMove);
-
+                gsap.fromTo(hoverMediaContainer,
+                    { opacity: 0, filter: BLUR_IN },
+                    { opacity: 1, filter: BLUR_OUT, duration: ANIMATION_DURATION, ease: EASE_TYPE }
+                );
+            }
         });
+
+        document.body.addEventListener('mouseout', function (e) {
+            const header = e.target.closest('.item h3');
+            if (!header) return;
+            const card = header.closest('.item');
+            if (!card) return;
+
+            gsap.killTweensOf(hoverMediaContainer);
+            gsap.to(hoverMediaContainer, {
+                opacity: 0,
+                filter: BLUR_IN,
+                duration: ANIMATION_DURATION,
+                ease: EASE_TYPE,
+                // We don't clear innerHTML anymore, just hide opacity
+            });
+        });
+
+        document.body.addEventListener('click', function (e) {
+            const header = e.target.closest('.item h3');
+            if (!header) return;
+            const card = header.closest('.item');
+            if (!card) return;
+
+            gsap.killTweensOf(hoverMediaContainer);
+            gsap.to(hoverMediaContainer, {
+                opacity: 0,
+                filter: BLUR_IN,
+                duration: 0.2,
+                ease: EASE_TYPE
+            });
+        });
+
+        // Throttled mousemove for better performance
+        const throttledMouseMove = throttle(function (e) {
+            // Only update if we are hovering an item h3
+            if (!e.target.closest('.item h3')) return;
+
+            const mediaRect = hoverMediaContainer.getBoundingClientRect();
+            const { x, y } = calculatePosition(e.pageX, e.pageY, mediaRect);
+
+            gsap.to(hoverMediaContainer, {
+                left: x + 'px',
+                top: y + 'px',
+                duration: ANIMATION_DURATION,
+                ease: EASE_TYPE
+            });
+        }, 16); // ~60fps throttling
+
+        document.body.addEventListener('mousemove', throttledMouseMove);
     }
 
     // Initialize and set up event delegation
     initializeHoverEffects();
-    
-    // Use more efficient event delegation for dynamic content
-    document.addEventListener('contentUpdated', () => {
-        // Only re-initialize if we're not on a touch device
-        if (!isTouchDevice) {
-            initializeHoverEffects();
-        }
+    initializeAccordion();
+
+    // No need for 'contentUpdated' listener anymore since we use delegation on body
+}
+
+function initializeAccordion() {
+    // Use event delegation to handle dynamic content and avoid multiple listeners
+    if (document.body.dataset.accordionInitialized) return;
+    document.body.dataset.accordionInitialized = 'true';
+
+    document.body.addEventListener('click', (e) => {
+        // Check if the clicked element or its parent is the trigger
+        const trigger = e.target.closest('.experience-item p.small');
+        if (!trigger) return;
+
+        const item = trigger.closest('.experience-item');
+        if (!item) return;
+
+        // Prevent bubbling
+        e.stopPropagation();
+
+        // Find all items currently in the DOM
+        const allItems = document.querySelectorAll('.experience-item');
+
+        // Close other items
+        allItems.forEach(otherItem => {
+            if (otherItem !== item) {
+                otherItem.classList.remove('active');
+            }
+        });
+
+        // Toggle active class
+        item.classList.toggle('active');
     });
 }
 
