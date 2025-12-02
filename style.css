@@ -986,6 +986,10 @@ ul.footer-social {
 	cursor: pointer;
 }
 
+.experience-item p.small:hover {
+	color: var(--black);
+}
+
 .experience-item .flex-row p.small:first-child {
 	display: flex;
 	align-items: center;
@@ -1003,6 +1007,10 @@ ul.footer-social {
 	transition: transform 0.2s ease;
 	margin-bottom: 2px;
 	/* Optical adjustment */
+}
+
+.experience-item .flex-row p.small:first-child:hover::before {
+	border-color: var(--black);
 }
 
 .experience-item.active .flex-row p.small:first-child::before {
