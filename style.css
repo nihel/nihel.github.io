@@ -348,7 +348,7 @@ main {
 	display: flex;
 	flex-wrap: wrap;
 	width: 100%;
-	gap: 1rem;
+	gap: 2rem;
 	padding-top: 2rem;
 	padding-bottom: 2rem;
 	justify-content: center;
@@ -800,7 +800,7 @@ ul.footer-social {
 
 #dynamic-background h1 {
 	font-family: 'Inter-Bold', 'Helvetica', sans-serif;
-	font-size: 32px;
+	font-size: 28px;
 	line-height: 1.2;
 	color: #231F20;
 	margin: 0;
@@ -812,15 +812,18 @@ ul.footer-social {
 	font-family: 'Inter-Medium', 'Helvetica', sans-serif;
 	font-size: 16px;
 	line-height: 1.6;
-	color: #231F20;
+	color: #888888;
 	max-width: 480px;
 	text-align: left;
 	margin: 0;
 }
 
-[data-theme="dark"] #dynamic-background h1,
-[data-theme="dark"] #dynamic-background p {
+[data-theme="dark"] #dynamic-background h1 {
 	color: #eeeeee;
+}
+
+[data-theme="dark"] #dynamic-background p {
+	color: #888888;
 }
 
 #dynamic-background img {

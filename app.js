@@ -296,6 +296,7 @@ function openSidedrawer(item) {
             const logoSrc = link.querySelector('img')?.src || '';
             const header = link.getAttribute('data-header') || '';
             const description = link.getAttribute('data-description') || '';
+            const description2 = link.getAttribute('data-description-2') || '';
 
             const dynamicBg = document.getElementById('dynamic-background');
             if (dynamicBg) {
@@ -304,6 +305,7 @@ function openSidedrawer(item) {
                         <img src="${logoSrc}" alt="${title} Logo">
                         <h1>${title}</h1>
                         ${description ? `<p>${description}</p>` : ''}
+                        ${description2 ? `<p>${description2}</p>` : ''}
                     </div>
                 `;
                 // Match animation timing exactly with wrapper
