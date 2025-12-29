@@ -1043,4 +1043,38 @@ ul.footer-social {
 	color: var(--black);
 	line-height: 1.5;
 	margin-bottom: 4px;
+}/* Mobile Project Header */
+.mobile-project-header {
+    display: none;
+    padding: 24px 24px 0 24px;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    /* Optimize visibility */
+    content-visibility: auto;
+}
+
+.mobile-project-logo {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.mobile-project-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Show only on mobile/tablet when drawer is active style */
+@media screen and (width <=549px) {
+    .mobile-project-header {
+        display: flex;
+    }
+
+    .sidedrawer .drawer-content {
+        padding-top: 16px;
+    }
 }

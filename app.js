@@ -276,47 +276,15 @@ function openSidedrawer(item) {
         clearProps: "transform,scale,x,y,rotationY,transformOrigin,transformPerspective"
     });
 
-    // Animate wrapper with appropriate effect for mobile/desktop and disable interactions
-    setWrapperInteraction(false);
-    if (mobile) {
-        gsap.to(wrapper, WRAPPER_MOBILE_OPEN);
-    } else {
-        gsap.to(wrapper, WRAPPER_OPEN);
+    const link = document.querySelector(`a[href="/portfolio/${item}"]`);
+    let title = '', logoSrc = '', header = '', description = '', description2 = '';
 
-        // Populate and show dynamic background
-        const link = document.querySelector(`a[href="/portfolio/${item}"]`);
-        const dynamicBg = document.getElementById('dynamic-background');
-
-        if (dynamicBg) {
-            dynamicBg.classList.add('is-active');
-        }
-
-        if (link) {
-            const title = link.querySelector('h3')?.innerText || '';
-            const logoSrc = link.querySelector('img')?.src || '';
-            const header = link.getAttribute('data-header') || '';
-            const description = link.getAttribute('data-description') || '';
-            const description2 = link.getAttribute('data-description-2') || '';
-
-            const dynamicBg = document.getElementById('dynamic-background');
-            if (dynamicBg) {
-                dynamicBg.innerHTML = `
-                    <div class="dynamic-content-stack">
-                        <img src="${logoSrc}" alt="${title} Logo">
-                        <h1>${title}</h1>
-                        ${description ? `<p>${description}</p>` : ''}
-                        ${description2 ? `<p>${description2}</p>` : ''}
-                    </div>
-                `;
-                // Match animation timing exactly with wrapper
-                gsap.to(dynamicBg, {
-                    opacity: 1,
-                    duration: 0.2,
-                    ease: "power2.out",
-                    delay: WRAPPER_OPEN.duration
-                });
-            }
-        }
+    if (link) {
+        title = link.querySelector('h3')?.innerText || '';
+        logoSrc = link.querySelector('img')?.src || '';
+        header = link.getAttribute('data-header') || '';
+        description = link.getAttribute('data-description') || '';
+        description2 = link.getAttribute('data-description-2') || '';
     }
 
     // Custom Cursor Logic
@@ -371,9 +339,56 @@ function openSidedrawer(item) {
         };
     }
 
+    // Animate wrapper with appropriate effect for mobile/desktop and disable interactions
+    setWrapperInteraction(false);
+    if (mobile) {
+        gsap.to(wrapper, WRAPPER_MOBILE_OPEN);
+    } else {
+        gsap.to(wrapper, WRAPPER_OPEN);
+
+        // Populate and show dynamic background
+        if (dynamicBg) {
+            dynamicBg.classList.add('is-active');
+
+            if (link) {
+                dynamicBg.innerHTML = `
+                    <div class="dynamic-content-stack">
+                        <img src="${logoSrc}" alt="${title} Logo">
+                        <h1>${title}</h1>
+                        ${description ? `<p>${description}</p>` : ''}
+                        ${description2 ? `<p>${description2}</p>` : ''}
+                    </div>
+                `;
+                // Match animation timing exactly with wrapper
+                gsap.to(dynamicBg, {
+                    opacity: 1,
+                    duration: 0.2,
+                    ease: "power2.out",
+                    delay: WRAPPER_OPEN.duration
+                });
+            }
+        }
+    }
+
     sidedrawer = document.createElement('div');
     sidedrawer.className = 'sidedrawer';
-    sidedrawer.innerHTML = `<div class="drawer-content" style="opacity: 0;">Loading...</div>`;
+
+    // Inject header for mobile
+    let mobileHeaderHtml = '';
+    if (mobile && link) {
+        mobileHeaderHtml = `
+            <div class="mobile-project-header">
+                <img src="${logoSrc}" alt="${title} Logo" class="mobile-project-logo">
+                <div class="mobile-project-info">
+                    <h1>${title}</h1>
+                    ${description ? `<p class="medium">${description}</p>` : ''}
+                    ${description2 ? `<p class="medium">${description2}</p>` : ''}
+                </div>
+            </div>
+        `;
+    }
+
+    sidedrawer.innerHTML = `${mobileHeaderHtml}<div class="drawer-content" style="opacity: 0;">Loading...</div>`;
     document.body.appendChild(sidedrawer);
 
     // Prevent scroll propagation to body
@@ -470,6 +485,7 @@ function openSidedrawer(item) {
                             sidedrawer.remove();
                             sidedrawer = null;
                             removeEventListeners();
+                            cleanupScrollLock();
                             page.redirect('/');
                         }
                     }
@@ -583,6 +599,25 @@ function openSidedrawer(item) {
 }
 
 // Remove sidedrawer
+function cleanupScrollLock() {
+    const scrollY = document.body.style.top;
+    document.body.classList.remove('drawer-open');
+    document.body.style.top = '';
+
+    if (scrollY) {
+        // Temporarily disable smooth scrolling for instant restoration
+        const originalScrollBehavior = document.documentElement.style.scrollBehavior;
+        document.documentElement.style.scrollBehavior = 'auto';
+
+        // Use setTimeout to ensure this runs after browser's native scroll restoration
+        setTimeout(() => {
+            window.scrollTo(0, parseInt(scrollY || '0') * -1);
+            // Restore original scroll behavior
+            document.documentElement.style.scrollBehavior = originalScrollBehavior;
+        }, 10);
+    }
+}
+
 function closeSidedrawer({ navigate = false, updateUrl = false } = {}) {
     // Capture the current drawer instance to avoid race conditions if a new one is opened immediately
     const drawerToClose = sidedrawer;
@@ -591,21 +626,7 @@ function closeSidedrawer({ navigate = false, updateUrl = false } = {}) {
         const mobile = isMobile();
 
         // Restore scroll position and re-enable scrolling
-        const scrollY = document.body.style.top;
-        document.body.classList.remove('drawer-open');
-        document.body.style.top = '';
-        if (scrollY) {
-            // Temporarily disable smooth scrolling for instant restoration
-            const originalScrollBehavior = document.documentElement.style.scrollBehavior;
-            document.documentElement.style.scrollBehavior = 'auto';
-
-            // Use setTimeout to ensure this runs after browser's native scroll restoration
-            setTimeout(() => {
-                window.scrollTo(0, parseInt(scrollY || '0') * -1);
-                // Restore original scroll behavior
-                document.documentElement.style.scrollBehavior = originalScrollBehavior;
-            }, 10);
-        }
+        cleanupScrollLock();
 
         // Re-enable interactions and start wrapper animation immediately
         setWrapperInteraction(true);
