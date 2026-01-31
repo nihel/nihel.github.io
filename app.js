@@ -452,7 +452,10 @@ function openSidedrawer(item) {
                 // Close the drawer starting from current dragged position
                 const currentTransform = sidedrawer.style.transform;
                 const currentY = currentTransform.match(/translateY\(([^)]+)\)/);
-                const startFromY = currentY ? currentY[1] : '0px';
+                const startFromY = currentY ? parseFloat(currentY[1]) : 0;
+
+                // Clear the inline transform style to prevent conflicts with GSAP
+                sidedrawer.style.transform = '';
 
                 // Start wrapper animation immediately (same as normal close)
                 setWrapperInteraction(true);
@@ -492,13 +495,12 @@ function openSidedrawer(item) {
                 );
             } else {
                 // Snap back to original position
+                // Clear inline transform before GSAP animation
+                sidedrawer.style.transform = '';
                 gsap.to(sidedrawer, {
                     y: 0,
                     duration: 0.3,
-                    ease: "power2.out",
-                    onComplete: () => {
-                        sidedrawer.style.transform = '';
-                    }
+                    ease: "power2.out"
                 });
             }
 
