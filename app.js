@@ -309,13 +309,19 @@ function openSidedrawer(item) {
         };
 
         // Show cursor
-        const showCursor = () => {
-            gsap.to(customCursor, { opacity: 1, duration: 0.2 });
+        const showCursor = (e) => {
+            // Instantly set position to current mouse location before showing
+            gsap.set(customCursor, {
+                x: e.clientX,
+                y: e.clientY
+            });
+            gsap.to(customCursor, { opacity: 1, duration: 0 });
         };
 
         // Hide cursor
         const hideCursor = () => {
-            gsap.to(customCursor, { opacity: 0, duration: 0.2 });
+            gsap.killTweensOf(customCursor);
+            gsap.to(customCursor, { opacity: 0, duration: 0 });
         };
 
         // Close drawer on click
@@ -335,7 +341,8 @@ function openSidedrawer(item) {
             dynamicBg.removeEventListener('mouseenter', showCursor);
             dynamicBg.removeEventListener('mouseleave', hideCursor);
             dynamicBg.removeEventListener('click', handleClick);
-            gsap.to(customCursor, { opacity: 0, duration: 0.2 });
+            gsap.killTweensOf(customCursor);
+            gsap.to(customCursor, { opacity: 0, duration: 0 });
         };
     }
 
@@ -449,53 +456,19 @@ function openSidedrawer(item) {
             const threshold = 100; // Close if dragged more than 100px
 
             if (deltaY > threshold) {
-                // Close the drawer starting from current dragged position
+                // Get current dragged position
                 const currentTransform = sidedrawer.style.transform;
                 const currentY = currentTransform.match(/translateY\(([^)]+)\)/);
                 const startFromY = currentY ? parseFloat(currentY[1]) : 0;
 
-                // Clear the inline transform style to prevent conflicts with GSAP
+                // Clear the inline transform and set GSAP starting position
                 sidedrawer.style.transform = '';
+                gsap.set(sidedrawer, { y: startFromY });
 
-                // Start wrapper animation immediately (same as normal close)
-                setWrapperInteraction(true);
-                gsap.killTweensOf(getWrapper());
-                gsap.to(getWrapper(), WRAPPER_MOBILE_CLOSE);
-
-                // Animate drawer to closed position from current position
-                gsap.fromTo(sidedrawer,
-                    { y: startFromY },
-                    {
-                        y: '100%',
-                        duration: 0.5,
-                        ease: "power2.out",
-                        onComplete: () => {
-                            // Clean up without additional animations
-                            if (sidedrawer._videoObserver) {
-                                sidedrawer._videoObserver.disconnect();
-                            }
-                            if (sidedrawer._cleanupDragHandlers) {
-                                sidedrawer._cleanupDragHandlers();
-                            }
-                            sidedrawer.style.background = '';
-
-                            const wrapper = getWrapper();
-                            gsap.set(wrapper, {
-                                clearProps: "transform,scale,x,y,rotationY,transformOrigin,transformPerspective"
-                            });
-                            wrapper.classList.remove('mobile-drawer-open');
-
-                            sidedrawer.remove();
-                            sidedrawer = null;
-                            removeEventListeners();
-                            cleanupScrollLock();
-                            page.redirect('/');
-                        }
-                    }
-                );
+                // Use the centralized close function for consistent behavior
+                closeSidedrawer({ updateUrl: true });
             } else {
                 // Snap back to original position
-                // Clear inline transform before GSAP animation
                 sidedrawer.style.transform = '';
                 gsap.to(sidedrawer, {
                     y: 0,
@@ -703,19 +676,22 @@ function closeSidedrawer({ navigate = false, updateUrl = false } = {}) {
                 }
 
                 if (navigate) loadMainContent();
-                if (updateUrl) page.redirect('/');
+                if (updateUrl) router.navigate('/');
             }
         });
     } else {
         // Re-enable interactions if they were disabled
         setWrapperInteraction(true);
         if (navigate) loadMainContent();
-        if (updateUrl) page.redirect('/');
+        if (updateUrl) router.navigate('/');
     }
 }
 
+// Initialize Navigo router
+const router = new Navigo('/');
+
 // Portfolio routes
-page('/', () => {
+router.on('/', () => {
     // Only close drawer and navigate if there's actually a drawer open
     if (sidedrawer) {
         closeSidedrawer({ navigate: false, updateUrl: false });
@@ -724,17 +700,18 @@ page('/', () => {
         loadMainContent();
     }
 });
-page('/portfolio/:item', ctx => {
+
+router.on('/portfolio/:item', ({ data }) => {
     // Always load main content first if not already loaded
     const wrapper = getWrapper();
 
     if (!wrapper || !wrapper.innerHTML.trim()) {
         // Load main content and wait for it to complete
         loadMainContentAsync()
-            .then(() => openSidedrawer(ctx.params.item))
-            .catch(() => page.redirect('/'));
+            .then(() => openSidedrawer(data.item))
+            .catch(() => router.navigate('/'));
     } else {
-        openSidedrawer(ctx.params.item);
+        openSidedrawer(data.item);
     }
 });
 
@@ -743,7 +720,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add class to enable FOUC prevention on initial load
     document.body.classList.add('entrance-animation-pending');
 
-    page();
+    // Intercept link clicks to use router navigation (similar to page.js behavior)
+    document.body.addEventListener('click', (e) => {
+        const link = e.target.closest('a');
+        if (link && link.getAttribute('href') && link.getAttribute('href').startsWith('/')) {
+            e.preventDefault();
+            router.navigate(link.getAttribute('href'));
+        }
+    });
+
+    router.resolve();
 });
 
 // Fallback if DOMContentLoaded has already fired
@@ -752,7 +738,17 @@ if (document.readyState === 'loading') {
 } else {
     // DOM is already ready
     document.body.classList.add('entrance-animation-pending');
-    page();
+
+    // Intercept link clicks to use router navigation (similar to page.js behavior)
+    document.body.addEventListener('click', (e) => {
+        const link = e.target.closest('a');
+        if (link && link.getAttribute('href') && link.getAttribute('href').startsWith('/')) {
+            e.preventDefault();
+            router.navigate(link.getAttribute('href'));
+        }
+    });
+
+    router.resolve();
 }
 
 // Handle window resize and orientation changes
