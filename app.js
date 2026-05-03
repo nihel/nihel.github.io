@@ -701,19 +701,7 @@ router.on('/', () => {
     }
 });
 
-router.on('/portfolio/:item', ({ data }) => {
-    // Always load main content first if not already loaded
-    const wrapper = getWrapper();
 
-    if (!wrapper || !wrapper.innerHTML.trim()) {
-        // Load main content and wait for it to complete
-        loadMainContentAsync()
-            .then(() => openSidedrawer(data.item))
-            .catch(() => router.navigate('/'));
-    } else {
-        openSidedrawer(data.item);
-    }
-});
 
 // Initialize router after DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
