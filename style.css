@@ -124,7 +124,7 @@ a.item {
 #email-btn {
 	width: fit-content;
 	font-family: 'Inter-Medium', 'Helvetica', sans-serif;
-	font-size: 17px;
+	font-size: 16px;
 	line-height: 150%;
 	color: var(--black);
 	text-decoration-style: dotted;
@@ -216,7 +216,7 @@ video {
 
 h1 {
 	font-family: 'Inter-Medium', 'Helvetica', sans-serif;
-	font-size: 17px;
+	font-size: 16px;
 	line-height: 150%;
 }
 
@@ -237,20 +237,20 @@ h2 {
 
 h3 {
 	font-family: 'Inter-Medium', 'Helvetica', sans-serif;
-	font-size: 15px;
+	font-size: 14px;
 	color: var(--black);
 }
 
 h4 {
 	font-family: 'Inter-Medium', 'Helvetica', sans-serif;
-	font-size: 15px;
+	font-size: 14px;
 	color: var(--black);
 }
 
 p.large {
 	font-family: 'Inter-Medium', 'Helvetica', sans-serif;
 	color: var(--black);
-	font-size: 17px;
+	font-size: 16px;
 	line-height: 150%;
 	text-wrap: pretty;
 }
@@ -266,7 +266,7 @@ p.medium {
 p.small {
 	font-family: 'Inter-Medium', 'Helvetica', sans-serif;
 	color: var(--grey);
-	font-size: 15px;
+	font-size: 14px;
 	line-height: 150%;
 	text-wrap: pretty;
 	font-variant-numeric: tabular-nums;
@@ -977,7 +977,7 @@ ul.footer-social {
 /* Typography for Details */
 .experience-details-inner h4 {
 	font-family: 'Inter-Medium', 'Helvetica', sans-serif;
-	font-size: 15px;
+	font-size: 14px;
 	margin-bottom: 2px;
 	color: var(--black);
 	margin-top: 0;
@@ -996,7 +996,7 @@ ul.footer-social {
 
 .experience-details li {
 	font-family: 'Inter-Medium', 'Helvetica', sans-serif;
-	font-size: 15px;
+	font-size: 14px;
 	color: var(--black);
 	line-height: 1.5;
 	margin-bottom: 4px;
